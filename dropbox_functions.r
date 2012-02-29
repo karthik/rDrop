@@ -14,8 +14,8 @@ cKey <- getOption("DROPBOX_APP_KEY")
 cSecret <- getOption("DROPBOX_APP_SECRET")
 access_type <- "dropbox"
 
-dropbox_cred <- OAuthFactory$new(consumerKey = cKey, 
-    consumerSecret = cSecret, requestURL = reqURL, accessURL = accessURL, 
+dropbox_cred <- OAuthFactory$new(consumerKey = cKey,
+    consumerSecret = cSecret, requestURL = reqURL, accessURL = accessURL,
     authURL = authURL)
 dropbox_cred$handshake()
 
@@ -36,8 +36,8 @@ authURL <- "http://www.mendeley.com/oauth/authorize/"
 cKey <- getOption("MendeleyKey")
 cSecret <- getOption("MendeleyPrivateKey")
 
-credentials <- OAuthFactory$new(consumerKey = cKey, 
-    consumerSecret = cSecret, requestURL <- reqURL, accessURL = accessURL, 
+credentials <- OAuthFactory$new(consumerKey = cKey,
+    consumerSecret = cSecret, requestURL <- reqURL, accessURL = accessURL,
     authURL = authURL)
 credentials$handshake()
 
@@ -61,4 +61,4 @@ credentials$handshake()
 #   'POST')
 
 #
-# ```````````````````````````````````````````` 
+# ````````````````````````````````````````````
