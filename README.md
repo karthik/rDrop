@@ -18,7 +18,7 @@ Also see:
 
 3. Give your app a name. Dropbox requires that your app have a unique name. Dropbox branding guidelines also prohibit the use of the word **"Dropbox"** or names that begin with "**Drop**". We recommend that you name the app something like "**Your_first_name_last_name_rDrop**" to avoid naming conflicts.
 
-![Alt text](screenshots/name_your_app.png "Optional title")
+![Alt text](/screenshots/name_your_app.png "Optional title")
 
 3. Copy your application key and application Secret. If you use your `.rprofile` then we recommend that you save your keys there like so: <br>
 `options("Dropbox_app_key"="YOUR_APPLICATION_KEY")`<br>
