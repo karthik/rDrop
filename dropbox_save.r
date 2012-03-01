@@ -22,3 +22,5 @@ dropbox_save <- function(cred, path, file) {
         , "POST", upload = TRUE, readdata = input, infilesize = nchar(content) -
             3L, verbose = TRUE)
 }
+
+# Copy API instructions below for reference.
