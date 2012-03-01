@@ -4,9 +4,9 @@ library(RJSONIO)
 
 # Status: Works but only from terminal.
 
-#'Function to uthenticate into your Dropbox account and get access keys
+#'Function to authenticate into your Dropbox account and get access keys
 #'
-#' @import RCurl ROAuth RJSONIO plyr
+#'@import RCurl ROAuth RJSONIO plyr
 #'@param cKey A valid Dropbox application key
 #'@param cSecret A valid Dropbox application secret
 #'@keywords

@@ -1,12 +1,14 @@
+#Status: Works fine but have not implemented a way for users to specify a certain directory.
+
 #' List contents of a Dropbox account
 #'
-#'@param cred An object of class ROAuth with Dropobox specific credentials.
-#'@param verbose=FALSE <what param does>
+#'@param cred Specifies an object of class ROAuth with Dropobox specific credentials.
+#'@param verbose logical. FALSE returns a list with file names in root folder. TRUE returns a data.frame with the following fields: .id,revision, rev, thumb_exists, bytes,modified, path, is_dir, icon,root,size,mime_type.
 #'@keywords
 #'@seealso
 #'@return
 #'@alias
-#'@export
+#'@export dropbox_dir
 #'@examples \dontrun{
 #' dropbox_dir(cred)
 #' returns a dataframe with fields .id,

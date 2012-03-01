@@ -1,16 +1,14 @@
-# Status: Needs plenty of work.
+# Status: Not currently working.
 
 #' Downloads a file from your Dropbox
-#' https://api-content.dropbox.com/1/files/<root>/<path>
 #'
-#' Downloads files from Dropbox
-#'@param cred An object of class ROAuth with Dropobox specific credentials.
-#'@param  file_to_get <what param does>
+#'@param cred Specifies an object of class ROAuth with Dropobox specific credentials.
+#'@param  file_to_get Specifies the path to the file you want to retrieve.
 #'@keywords
 #'@seealso
 #'@return
 #'@alias
-#'@export
+#'@export dropbox_get
 #'@examples \dontrun{
 #'
 #'}

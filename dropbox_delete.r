@@ -2,14 +2,13 @@
 
 #' Function to delete a file or folder from Dropbox
 #'
-#'Function to delete a dropbox file or folder.
-#'@param cred An object of class ROAuth with Dropobox specific credentials.
-#'@param  file_to_delete <what param does>
+#'@param cred Specifies an object of class ROAuth with Dropobox specific credentials.
+#'@param  file_to_delete Specifies the path to the file or folder to be deleted.
 #'@keywords
 #'@seealso
 #'@return none. A message upon successful deletion.
 #'@alias
-#'@export
+#'@export dropbox_delete
 #'@examples \dontrun{
 #'
 #'}

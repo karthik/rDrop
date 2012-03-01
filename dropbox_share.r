@@ -1,17 +1,16 @@
-Works but needs error catching
-# functions to share or possibly move a file to public folder and get the public url.
+#Status: Works but needs error catching
 
 
-#'<brief desc>
+#' functions to share or possibly move a file to public folder and get the public url.
+#' Function to create a share for any file or folder and return a URL.
 #'
-#'<full description>
-#'@param cred An object of class ROAuth with Dropobox specific credentials.
-#'@param file Name of file to be shared. If file is not in your Dropbox root, you must specify full path.
+#'@param cred Specifies an object of class ROAuth with Dropobox specific credentials.
+#'@param file Specifies the path to the file or folder you want a shareable link to.
 #'@keywords
 #'@seealso
 #'@return
 #'@alias
-#'@export
+#'@export dropbox_share
 #'@examples \dontrun{
 #'
 #'}

@@ -1,9 +1,9 @@
-NEEDS WORK
-#'<brief desc>
+#Status: DOES NEEDS WORK, YET
+#' Function to save an object from R into Dropbox
 #'
-#'<full description>
-#'@param cred An object of class ROAuth with Dropobox specific credentials.
-#'@param  file <what param does>
+#'@param cred Specifies an object of class ROAuth with Dropobox specific credentials.
+#'@param  path The path to the folder the file should be uploaded to. This parameter should not point to a file.
+#'@param  file The file contents to be uploaded. Requires a multipart upload (multipart/form-data), and the filename parameter of this field should be set to the desired destination filename. While signing this request for OAuth, the file parameter should be set to the destination filename, and then switched to the file contents when preparing the multipart request.
 #'@keywords
 #'@seealso
 #'@return
@@ -12,7 +12,7 @@ NEEDS WORK
 #'@examples \dontrun{
 #'
 #'}
-dropbox_save <- function(cred, file) {
+dropbox_save <- function(cred, path, file) {
 	if(!is.dropbox.cred(cred)) stop("Invalid Oauth credentials",call. = FALSE)
     content = "This is simple content"
     input = RCurl:::uploadFunctionHandler(content, TRUE)

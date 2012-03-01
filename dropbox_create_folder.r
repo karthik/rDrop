@@ -1,14 +1,14 @@
 # Status: WORKS,but needs error catching
 
 
-#' Function to create new folders in Dropbox.
-#'@param cred An object of class ROAuth with Dropobox specific credentials.
-#'@param folder_name <what param does>
+#'Function to create new folders in Dropbox.
+#'@param cred Specifies an object of class ROAuth with Dropobox specific credentials.
+#'@param folder_name Specifies the path to the new folder to create relative to root.
 #'@keywords
 #'@seealso
 #'@return
 #'@alias
-#'@export
+#'@export dropbox_create_folder
 #'@examples \dontrun{
 #'
 #'}
@@ -26,4 +26,5 @@ cat("Folder successfully created at",dir_metadata$root, dir_metadata$path, "on",
 # Error in fromJSON(cred$OAuthRequest("https://api.dropbox.com/1/fileops/create_folder/",  :
 #   error in evaluating the argument 'content' in selecting a method for function 'fromJSON': Error: Forbidden
 
-need more meaningful errors than just Error: Forbidden
+# Issues:
+# 1. Need more meaningful errors than just Error: Forbidden

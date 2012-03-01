@@ -2,14 +2,14 @@
 
 #' Function to copy files or folder within Dropbox.
 #'
-#'@param cred An object of class ROAuth with Dropobox specific credentials.
-#'@param from_path=NULL <what param does>
-#'@param to_path=NULL <what param does>
+#'@param cred Specifies an object of class ROAuth with Dropobox specific credentials.
+#'@param from_path Specifies the file or folder to be copied from relative to root.
+#'@param to_path Specifies a destination path, including the new name for the file or folder, relative to root.
 #'@keywords
 #'@seealso
 #'@return
 #'@alias
-#'@export
+#'@export dropbox_copy
 #'@examples \dontrun{
 #'
 #'}

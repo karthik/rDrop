@@ -1,13 +1,15 @@
+# Status: Works but fails to recongnize missing objects passed as cred from dropbox_acc_info()
+
 #'Verifies whether a user has specified a correct Oauth credential for Dropbox
 #'
-#'@param cred An object of class ROAuth with Dropobox specific credentials.
+#'@param cred Specifies an object of class ROAuth with Dropobox specific credentials.
 #'@keywords
 #'@seealso
 #'@return
 #'@alias
-#'@export
+#'@export is.dropbox.share
 #'@examples \dontrun{
-#'
+#' is.dropbox.cred(your_dropbox_credential_object)
 #'}
 is.dropbox.cred <- function(cred) {
     response <- TRUE

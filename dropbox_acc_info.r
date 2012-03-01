@@ -1,12 +1,13 @@
+#Status: Almost fully works...need error catching
+
 #'Retrieve Dropbox account summary
 #'
-#'Almost fully works...need error catching
-#'@param cred = NULL <what param does>
-#'@keywords
+#'@param cred Specifies an object of class ROAuth with Dropobox specific credentials.
+#'@keywords authentication OAuth
 #'@seealso
 #'@return list containing referral_link,display_name,uid,country,quota_info, and email
 #'@alias
-#'@export
+#'@export dropbox_acc_info
 #'@examples \dontrun{
 #' dropbox_acc_info(cred)
 #'}
