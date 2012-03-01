@@ -29,9 +29,11 @@ From within R, load rDropbox first: <br>
  `dropbox_credentials <- dropbox_auth("my_consumer_key","my_consumer_secret")` <br>
  If this worked, you will be directed to a page asking you to authorize this app. Click ok to return to R.
 
- Then save this set of credentials in a file like so:
+ There is no need to run `dropbox_auth()` for each run. Simply save your credentials file to disk and load as needed:
 
  `save(dropbox_credentials,file="my_dropbox_credentials.rdata")`
+
+ Credentials will remain valid until you revoke them from your [Dropbox Apps page](https://www2.dropbox.com/developers/apps).
 
 ### Basic Usage
 To use a saved Dropbox credential file, simply load the file when you need to use dropbox functions.
