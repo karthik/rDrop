@@ -13,19 +13,19 @@ Also see:
 
 2. Next, click `Create An App`.
 
-![Create an app for your personal use on Dropbox](screenshots/create_app.png "Create a new app")
+![Create an app for your personal use on Dropbox](screenshots/create_app.png)
 
 
 3. Give your app a name. Dropbox requires that your app have a unique name. Dropbox branding guidelines also prohibit the use of the word **"Dropbox"** or names that begin with "**Drop**". We recommend that you name the app something like "**Your_first_name_last_name_rDrop**" to avoid naming conflicts.
 
-![Alt text](/screenshots/name_your_app.png "Optional title")
+![Alt text](screenshots/name_your_app.png)
 
 3. Copy your application key and application Secret. If you use your `.rprofile` then we recommend that you save your keys there like so: <br>
 `options("Dropbox_app_key"="YOUR_APPLICATION_KEY")`<br>
 `options("Dropbox_app_secret="YOUR_APPLICATION_SECRET")`
 <br>
 
-![Alt text](screenshots/keys.png "Optional title")
+![Alt text](screenshots/keys.png)
 
 If you prefer not to specify keys in a `.rprofile` (or if you are on a public computer/cluster), you can specify both keys in the `dropbox_auth()` function directly. Note that once you have authorized an app, there is no need to call this function again. You can just use your saved credential file to access your Dropbox. If for any reason, the file becomes compromised, just revoke access from your [Dropbox web panel](https://www2.dropbox.com/developers/apps).
 That's it.
