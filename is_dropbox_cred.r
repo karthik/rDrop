@@ -1,4 +1,5 @@
-# Status: Works but fails to recongnize missing objects passed as cred from dropbox_acc_info()
+Í# Status: Works but fails to recongnize missing objects passed as
+#   cred from dropbox_acc_info()
 
 #'Verifies whether a user has specified a correct Oauth credential for Dropbox
 #'
@@ -24,7 +25,7 @@ is.dropbox.cred <- function(cred) {
     if (response == TRUE)
         response <- ifelse(class(cred) != "OAuth", FALSE, TRUE)
     if (response == TRUE)
-        response <- ifelse(grep("dropbox", cred$requestURL) !=
-            1, FALSE, TRUE)
+        response <- ifelse(grep("dropbox", cred$requestURL) != 1, FALSE,
+            TRUE)
     return(response)
 }
