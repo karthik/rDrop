@@ -38,6 +38,7 @@ From within `R`, load `rDrop` first: <br>
  <br>
  If your keys are stored in your `.rprofile`, then there is no need to provide it to the function. If you don't have that setup, then use: <br>
 
+
  `dropbox_credentials <- dropbox_auth("my_consumer_key","my_consumer_secret")` <br>
 
  If you entered valid keys, you will be directed to a secure page on Dropbox asking you to authorize this app. Click authorize to add this to your approved app list and to return to R.
@@ -58,11 +59,11 @@ To load a previously validated Dropbox credential file: <br>
 `load('/path/to/my_dropbox_credentials.rdata')`
 
 **Summary of your Dropbox Account**
-
+<pre>
 `dropbox_acc_info(my_dropbox_cred)`
 
 Returns a list with your display name, email, quota, referral URL and country.
-
+</pre>
 **Directory listing**
 
 `dropbox_dir(cred)` # will list contents of your Dropbox root. <br>
