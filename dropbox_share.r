@@ -13,17 +13,20 @@
 #'@examples \dontrun{
 #'
 #'}
-dropbox_share<-function(cred,file)
-{
-if(!is.dropbox.cred(cred)) stop("Invalid Oauth credentials",call. = FALSE)
-# VERIFY THAT FILE DOES EXIST
-path_to_share <-paste("https://api.dropbox.com/1/shares/dropbox/",file,sep="")
-cred$OAuthRequest(path_to_share)
-# cred$OAuthRequest("https://api.dropbox.com/1/shares/dropbox/testing123")
-# result<-fromJSON(cred$OAuthRequest("https://api.dropbox.com/1/shares/dropbox/testing123")
-	result <- fromJSON(cred$OAuthRequest(path_to_share))
-	res <- list()
-	res$url <- result[[1]]
-	res$expires <- result[[2]]
-	return(res)
+dropbox_share <- function(cred, file) {
+    if (!is.dropbox.cred(cred))
+        stop("Invalid Oauth credentials", call. = FALSE)
+    # VERIFY THAT FILE DOES EXIST
+    path_to_share <- paste("https://api.dropbox.com/1/shares/dropbox/",
+        file, sep = "")
+    cred$OAuthRequest(path_to_share)
+    #
+    #   cred$OAuthRequest('https://api.dropbox.com/1/shares/dropbox/testing123')
+    #
+    #   result<-fromJSON(cred$OAuthRequest('https://api.dropbox.com/1/shares/dropbox/testing123')
+    result <- fromJSON(cred$OAuthRequest(path_to_share))
+    res <- list()
+    res$url <- result[[1]]
+    res$expires <- result[[2]]
+    return(res)
 }
