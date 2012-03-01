@@ -3,7 +3,6 @@
 
 #' functions to share or possibly move a file to public folder and get the public url.
 #' Function to create a share for any file or folder and return a URL.
-#'
 #'@param cred Specifies an object of class ROAuth with Dropobox specific credentials.
 #'@param file Specifies the path to the file or folder you want a shareable link to.
 #'@keywords
