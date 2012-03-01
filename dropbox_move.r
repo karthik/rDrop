@@ -5,7 +5,7 @@
 #'@param from_path Specifies the file or folder to be copied from relative to root.
 #'@param to_path Specifies a destination path, including the new name for the file or folder, relative to root.
 #'@keywords
-#'@seealso
+#'@seealso dropbox_copy dropbox_create_folder
 #'@return
 #'@alias
 #'@export dropbox_move
@@ -15,13 +15,14 @@
 dropbox_move<-function(cred,from_path=NULL,to_path=NULL)
 {
 if(!is.dropbox.cred(cred)) stop("Invalid Oauth credentials",call. = FALSE)
+# Make sure both paths aren't empty
+# Next, make sure origin and destination paths exist
+# Note: to_path needs a leading / because root is 'dropbox'
+# make sure folder is not being copied to file but file can copy to folder
 if(is.null(from_path) || is.null(to_path))
 {
 	stop("Did not specify full path for source and/or destination",call.=F)
 }
-# To catch
-# Path for to_path should have a leading /
-# cannot copy a folder to a file so check for that
 move <- fromJSON(cred$OAuthRequest("https://api.dropbox.com/1/fileops/move",list(root='dropbox',from_path=from_path,to_path=to_path)))
 if(length(move$modified)>0)
 	{
@@ -44,6 +45,7 @@ invisible()
 # >
 
 # API instructions
+# -----------------------------------------------------------------
 # Moves a file or folder to a new location.
 # URL STRUCTURE
 # https://api.dropbox.com/1/fileops/move
