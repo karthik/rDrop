@@ -5,11 +5,11 @@ This package provides a  programmatic interface to Dropbox from within R.
 **Disclaimer: This package is currently in beta and we make no claims or warranties as to the safety of your Dropbox contents. Use at your own risk.**
 
 Also see:
-[Complete Dropbox API Reference](https://www2.dropbox.com/developers/reference/api)
+[Complete Dropbox API Reference.](https://www2.dropbox.com/developers/reference/api)
 
 
 ## Initial setup
-1. To begin, create an **App** on Dropbox from the [Dropbox Developer site](https://www2.dropbox.com/developers/apps). You will need to log in with your dropbox username and password.
+1. To begin, create an `App` on Dropbox from the [Dropbox Developer site](https://www2.dropbox.com/developers/apps). You will need to log in with your dropbox username and password.
 
 2. Next, click `Create An App`.
 
