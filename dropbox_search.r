@@ -11,7 +11,7 @@
 #'@keywords
 #'@seealso
 #'@return
-#'@alias
+#'@alias dropbox_acc_info dropbox_dir
 #'@export dropbox_search
 #'@examples \dontrun{
 #' results<-dropbox_search(cred,'search_term')
@@ -22,11 +22,12 @@
 dropbox_search <- function(cred, query,path,include_deleted=TRUE,file_limit=1000, verbose = FALSE) {
     if (!is.dropbox.cred(cred))
         stop("Invalid Oauth credentials", call. = FALSE)
+    #Check of path is valid
     if (length(query) == 0) {
         stop("you did not specifiy any search query")
     }
     results = fromJSON(cred$OAuthRequest("https://api.dropbox.com/1/search/dropbox/",
-        list(query = query, include_deleted = "true")))
+        list(query = query, include_deleted = 'true')))
     search_results <- formatted_results <- ldply(results, data.frame)
     small_results <- data.frame(path = search_results$path, is_dir = search_results$is_dir)
     if (empty(small_results)) {
