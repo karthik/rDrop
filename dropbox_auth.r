@@ -25,8 +25,7 @@ library(RJSONIO)
 #'   dropbox_auth('consumey_key','consumer_secret')
 #' save(mydropbox_tokens,file='dropbox_auth.rdata')
 #'}
-dropbox_auth <- function(cKey = NULL, cSecret = NULL,
-    verbose = FALSE) {
+dropbox_auth <- function(cKey = NULL, cSecret = NULL, verbose = FALSE) {
     #Checking to make sure you specify keys one way or
     #   another
     if (is.null(cKey) && is.null(cSecret)) {
@@ -58,8 +57,11 @@ dropbox_auth <- function(cKey = NULL, cSecret = NULL,
 
 
 # Bugs
-# Calling this fuction via terminal R  works as intended. If the function is run interactively on R-GUI, then it crashes R.app or R64.app completely.
-# My workaround so far has been to run dropbox_auth() via terminal, save the OAuth object to disk, then load and use in GUI-R.
+# Calling this fuction via terminal R works as intended. If the
+#   function is run interactively on R-GUI, then it crashes R.app or
+#   R64.app completely.
+# My workaround so far has been to run dropbox_auth() via terminal,
+#   save the OAuth object to disk, then load and use in GUI-R.
 
 # # Todos
 # 1. Add option to save (logical)
