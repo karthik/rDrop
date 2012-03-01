@@ -60,3 +60,7 @@ dropbox_auth <- function(cKey = NULL, cSecret = NULL,
 # Bugs
 # Calling this fuction via terminal R  works as intended. If the function is run interactively on R-GUI, then it crashes R.app or R64.app completely.
 # My workaround so far has been to run dropbox_auth() via terminal, save the OAuth object to disk, then load and use in GUI-R.
+
+# # Todos
+# 1. Add option to save (logical)
+# 2. Add option to specify name for crendential file.
