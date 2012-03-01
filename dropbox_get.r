@@ -6,7 +6,7 @@
 #'@param  file_to_get Specifies the path to the file you want to retrieve.
 #'@keywords
 #'@seealso
-#'@return
+#'@return file
 #'@alias
 #'@export dropbox_get
 #'@examples \dontrun{
@@ -15,7 +15,7 @@
 dropbox_get <- function(cred, file_to_get) {
 	if(!is.dropbox.cred(cred)) stop("Invalid Oauth credentials",call. = FALSE)
     if (length(file_to_get) == 0) {
-        stop("You did not specify a file to download")
+        stop("No file requested \n")
     }
     downloaded_file <- cred$OAuthRequest("https://api-content.dropbox.com/1/files/",
         list(root = "dropbox", path = file_to_get))
