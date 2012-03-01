@@ -8,16 +8,20 @@ library(RJSONIO)
 #'@param cKey Your Dropbox  application key
 #'@param cSecret your Drpbox application secret
 #'@keywords
-#'@seealso
-#'@return
+#'@seealso dropbox_acc_info
+#'@return Oauth object with Dropbox keys
 #'@alias
-#'@export
+#'@export dropbox_auth
 #'@examples \dontrun{
 #' dropbox_auth() # if you have keys in .rprofile stored as
 #' # options(DropboxKey='YOUR_APP_KEY')
 #' # options(DropboxSecret='YOUR_SECRET_KEY')
 #' # else use:
 #' dropbox_auth('YOUR_APP_KEY','YOUR_APP_SECRET')
+#' my_dropbox_tokens <- dropbox_auth()
+#' mydropbox_tokens <-
+#'   dropbox_auth('consumey_key','consumer_secret')
+#' save(mydropbox_tokens,file='dropbox_auth.rdata')
 #'}
 dropbox_auth <- function(cKey = NULL, cSecret = NULL,
     verbose = FALSE) {
@@ -37,7 +41,7 @@ dropbox_auth <- function(cKey = NULL, cSecret = NULL,
         requestURL = reqURL, accessURL = accessURL, authURL = authURL)
     cat("Authenticating with Dropbox \n")
     cred$handshake(post = FALSE)
-    # Need to hide the enter PIN request for this case
+    # Need to hide the enter PIN request for Dropbox
     if (TRUE) {
         cat("\n Dropbox Authentication complete, please wait for handshake to finish....\n")
     }
@@ -50,7 +54,7 @@ dropbox_auth <- function(cKey = NULL, cSecret = NULL,
     return(cred)
 }
 
-# my_dropbox_tokens <- dropbox_auth()
-# mydropbox_tokens <-
-#   dropbox_auth('consumey_key','consumer_secret')
-# save(mydropbox_tokens,file="dropbox_auth.rdata")
+
+# Bugs
+# Calling this fuction via terminal R  works as intended. If the function is run interactively on R-GUI, then it crashes R.app or R64.app completely.
+# My workaround so far has been to run dropbox_auth() via terminal, save the OAuth object to disk, then load and use in GUI-R.

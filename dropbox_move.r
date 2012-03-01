@@ -1,9 +1,11 @@
+Does not work yet.
 
 #'<brief desc>
 #'
 #'<full description>
 #'@param cred <what param does>
-#'@param file_to_move <what param does>
+#'@param from_path=NULL <what param does>
+#'@param to_path=NULL <what param does>
 #'@keywords
 #'@seealso
 #'@return
@@ -12,18 +14,26 @@
 #'@examples \dontrun{
 #'
 #'}
-dropbox_move<- function(cred,file_to_move)
+dropbox_move<-function(cred,from_path=NULL,to_path=NULL)
 {
-	if(!is.dropbox.cred(cred)) stop("Invalid Oauth credentials",call. = FALSE)
-	if(is.dir)
+if(!is.dropbox.cred(cred)) stop("Invalid Oauth credentials",call. = FALSE)
+if(is.null(from_path) || is.null(to_path))
+{
+	stop("Did not specify full path for source and/or destination",call.=F)
+}
+# Check to see if file extenion and name matches up
+move <- fromJSON(cred$OAuthRequest("https://api.dropbox.com/1/fileops/move",list(root='dropbox',from_path=from_path,to_path=to_path)))
+if(length(move$modified)>0)
 	{
-
+		cat("Move to", move$path, "was successful on", move$modified," \n")
 	}
-	else()
-	# Manage moving files
+if(length(move$modified)==0)
 	{
-
+		cat("Unknown error occured. Bug"," \n")
 	}
+
+# OUTPUT SUCCESSFUL MESSAGE.
+invisible()
 }
 
 

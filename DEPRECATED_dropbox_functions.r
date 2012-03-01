@@ -46,6 +46,7 @@ credentials$handshake()
 #
 #
 #
+#
 #   nonce=fromJSON(getURL('http://services.packetizer.com/nonce/?f=json'))
 
 # oauth_signature=(paste(cKey,'&',cSecret,sep=''))
@@ -54,7 +55,9 @@ credentials$handshake()
 #
 #
 #
+#
 #   postForm('http://www.mendeley.com/oauth/request_token/',oauth_consumer_key=cKey,oauth_nonce=nonce,
+#
 #
 #
 #   oauth_signature_method='HMAC-SHA1',oauth_signature=oauth_signature,oauth_version='1.0',oauth_timestamp=timestamp,style=
