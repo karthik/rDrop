@@ -83,6 +83,6 @@ To load a previously validated Dropbox credential file: <br>
 
 
 **For more information on usage and tips, see:** <br>
-+	[Introducing a programmatic interface to Dropbox from R](http://inundata.org/...) <br>
-+	 [rDrop on CRAN](http://cran link) <br>
++	[Introducing a programmatic interface to Dropbox from R](http://link_goes_nowhere) <br>
++	 [rDrop on CRAN](http://link goes nowhere) <br>
 
