@@ -39,10 +39,10 @@ is.dropbox.cred <- function(cred) {
 #'@param cred <what param does>
 #'@param path <what param does>
 #'@keywords
-#'@seealso
-#'@return
+#'@seealso is.dropbox.file dropbox.file.info
+#'@return logical
 #'@alias
-#'@export
+#'@export is.dropbox.dir
 #'@examples \dontrun{
 #'
 #'}
@@ -59,6 +59,42 @@ else return false.
 #'@param cred <what param does>
 #'@param path <what param does>
 #'@keywords
+#'@seealso is.dropbox.dir dropbox.file.info
+#'@return logical
+#'@alias
+#'@export is.dropbox.file
+#'@examples \dontrun{
+#'
+#'}
+is.dropbox.file<-function(cred,path)
+{
+if(!is.dropbox.cred(cred)) { stop("Invalid Dropbox credentials",call.=F) }
+# if file, return TRUE
+# if !file return FALSE
+}
+
+#'Return file attributes for a specified path to file.
+#'
+#'@param cred <what param does>
+#'@param path_to_file <what param does>
+#'@keywords
+#'@seealso is.dropbox.file is.dropbox.dir
+#'@return list
+#'@alias
+#'@export dropbox.file.info
+#'@examples \dontrun{
+#'
+#'}
+dropbox.file.info<-function(cred,path_to_file)
+{
+# Todos
+# Return a list containing filename, filetype, date modified, and revision number.
+}
+
+#'Function to handle bad errors if a returned object is not the excepted JSON object
+#'
+#'@param dropbox_call A function call to a Dropbox method via OAuth$handshake()
+#'@keywords
 #'@seealso
 #'@return
 #'@alias
@@ -66,21 +102,10 @@ else return false.
 #'@examples \dontrun{
 #'
 #'}
-is.dropbox.file<-function(cred,path)
-{
-if(!is.dropbox.cred(cred)) {stop("Invalid Dropbox credentials",call.=F)}
-if file, return TRUE
-if !file return FALSE
-# Future todos
-# Return a list containining a mime-type as well.
-# possibly the size of the file too?
-}
-
-# Handle bad errors if a returned object is not JSON.
 is.valid.dropbox.operation<-function(dropbox_call)
 {
-	if dropbox_call succeeds
-	return the object received
-	else
-		return a valid and useful error.
+	# if dropbox_call succeeds
+	# return the object received
+	# else
+	# 	return a valid and useful error.
 }
