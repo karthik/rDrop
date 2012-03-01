@@ -4,7 +4,7 @@ This package provides a  programmatic interface to Dropbox from within R.
 
 **Disclaimer: This package is currently in beta and we make no claims or warranties as to the safety of your Dropbox contents. Use at your own risk.**
 
-Also see:
+Reference:
 [Complete Dropbox API Reference.](https://www2.dropbox.com/developers/reference/api)
 
 
@@ -34,7 +34,7 @@ If you prefer not to specify keys in a `.rprofile` (or if you are on a public co
 From within `R`, load `rDrop` first: <br>
 `library(rDrop)`
 
- `dropbox_credentials <- dropbox_auth(save=T,file='my_dropbox_cred.rdata')`
+ `dropbox_credentials <- dropbox_auth()`
  <br>
  If your keys are stored in your `.rprofile`, then there is no need to provide it to the function. If you don't have that setup, then use: <br>
 
