@@ -32,7 +32,10 @@ If you prefer not to specify keys in a `.rprofile` (especially if you are on a p
 
 ### Authorizing your app
 From within `R`, load `rDrop` first: <br>
-`library(rDrop)`
+<code><pre>
+library(rDrop)
+\# Does not work yet ...will add instructions to install using devtools once package is less buggy.
+</pre></code>
 
  `dropbox_credentials <- dropbox_auth()`
  <br>
@@ -47,7 +50,7 @@ From within `R`, load `rDrop` first: <br>
 
  `save(dropbox_credentials,file="my_dropbox_credentials.rdata")`
 
- Credentials will remain valid until you revoke them from your [Dropbox Apps page](https://www2.dropbox.com/developers/apps) by clicking the x on the right of this app.
+ Credentials will remain valid until you revoke them from your [Dropbox Apps page](https://www2.dropbox.com/developers/apps) by clicking the x on the right of your app.
 
 
 ### Quick Guide
