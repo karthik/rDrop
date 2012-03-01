@@ -21,15 +21,14 @@ Also see:
 
 ![Alt text](https://github.com/karthikram/rDrop/blob/master/screenshots/name_your_app.png?raw=true)
 
-3. Copy your application key and application Secret. If you use your `.rprofile` then we recommend that you save your keys there like so: <br>
+3. Copy your App key and App secret. If you use your `.rprofile` then we recommend that you save your keys there like so: <br>
 `options("Dropbox_app_key"="YOUR_APPLICATION_KEY")`<br>
 `options("Dropbox_app_secret="YOUR_APPLICATION_SECRET")`
 <br>
 
 ![Alt text](https://github.com/karthikram/rDrop/blob/master/screenshots/keys.png?raw=true)
 
-If you prefer not to specify keys in a `.rprofile` (or if you are on a public computer/cluster), you can specify both keys in the `dropbox_auth()` function directly. Note that once you have authorized an app, there is no need to call this function again. You can just use your saved credential file to access your Dropbox. If for any reason, the file becomes compromised, just revoke access from your [Dropbox web panel](https://www2.dropbox.com/developers/apps).
-That's it.
+If you prefer not to specify keys in a `.rprofile` (or if you are on a public computer/cluster/cloud server), you can specify both keys in the `dropbox_auth()` function directly. Note that once you have authorized an app, there is no need to call this function again. You can just use your saved credential file to access your Dropbox. If for any reason, the file becomes compromised, just revoke access from your [list of authorized apps.](https://www2.dropbox.com/account#applications)
 
 ### Authorizing your app
 From within R, load rDrop first: <br>
