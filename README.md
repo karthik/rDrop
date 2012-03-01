@@ -65,8 +65,8 @@ Returns a list with your display name, email, quota, referral URL and country.
 
 #### Directory listing
 
-`dropbox_dir(cred)` # will list contents of your Dropbox root.
-`dropbox_dir(cred,path) # will return dir listing of specified path.
+`dropbox_dir(cred)` # will list contents of your Dropbox root. <br>
+`dropbox_dir(cred,path)` # will return dir listing of specified path. <br>
 
 #### Download files from your Dropbox account to R
 
@@ -79,6 +79,6 @@ Returns a list with your display name, email, quota, referral URL and country.
 #### Creating a public share for any Dropbox file or folder
 
 
-For more information on usage and tips, see [Introducing a programmatic interface to Dropbox from R](http://inundata.org/...)
-[rDrop on CRAN](http://cran link)
+For more information on usage and tips, see * [Introducing a programmatic interface to Dropbox from R](http://inundata.org/...)
+* [rDrop on CRAN](http://cran link)
 
