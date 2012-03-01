@@ -9,19 +9,19 @@ Also see:
 
 
 ## Initial setup
-1. To begin, create an `App` on Dropbox from the [Dropbox Developer site](https://www2.dropbox.com/developers/apps). You will need to log in with your dropbox username and password.
+(1.) To begin, create an `App` on Dropbox from the [Dropbox Developer site](https://www2.dropbox.com/developers/apps). You will need to log in with your dropbox username and password.
 
-2. Next, click `Create An App`.
+.2. Next, click `Create An App`.
 
 ![Create an app for your personal use on Dropbox](https://github.com/karthikram/rDrop/blob/master/screenshots/create_app.png?raw=true
 )
 
-3. Give your app a name. Dropbox requires that your app have a unique name. Dropbox [branding guidelines](https://www2.dropbox.com/developers/reference/branding) also prohibit the use of the word **"Dropbox"** or names that begin with "**Drop**". We recommend that you name the app something like "**Your_first_name_last_name_rDrop**" to avoid naming conflicts.
+(3.) Give your app a name. Dropbox requires that your app have a unique name. Dropbox [branding guidelines](https://www2.dropbox.com/developers/reference/branding) also prohibit the use of the word **"Dropbox"** or names that begin with "**Drop**". We recommend that you name the app something like "**Your_first_name_last_name_rDrop**" to avoid naming conflicts.
 
 
 ![Alt text](https://github.com/karthikram/rDrop/blob/master/screenshots/name_your_app.png?raw=true)
 
-4. Copy your App key and App secret. If you use your `.rprofile` then we recommend that you save your keys there like so: <br>
+(4.) Copy your App key and App secret. If you use your `.rprofile` then we recommend that you save your keys there like so: <br>
 `options("Dropbox_app_key"="YOUR_APPLICATION_KEY")`<br>
 `options("Dropbox_app_secret="YOUR_APPLICATION_SECRET")`
 <br>
