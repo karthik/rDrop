@@ -1,8 +1,6 @@
-Does not work yet.
-
-#'<brief desc>
+#' Function to move files with a Dropbox account
 #'
-#'<full description>
+#' Allows users to move files or folders inside the dropbox storage.
 #'@param cred <what param does>
 #'@param from_path=NULL <what param does>
 #'@param to_path=NULL <what param does>
@@ -21,7 +19,9 @@ if(is.null(from_path) || is.null(to_path))
 {
 	stop("Did not specify full path for source and/or destination",call.=F)
 }
-# Check to see if file extenion and name matches up
+# To catch
+# Path for to_path should have a leading /
+# cannot copy a folder to a file so check for that
 move <- fromJSON(cred$OAuthRequest("https://api.dropbox.com/1/fileops/move",list(root='dropbox',from_path=from_path,to_path=to_path)))
 if(length(move$modified)>0)
 	{
@@ -36,7 +36,14 @@ if(length(move$modified)==0)
 invisible()
 }
 
+# Error 1
+# Issues, the leading slash is very important. That's what led to the error below.
+# >dropbox_move(cred,'/test.csv','test_works/test.csv')
+# Error in fromJSON(cred$OAuthRequest("https://api.dropbox.com/1/fileops/move",  :
+#   error in evaluating the argument 'content' in selecting a method for function 'fromJSON': Error: Forbidden
+# >
 
+# API instructions
 # Moves a file or folder to a new location.
 # URL STRUCTURE
 # https://api.dropbox.com/1/fileops/move
