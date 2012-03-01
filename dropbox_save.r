@@ -2,7 +2,7 @@ NEEDS WORK
 #'<brief desc>
 #'
 #'<full description>
-#'@param cred <what param does>
+#'@param cred An object of class ROAuth with Dropobox specific credentials.
 #'@param  file <what param does>
 #'@keywords
 #'@seealso

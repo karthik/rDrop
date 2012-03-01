@@ -5,7 +5,7 @@ Works but needs error catching
 #'<brief desc>
 #'
 #'<full description>
-#'@param cred A valid Oauth object containing your Dropbox credentials
+#'@param cred An object of class ROAuth with Dropobox specific credentials.
 #'@param file Name of file to be shared. If file is not in your Dropbox root, you must specify full path.
 #'@keywords
 #'@seealso

@@ -1,7 +1,7 @@
 #' Function to move files with a Dropbox account
 #'
 #' Allows users to move files or folders inside the dropbox storage.
-#'@param cred <what param does>
+#'@param cred An object of class ROAuth with Dropobox specific credentials.
 #'@param from_path=NULL <what param does>
 #'@param to_path=NULL <what param does>
 #'@keywords

@@ -1,7 +1,6 @@
 #' List contents of a Dropbox account
 #'
-#'<full description>
-#'@param cred=NULL <what param does>
+#'@param cred An object of class ROAuth with Dropobox specific credentials.
 #'@param verbose=FALSE <what param does>
 #'@keywords
 #'@seealso
@@ -12,7 +11,7 @@
 #' dropbox_dir(cred)
 #' returns a dataframe with fields .id,
 #'}
-dropbox_dir <- function(cred = NULL, verbose = FALSE) {
+dropbox_dir <- function(cred, verbose = FALSE) {
     if (!is.dropbox.cred(cred))
         stop("Invalid Oauth credentials", call. = FALSE)
     status <- fromJSON(cred$OAuthRequest("https://api.dropbox.com/1/account/info"))
@@ -27,3 +26,6 @@ dropbox_dir <- function(cred = NULL, verbose = FALSE) {
         return(ldply(file_system, data.frame))
     }
 }
+
+# Issues:
+# Need an argument to allow users to list contents of a specific directory.

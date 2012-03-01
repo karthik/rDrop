@@ -2,11 +2,13 @@ library(plyr)
 library(ROAuth)
 library(RJSONIO)
 
-#'Authenticate into your Dropbox account and get access keys
+# Status: Works but only from terminal.
+
+#'Function to uthenticate into your Dropbox account and get access keys
 #'
 #' @import RCurl ROAuth RJSONIO plyr
-#'@param cKey Your Dropbox  application key
-#'@param cSecret your Drpbox application secret
+#'@param cKey A valid Dropbox application key
+#'@param cSecret A valid Dropbox application secret
 #'@keywords
 #'@seealso dropbox_acc_info
 #'@return Oauth object with Dropbox keys

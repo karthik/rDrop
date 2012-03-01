@@ -1,7 +1,6 @@
-#'Verifies whether once has specified a correct Oauth credential for Dropbox
+#'Verifies whether a user has specified a correct Oauth credential for Dropbox
 #'
-#'<full description>
-#'@param cred <what param does>
+#'@param cred An object of class ROAuth with Dropobox specific credentials.
 #'@keywords
 #'@seealso
 #'@return

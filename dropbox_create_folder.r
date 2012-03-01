@@ -1,8 +1,8 @@
-WORKS,but needs error catching
-#'<brief desc>
-#'
-#'<full description>
-#'@param cred <what param does>
+# Status: WORKS,but needs error catching
+
+
+#' Function to create new folders in Dropbox.
+#'@param cred An object of class ROAuth with Dropobox specific credentials.
 #'@param folder_name <what param does>
 #'@keywords
 #'@seealso

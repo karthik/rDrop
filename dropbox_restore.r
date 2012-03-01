@@ -1,11 +1,8 @@
-Works but needs error catching
+# Status: Works but needs error catching
+
 # functions to share or possibly move a file to public folder and get the public url.
-
-
-#'<brief desc>
 #'
-#'<full description>
-#'@param cred A valid Oauth object containing your Dropbox credentials
+#'@param cred An object of class ROAuth with Dropobox specific credentials.
 #'@param file Name of file to be shared. If file is not in your Dropbox root, you must specify full path.
 #'@keywords
 #'@seealso
@@ -21,3 +18,5 @@ if(!is.dropbox.cred(cred)) stop("Invalid Oauth credentials",call. = FALSE)
 # List should contain path and revision number
 # 1. Check revision to make sure it exists.
 }
+
+# List of Issues

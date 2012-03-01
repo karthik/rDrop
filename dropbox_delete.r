@@ -1,8 +1,9 @@
-# Works, but needs error handling
+#Status:  Works, but needs error handling
+
 #' Function to delete a file or folder from Dropbox
 #'
 #'Function to delete a dropbox file or folder.
-#'@param cred <what param does>
+#'@param cred An object of class ROAuth with Dropobox specific credentials.
 #'@param  file_to_delete <what param does>
 #'@keywords
 #'@seealso

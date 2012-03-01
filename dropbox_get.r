@@ -1,10 +1,10 @@
-NEEDS WORK
-# Downloads a file from your Dropbox
-# https://api-content.dropbox.com/1/files/<root>/<path>
-#'<brief desc>
+# Status: Needs plenty of work.
+
+#' Downloads a file from your Dropbox
+#' https://api-content.dropbox.com/1/files/<root>/<path>
 #'
 #' Downloads files from Dropbox
-#'@param cred <what param does>
+#'@param cred An object of class ROAuth with Dropobox specific credentials.
 #'@param  file_to_get <what param does>
 #'@keywords
 #'@seealso

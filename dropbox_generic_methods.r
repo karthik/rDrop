@@ -1,8 +1,8 @@
-May not be necessary
+#Status: May not be necessary
+
 #'Generic function to provide a summary of Dropbox usage
 #'
-#'<full description>
-#'@param cred <what param does>
+#'@param cred An object of class ROAuth with Dropobox specific credentials.
 #'@keywords
 #'@seealso
 #'@return

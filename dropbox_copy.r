@@ -1,9 +1,8 @@
-Works - needs error handling
+# Status: Works - needs error handling
 
-#'<brief desc>
+#' Function to copy files or folder within Dropbox.
 #'
-#'<full description>
-#'@param cred <what param does>
+#'@param cred An object of class ROAuth with Dropobox specific credentials.
 #'@param from_path=NULL <what param does>
 #'@param to_path=NULL <what param does>
 #'@keywords
