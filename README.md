@@ -28,7 +28,7 @@ Reference:
 
 ![Alt text](https://github.com/karthikram/rDrop/blob/master/screenshots/keys.png?raw=true)
 
-If you prefer not to specify keys in a `.rprofile` (or if you are on a public computer/cluster/cloud server), you can specify both keys in the `dropbox_auth()` function directly. Note that once you have authorized an app, there is no need to call this function again. You can just use your saved credential file to access your Dropbox. If for any reason, the file becomes compromised, just revoke access from your [list of authorized apps.](https://www2.dropbox.com/account#applications)
+If you prefer not to specify keys in a `.rprofile` (especially if you are on a public computer/cluster/cloud server), you can specify both keys in the `dropbox_auth()` function directly. <em>Note that once you have authorized an app, there is no need to call this function again.</em> You can just use your saved credential file to access your Dropbox. If for any reason, the file becomes compromised, just revoke access from your [list of authorized apps.](https://www2.dropbox.com/account#applications)
 
 ### Authorizing your app
 From within `R`, load `rDrop` first: <br>
@@ -42,11 +42,11 @@ From within `R`, load `rDrop` first: <br>
 
  If you entered valid keys, you will be directed to a secure page on Dropbox asking you to authorize this app. Click authorize to add this to your approved app list and to return to R.
 
- There is no need to run `dropbox_auth()` for each run. Simply save your credentials file to disk and load as needed:
+ There is no need to run `dropbox_auth()` for each subsequent run. Simply save your credentials file to disk and load as needed:
 
  `save(dropbox_credentials,file="my_dropbox_credentials.rdata")`
 
- Credentials will remain valid until you revoke them from your [Dropbox Apps page](https://www2.dropbox.com/developers/apps).
+ Credentials will remain valid until you revoke them from your [Dropbox Apps page](https://www2.dropbox.com/developers/apps) by clicking the x on the right of this app.
 
 
 ### Quick Guide
