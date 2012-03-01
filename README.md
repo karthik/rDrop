@@ -1,8 +1,9 @@
 # Dropbox interface via R
 
-This package provides a  programmatic interface to Dropbox from within R. Disclaimer: We take absolutely no responsibility if you lose files because of using this package.
+This package provides a  programmatic interface to Dropbox from within R. **Disclaimer: We take absolutely no responsibility if you lose files because of using this package.**
 
-[Full API guidelines](https://www2.dropbox.com/developers/reference/api)
+Also see:
+[Complete Dropbox API Reference](https://www2.dropbox.com/developers/reference/api)
 
 
 ## Initial setup
