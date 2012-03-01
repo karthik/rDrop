@@ -22,8 +22,8 @@ Reference:
 ![Alt text](https://github.com/karthikram/rDrop/blob/master/screenshots/name_your_app.png?raw=true)
 
 (4) Once you click create,copy your App key and App secret. If you use your `.rprofile` then we recommend that you save your keys there like so: <br>
-`options(Dropbox_app_key="App_key")`<br>
-`options(Dropbox_app_secret="App_secret")`
+`options(DropboxKey="App_key")`<br>
+`options(DropboxSecret="App_secret")`
 <br>
 
 ![Alt text](https://github.com/karthikram/rDrop/blob/master/screenshots/keys.png?raw=true)
