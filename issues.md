@@ -17,6 +17,5 @@
 1. Authentication is successful from the R GUI but crashes the application while waiting for PIN input. Will add more notes on this behavior.
 2. File upload also causes the same crashing behavior.
 3.
-<!-- Reference for the API
-https://www2.dropbox.com/developers/reference/
- -->
+**Reference for the API**
+[https://www2.dropbox.com/developers/reference/(https://www2.dropbox.com/developers/reference/)
