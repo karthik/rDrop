@@ -14,6 +14,7 @@
 #'}
 dropbox_delete <- function(cred, file_to_delete) {
 if(!is.dropbox.cred(cred)) stop("Invalid Oauth credentials",call. = FALSE)
+# Replace with a more elegant file exists checker.
 file_to_del<-dropbox_search(cred,file_to_delete)
 if(empty(file_to_del)) { stop('File or folder not found \n',call.=F)}
 if(dim(file_to_del)[1]>1) { stop("More than one file or folder was found, please check name and path. \n",call.=F)}
