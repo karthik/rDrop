@@ -9,21 +9,21 @@ Also see:
 
 
 ## Initial setup
-(1) To begin, create an `App` on Dropbox from the [Dropbox Developer site](https://www2.dropbox.com/developers/apps). You will need to log in with your dropbox username and password.
+(1) To begin, create an `App` on Dropbox from the [Dropbox Developer site](https://www2.dropbox.com/developers/apps). You will need to log in with your Dropbox username and password.
 
 (2) Next, click `Create An App`.
 
 ![Create an app for your personal use on Dropbox](https://github.com/karthikram/rDrop/blob/master/screenshots/create_app.png?raw=true
 )
 
-(3) Give your app a name. Dropbox requires that your app have a unique name. Dropbox [branding guidelines](https://www2.dropbox.com/developers/reference/branding) also prohibit the use of the word **"Dropbox"** or names that begin with "**Drop**". We recommend that you name the app something like "**Your_first_name_last_name_rDrop**" to avoid naming conflicts.
+(3) Name your personal version of this app. Dropbox requires that your app have a unique name. Dropbox [branding guidelines](https://www2.dropbox.com/developers/reference/branding) also prohibit the use of the word **"Dropbox"** or names that begin with "**Drop**". We recommend that you name the app something like "**Your_first_name_last_name_rDrop**" to avoid naming conflicts.
 
 
 ![Alt text](https://github.com/karthikram/rDrop/blob/master/screenshots/name_your_app.png?raw=true)
 
-(4) Copy your App key and App secret. If you use your `.rprofile` then we recommend that you save your keys there like so: <br>
-`options("Dropbox_app_key"="YOUR_APPLICATION_KEY")`<br>
-`options("Dropbox_app_secret="YOUR_APPLICATION_SECRET")`
+(4) Once you click create,copy your App key and App secret. If you use your `.rprofile` then we recommend that you save your keys there like so: <br>
+`options("Dropbox_app_key"="App_key")`<br>
+`options("Dropbox_app_secret="App_secret")`
 <br>
 
 ![Alt text](https://github.com/karthikram/rDrop/blob/master/screenshots/keys.png?raw=true)
@@ -31,7 +31,7 @@ Also see:
 If you prefer not to specify keys in a `.rprofile` (or if you are on a public computer/cluster/cloud server), you can specify both keys in the `dropbox_auth()` function directly. Note that once you have authorized an app, there is no need to call this function again. You can just use your saved credential file to access your Dropbox. If for any reason, the file becomes compromised, just revoke access from your [list of authorized apps.](https://www2.dropbox.com/account#applications)
 
 ### Authorizing your app
-From within R, load rDrop first: <br>
+From within `R`, load `rDrop` first: <br>
 `library(rDrop)`
 
  `dropbox_credentials <- dropbox_auth(save=T,file='my_dropbox_cred.rdata')`
@@ -40,7 +40,7 @@ From within R, load rDrop first: <br>
 
  `dropbox_credentials <- dropbox_auth("my_consumer_key","my_consumer_secret")` <br>
 
- If you entered valid keys, you will be directed to a page on Dropbox asking you to authorize this app. Click **FFFFFF** to return to R.
+ If you entered valid keys, you will be directed to a secure page on Dropbox asking you to authorize this app. Click authorize to add this to your approved app list and to return to R.
 
  There is no need to run `dropbox_auth()` for each run. Simply save your credentials file to disk and load as needed:
 
