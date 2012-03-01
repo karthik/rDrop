@@ -46,14 +46,24 @@ From within R, load rDrop first: <br>
  Credentials will remain valid until you revoke them from your [Dropbox Apps page](https://www2.dropbox.com/developers/apps).
 
 
-### Basic Usage
-To use a saved Dropbox credential file, simply load the file when you need to use dropbox functions.
+### Quick Guide
+This package essentially provides standard Dropbox file operation functions (create/copy/move/restore/share) from within `R`. For a vignette, type in: <br>
+
+`vignette('rdrop')` from the `R` prompt.
+
+To load a previously validated Dropbox credential file: <br>
 `load('/path/to/my_dropbox_credentials.rdata')`
 
-#### Account Info
+#### Summary of your Dropbox Account
+
 `dropbox_acc_info(my_dropbox_cred)`
 
-#### View Files
+Returns a list with your display name, email, quota, referral URL and country.
+
+#### Directory listing
+
+`dropbox_dir(cred)` # will list contents of your Dropbox root.
+`dropbox_dir(cred,path) # will return dir listing of specified path.
 
 #### Download Files to R
 
