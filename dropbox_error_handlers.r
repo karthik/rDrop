@@ -1,5 +1,5 @@
 
-# A set of functions meant to handle errors
+# A set of functions meant to handle errors arising from all dropbox file ops.
 
 # Status: Works but fails to recongnize missing objects passed as cred from dropbox_acc_info()
 
@@ -108,4 +108,9 @@ is.valid.dropbox.operation<-function(dropbox_call)
 	# return the object received
 	# else
 	# 	return a valid and useful error.
+}
+
+is.valid.revision<-function(cred,path,revision)
+{
+# Checks revision number for a file in dropbox and returns a logical yes/no.
 }
