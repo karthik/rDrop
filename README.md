@@ -21,7 +21,7 @@ Also see:
 
 ![Alt text](https://github.com/karthikram/rDrop/blob/master/screenshots/name_your_app.png?raw=true)
 
-3. Copy your App key and App secret. If you use your `.rprofile` then we recommend that you save your keys there like so: <br>
+4. Copy your App key and App secret. If you use your `.rprofile` then we recommend that you save your keys there like so: <br>
 `options("Dropbox_app_key"="YOUR_APPLICATION_KEY")`<br>
 `options("Dropbox_app_secret="YOUR_APPLICATION_SECRET")`
 <br>
