@@ -12,27 +12,35 @@
 #'@examples \dontrun{
 #'
 #'}
-dropbox_delete <- function(cred, file_to_delete,ask=T) {
-if(!is.dropbox.cred(cred)) stop("Invalid Oauth credentials",call. = FALSE)
-# Replace with a more elegant file exists checker.
-file_to_del<-dropbox_search(cred,file_to_delete)
-if(empty(file_to_del)) { stop('File or folder not found \n',call.=F)}
-if(dim(file_to_del)[1]>1) { stop("More than one file or folder was found, please check name and path. \n",call.=F)}
-file_to_del<-as.character(file_to_del$path[1])
-if(ask==TRUE)
-{
-verify<-readline(paste("Are you sure you want to delete",file_to_del," (Y/N)? "))
-if(verify!="Y" & verify!="N") {stop("Unexpected response. \n",call.=F)}
-}
-		if(verify=="Y" | ask==FALSE)
-		{
-	 deleted <- fromJSON(cred$OAuthRequest("https://api.dropbox.com/1/fileops/delete",list(root='dropbox', path=file_to_del)))
-		   if(deleted$is_deleted)
-			 {
-			 	cat(deleted$path, "was successfully deleted on",deleted$modified,"\n")
-			 }
-		}
-		invisible()
+dropbox_delete <- function(cred, file_to_delete, ask = T) {
+    if (!is.dropbox.cred(cred))
+        stop("Invalid Oauth credentials", call. = FALSE)
+    # Replace with a more elegant file exists checker.
+    file_to_del <- dropbox_search(cred, file_to_delete)
+    if (empty(file_to_del)) {
+        stop("File or folder not found \n", call. = F)
+    }
+    if (dim(file_to_del)[1] > 1) {
+        stop("More than one file or folder was found, please check name and path. \n",
+            call. = F)
+    }
+    file_to_del <- as.character(file_to_del$path[1])
+    if (ask == TRUE) {
+        verify <- readline(paste("Are you sure you want to delete", file_to_del,
+            " (Y/N)? "))
+        if (verify != "Y" & verify != "N") {
+            stop("Unexpected response. \n", call. = F)
+        }
+    }
+    if (verify == "Y" | ask == FALSE) {
+        deleted <- fromJSON(cred$OAuthRequest("https://api.dropbox.com/1/fileops/delete",
+            list(root = "dropbox", path = file_to_del)))
+        if (deleted$is_deleted) {
+            cat(deleted$path, "was successfully deleted on", deleted$modified,
+                "\n")
+        }
+    }
+    invisible()
 }
 
 # /fileops/delete
