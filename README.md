@@ -6,7 +6,7 @@ This package provides a  programmatic interface to Dropbox from within R. Discla
 
 
 ## Initial setup
-1. To begin, first create an `App` on dropbox from the [Dropbox Developer site ](https://www2.dropbox.com/developers/apps). You will need to log in with your dropbox username and password.
+1. To begin, create an `App` on dropbox from the [Dropbox Developer site ](https://www2.dropbox.com/developers/apps). You will need to log in with your dropbox username and password.
 2. Next, click `Create An App`.
 3. Give your app a name. This has to be unique in the universe of dropbox apps. Dropbox will let you know if a name is already taken. Dropbox branding guidelines prohibit the use of the word "Dropbox" or names that begin with "Drop". We recommend that you name the app something like "Your_first_name_last_name_rDrop" to avoid naming conflicts.
 
