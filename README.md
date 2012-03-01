@@ -1,8 +1,8 @@
-# Dropbox interface via R
+# rDrop: Dropbox interface via R
 
-This package provides a  programmatic interface to Dropbox from within R.
+This package provides a  programmatic interface to [Dropbox](https://www2.dropbox.com/home) from the [R environment](http://www.r-project.org/).
 
-**Disclaimer: This package is currently in beta and we make no claims or warranties as to the safety of your Dropbox contents. Use at your own risk.**
+> **Disclaimer: This package is currently in beta and we make no claims or warranties as to the safety of your Dropbox contents. Use at your own risk.**
 
 Reference:
 [Complete Dropbox API Reference.](https://www2.dropbox.com/developers/reference/api)
@@ -50,35 +50,36 @@ From within `R`, load `rDrop` first: <br>
 
 
 ### Quick Guide
-This package essentially provides standard Dropbox file operation functions (create/copy/move/restore/share) from within `R`. For a vignette, type in: <br>
+This package essentially provides standard Dropbox file operation functions (create/copy/move/restore/share) from within `R`. For a vignette, type: <br>
 
 `vignette('rdrop')` from the `R` prompt.
 
 To load a previously validated Dropbox credential file: <br>
 `load('/path/to/my_dropbox_credentials.rdata')`
 
-#### Summary of your Dropbox Account
+**Summary of your Dropbox Account**
 
 `dropbox_acc_info(my_dropbox_cred)`
 
 Returns a list with your display name, email, quota, referral URL and country.
 
-#### Directory listing
+**Directory listing**
 
 `dropbox_dir(cred)` # will list contents of your Dropbox root. <br>
 `dropbox_dir(cred,path)` # will return dir listing of specified path. <br>
 
-#### Download files from your Dropbox account to R
+**Download files from your Dropbox account to R**
 
-#### Upload R objects to your Dropbox
+**Upload R objects to your Dropbox**
 
-#### Moving files within Dropobx
+**Moving files within Dropobx**
 
-#### Copying files within Dropbox
+**Copying files within Dropbox**
 
-#### Creating a public share for any Dropbox file or folder
+**Creating a public share for any Dropbox file or folder**
 
 
-For more information on usage and tips, see * [Introducing a programmatic interface to Dropbox from R](http://inundata.org/...)
-* [rDrop on CRAN](http://cran link)
+**For more information on usage and tips, see:** <br>
++	[Introducing a programmatic interface to Dropbox from R](http://inundata.org/...) <br>
++	 [rDrop on CRAN](http://cran link) <br>
 
