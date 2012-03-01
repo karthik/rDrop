@@ -1,16 +1,20 @@
 # Dropbox interface via R
 
-This package provides a  programmatic interface to Dropbox from within R.
+This package provides a  programmatic interface to Dropbox from within R. Disclaimer: We take absolutely no responsibility if you lose files because of using this package.
 
 
 ## Initial setup
 1. To begin, first create an `App` on dropbox from here [https://www2.dropbox.com/developers/apps](https://www2.dropbox.com/developers/apps). You will need to log in with your dropbox username and password.
 2. Next, click `Create An App`.
-3. Give your app a name. This has to be unique in the universe of dropbox apps. Dropbox will let you know if a name is already taken. Next add a brief description and choose Full Dropbox
+3. Give your app a name. This has to be unique in the universe of dropbox apps. Dropbox will let you know if a name is already taken. Dropbox branding guidelines prohibit the use of the word "Dropbox" or names that begin with "Drop". We recommend that you name the app something like "Your_first_name_last_name_rDrop" to avoid naming conflicts.
+
+3a. Next add a brief description and choose Full Dropbox
+
 4. Copy your App key and App Secret. If you use your `.rprofile` then we recommend that you save your keys there like so: <br>
 `options("Dropbox_app_key"="xxxx")`<br>
 `options("Dropbox_app_secret="yyyy")`
 <br>
+If you prefer not to specify keys in a .rprofile (or if you are on a public computer), you can specify both keys in the dropbox_auth() function directly. Note that once you have authorized an app, there is no need to call this function again. You can just use your saved credential file to access your Dropbox. If for any reason, the file becomes compromised, just revoke access from your Web panel.
 That's it.
 
 ### Authorizing your app
