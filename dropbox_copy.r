@@ -32,3 +32,6 @@ invisible()
 # locale - The metadata returned will have its size field translated based on the given locale. For more information see above.
 # from_copy_ref - Feature in beta. Specifies a copy_ref generated from a previous /copy_ref_beta call. Must be used instead of the from_path parameter.
 
+# Error handling needed
+# 1. Check whether from_path exists
+# 2. Check whether to_path exists.
