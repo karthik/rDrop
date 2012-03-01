@@ -28,3 +28,6 @@ cat("Folder successfully created at",dir_metadata$root, dir_metadata$path, "on",
 
 # Issues:
 # 1. Need more meaningful errors than just Error: Forbidden
+
+# Error handling
+# 1. Check if folder already exists at location.
