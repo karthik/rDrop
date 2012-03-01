@@ -1,4 +1,5 @@
-#Status: Works fine but have not implemented a way for users to specify a certain directory.
+#Status: Works fine but have not implemented a way for users to
+#   specify a certain directory.
 
 #' Function to list contents of a Dropbox folder. If no folder is specified, function will list contents of root folder.
 #'@param cred Specifies an object of class ROAuth with Dropobox specific credentials.
@@ -20,8 +21,8 @@ dropbox_dir <- function(cred, path, recursive = FALSE, verbose = FALSE) {
         stop("Invalid Oauth credentials", call. = FALSE)
     status <- fromJSON(cred$OAuthRequest("https://api.dropbox.com/1/account/info"))
     metadata <- fromJSON(cred$OAuthRequest("https://api.dropbox.com/1/metadata/dropbox/"))
-    names(metadata$contents) = basename(sapply(metadata$contents,
-        `[[`, "path"))
+    names(metadata$contents) = basename(sapply(metadata$contents, `[[`,
+        "path"))
     file_system <- metadata[[8]]
     if (!verbose) {
         status <- (ldply(file_system, data.frame))
@@ -32,5 +33,6 @@ dropbox_dir <- function(cred, path, recursive = FALSE, verbose = FALSE) {
 }
 
 # Todos:
-# Need to check validity of path as an input. Should be is.dropbox.dir(path)
+# Need to check validity of path as an input. Should be
+#   is.dropbox.dir(path)
 # Need to allow for a recursive directory listing.
