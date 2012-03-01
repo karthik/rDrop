@@ -18,4 +18,4 @@
 2. File upload also causes the same crashing behavior.
 3.
 **Reference for the API**
-[https://www2.dropbox.com/developers/reference/(https://www2.dropbox.com/developers/reference/)
+[https://www2.dropbox.com/developers/reference/](https://www2.dropbox.com/developers/reference/)
