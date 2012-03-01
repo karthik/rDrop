@@ -21,7 +21,7 @@ That's it.
 
 ### Authorizing your app
 From within R, load rDropbox first: <br>
-`library(rDropbox)`
+`library(rDrop)`
 
  `dropbox_credentials <- dropbox_auth()` <br>
  If your keys are stored in your .rprofile, then there is no need to provide it to the function. If you don't have that setup, then use: <br>
