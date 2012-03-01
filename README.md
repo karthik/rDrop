@@ -62,11 +62,10 @@ To load a previously validated Dropbox credential file: <br>
 `load('/path/to/my_dropbox_credentials.rdata')`
 
 **Summary of your Dropbox Account**
-<pre>
-`dropbox_acc_info(my_dropbox_cred)`
 
-Returns a list with your display name, email, quota, referral URL and country.
-</pre>
+
+`dropbox_acc_info(my_dropbox_cred)` # Returns a list with your display name, email, quota, referral URL and country.
+
 **Directory listing**
 
 `dropbox_dir(cred)` # will list contents of your Dropbox root. <br>
