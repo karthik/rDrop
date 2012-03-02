@@ -12,8 +12,7 @@
 #'@examples \dontrun{
 #' is.dropbox.cred(your_dropbox_credential_object)
 #'}
-is.dropbox.cred <- function(cred) {
-    response <- TRUE
+is.dropbox.cred <- function(cred,response = TRUE) {
     if (missing(cred)) {
         response <- FALSE
     }
