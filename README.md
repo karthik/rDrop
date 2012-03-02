@@ -57,12 +57,13 @@ library(rDrop)
 This package essentially provides standard Dropbox file operation functions (create/copy/move/restore/share) from within `R`. For a vignette, type: <br>
 
 `vignette('rdrop')` from the `R` prompt.
+<br><em>Not yet setup</em>
 
 To load a previously validated Dropbox credential file: <br>
+
 `load('/path/to/my_dropbox_credentials.rdata')`
 
 **Summary of your Dropbox Account**
-
 
 `dropbox_acc_info(my_dropbox_cred)` # Returns a list with your display name, email, quota, referral URL and country.
 
@@ -83,6 +84,6 @@ To load a previously validated Dropbox credential file: <br>
 
 
 **For more information on usage and tips, see:** <br>
-+	[Introducing a programmatic interface to Dropbox from R](http://link_goes_nowhere) <br>
-+	 [rDrop on CRAN](http://link goes nowhere) <br>
+*	[Introducing a programmatic interface to Dropbox from R](http://link_goes_nowhere) <br>
+*	 [rDrop on CRAN](http://link goes nowhere) <br>
 
