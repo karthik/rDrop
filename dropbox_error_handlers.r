@@ -14,21 +14,21 @@
 #'@examples \dontrun{
 #' is.dropbox.cred(your_dropbox_credential_object)
 #'}
-is.dropbox.cred <- function(cred) {
-    response <- TRUE
+is.dropbox.cred <- function(cred, response = TRUE) {
     if (missing(cred)) {
         response <- FALSE
     }
-    if (response == TRUE) {
-        if (!exists(as.character(substitute(cred)), envir = .GlobalEnv)) {
-            response <- FALSE
-        }
-    }
-    if (response == TRUE)
+    if (response) {
+
+       response <- ifelse(as.character(substitute(cred)) %in% ls( envir = .GlobalEnv),TRUE,FALSE )
+   }
+    if (response) {
         response <- ifelse(class(cred) != "OAuth", FALSE, TRUE)
-    if (response == TRUE)
-        response <- ifelse(grep("dropbox", cred$requestURL) !=
-            1, FALSE, TRUE)
+    }
+    if (response) {
+        response <- ifelse(grep("dropbox", cred$requestURL) != 1, FALSE,
+            TRUE)
+    }
     return(response)
 }
 
