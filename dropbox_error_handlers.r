@@ -33,7 +33,7 @@ is.dropbox.cred <- function(cred, response = TRUE) {
 #'Function to check whether a path supplied exists in a users Dropbox account.
 #'
 #'<full description>
-#'@param cred <what param does>
+#'@param cred Specifies an object of class ROAuth with Dropobox specific credentials.
 #'@param path <what param does>
 #'@keywords
 #'@seealso is.dropbox.file dropbox.file.info
@@ -46,6 +46,7 @@ is.dropbox.cred <- function(cred, response = TRUE) {
 is.dropbox.dir<-function(cred,path)
 {
 if(!is.dropbox.cred(cred)) {stop("Invalid Dropbox credentials",call.=F)}
+# Check for leading slash first using grep. If missing, append it.
 if directory, return logical true.
 else return false.
 }
@@ -53,7 +54,7 @@ else return false.
 #'Checks if a supplied path is a file in users Dropbox account.
 #'
 #'<full description>
-#'@param cred <what param does>
+#'@param cred Specifies an object of class ROAuth with Dropobox specific credentials.
 #'@param path <what param does>
 #'@keywords
 #'@seealso is.dropbox.dir dropbox.file.info
@@ -66,13 +67,14 @@ else return false.
 is.dropbox.file<-function(cred,path)
 {
 if(!is.dropbox.cred(cred)) { stop("Invalid Dropbox credentials",call.=F) }
+# Check for leading slash first using grep. If missing, append it.
 # if file, return TRUE
 # if !file return FALSE
 }
 
 #'Return file attributes for a specified file supplied in the path argument.
 #'
-#'@param cred <what param does>
+#'@param cred Specifies an object of class ROAuth with Dropobox specific credentials.
 #'@param path_to_file <what param does>
 #'@keywords
 #'@seealso is.dropbox.file is.dropbox.dir
@@ -84,7 +86,7 @@ if(!is.dropbox.cred(cred)) { stop("Invalid Dropbox credentials",call.=F) }
 #'}
 dropbox.file.info<-function(cred,path_to_file)
 {
-# Todos
+# Check for leading slash first using grep. If missing, append it.
 # Return a list containing filename, filetype, date modified, and revision number.
 }
 
@@ -107,7 +109,22 @@ is.valid.dropbox.operation<-function(dropbox_call)
 	# 	return a valid and useful error.
 }
 
+#' Checks whether supplied revision number is valid on Dropobx
+#'
+#'<longer description>
+#'@param cred Specifies an object of class ROAuth with Dropobox specific credentials.
+#'@param path <what param does>
+#'@param revision <what param does>
+#'@keywords
+#'@seealso
+#'@return
+#'@alias
+#'@export
+#'@examples \dontrun{
+#'
+#'}
 is.valid.revision<-function(cred,path,revision)
 {
+# Check for leading slash first using grep. If missing, append it.
 # Checks revision number for a file in dropbox and returns a logical yes/no.
 }
