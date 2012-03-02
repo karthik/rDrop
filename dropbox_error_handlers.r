@@ -1,7 +1,4 @@
-
 # A set of functions meant to handle errors arising from all dropbox file ops.
-
-# Status: Works but fails to recongnize missing objects passed as cred from dropbox_acc_info()
 
 #'Verifies whether a user has specified a correct Oauth credential for Dropbox
 #'
@@ -33,7 +30,7 @@ is.dropbox.cred <- function(cred, response = TRUE) {
 }
 
 
-#'Function to check whether a path is valid or not.
+#'Function to check whether a path supplied exists in a users Dropbox account.
 #'
 #'<full description>
 #'@param cred <what param does>
@@ -53,7 +50,7 @@ if directory, return logical true.
 else return false.
 }
 
-#'Checks if a supplied path is actually a file.
+#'Checks if a supplied path is a file in users Dropbox account.
 #'
 #'<full description>
 #'@param cred <what param does>
@@ -73,7 +70,7 @@ if(!is.dropbox.cred(cred)) { stop("Invalid Dropbox credentials",call.=F) }
 # if !file return FALSE
 }
 
-#'Return file attributes for a specified path to file.
+#'Return file attributes for a specified file supplied in the path argument.
 #'
 #'@param cred <what param does>
 #'@param path_to_file <what param does>
@@ -91,7 +88,7 @@ dropbox.file.info<-function(cred,path_to_file)
 # Return a list containing filename, filetype, date modified, and revision number.
 }
 
-#'Function to handle bad errors if a returned object is not the excepted JSON object
+#'Function to handle errors if a returned object is not the excepted JSON object
 #'
 #'@param dropbox_call A function call to a Dropbox method via OAuth$handshake()
 #'@keywords
