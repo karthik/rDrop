@@ -1,4 +1,4 @@
-Í# Status: Works but fails to recongnize missing objects passed as
+# Status: Works but fails to recongnize missing objects passed as
 #   cred from dropbox_acc_info()
 
 #'Verifies whether a user has specified a correct Oauth credential for Dropbox
@@ -12,15 +12,15 @@
 #'@examples \dontrun{
 #' is.dropbox.cred(your_dropbox_credential_object)
 #'}
-is.dropbox.cred <- function(cred,response = TRUE) {
+is.dropbox.cred <- function(cred, response = TRUE) {
+    # Issue: seems to be looking for a variable named cred and not what is passed to the function itself.
     if (missing(cred)) {
         response <- FALSE
     }
     if (response) {
-        if (!exists(as.character(substitute(cred)), envir = .GlobalEnv)) {
-            response <- FALSE
-        }
-    }
+
+       response <- ifelse(as.character(substitute(cred)) %in% ls( envir = .GlobalEnv),TRUE,FALSE )
+   }
     if (response) {
         response <- ifelse(class(cred) != "OAuth", FALSE, TRUE)
     }
