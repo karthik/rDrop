@@ -17,15 +17,17 @@ is.dropbox.cred <- function(cred) {
     if (missing(cred)) {
         response <- FALSE
     }
-    if (response == TRUE) {
+    if (response) {
         if (!exists(as.character(substitute(cred)), envir = .GlobalEnv)) {
             response <- FALSE
         }
     }
-    if (response == TRUE)
+    if (response) {
         response <- ifelse(class(cred) != "OAuth", FALSE, TRUE)
-    if (response == TRUE)
+    }
+    if (response) {
         response <- ifelse(grep("dropbox", cred$requestURL) != 1, FALSE,
             TRUE)
+    }
     return(response)
 }
