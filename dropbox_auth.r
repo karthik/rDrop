@@ -40,11 +40,11 @@ dropbox_auth <- function(cKey = NULL, cSecret = NULL, verbose = FALSE) {
     accessURL <- "https://api.dropbox.com/1/oauth/access_token/"
     cred <- OAuthFactory$new(consumerKey = cKey, consumerSecret = cSecret,
         requestURL = reqURL, accessURL = accessURL, authURL = authURL)
-    cat("Authenticating with Dropbox \n")
+    cat("Beginning authenticating with Dropbox... \n")
     cred$handshake(post = FALSE)
     # Need to hide the enter PIN request for Dropbox
     if (TRUE) {
-        cat("\n Dropbox Authentication complete, please wait for handshake to finish....\n")
+        cat("\n Dropbox Authentication completed successfully.\n")
     }
     if (FALSE) {
         cred$OAuthRequest("https://api.dropbox.com/1/account/info")
@@ -57,6 +57,7 @@ dropbox_auth <- function(cKey = NULL, cSecret = NULL, verbose = FALSE) {
 
 
 # Bugs
+# Works fine via R terminal, RStudio but not R console.
 # Calling this fuction via terminal R works as intended. If the
 #   function is run interactively on R-GUI, then it crashes R.app or
 #   R64.app completely.
