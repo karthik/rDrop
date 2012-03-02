@@ -13,7 +13,6 @@
 #' is.dropbox.cred(your_dropbox_credential_object)
 #'}
 is.dropbox.cred <- function(cred, response = TRUE) {
-    # Issue: seems to be looking for a variable named cred and not what is passed to the function itself.
     if (missing(cred)) {
         response <- FALSE
     }
