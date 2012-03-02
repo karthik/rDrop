@@ -13,8 +13,9 @@
 #'
 #'}
 dropbox_delete <- function(cred, file_to_delete, ask = T) {
-    if (!is.dropbox.cred(cred))
+    if (!is.dropbox.cred(cred)) {
         stop("Invalid Oauth credentials", call. = FALSE)
+    }
     # Replace with a more elegant file exists checker.
     file_to_del <- dropbox_search(cred, file_to_delete)
     if (empty(file_to_del)) {

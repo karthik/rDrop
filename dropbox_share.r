@@ -14,8 +14,9 @@
 #'
 #'}
 dropbox_share <- function(cred, file) {
-    if (!is.dropbox.cred(cred))
-        stop("Invalid Oauth credentials", call. = FALSE)
+    if (!is.dropbox.cred(cred)) {
+    stop("Invalid Oauth credentials", call. = FALSE)
+    }
     # VERIFY THAT FILE DOES EXIST
     path_to_share <- paste("https://api.dropbox.com/1/shares/dropbox/",
         file, sep = "")

@@ -14,8 +14,9 @@
 #'
 #'}
 dropbox_copy <- function(cred, from_path = NULL, to_path = NULL) {
-    if (!is.dropbox.cred(cred))
+    if (!is.dropbox.cred(cred)) {
         stop("Invalid Oauth credentials", call. = FALSE)
+    }
     if (is.null(from_path) || is.null(to_path)) {
         stop("Did not specify full path for source and/or destination",
             call. = F)

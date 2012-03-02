@@ -17,8 +17,9 @@
 #' returns a dataframe with fields .id,
 #'}
 dropbox_dir <- function(cred, path, recursive = FALSE, verbose = FALSE) {
-    if (!is.dropbox.cred(cred))
+    if (!is.dropbox.cred(cred)) {
         stop("Invalid Oauth credentials", call. = FALSE)
+    }
     status <- fromJSON(cred$OAuthRequest("https://api.dropbox.com/1/account/info"))
     metadata <- fromJSON(cred$OAuthRequest("https://api.dropbox.com/1/metadata/dropbox/"))
     names(metadata$contents) = basename(sapply(metadata$contents, `[[`,

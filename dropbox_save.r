@@ -13,8 +13,9 @@
 #'
 #'}
 dropbox_save <- function(cred, path, file) {
-    if (!is.dropbox.cred(cred))
+    if (!is.dropbox.cred(cred)) {
         stop("Invalid Oauth credentials", call. = FALSE)
+        }
     content = "This is simple content"
     input = RCurl:::uploadFunctionHandler(content, TRUE)
     trace(input)

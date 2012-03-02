@@ -13,8 +13,9 @@
 #'
 #'}
 dropbox_get <- function(cred, file_to_get) {
-    if (!is.dropbox.cred(cred))
+    if (!is.dropbox.cred(cred)) {
         stop("Invalid Oauth credentials", call. = FALSE)
+    }
     if (length(file_to_get) == 0) {
         stop("No file requested \n")
     }

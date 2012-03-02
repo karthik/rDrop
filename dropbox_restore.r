@@ -14,8 +14,9 @@
 #'
 #'}
 dropbox_restore <- function(cred, path, rev = NULL) {
-    if (!is.dropbox.cred(cred))
+    if (!is.dropbox.cred(cred)) {
         stop("Invalid Oauth credentials", call. = FALSE)
+        }
     if (is.null(rev)) {
         stop("You need to specify a revision number to restore a file \n",
             call. = F)

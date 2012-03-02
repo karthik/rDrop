@@ -21,9 +21,10 @@
 #'}
 dropbox_search <- function(cred, query, path, include_deleted = TRUE,
     file_limit = 1000, verbose = FALSE) {
-    if (!is.dropbox.cred(cred))
+    if (!is.dropbox.cred(cred)) {
         stop("Invalid Oauth credentials", call. = FALSE)
-    #Check of path is valid
+    }
+        #Check of path is valid
     if (length(query) == 0) {
         stop("you did not specifiy any search query")
     }

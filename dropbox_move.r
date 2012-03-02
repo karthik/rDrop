@@ -13,8 +13,9 @@
 #'
 #'}
 dropbox_move <- function(cred, from_path = NULL, to_path = NULL) {
-    if (!is.dropbox.cred(cred))
+    if (!is.dropbox.cred(cred)) {
         stop("Invalid Oauth credentials", call. = FALSE)
+    }
     # Make sure both paths aren't empty
     # Next, make sure origin and destination paths exist
     # Note: to_path needs a leading / because root is 'dropbox'
