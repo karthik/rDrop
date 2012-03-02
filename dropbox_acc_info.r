@@ -12,8 +12,9 @@
 #' dropbox_acc_info(cred)
 #'}
 dropbox_acc_info <- function(cred) {
-    if (!is.dropbox.cred(cred))
-        stop("Your Dropbox credentials are invalid. \n", call. = FALSE)
+    if (!is.dropbox.cred(cred)) {
+        stop("Invalid Oauth credentials", call. = FALSE)
+    }
     status <- fromJSON(cred$OAuthRequest("https://api.dropbox.com/1/account/info"))
     return(status)
 }
