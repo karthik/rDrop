@@ -51,8 +51,9 @@ is.dropbox.cred <- function(cred, response = TRUE) {
 #'}
 is.dropbox.dir<-function(cred,path)
 {
-    is_d_dir <- TRUE
+
 if(!is.dropbox.cred(cred)) {stop("Invalid Dropbox credentials",call.=F)}
+is_d_dir <- TRUE
 res <- dropbox_search(cred,path)
 if(is.null(res)) {
 is_d_dir <- FALSE
@@ -148,6 +149,7 @@ is.valid.dropbox.operation<-function(dropbox_call)
 #'}
 is.valid.revision<-function(cred,path,revision)
 {
+# need to extract revision number
 # Check for leading slash first using grep. If missing, append it.
 # Checks revision number for a file in dropbox and returns a logical yes/no.
 }
