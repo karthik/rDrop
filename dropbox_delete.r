@@ -1,9 +1,9 @@
 #Status:  Works, but needs error handling
 
-#' Function to delete a file or folder from Dropbox
+#'Function to delete a file or folder from Dropbox
 #'@param cred Specifies an object of class ROAuth with Dropobox specific credentials.
-#'@param  file_to_delete Specifies the path to the file or folder to be deleted.
-#'@param  ask logical set to TRUE. If set to false, function will not confirm delete operation
+#'@param file_to_delete Specifies the path to the file or folder to be deleted.
+#'@param ask logical set to TRUE. If set to false, function will not confirm delete operation
 #'@keywords
 #'@seealso
 #'@return Nothing. A message upon successful deletion.
@@ -19,10 +19,10 @@ dropbox_delete <- function(cred, file_to_delete, ask = T) {
     # Replace with a more elegant file exists checker.
     file_to_del <- dropbox_search(cred, file_to_delete)
     if (empty(file_to_del)) {
-        stop("File or folder not found \n", call. = F)
+        stop("File or folder wasn't found at the specified path\n", call. = F)
     }
     if (dim(file_to_del)[1] > 1) {
-        stop("More than one file or folder was found, please check name and path. \n",
+        stop("More than one file or folder was found, please check supplied path. \n",
             call. = F)
     }
     file_to_del <- as.character(file_to_del$path[1])

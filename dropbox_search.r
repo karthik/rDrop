@@ -33,7 +33,7 @@ dropbox_search <- function(cred, query, path, include_deleted = TRUE,
     search_results <- formatted_results <- ldply(results, data.frame)
     small_results <- data.frame(path = search_results$path, is_dir = search_results$is_dir)
     if (empty(small_results)) {
-        cat("No files or directories found")
+       search_results <- NULL
     }
     if (!verbose & !empty(small_results)) {
         return(small_results)
