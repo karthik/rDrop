@@ -1,5 +1,11 @@
 # A set of functions meant to handle errors arising from all dropbox file ops.
 
+# startup checks that need to get done.
+# .onLoad()
+# if(packageVersion("ROAuth") < "0.9.1") {
+#     stop("You will version 0.9.1 (or higher) of ROAuth for rDrop to work. \n")
+# }
+
 #'Verifies whether a user has specified a correct Oauth credential for Dropbox
 #'
 #'@param cred Specifies an object of class ROAuth with Dropobox specific credentials.
@@ -45,11 +51,28 @@ is.dropbox.cred <- function(cred, response = TRUE) {
 #'}
 is.dropbox.dir<-function(cred,path)
 {
+    is_d_dir <- TRUE
 if(!is.dropbox.cred(cred)) {stop("Invalid Dropbox credentials",call.=F)}
-# Check for leading slash first using grep. If missing, append it.
-if directory, return logical true.
-else return false.
+res <- dropbox_search(cred,path)
+if(is.null(res)) {
+is_d_dir <- FALSE
 }
+if(is_d_dir) {
+    if(dim(res)[1]>1) {
+    is_d_dir <- FALSE
+    }
+}
+if(is_d_dir) {
+    if(!unique(res$is_dir)) {
+        is_d_dir <- FALSE
+    }
+}
+return(is_d_dir)
+}
+# Check for leading slash first using grep. If missing, append it.
+# if directory, return logical true.
+# else return false.
+
 
 #'Checks if a supplied path is a file in users Dropbox account.
 #'
