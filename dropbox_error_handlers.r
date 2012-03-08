@@ -49,9 +49,7 @@ is.dropbox.cred <- function(cred, response = TRUE) {
 #'@examples \dontrun{
 #'
 #'}
-is.dropbox.dir<-function(cred,path)
-{
-
+is.dropbox.dir <- function(cred,path) {
 if(!is.dropbox.cred(cred)) {stop("Invalid Dropbox credentials",call.=F)}
 is_d_dir <- TRUE
 res <- dropbox_search(cred,path)
@@ -90,10 +88,23 @@ return(is_d_dir)
 #'}
 is.dropbox.file<-function(cred,path)
 {
-if(!is.dropbox.cred(cred)) { stop("Invalid Dropbox credentials",call.=F) }
-# Check for leading slash first using grep. If missing, append it.
-# if file, return TRUE
-# if !file return FALSE
+if(!is.dropbox.cred(cred)) {stop("Invalid Dropbox credentials", call.=F)}
+is_d_file <- TRUE
+res <- dropbox_search(cred,path)
+if(is.null(res)) {
+is_d_file <- FALSE
+}
+if(is_d_file) {
+    if(dim(res)[1]>1) {
+    is_d_file <- FALSE
+    }
+}
+if(is_d_file) {
+    if(!unique(res$is_dir)) {
+        is_d_file <- FALSE
+    }
+}
+return(is_d_file)
 }
 
 #'Return file attributes for a specified file supplied in the path argument.
@@ -125,7 +136,7 @@ dropbox.file.info<-function(cred,path_to_file)
 #'@examples \dontrun{
 #'
 #'}
-is.valid.dropbox.operation<-function(dropbox_call)
+is.valid.dropbox.operation <- function(dropbox_call)
 {
 	# if dropbox_call succeeds
 	# return the object received
