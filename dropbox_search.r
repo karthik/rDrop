@@ -50,5 +50,3 @@ dropbox_search <- function(cred, query = NULL, path, deleted = FALSE,
         return(search_results)
     }
 }
-
-
