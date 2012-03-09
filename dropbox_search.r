@@ -1,4 +1,5 @@
 #Status: Works but I have not incorporated path and error handling.
+# Bug: cannot supply a subfolder for search. videos works. ifttt. works. but ifttt/videos does not. Perhaps I need to escape the / character?
 
 #'Search your Dropbox Files
 #'
@@ -19,13 +20,13 @@
 #' results<-dropbox_search(cred,'search_term',verbose=T)
 #' Verbose results include a data.frame with columns: revision,rev,thumb_exists,bytes,modified,path,is_dir,icon,root,mime_type,size
 #'}
-dropbox_search <- function(cred, query, path, deleted = FALSE,
+dropbox_search <- function(cred, query = NULL, path, deleted = FALSE,
     file_limit = 1000, is_dir = NULL, verbose = FALSE) {
     if (!is.dropbox.cred(cred)) {
         stop("Invalid Oauth credentials", call. = FALSE)
     }
         #Check of path is valid
-    if (length(query) == 0) {
+    if (is.null(query)) {
         stop("you did not specifiy any search query")
     }
     results = fromJSON(cred$OAuthRequest("https://api.dropbox.com/1/search/dropbox/",
@@ -35,7 +36,7 @@ dropbox_search <- function(cred, query, path, deleted = FALSE,
     if(is_dir) { search_results <- search_results[search_results$is_dir,]}
     if(!is_dir) { search_results <- search_results[!search_results$is_dir,]}
     }
-    
+
     small_results <- data.frame(path = search_results$path, is_dir = search_results$is_dir)
 
     if (empty(search_results)) {
@@ -49,3 +50,5 @@ dropbox_search <- function(cred, query, path, deleted = FALSE,
         return(search_results)
     }
 }
+
+
