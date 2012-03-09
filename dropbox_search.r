@@ -32,8 +32,9 @@ dropbox_search <- function(cred, query, path, deleted = FALSE,
         list(query = query, include_deleted = deleted)))
     search_results <- formatted_results <- ldply(results, data.frame)
     small_results <- data.frame(path = search_results$path, is_dir = search_results$is_dir)
-    if (empty(small_results)) {
+    if (empty(search_results)) {
        search_results <- NULL
+       return (search_results)
     }
     if (!verbose & !empty(small_results)) {
         return(small_results)
