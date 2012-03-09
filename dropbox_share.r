@@ -1,6 +1,5 @@
 #Status: Works but needs error catching
 
-
 #' Functions to share or possibly move a file to public folder and get the public url.
 #' Function to create a share for any file or folder and return a URL.
 #'@param cred Specifies an object of class ROAuth with Dropobox specific credentials.
@@ -17,7 +16,9 @@ dropbox_share <- function(cred, file) {
     if (!is.dropbox.cred(cred)) {
     stop("Invalid Oauth credentials", call. = FALSE)
     }
-    # VERIFY THAT FILE DOES EXIST
+    if(!(exists.in.dropbox(cred, file))) {
+        stop("Folder already exists", call.= FALSE)
+    }    
     path_to_share <- paste("https://api.dropbox.com/1/shares/dropbox/",
         file, sep = "")
     cred$OAuthRequest(path_to_share)
