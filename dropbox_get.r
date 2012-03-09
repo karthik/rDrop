@@ -25,3 +25,4 @@ dropbox_get <- function(cred, file_to_get) {
 
 # Notes
 # Should be limited to text or csv files.
+# No pdfs, or images, and stuff. Right?
