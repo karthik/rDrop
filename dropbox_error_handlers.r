@@ -48,34 +48,29 @@ is.dropbox.cred <- function(cred, response = TRUE) {
 #'@export
 #'@examples \dontrun{
 #' exists.in.dropbox(cred,'test_folder')
-#' exists.in.dropbox(cred,'test_folder',type='dir')
+#' exists.in.dropbox(cred,'test_folder',is_dir='dir')
 #'}
-exists.in.dropbox <- function(cred, path, type = NULL) {
-    resp <- TRUE
+exists.in.dropbox <- function(cred, path, is_dir = NULL) {
+    response <- TRUE
     # First search Dropbox to see if the object exists
-    res <- dropbox_search(cred,path)
+    res <- dropbox_search(cred,path, is_dir = TRUE)
     if(is.null(res)) {
-    resp <- FALSE
+    response <- FALSE
   }
   # OK, object exists, but let's see if there was more than one result
-  if(resp) {
-    if(dim(res)[1]>1) {
-    resp <- FALSE
+  if(response) {
+    if(dim(res)[1]>1) response <- FALSE
   }
 
   # OK, only one result returned. 
-  if(resp) {
-    # If you wanted to check whether dir or file
-    if(!is.null(type)) {
-        actual_type <- ifelse(res$is_dir,"dir","file")
-        if(identical(type,actual_type)) { response <- TRUE } else { response <- FALSE }
-     } else {
-        # You didn't need to check type, just that it 
-        response <- TRUE
-     }
- }
- return(response)
+if(response) {
+    if(!is.null(is_dir)) {
+        if(is_dir) { response <- ifelse(res$is_dir,TRUE, FALSE) }
+        if(!is_dir) { response <- ifelse(!res$is_dir,TRUE, FALSE) }
+    }
 }
+
+ return(response)
 }
 
 #'Function to check whether a path supplied exists in a users Dropbox account.
