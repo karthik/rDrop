@@ -35,6 +35,48 @@ is.dropbox.cred <- function(cred, response = TRUE) {
     return(response)
 }
 
+#' Check to see if an object exists in Dropbox
+#'
+#'<longer description>
+#'@param cred Specifies an object of class ROAuth with Dropobox specific credentials.
+#'@param path Path to object
+#'@param  type = NULL dir or file if a function needs to know. Otherwise it will ignore type and return TRUE if object exists in Dropbox folder.
+#'@keywords
+#'@seealso
+#'@return
+#'@alias
+#'@export
+#'@examples \dontrun{
+#' exists.in.dropbox(cred,'test_folder')
+#' exists.in.dropbox(cred,'test_folder',type='dir')
+#'}
+exists.in.dropbox <- function(cred, path, type = NULL) {
+    resp <- TRUE
+    # First search Dropbox to see if the object exists
+    res <- dropbox_search(cred,path)
+    if(is.null(res)) {
+    resp <- FALSE
+  }
+  # OK, object exists, but let's see if there was more than one result
+  if(resp) {
+    if(dim(res)[1]>1) {
+    resp <- FALSE
+  }
+
+  # OK, only one result returned. 
+  if(resp) {
+    # If you wanted to check whether dir or file
+    if(!is.null(type)) {
+        actual_type <- ifelse(res$is_dir,"dir","file")
+        if(identical(type,actual_type)) { response <- TRUE } else { response <- FALSE }
+     } else {
+        # You didn't need to check type, just that it 
+        response <- TRUE
+     }
+ }
+ return(response)
+}
+}
 
 #'Function to check whether a path supplied exists in a users Dropbox account.
 #'
@@ -119,9 +161,14 @@ return(is_d_file)
 #'@examples \dontrun{
 #'
 #'}
-dropbox.file.info<-function(cred,path_to_file)
+dropbox.file.info <- function(cred,path_to_file)
 {
-# Check for leading slash first using grep. If missing, append it.
+    # Add leading slash in case it is missing
+    if(!grepl('^/',path_to_file))
+    {
+        path_to_file <- paste('/',path_to_file,sep="")
+    }
+dfile <- dropbox_search(cred, path_to_file)
 # Return a list containing filename, filetype, date modified, and revision number.
 }
 
@@ -136,8 +183,7 @@ dropbox.file.info<-function(cred,path_to_file)
 #'@examples \dontrun{
 #'
 #'}
-is.valid.dropbox.operation <- function(dropbox_call)
-{
+is.valid.dropbox.operation <- function(dropbox_call) {
 	# if dropbox_call succeeds
 	# return the object received
 	# else
@@ -158,9 +204,9 @@ is.valid.dropbox.operation <- function(dropbox_call)
 #'@examples \dontrun{
 #'
 #'}
-is.valid.revision<-function(cred,path,revision)
-{
+# is.valid.revision <- function(cred,path,revision)
+# {
+# }
 # need to extract revision number
 # Check for leading slash first using grep. If missing, append it.
 # Checks revision number for a file in dropbox and returns a logical yes/no.
-}
