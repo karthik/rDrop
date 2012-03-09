@@ -16,7 +16,6 @@ dropbox_move <- function(cred, from_path = NULL, to_path = NULL) {
     if (!is.dropbox.cred(cred)) {
         stop("Invalid Oauth credentials", call. = FALSE)
     }
-    # Make sure both paths aren't empty
     # Next, make sure origin and destination paths exist
     # Note: to_path needs a leading / because root is 'dropbox'
     # make sure folder is not being copied to file but file can copy to
@@ -25,6 +24,14 @@ dropbox_move <- function(cred, from_path = NULL, to_path = NULL) {
         stop("Did not specify full path for source and/or destination",
             call. = F)
     }
+    if(!(exists.in.dropbox(cred, from_path))) {
+        stop("File or folder does not exist", call.= FALSE)
+    }    
+
+    if(!(exists.in.dropbox(cred, to_path, is_dir = TRUE))) {
+        stop("Destination folder does not exist", call.= FALSE)
+    }    
+    
     move <- fromJSON(cred$OAuthRequest("https://api.dropbox.com/1/fileops/move",
         list(root = "dropbox", from_path = from_path, to_path = to_path)))
     if (length(move$modified) > 0) {
