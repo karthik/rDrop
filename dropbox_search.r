@@ -20,7 +20,7 @@
 #' Verbose results include a data.frame with columns: revision,rev,thumb_exists,bytes,modified,path,is_dir,icon,root,mime_type,size
 #'}
 dropbox_search <- function(cred, query, path, deleted = FALSE,
-    file_limit = 1000, verbose = FALSE) {
+    file_limit = 1000, is_dir = NULL, verbose = FALSE) {
     if (!is.dropbox.cred(cred)) {
         stop("Invalid Oauth credentials", call. = FALSE)
     }
@@ -31,7 +31,13 @@ dropbox_search <- function(cred, query, path, deleted = FALSE,
     results = fromJSON(cred$OAuthRequest("https://api.dropbox.com/1/search/dropbox/",
         list(query = query, include_deleted = deleted)))
     search_results <- formatted_results <- ldply(results, data.frame)
+    if(!is.null(is_dir)) {
+    if(is_dir) { search_results <- search_results[search_results$is_dir,]}
+    if(!is_dir) { search_results <- search_results[!search_results$is_dir,]}
+    }
+    
     small_results <- data.frame(path = search_results$path, is_dir = search_results$is_dir)
+
     if (empty(search_results)) {
        search_results <- NULL
        return (search_results)
