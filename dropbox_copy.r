@@ -13,7 +13,7 @@
 #'@examples \dontrun{
 #'
 #'}
-dropbox_copy <- function(cred, from_path = NULL, to_path = NULL) {
+dropbox_copy <- function(cred, from_path = NULL, to_path = NULL, overwrite = FALSE) {
     if (!is.dropbox.cred(cred)) {
         stop("Invalid Oauth credentials", call. = FALSE)
     }
