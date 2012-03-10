@@ -36,12 +36,9 @@ dropbox_move <- function(cred, from_path = NULL, to_path = NULL, overwrite = FAL
             " \n")
     }
     if (length(move$modified) == 0) {
-        cat("Unknown error occured. Bug", " \n")
-    }
-    if(!(exists.in.dropbox(cred, from_path))) {
-        stop("File or folder does not exist", call.= FALSE)
-    }    
-        invisible()
+        cat("Unknown error occured. Bug", " \n")   
+    
+    invisible()
 }
 
 # Error 1
