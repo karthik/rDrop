@@ -12,14 +12,11 @@
 #'@examples \dontrun{
 #'
 #'}
-dropbox_move <- function(cred, from_path = NULL, to_path = NULL) {
+dropbox_move <- function(cred, from_path = NULL, to_path = NULL, overwrite = FALSE) {
     if (!is.dropbox.cred(cred)) {
         stop("Invalid Oauth credentials", call. = FALSE)
     }
-    # Next, make sure origin and destination paths exist
     # Note: to_path needs a leading / because root is 'dropbox'
-    # make sure folder is not being copied to file but file can copy to
-    #   folder
     if (is.null(from_path) || is.null(to_path)) {
         stop("Did not specify full path for source and/or destination",
             call. = F)
@@ -41,9 +38,10 @@ dropbox_move <- function(cred, from_path = NULL, to_path = NULL) {
     if (length(move$modified) == 0) {
         cat("Unknown error occured. Bug", " \n")
     }
-
-    # OUTPUT SUCCESSFUL MESSAGE.
-    invisible()
+    if(!(exists.in.dropbox(cred, from_path))) {
+        stop("File or folder does not exist", call.= FALSE)
+    }    
+        invisible()
 }
 
 # Error 1
