@@ -26,7 +26,7 @@ dropbox_move <- function(cred, from_path = NULL, to_path = NULL, overwrite = FAL
     }    
 
     if(!(exists.in.dropbox(cred, to_path, is_dir = TRUE))) {
-        stop("Destination folder does not exist", call.= FALSE)
+        stop("Destination does not exist or isn't a folder", call.= FALSE)
     }    
     
     move <- fromJSON(cred$OAuthRequest("https://api.dropbox.com/1/fileops/move",
@@ -37,8 +37,7 @@ dropbox_move <- function(cred, from_path = NULL, to_path = NULL, overwrite = FAL
     }
     if (length(move$modified) == 0) {
         cat("Unknown error occured. Bug", " \n")   
-    
-    invisible()
+  invisible()
 }
 
 # Error 1
