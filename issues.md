@@ -1,10 +1,12 @@
 #  Files that need  work
 1. `dropbox_save` - **Not coded.**
-2. `dropbox_get` - **Not coded.**
+2. `dropbox_get` - Partly works, messy output. no error handling.
 3. `dropbox_move` - working, but needs error handling.
 4. `dropbox_delete` - working, but needs error handling.
 5. `dropbox_copy` - works but needs major error handling.
 6. `dropbox_restore` - haven't worked on it yet.
+7. `dropbox_search` - works
+I need to be able to search a specific path only.
 
 # Error handling todos.
 1. Check destinations for copy/move
