@@ -21,11 +21,15 @@ dropbox_move <- function(cred, from_path = NULL, to_path = NULL, overwrite = FAL
         stop("Did not specify full path for source and/or destination",
             call. = F)
     }
-    if(!(exists.in.dropbox(cred, from_path))) {
+
+    if(is.null(path)) {
+        path <- "/"
+    }
+    if(!(exists.in.dropbox(cred, path = path, query = from_path))) {
         stop("File or folder does not exist", call.= FALSE)
     }    
 
-    if(!(exists.in.dropbox(cred, to_path, is_dir = TRUE))) {
+    if(!(exists.in.dropbox(cred, path = path, query = to_path, is_dir = TRUE))) {
         stop("Destination does not exist or isn't a folder", call.= FALSE)
     }    
     
