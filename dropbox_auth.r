@@ -54,8 +54,6 @@ dropbox_auth <- function(cKey = NULL, cSecret = NULL, verbose = FALSE) {
     }
     return(cred)
 }
-
-
 # Bugs
 # Works fine via R terminal, RStudio but not R console.
 # Calling this fuction via terminal R works as intended. If the
