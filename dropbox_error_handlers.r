@@ -50,10 +50,13 @@ is.dropbox.cred <- function(cred, response = TRUE) {
 #' exists.in.dropbox(cred,'test_folder')
 #' exists.in.dropbox(cred,'test_folder',is_dir='dir')
 #'}
-exists.in.dropbox <- function(cred, path, is_dir = NULL) {
+exists.in.dropbox <- function(cred, path = NULL, query, is_dir = NULL) {
     response <- TRUE
     # First search Dropbox to see if the object exists
-    res <- dropbox_search(cred,path, is_dir = TRUE)
+    if(is.null(path)) {
+        path <- '/'
+    }
+    res <- dropbox_search(cred, path=path, query=query)
     if(is.null(res)) {
     response <- FALSE
   }
