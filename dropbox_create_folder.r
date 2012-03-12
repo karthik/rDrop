@@ -23,10 +23,19 @@ dropbox_create_folder <- function(cred, folder_name = NULL, path = NULL) {
     }
     # assuming someone wants to create this inside a sub-folder and not the dropbox root
     if(!is.null(path)) { 
-         if(grepl('/$', path)) { path <- str_sub(path, end = str_length(path)-1) }
-         if(grepl('^/', path)) { path <- str_sub(path, start = 2) }
-         if(grepl('/$', folder_name)) { folder_name <- str_sub(folder_name, end = str_length(folder_name)-1) }
-         if(grepl('^/', folder_name)) { folder_name <- str_sub(folder_name, start = 2) }
+         if(grepl('/$', path)) { 
+            path <- str_sub(path, end = str_length(path)-1) 
+        }
+         if(grepl('^/', path)) { 
+            path <- str_sub(path, start = 2)
+        }
+         if(grepl('/$', folder_name)) { 
+            folder_name <- str_sub(folder_name, end = str_length(folder_name)-1) 
+        }
+         if(grepl('^/', folder_name)) { 
+            folder_name <- str_sub(folder_name, start = 2) 
+        }
+        # Final formatted folder name with path and no extra slashes.
         folder_name <- paste(path,folder_name,sep='/')
     }
     # Check for duplicates.
