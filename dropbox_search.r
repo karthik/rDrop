@@ -20,8 +20,9 @@
 #' results<-dropbox_search(cred,'search_term',verbose=T)
 #' Verbose results include a data.frame with columns: revision,rev,thumb_exists,bytes,modified,path,is_dir,icon,root,mime_type,size
 #'}
-dropbox_search <- function(cred, query = NULL, path, deleted = FALSE,
+dropbox_search <- function(cred, query = NULL, path = NULL, deleted = FALSE,
     file_limit = 1000, is_dir = NULL, verbose = FALSE) {
+    # Unable to pass on full path. So I must strip the last bit, search then match the full search path. Right?
     if (!is.dropbox.cred(cred)) {
         stop("Invalid Oauth credentials", call. = FALSE)
     }
@@ -29,14 +30,23 @@ dropbox_search <- function(cred, query = NULL, path, deleted = FALSE,
     if (is.null(query)) {
         stop("you did not specifiy any search query")
     }
+
     results = fromJSON(cred$OAuthRequest("https://api.dropbox.com/1/search/dropbox/",
         list(query = query, include_deleted = deleted)))
-    search_results <- formatted_results <- ldply(results, data.frame)
+   search_results <- formatted_results <- ldply(results, data.frame)
+
+     if(!is.null(path)) {
+        full_path <- paste(path, query, sep="")
+        search_results <- search_results[which(search_results$path==full_path),]
+    }
+
+    
     if(!is.null(is_dir)) {
     if(is_dir) { search_results <- search_results[search_results$is_dir,]}
     if(!is_dir) { search_results <- search_results[!search_results$is_dir,]}
     }
 
+  
     small_results <- data.frame(path = search_results$path, is_dir = search_results$is_dir)
 
     if (empty(search_results)) {
@@ -50,3 +60,5 @@ dropbox_search <- function(cred, query = NULL, path, deleted = FALSE,
         return(search_results)
     }
 }
+
+# Search doesn't work on full paths. Just the final name.
