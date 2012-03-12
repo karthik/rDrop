@@ -6,7 +6,7 @@
 #'@param from_path Specifies the file or folder to be copied from relative to root.
 #'@param to_path Specifies a destination path, including the new name for the file or folder, relative to root.
 #'@keywords
-#'@seealso
+#'@seealso dropbox_move dropbox_create_folder
 #'@return
 #'@alias
 #'@export dropbox_copy
