@@ -18,29 +18,37 @@
 #' dropbox_dir(cred,path='/specific_folder',verbose = TRUE)
 #' returns a dataframe with fields .id,
 #'}
-dropbox_dir <- function(cred, path = FALSE, recursive = FALSE, verbose = FALSE) {
+dropbox_dir <- function(cred, path = NULL, verbose = FALSE) {
     if (!is.dropbox.cred(cred)) {
         stop("Invalid Oauth credentials", call. = FALSE)
     }
+    url <- "https://api.dropbox.com/1/metadata/dropbox/"
     # Assuming user did specify a path to list, then make sure it exists
     if(!is.null(path)) {
-        if(!is.dropbox.object(path)) {
+        if(!exists.in.dropbox(cred, path, is_dir = TRUE)) {
             stop("There is no such folder in your Dropbox", call. = FALSE)
         }
     }
-    status <- fromJSON(cred$OAuthRequest("https://api.dropbox.com/1/account/info"))
-    metadata <- fromJSON(cred$OAuthRequest("https://api.dropbox.com/1/metadata/dropbox/"))
+    if(!is.null(path)) {
+        url <- paste(url, path, sep = "")
+    }
+    metadata <- fromJSON(cred$OAuthRequest(url))
     names(metadata$contents) = basename(sapply(metadata$contents, `[[`,
         "path"))
-    file_system <- metadata[[8]]
+    file_sys <- ldply(metadata$contents, data.frame)
     # Verbose will return all file information. Otherwise only return relevant fields.
     if (!verbose) {
-        status <- (ldply(file_system, data.frame))
-        return(status$.id)
+        return(file_sys$.id)
     } else {
-        return(ldply(file_system, data.frame))
+        return(file_sys)
     }
 }
+# # tests
+#   metadata <- fromJSON(cred$OAuthRequest("https://api.dropbox.com/1/metadata/dropbox/Public"))
+#     names(metadata$contents) = basename(sapply(metadata$contents, `[[`,
+#         "path"))
+#     x <- ldply(metadata$contents, data.frame)
+
 
 # Todos:
 # Need to check validity of path as an input. Should be
