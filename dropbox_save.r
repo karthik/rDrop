@@ -1,4 +1,4 @@
-#Status: DOES NEEDS WORK, YET
+#Status: DOES NOT WORK YET
 #' Function to save an object from R into Dropbox
 #'
 #'@param cred Specifies an object of class ROAuth with Dropobox specific credentials.
@@ -10,7 +10,7 @@
 #'@alias
 #'@export
 #'@examples \dontrun{
-#'
+#' dropbox_save(robject, file="filename")
 #'}
 dropbox_save <- function(cred, path, file) {
     if (!is.dropbox.cred(cred)) {
@@ -23,18 +23,20 @@ dropbox_save <- function(cred, path, file) {
     xx <- cred$OAuthRequest("https://api-content.dropbox.com/1/files_put/dropbox/", 
         , "POST", upload = TRUE, readdata = input, infilesize = nchar(content) - 
             3L, verbose = TRUE)
-}
+} 
+# API documentation: GET: https://www.dropbox.com/developers/reference/api#files-GET
+# POST: https://www.dropbox.com/developers/reference/api#files-POST
 
+#---------------------------------------------------------------
 # Below does not work.
-# Perhaps use the Rook library to add header information
+# ---------------------------------------------------------------
+# Perhaps use the root library to add header information
 #   such as mime-type and also possibly upload multiple
 #   files at once?
-
 #  https://api-content.dropbox.com/1/files/<root>/<path>
-
 #
 #
 #   cred$OAuthRequest('https://api-content.dropbox.com/1/files/dropbox/',
 # , 'POST', upload = TRUE, readdata = input, infilesize =
 #   nchar(df) -
-#             3L, verbose = TRUE) 
+#             3L, verbose = TRUE)
