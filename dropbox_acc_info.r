@@ -1,7 +1,8 @@
 #'Retrieve Dropbox account summary
+#'
 #'@param cred An object of class ROAuth with Dropobox specific credentials.
 #'@keywords authentication OAuth
-#'@seealso
+#'@seealso \code{\link{dropbox_auth}}
 #'@return list containing referral_link,display_name,uid,country,quota_info, and email
 #'@alias
 #'@import RJSONIO ROAuth 
