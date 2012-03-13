@@ -2,6 +2,7 @@
 #   data (real data but badly formatted)
 
 #'Downloads a file from your Dropbox
+#'
 #'@param cred Specifies an object of class ROAuth with Dropobox specific credentials.
 #'@param  file_to_get Specifies the path to the file you want to retrieve.
 #'@keywords
@@ -29,6 +30,7 @@ dropbox_get <- function(cred, file_to_get) {
 # API documentation: https://www.dropbox.com/developers/reference/api#files-GET
 
 # Notes
+# ------------------------------------------------
 # Should be limited to text or csv files.
 # No pdfs, or images, and stuff. Right?
 

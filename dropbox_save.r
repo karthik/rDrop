@@ -1,4 +1,5 @@
 #Status: DOES NOT WORK YET
+
 #' Function to save an object from R into Dropbox
 #'
 #'@param cred Specifies an object of class ROAuth with Dropobox specific credentials.
@@ -9,6 +10,7 @@
 #'@return
 #'@alias
 #'@export
+#'@import RJSONIO ROAuth
 #'@examples \dontrun{
 #' dropbox_save(robject, file="filename")
 #'}

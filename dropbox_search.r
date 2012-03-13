@@ -11,7 +11,6 @@
 
 #'Search your Dropbox Files
 #'
-#'<full description>
 #'@param cred An object of class ROAuth with Dropobox specific credentials.
 #'@param  query The search string. Must be at least three characters long.
 #'@param  include_deleted If this parameter is set to true, then files and folders that have been deleted will also be included in the search.
@@ -21,6 +20,7 @@
 #'@seealso
 #'@return
 #'@alias dropbox_acc_info dropbox_dir
+#'@import RJSONIO ROAuth
 #'@export dropbox_search
 #'@examples \dontrun{
 #' results<-dropbox_search(cred,'search_term')
@@ -76,4 +76,5 @@ dropbox_search <- function(cred, query = NULL, path = NULL,
     if (verbose & !empty(small_results)) {
         return(search_results)
     }
-}
+} 
+# API documentation: https://www.dropbox.com/developers/reference/api#search

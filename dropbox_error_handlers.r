@@ -2,13 +2,14 @@
 #   all dropbox file ops.
 
 # startup checks that need to get done.
-# .onLoad()
+# .onLoad <- function()
 # if(packageVersion('ROAuth') < '0.9.1') {
 # stop('You will version 0.9.1 (or higher) of ROAuth for
-#   rDrop to work. \n')
+#   rDrop to work.')
 # }
 
 #'Verifies whether a user has specified a correct Oauth credential for Dropbox
+#'
 #'@param cred An object of class ROAuth with Dropobox specific credentials.
 #'@keywords
 #'@seealso
@@ -38,6 +39,7 @@ is.dropbox.cred <- function(cred, response = TRUE) {
 }
 
 #' Check to see if an object exists in Dropbox
+#'
 #'@param cred An object of class ROAuth with Dropobox specific credentials.
 #'@param path Path to object
 #'@param  type = NULL dir or file if a function needs to know. Otherwise it will ignore type and return TRUE if object exists in Dropbox folder.
@@ -84,6 +86,7 @@ exists.in.dropbox <- function(cred, path = NULL, query,
 }
 
 #'Function to check whether a path supplied exists in a users Dropbox account.
+#'
 #'@param cred An object of class ROAuth with Dropobox specific credentials.
 #'@param path <what param does>
 #'@keywords
@@ -122,6 +125,7 @@ is.dropbox.dir <- function(cred, path) {
 
 
 #'Checks if a supplied path is a file in users Dropbox account.
+#'
 #'@param cred An object of class ROAuth with Dropobox specific credentials.
 #'@param path <what param does>
 #'@keywords
@@ -155,6 +159,7 @@ is.dropbox.file <- function(cred, path) {
 }
 
 #'Return file attributes for a specified file supplied in the path argument.
+#'
 #'@param cred An object of class ROAuth with Dropobox specific credentials.
 #'@param path_to_file <what param does>
 #'@keywords
@@ -176,6 +181,7 @@ dropbox.file.info <- function(cred, path_to_file) {
 }
 
 #'Function to handle errors if a returned object is not the excepted JSON object
+#'
 #'@param dropbox_call A function call to a Dropbox method via OAuth$handshake()
 #'@keywords
 #'@seealso
@@ -193,6 +199,7 @@ is.valid.dropbox.operation <- function(dropbox_call) {
 }
 
 #'Checks whether supplied revision number is valid on Dropobx
+#'
 #'@param cred An object of class ROAuth with Dropobox specific credentials.
 #'@param path <what param does>
 #'@param revision <what param does>

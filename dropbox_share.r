@@ -1,6 +1,7 @@
 #Status: Works but needs error catching
 
 #' Creates and returns a shareable link to files or folders.
+#'
 #'@param cred An object of class ROAuth with Dropobox specific credentials.
 #'@param file Specifies the path to the file or folder you want a shareable link to.
 #'@keywords

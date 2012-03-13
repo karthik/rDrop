@@ -8,6 +8,7 @@
 #'@seealso dropbox_copy dropbox_create_folder
 #'@return
 #'@alias
+#'@import RJSONIO ROAuth
 #'@export dropbox_move
 #'@examples \dontrun{
 #'
@@ -46,4 +47,5 @@ dropbox_move <- function(cred, from_path = NULL, to_path = NULL,
         cat("Unknown error occured. Bug", " \n")
         invisible()
     }
-} 
+}  
+# API documentation: https://www.dropbox.com/developers/reference/api#fileops-move

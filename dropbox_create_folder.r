@@ -3,6 +3,7 @@
 #   in dropbox_search
 
 #'Function to create new folders in Dropbox.
+#'
 #'@param cred An object of class ROAuth with Dropobox specific credentials.
 #'@param folder_name Specifies the path to the new folder to create relative to root.
 #'@keywords
@@ -55,4 +56,5 @@ dropbox_create_folder <- function(cred, folder_name = NULL,
     location <- paste(dir_metadata$root, dir_metadata$path, sep = "")
     cat("Folder successfully created at", location, "on", dir_metadata$modified, 
         "\n")
-}
+} 
+# API documentation: https://www.dropbox.com/developers/reference/api#fileops-create-folder

@@ -10,6 +10,7 @@
 #'@seealso
 #'@return
 #'@alias
+#'@import RJSONIO ROAuth
 #'@export dropbox_restore
 #'@examples \dontrun{
 #'
@@ -24,6 +25,5 @@ dropbox_restore <- function(cred, path, rev = NULL) {
     }
     # List should contain path and revision number
     # 1. Check revision to make sure it exists.
-}
-
-# List of Issues 
+} 
+# API documentation: https://www.dropbox.com/developers/reference/api#restore
