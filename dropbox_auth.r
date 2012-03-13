@@ -27,7 +27,7 @@ dropbox_auth <- function(cKey = NULL, cSecret = NULL, verbose = FALSE) {
         cKey = getOption("DropboxKey")
         cSecret = getOption("DropboxSecret")
         if (length(cKey) == 0 | length(cSecret) == 0) {
-            stop("Could not find your Dropbox keys in the function arguments or in your options. ?rDropbox for more help")
+            stop("Could not find your Dropbox keys in the function arguments or in your options. ?rDrop for more help")
         }
     }
     reqURL <- "https://api.dropbox.com/1/oauth/request_token"
@@ -37,7 +37,7 @@ dropbox_auth <- function(cKey = NULL, cSecret = NULL, verbose = FALSE) {
         requestURL = reqURL, accessURL = accessURL, authURL = authURL)
     cat("Beginning authenticating with Dropbox... \n")
     cred$handshake(post = FALSE)
-    # Need to hide the enter PIN request for Dropbox
+    # Need to hide the enter PIN request for Dropbox but not critical.
     if (TRUE) {
         cat("\n Dropbox Authentication completed successfully.\n")
     }
