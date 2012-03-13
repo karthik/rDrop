@@ -1,6 +1,7 @@
 # Status: Works - needs error handling
 
 #' Function to copy files or folder within Dropbox.
+#'
 #'@param cred An object of class ROAuth with Dropobox specific credentials.
 #'@param from_path Specifies the file or folder to be copied from relative to root.
 #'@param to_path Specifies a destination path, including the new name for the file or folder, relative to root.
@@ -8,6 +9,7 @@
 #'@seealso dropbox_move dropbox_create_folder
 #'@return
 #'@alias
+#'@import RJSONIO
 #'@export dropbox_copy
 #'@examples \dontrun{
 #' dropbox_copy(dropbox_token, 'file.csv', 'folder2')
@@ -27,7 +29,10 @@ dropbox_copy <- function(cred, from_path = NULL, to_path = NULL,
     # OUTPUT SUCCESS MESSAGE
     invisible()
 }
+# API documentation: https://www.dropbox.com/developers/reference/api#fileops-copy
 
+# Notes
+# ------------------------------------
 # root - Required. The root relative to which from_path and
 #   to_path
 #   are specified. Valid values are sandbox and dropbox.
