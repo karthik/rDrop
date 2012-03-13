@@ -35,8 +35,6 @@ is.dropbox.cred <- function(cred, response = TRUE) {
 }
 
 #' Check to see if an object exists in Dropbox
-#'
-#'<longer description>
 #'@param cred An object of class ROAuth with Dropobox specific credentials.
 #'@param path Path to object
 #'@param  type = NULL dir or file if a function needs to know. Otherwise it will ignore type and return TRUE if object exists in Dropbox folder.
@@ -76,8 +74,6 @@ if(response) {
 }
 
 #'Function to check whether a path supplied exists in a users Dropbox account.
-#'
-#'<full description>
 #'@param cred An object of class ROAuth with Dropobox specific credentials.
 #'@param path <what param does>
 #'@keywords
@@ -113,8 +109,6 @@ return(is_d_dir)
 
 
 #'Checks if a supplied path is a file in users Dropbox account.
-#'
-#'<full description>
 #'@param cred An object of class ROAuth with Dropobox specific credentials.
 #'@param path <what param does>
 #'@keywords
@@ -147,7 +141,6 @@ return(is_d_file)
 }
 
 #'Return file attributes for a specified file supplied in the path argument.
-#'
 #'@param cred An object of class ROAuth with Dropobox specific credentials.
 #'@param path_to_file <what param does>
 #'@keywords
@@ -170,7 +163,6 @@ dfile <- dropbox_search(cred, path_to_file)
 }
 
 #'Function to handle errors if a returned object is not the excepted JSON object
-#'
 #'@param dropbox_call A function call to a Dropbox method via OAuth$handshake()
 #'@keywords
 #'@seealso
@@ -178,7 +170,7 @@ dfile <- dropbox_search(cred, path_to_file)
 #'@alias
 #'@export
 #'@examples \dontrun{
-#'
+#' example forthcoming
 #'}
 is.valid.dropbox.operation <- function(dropbox_call) {
 	# if dropbox_call succeeds
@@ -187,9 +179,7 @@ is.valid.dropbox.operation <- function(dropbox_call) {
 	# 	return a valid and useful error.
 }
 
-#' Checks whether supplied revision number is valid on Dropobx
-#'
-#'<longer description>
+#'Checks whether supplied revision number is valid on Dropobx
 #'@param cred An object of class ROAuth with Dropobox specific credentials.
 #'@param path <what param does>
 #'@param revision <what param does>
@@ -199,11 +189,11 @@ is.valid.dropbox.operation <- function(dropbox_call) {
 #'@alias
 #'@export
 #'@examples \dontrun{
-#'
+#' Not yet coded.
 #'}
-# is.valid.revision <- function(cred,path,revision)
-# {
-# }
+is.valid.revision <- function(cred, path = NULL, revision = NULL)
+{
+}
 # need to extract revision number
 # Check for leading slash first using grep. If missing, append it.
 # Checks revision number for a file in dropbox and returns a logical yes/no.
