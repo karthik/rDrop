@@ -1,10 +1,11 @@
 #Status: Works but I have not incorporated path and error handling.
-# Bug: cannot supply a subfolder for search. videos works. ifttt. works. but ifttt/videos does not. Perhaps I need to escape the / character?
+# Bug: cannot supply a subfolder for search. A search for "videos" works. also "ifttt" works. but "ifttt/videos" does not. Perhaps I need to escape the / character?
+# my workaround is to search for whatever comes after final /. So if user supplies "term" or "/path/to/term" I still search for term. Then in the results, I look for "/path/to/term" and return TRUE for match and FALSE for otherwise.
 
 #'Search your Dropbox Files
 #'
 #'<full description>
-#'@param cred Specifies an object of class ROAuth with Dropobox specific credentials.
+#'@param cred An object of class ROAuth with Dropobox specific credentials.
 #'@param  query The search string. Must be at least three characters long.
 #'@param  include_deleted If this parameter is set to true, then files and folders that have been deleted will also be included in the search.
 #'@param  path The path to the folder you want to search from.
@@ -24,7 +25,7 @@ dropbox_search <- function(cred, query = NULL, path = NULL, deleted = FALSE,
     file_limit = 1000, is_dir = NULL, verbose = FALSE) {
     # Unable to pass on full path. So I must strip the last bit, search then match the full search path. Right?
     if (!is.dropbox.cred(cred)) {
-        stop("Invalid Oauth credentials", call. = FALSE)
+        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", call. = FALSE)
     }
         #Check of path is valid
     if (is.null(query)) {
