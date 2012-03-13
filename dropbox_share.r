@@ -1,13 +1,13 @@
 #Status: Works but needs error catching
 
-#' Functions to share or possibly move a file to public folder and get the public url.
-#' Function to create a share for any file or folder and return a URL.
+#' Creates and returns a shareable link to files or folders.
 #'@param cred An object of class ROAuth with Dropobox specific credentials.
 #'@param file Specifies the path to the file or folder you want a shareable link to.
 #'@keywords
 #'@seealso
 #'@return
 #'@alias
+#'@import RJSONIO ROAuth
 #'@export dropbox_share
 #'@examples \dontrun{
 #'
@@ -37,4 +37,5 @@ dropbox_share <- function(cred, file = NULL) {
     res$url <- result[[1]]
     res$expires <- result[[2]]
     return(res)
-} 
+}  
+# API documentation: https://www.dropbox.com/developers/reference/api#shares
