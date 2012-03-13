@@ -6,7 +6,7 @@
 #'@seealso dropbox_acc_info
 #'@return Oauth object with Dropbox keys
 #'@alias
-#'@export dropbox_auth
+#'@import RJSONIO ROAuth 
 #'@export dropbox_auth
 #'@examples \dontrun{
 #' dropbox_auth() # if you have keys in .rprofile stored as
