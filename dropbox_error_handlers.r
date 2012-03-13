@@ -7,11 +7,10 @@
 # }
 
 #'Verifies whether a user has specified a correct Oauth credential for Dropbox
-#'
-#'@param cred Specifies an object of class ROAuth with Dropobox specific credentials.
+#'@param cred An object of class ROAuth with Dropobox specific credentials.
 #'@keywords
 #'@seealso
-#'@return
+#'@return logical
 #'@alias
 #'@export is.dropbox.share
 #'@examples \dontrun{
@@ -38,7 +37,7 @@ is.dropbox.cred <- function(cred, response = TRUE) {
 #' Check to see if an object exists in Dropbox
 #'
 #'<longer description>
-#'@param cred Specifies an object of class ROAuth with Dropobox specific credentials.
+#'@param cred An object of class ROAuth with Dropobox specific credentials.
 #'@param path Path to object
 #'@param  type = NULL dir or file if a function needs to know. Otherwise it will ignore type and return TRUE if object exists in Dropbox folder.
 #'@keywords
@@ -79,7 +78,7 @@ if(response) {
 #'Function to check whether a path supplied exists in a users Dropbox account.
 #'
 #'<full description>
-#'@param cred Specifies an object of class ROAuth with Dropobox specific credentials.
+#'@param cred An object of class ROAuth with Dropobox specific credentials.
 #'@param path <what param does>
 #'@keywords
 #'@seealso is.dropbox.file dropbox.file.info
@@ -116,7 +115,7 @@ return(is_d_dir)
 #'Checks if a supplied path is a file in users Dropbox account.
 #'
 #'<full description>
-#'@param cred Specifies an object of class ROAuth with Dropobox specific credentials.
+#'@param cred An object of class ROAuth with Dropobox specific credentials.
 #'@param path <what param does>
 #'@keywords
 #'@seealso is.dropbox.dir dropbox.file.info
@@ -149,7 +148,7 @@ return(is_d_file)
 
 #'Return file attributes for a specified file supplied in the path argument.
 #'
-#'@param cred Specifies an object of class ROAuth with Dropobox specific credentials.
+#'@param cred An object of class ROAuth with Dropobox specific credentials.
 #'@param path_to_file <what param does>
 #'@keywords
 #'@seealso is.dropbox.file is.dropbox.dir
@@ -191,7 +190,7 @@ is.valid.dropbox.operation <- function(dropbox_call) {
 #' Checks whether supplied revision number is valid on Dropobx
 #'
 #'<longer description>
-#'@param cred Specifies an object of class ROAuth with Dropobox specific credentials.
+#'@param cred An object of class ROAuth with Dropobox specific credentials.
 #'@param path <what param does>
 #'@param revision <what param does>
 #'@keywords
