@@ -1,9 +1,3 @@
-library(plyr)
-library(ROAuth)
-library(RJSONIO)
-
-# Status: Works but only from terminal.
-
 #'Function to authenticate into your Dropbox account and get access keys
 #'
 #'@import RCurl ROAuth RJSONIO plyr
@@ -13,6 +7,7 @@ library(RJSONIO)
 #'@seealso dropbox_acc_info
 #'@return Oauth object with Dropbox keys
 #'@alias
+#'@import plyr
 #'@export dropbox_auth
 #'@examples \dontrun{
 #' dropbox_auth() # if you have keys in .rprofile stored as
@@ -54,14 +49,3 @@ dropbox_auth <- function(cKey = NULL, cSecret = NULL, verbose = FALSE) {
     }
     return(cred)
 }
-# Bugs
-# Works fine via R terminal, RStudio but not R console.
-# Calling this fuction via terminal R works as intended. If the
-#   function is run interactively on R-GUI, then it crashes R.app or
-#   R64.app completely.
-# My workaround so far has been to run dropbox_auth() via terminal,
-#   save the OAuth object to disk, then load and use in GUI-R.
-
-# # Todos
-# 1. Add option to save (logical)
-# 2. Add option to specify name for crendential file.
