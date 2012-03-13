@@ -12,11 +12,10 @@
 #' # options(DropboxKey='YOUR_APP_KEY')
 #' # options(DropboxSecret='YOUR_SECRET_KEY')
 #' # else use:
-#' dropbox_auth('YOUR_APP_KEY','YOUR_APP_SECRET')
-#' my_dropbox_tokens <- dropbox_auth()
-#' mydropbox_tokens <-
-#'   dropbox_auth('consumey_key','consumer_secret')
-#' save(mydropbox_tokens,file='dropbox_auth.rdata')
+#' dropbox_auth('YOUR_APP_KEY', 'YOUR_APP_SECRET')
+#' dropbox_tokens <- dropbox_auth()
+#' dropbox_token <- dropbox_auth('consumey_key', 'consumer_secret')
+#' save(dropbox_token, file = 'dropbox_auth.rdata')
 #'}
 dropbox_auth <- function(cKey = NULL, cSecret = NULL, verbose = FALSE) {
     #Checking to make sure you specify keys one way or
