@@ -31,27 +31,6 @@ dropbox_copy <- function(cred, from_path = NULL, to_path = NULL,
 }
 # API documentation: https://www.dropbox.com/developers/reference/api#fileops-copy
 
-# Notes
-# ------------------------------------
-# root - Required. The root relative to which from_path and
-#   to_path
-#   are specified. Valid values are sandbox and dropbox.
-# from_path - Specifies the file or folder to be copied
-#   from
-#   relative to root.
-# to_path - Required. Specifies the destination path,
-#   including the
-#   new name for the file or folder, relative to root.
-# locale - The metadata returned will have its size field
-#   translated
-# based on the given locale. For more information see
-#   above.
-# from_copy_ref - Feature in beta. Specifies a copy_ref
-#   generated
-# from a previous /copy_ref_beta call. Must be used instead
-#   of the
-#   from_path parameter.
-
 # Error handling needed
 # 1. Check whether from_path exists
 # 2. Check whether to_path exists. 
