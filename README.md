@@ -36,10 +36,10 @@ If you prefer not to specify keys in a `.rprofile` (especially if you are on a p
 ### Authorizing your app
 From within `R`, load `rDrop` first: <br><br>
 
-<pre>
+<pre><code>
 library(rDrop)
 \# Does not work yet ...will add instructions to install using devtools once package is less buggy.
-</pre>
+</code></pre>
 
 <pre><code>
  dropbox_credentials <- dropbox_auth()
