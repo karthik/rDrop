@@ -17,12 +17,13 @@
 #' dropbox_token <- dropbox_auth('consumey_key', 'consumer_secret')
 #' save(dropbox_token, file = 'dropbox_auth.rdata')
 #'}
-dropbox_auth <- function(cKey = NULL, cSecret = NULL, verbose = FALSE) {
+dropbox_auth <- function(cKey = NULL, cSecret = NULL, 
+    verbose = FALSE) {
     #Checking to make sure you specify keys one way or
     #   another
     if (is.null(cKey) && is.null(cSecret)) {
-        cKey = getOption("DropboxKey")
-        cSecret = getOption("DropboxSecret")
+        cKey <- getOption("DropboxKey")
+        cSecret <- getOption("DropboxSecret")
         if (length(cKey) == 0 | length(cSecret) == 0) {
             stop("Could not find your Dropbox keys in the function arguments or in your options. ?rDrop for more help")
         }
@@ -30,19 +31,20 @@ dropbox_auth <- function(cKey = NULL, cSecret = NULL, verbose = FALSE) {
     reqURL <- "https://api.dropbox.com/1/oauth/request_token"
     authURL <- "https://www.dropbox.com/1/oauth/authorize"
     accessURL <- "https://api.dropbox.com/1/oauth/access_token/"
-    cred <- OAuthFactory$new(consumerKey = cKey, consumerSecret = cSecret,
+    cred <- OAuthFactory$new(consumerKey = cKey, consumerSecret = cSecret, 
         requestURL = reqURL, accessURL = accessURL, authURL = authURL)
     cat("Beginning authenticating with Dropbox... \n")
     cred$handshake(post = FALSE)
-    # Need to hide the enter PIN request for Dropbox but not critical.
+    # Need to hide the enter PIN request for Dropbox but not
+    #   critical.
     if (TRUE) {
         cat("\n Dropbox Authentication completed successfully.\n")
     }
     if (FALSE) {
         cred$OAuthRequest("https://api.dropbox.com/1/account/info")
         cred$OAuthRequest("https://api-content.dropbox.com/1/files/dropbox/foo")
-        cred$OAuthRequest("https://api-content.dropbox.com/1/files/dropbox/foo",
+        cred$OAuthRequest("https://api-content.dropbox.com/1/files/dropbox/foo", 
             httpheader = c(Range = "bytes=30-70"), verbose = TRUE)
     }
     return(cred)
-}
+} 

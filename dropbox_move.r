@@ -12,35 +12,38 @@
 #'@examples \dontrun{
 #'
 #'}
-dropbox_move <- function(cred, from_path = NULL, to_path = NULL, overwrite = FALSE) {
+dropbox_move <- function(cred, from_path = NULL, to_path = NULL, 
+    overwrite = FALSE) {
     if (!is.dropbox.cred(cred)) {
         stop("Invalid Oauth credentials", call. = FALSE)
     }
     # Note: to_path needs a leading / because root is 'dropbox'
     if (is.null(from_path) || is.null(to_path)) {
-        stop("Did not specify full path for source and/or destination",
+        stop("Did not specify full path for source and/or destination", 
             call. = F)
     }
-
-    if(is.null(path)) {
+    
+    if (is.null(path)) {
         path <- "/"
     }
-    if(!(exists.in.dropbox(cred, path = path, query = from_path))) {
-        stop("File or folder does not exist", call.= FALSE)
-    }    
-
-    if(!(exists.in.dropbox(cred, path = path, query = to_path, is_dir = TRUE))) {
-        stop("Destination does not exist or isn't a folder", call.= FALSE)
-    }    
+    if (!(exists.in.dropbox(cred, path = path, query = from_path))) {
+        stop("File or folder does not exist", call. = FALSE)
+    }
     
-    move <- fromJSON(cred$OAuthRequest("https://api.dropbox.com/1/fileops/move",
+    if (!(exists.in.dropbox(cred, path = path, query = to_path, 
+        is_dir = TRUE))) {
+        stop("Destination does not exist or isn't a folder", 
+            call. = FALSE)
+    }
+    
+    move <- fromJSON(cred$OAuthRequest("https://api.dropbox.com/1/fileops/move", 
         list(root = "dropbox", from_path = from_path, to_path = to_path)))
     if (length(move$modified) > 0) {
-        cat("Move to", move$path, "was successful on", move$modified,
+        cat("Move to", move$path, "was successful on", move$modified, 
             " \n")
     }
     if (length(move$modified) == 0) {
-        cat("Unknown error occured. Bug", " \n")   
-  invisible()
-}
-}
+        cat("Unknown error occured. Bug", " \n")
+        invisible()
+    }
+} 

@@ -15,21 +15,26 @@
 dropbox_save <- function(cred, path, file) {
     if (!is.dropbox.cred(cred)) {
         stop("Invalid Oauth credentials", call. = FALSE)
-        }
+    }
     content <- "This is simple content"
-    input = RCurl:::uploadFunctionHandler(df, TRUE)
+    input <- RCurl:::uploadFunctionHandler(df, TRUE)
     trace(input)
     # Below crashes R64.app
-    xx = cred$OAuthRequest("https://api-content.dropbox.com/1/files_put/dropbox/",
-        , "POST", upload = TRUE, readdata = input, infilesize = nchar(content) -
+    xx <- cred$OAuthRequest("https://api-content.dropbox.com/1/files_put/dropbox/", 
+        , "POST", upload = TRUE, readdata = input, infilesize = nchar(content) - 
             3L, verbose = TRUE)
 }
 
 # Below does not work.
-# Perhaps use the Rook library to add header information such as mime-type and also possibly upload multiple files at once?
+# Perhaps use the Rook library to add header information
+#   such as mime-type and also possibly upload multiple
+#   files at once?
 
 #  https://api-content.dropbox.com/1/files/<root>/<path>
 
-# cred$OAuthRequest("https://api-content.dropbox.com/1/files/dropbox/",
-#         , "POST", upload = TRUE, readdata = input, infilesize = nchar(df) -
-#             3L, verbose = TRUE)
+#
+#
+#   cred$OAuthRequest('https://api-content.dropbox.com/1/files/dropbox/',
+# , 'POST', upload = TRUE, readdata = input, infilesize =
+#   nchar(df) -
+#             3L, verbose = TRUE) 

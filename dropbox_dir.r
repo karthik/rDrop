@@ -1,4 +1,5 @@
-#Status: Works fine but have not implemented a way for users to specify a certain directory.
+#Status: Works fine but have not implemented a way for
+#   users to specify a certain directory.
 
 #'Function to list contents of a Dropbox folder. If no folder is specified, function will list contents of root folder.
 #'@param cred An object of class ROAuth with Dropobox specific credentials.
@@ -19,23 +20,26 @@
 #'}
 dropbox_dir <- function(cred, path = NULL, verbose = FALSE) {
     if (!is.dropbox.cred(cred)) {
-        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", call. = FALSE)
+        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", 
+            call. = FALSE)
     }
     url <- "https://api.dropbox.com/1/metadata/dropbox/"
-    # Assuming user did specify a path to list, then make sure it exists
-    if(!is.null(path)) {
-        if(!exists.in.dropbox(cred, path, is_dir = TRUE)) {
+    # Assuming user did specify a path to list, then make sure
+    #   it exists
+    if (!is.null(path)) {
+        if (!exists.in.dropbox(cred, path, is_dir = TRUE)) {
             stop("There is no such folder in your Dropbox", call. = FALSE)
         }
     }
-    if(!is.null(path)) {
+    if (!is.null(path)) {
         url <- paste(url, path, sep = "")
     }
     metadata <- fromJSON(cred$OAuthRequest(url))
-    names(metadata$contents) = basename(sapply(metadata$contents, `[[`,
-        "path"))
+    names(metadata$contents) <- basename(sapply(metadata$contents, 
+        `[[`, "path"))
     file_sys <- ldply(metadata$contents, data.frame)
-    # Verbose will return all file information. Otherwise only return relevant fields.
+    # Verbose will return all file information. Otherwise only
+    #   return relevant fields.
     if (!verbose) {
         return(file_sys$.id)
     } else {
@@ -43,13 +47,16 @@ dropbox_dir <- function(cred, path = NULL, verbose = FALSE) {
     }
 }
 # # tests
-#   metadata <- fromJSON(cred$OAuthRequest("https://api.dropbox.com/1/metadata/dropbox/Public"))
-#     names(metadata$contents) = basename(sapply(metadata$contents, `[[`,
-#         "path"))
+# metadata <-
+#
+#   fromJSON(cred$OAuthRequest('https://api.dropbox.com/1/metadata/dropbox/Public'))
+# names(metadata$contents) =
+#   basename(sapply(metadata$contents, `[[`,
+#         'path'))
 #     x <- ldply(metadata$contents, data.frame)
 
 
 # Todos:
 # Need to check validity of path as an input. Should be
 #   is.dropbox.dir(path)
-# Need to allow for a recursive directory listing.
+# Need to allow for a recursive directory listing. 

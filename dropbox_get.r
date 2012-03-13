@@ -1,4 +1,5 @@
-# Status: Not currently working. Works but gives me junk data (real data but badly formatted)
+# Status: Not currently working. Works but gives me junk
+#   data (real data but badly formatted)
 
 #' Downloads a file from your Dropbox
 #'
@@ -19,10 +20,10 @@ dropbox_get <- function(cred, file_to_get) {
     if (length(file_to_get) == 0) {
         stop("No file requested \n")
     }
-        if(!(exists.in.dropbox(cred, from_path))) {
-        stop("File does not exist.", call.= FALSE)
-    }    
-    downloaded_file <- cred$OAuthRequest("https://api-content.dropbox.com/1/files/",
+    if (!(exists.in.dropbox(cred, from_path))) {
+        stop("File does not exist.", call. = FALSE)
+    }
+    downloaded_file <- cred$OAuthRequest("https://api-content.dropbox.com/1/files/", 
         list(root = "dropbox", path = file_to_get))
 }
 
@@ -34,7 +35,9 @@ dropbox_get <- function(cred, file_to_get) {
 # file_to_get = path
 # path='dryadmetadata2.csv'
 
-# Errors: 
+# Errors:
 # Warning message:
-# In grepl("\\\\u[0-9]", str) : input string 1 is invalid in this locale
-# Calls: <Anonymous> ... getForm -> getURLContent -> <Anonymous> -> encode -> grepl
+# In grepl('\\\\u[0-9]', str) : input string 1 is
+#   invalid in this locale
+# Calls: <Anonymous> ... getForm -> getURLContent ->
+#   <Anonymous> -> encode -> grepl 
