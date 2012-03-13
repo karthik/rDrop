@@ -16,4 +16,5 @@ dropbox_acc_info <- function(cred) {
     }
     status <- fromJSON(cred$OAuthRequest("https://api.dropbox.com/1/account/info"))
     return(status)
-} 
+}
+# API documentation: https://www.dropbox.com/developers/reference/api#account-info
