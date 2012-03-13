@@ -56,4 +56,3 @@ dropbox_create_folder <- function(cred, folder_name = NULL,
     cat("Folder successfully created at", location, "on", dir_metadata$modified, 
         "\n")
 }
- 
