@@ -18,7 +18,7 @@
 1. Check destinations for copy/move
 2. Check file name formatting for copy/move for from and to.
 3. <strike> Sort out issue with verifiying `dropbox_cred()`</strike>
-4. **Big Bug:** `dropbox_auth()` fails on R-GUI
+4. **Big Bug:** `dropbox_auth()` fails on R-GUI <br>
 4a. `dropbox_auth()` should not ask for a PIN.
 
 # Other rdrop issues
