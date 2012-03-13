@@ -1,8 +1,7 @@
 # Status: Works - needs error handling
 
 #' Function to copy files or folder within Dropbox.
-#'
-#'@param cred Specifies an object of class ROAuth with Dropobox specific credentials.
+#'@param cred An object of class ROAuth with Dropobox specific credentials.
 #'@param from_path Specifies the file or folder to be copied from relative to root.
 #'@param to_path Specifies a destination path, including the new name for the file or folder, relative to root.
 #'@keywords
@@ -11,11 +10,11 @@
 #'@alias
 #'@export dropbox_copy
 #'@examples \dontrun{
-#'
+#' dropbox_copy(dropbox_token, 'file.csv', 'folder2')
 #'}
 dropbox_copy <- function(cred, from_path = NULL, to_path = NULL, overwrite = FALSE) {
     if (!is.dropbox.cred(cred)) {
-        stop("Invalid Oauth credentials", call. = FALSE)
+        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", call. = FALSE)
     }
     if (is.null(from_path) || is.null(to_path)) {
         stop("Missing path for source and/or destination",
