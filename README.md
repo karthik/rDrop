@@ -41,24 +41,24 @@ library(rDrop)
 \# Does not work yet ...will add instructions to install using devtools once package is less buggy.
 </pre>
 
-<pre>
+<pre><code>
  dropbox_credentials <- dropbox_auth()
- </pre>
+ <code></pre>
  
  <br>
  If your keys are stored in your `.rprofile`, then there is no need to provide it to the function. If you don't have that setup, then use: <br>
 
-<pre>
+<pre><code>
  dropbox_credentials <- dropbox_auth("my_consumer_key","my_consumer_secret")
-</pre>
+</code></pre>
 
  If you entered valid keys, you will be directed to a secure page on Dropbox asking you to authorize this app. Click authorize to add this to your approved app list and to return to R.
 
  There is no need to run `dropbox_auth()` for each subsequent run. Simply save your credentials file to disk and load as needed:
 
-<pre>
+<pre><code>
  save(dropbox_credentials, file="/path/to/my_dropbox_credentials.rdata")
-</pre>
+</code></pre>
 
 Credentials will remain valid until you revoke them from your [Dropbox Apps page](https://www2.dropbox.com/developers/apps) by clicking the x next to your App's name.
 
@@ -71,20 +71,20 @@ This package essentially provides standard Dropbox file operation functions (cre
 
 To load a previously validated Dropbox credential file: <br>
 
-<pre>
+<pre><code>
 load('/path/to/my_dropbox_credentials.rdata')
 </pre>
 
 **Summary of your Dropbox Account**
 
-<pre>
+<pre><code>
 dropbox_acc_info(my_dropbox_cred) 
 # will return a list with your display name, email, quota, referral URL and country.
 </pre>
 
 **Directory listing**
 
-<pre>
+<pre><code>
 # will list contents of your Dropbox root. 
 dropbox_dir(cred)
 # for a complete listing with detailed information:
@@ -92,38 +92,38 @@ dropbox_dir(cred, verbose = TRUE)
 
 # To see contents of a specific path, use:
 dropbox_dir(cred, path = 'folder_name')
-</pre>
+</code></pre>
 
 
 **Download files from your Dropbox account to R**
 
-<pre>
+<pre><code>
 # Example
-</pre>	
+</code></pre>	
 
 **Upload R objects to your Dropbox**
 
-<pre>
+<pre><code>
 # Example
-</pre>
+</code></pre>
 
 **Moving files within Dropobx**
 
-<pre>
+<pre><code>
 # Example
-</pre>
+</code></pre>
 
 **Copying files within Dropbox**
 
-<pre>
+<pre><code>
 # Example
-</pre>
+</code></pre>
 
 **Creating a public share for any Dropbox file or folder**
 
-<pre>
+<pre><code>
 # Example
-</pre>
+</code></pre>
 
 
 **For more information on usage and tips, see:** <br>
