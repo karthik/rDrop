@@ -12,7 +12,7 @@
 1. `dropbox_acc_info()`
 2. `dropbox_dir()`
 3. `dropbox_error_handlers()` - A collection of helper functions.
-4.   `dropbox_create_folder()`                        
+4. `dropbox_create_folder()`                        
 
 # Error handling todos.
 1. Check destinations for copy/move
