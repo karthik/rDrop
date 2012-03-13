@@ -98,31 +98,31 @@ dropbox_dir(cred, path = 'folder_name')
 **Download files from your Dropbox account to R**
 
 <pre>
-
+# Example
 </pre>	
 
 **Upload R objects to your Dropbox**
 
 <pre>
-
+# Example
 </pre>
 
 **Moving files within Dropobx**
 
 <pre>
-
+# Example
 </pre>
 
 **Copying files within Dropbox**
 
 <pre>
-
+# Example
 </pre>
 
 **Creating a public share for any Dropbox file or folder**
 
 <pre>
-
+# Example
 </pre>
 
 
