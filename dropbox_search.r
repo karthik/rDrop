@@ -1,6 +1,13 @@
-#Status: Works but I have not incorporated path and error handling.
-# Bug: cannot supply a subfolder for search. A search for "videos" works. also "ifttt" works. but "ifttt/videos" does not. Perhaps I need to escape the / character?
-# my workaround is to search for whatever comes after final /. So if user supplies "term" or "/path/to/term" I still search for term. Then in the results, I look for "/path/to/term" and return TRUE for match and FALSE for otherwise.
+#Status: Works but I have not incorporated path and error
+#   handling.
+# Bug: cannot supply a subfolder for search. A search for
+#   'videos' works. also 'ifttt' works. but 'ifttt/videos'
+#   does not. Perhaps I need to escape the / character?
+# my workaround is to search for whatever comes after final
+#   /. So if user supplies 'term' or '/path/to/term' I
+#   still search for term. Then in the results, I look for
+#   '/path/to/term' and return TRUE for match and FALSE for
+#   otherwise.
 
 #'Search your Dropbox Files
 #'
@@ -21,38 +28,47 @@
 #' results<-dropbox_search(cred,'search_term',verbose=T)
 #' Verbose results include a data.frame with columns: revision,rev,thumb_exists,bytes,modified,path,is_dir,icon,root,mime_type,size
 #'}
-dropbox_search <- function(cred, query = NULL, path = NULL, deleted = FALSE,
-    file_limit = 1000, is_dir = NULL, verbose = FALSE) {
-    # Unable to pass on full path. So I must strip the last bit, search then match the full search path. Right?
+dropbox_search <- function(cred, query = NULL, path = NULL, 
+    deleted = FALSE, file_limit = 1000, is_dir = NULL, verbose = FALSE) {
+    # Unable to pass on full path. So I must strip the last
+    #   bit, search then match the full search path. Right?
     if (!is.dropbox.cred(cred)) {
-        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", call. = FALSE)
+        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", 
+            call. = FALSE)
     }
-        #Check of path is valid
+    #Check of path is valid
     if (is.null(query)) {
         stop("you did not specifiy any search query")
     }
-
-    results = fromJSON(cred$OAuthRequest("https://api.dropbox.com/1/search/dropbox/",
-        list(query = query, include_deleted = deleted)))
-   search_results <- formatted_results <- ldply(results, data.frame)
-
-     if(!is.null(path)) {
-        full_path <- paste(path, query, sep="")
-        search_results <- search_results[which(search_results$path==full_path),]
-    }
-
     
-    if(!is.null(is_dir)) {
-    if(is_dir) { search_results <- search_results[search_results$is_dir,]}
-    if(!is_dir) { search_results <- search_results[!search_results$is_dir,]}
+    results <- fromJSON(cred$OAuthRequest("https://api.dropbox.com/1/search/dropbox/", 
+        list(query = query, include_deleted = deleted)))
+    search_results <- formatted_results <- ldply(results, data.frame)
+    
+    if (!is.null(path)) {
+        full_path <- paste(path, query, sep = "")
+        search_results <- search_results[which(search_results$path == 
+            full_path), ]
     }
-
-  
+    
+    
+    if (!is.null(is_dir)) {
+        if (is_dir) {
+            search_results <- search_results[search_results$is_dir, 
+                ]
+        }
+        if (!is_dir) {
+            search_results <- search_results[!search_results$is_dir, 
+                ]
+        }
+    }
+    
+    
     small_results <- data.frame(path = search_results$path, is_dir = search_results$is_dir)
-
+    
     if (empty(search_results)) {
-       search_results <- NULL
-       return (search_results)
+        search_results <- NULL
+        return(search_results)
     }
     if (!verbose & !empty(small_results)) {
         return(small_results)
@@ -61,5 +77,3 @@ dropbox_search <- function(cred, query = NULL, path = NULL, deleted = FALSE,
         return(search_results)
     }
 }
-
-# Search doesn't work on full paths. Just the final name.
