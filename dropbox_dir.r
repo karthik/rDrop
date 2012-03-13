@@ -1,8 +1,7 @@
-#Status: Works fine but have not implemented a way for users to
-#   specify a certain directory.
+#Status: Works fine but have not implemented a way for users to specify a certain directory.
 
 #'Function to list contents of a Dropbox folder. If no folder is specified, function will list contents of root folder.
-#'@param cred Specifies an object of class ROAuth with Dropobox specific credentials.
+#'@param cred An object of class ROAuth with Dropobox specific credentials.
 #'@param path  The directory to list. Not yet implemented
 #'@param verbose logical. FALSE returns a list with file names in root folder. TRUE returns a data.frame with the following fields: .id,revision, rev, thumb_exists, bytes,modified, path, is_dir, icon,root,size,mime_type.
 #'@param recursive logical. Setting this to true will list all your dropbox files. Not yet implemented.
@@ -20,7 +19,7 @@
 #'}
 dropbox_dir <- function(cred, path = NULL, verbose = FALSE) {
     if (!is.dropbox.cred(cred)) {
-        stop("Invalid Oauth credentials", call. = FALSE)
+        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", call. = FALSE)
     }
     url <- "https://api.dropbox.com/1/metadata/dropbox/"
     # Assuming user did specify a path to list, then make sure it exists
