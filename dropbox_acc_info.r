@@ -4,6 +4,7 @@
 #'@seealso
 #'@return list containing referral_link,display_name,uid,country,quota_info, and email
 #'@alias
+#'@import RJSONIO ROAuth 
 #'@export dropbox_acc_info
 #'@examples \dontrun{
 #' dropbox_acc_info(cred)
