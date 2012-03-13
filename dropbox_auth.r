@@ -1,4 +1,5 @@
 #'Function to authenticate into your Dropbox account and get access keys
+#'
 #'@import RCurl ROAuth RJSONIO plyr
 #'@param cKey A valid Dropbox application key
 #'@param cSecret A valid Dropbox application secret
@@ -49,3 +50,4 @@ dropbox_auth <- function(cKey = NULL, cSecret = NULL,
     }
     return(cred)
 } 
+# API documentation: https://www.dropbox.com/developers/reference/api#request-token
