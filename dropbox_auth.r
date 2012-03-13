@@ -7,6 +7,7 @@
 #'@return Oauth object with Dropbox keys
 #'@alias
 #'@export dropbox_auth
+#'@export dropbox_auth
 #'@examples \dontrun{
 #' dropbox_auth() # if you have keys in .rprofile stored as
 #' # options(DropboxKey='YOUR_APP_KEY')
