@@ -64,23 +64,23 @@ load('/path/to/my_dropbox_credentials.rdata')
 
 ### Summary of your Dropbox Account
 <pre><code>
-dropbox_acc_info(my_dropbox_cred) 
+dropbox_acc_info(dropbox_credentials) 
 \# will return a list with your display name, email, quota, referral URL, and country.
 </code></pre>
 
 ### Directory listing
 <pre><code>
-dropbox_dir(cred)
+dropbox_dir(dropbox_credentials)
 \# To list files and folders in your Dropbox root. 
 
-dropbox_dir(cred, verbose = TRUE)
+dropbox_dir(dropbox_credentials, verbose = TRUE)
 \# for a complete listing (filename, revision, thumb, bytes, modified, path, and is_dir) with detailed information.
 
 
-dropbox_dir(cred, path = 'folder_name')
+dropbox_dir(dropbox_credentials, path = 'folder_name')
 \# To see contents of a specific path.
 
-dropbox_dir(cred, path = 'folder_name', verbose = TRUE)
+dropbox_dir(dropbox_credentials, path = 'folder_name', verbose = TRUE)
 \# For verbose content listing of a specific path.
 </code></pre>
 
@@ -97,17 +97,21 @@ dropbox_dir(cred, path = 'folder_name', verbose = TRUE)
 
 ### Moving files within Dropobx
 <pre><code>
-\# Example
+dropbox_move(dropbox_credentials, from_path, to_path)	
+\# from_to can be a folder or file. to_path has to be a folder.
+\# To overwrite existing file/folder in destination, add overwrite = TRUE.
 </code></pre>
 
 ### Copying files within Dropbox
 <pre><code>
-\# Example
+dropbox_copy(dropbox_credentials, from_path, to_path)
+\# To overwrite existing file/folder in destination, add overwrite = TRUE.
 </code></pre>
 
 ### Creating a public share for any Dropbox file or folder
 <pre><code>
-\# Example
+dropbox_share(dropbox_credentials, file)
+\# File/folder to share. Returns share URL with expiration information.
 </code></pre>
 
 
