@@ -1,5 +1,4 @@
 #'Function to authenticate into your Dropbox account and get access keys
-#'
 #'@import RCurl ROAuth RJSONIO plyr
 #'@param cKey A valid Dropbox application key
 #'@param cSecret A valid Dropbox application secret
@@ -7,7 +6,6 @@
 #'@seealso dropbox_acc_info
 #'@return Oauth object with Dropbox keys
 #'@alias
-#'@import plyr
 #'@export dropbox_auth
 #'@examples \dontrun{
 #' dropbox_auth() # if you have keys in .rprofile stored as
