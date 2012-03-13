@@ -2,7 +2,7 @@
 
 #' Functions to share or possibly move a file to public folder and get the public url.
 #' Function to create a share for any file or folder and return a URL.
-#'@param cred Specifies an object of class ROAuth with Dropobox specific credentials.
+#'@param cred An object of class ROAuth with Dropobox specific credentials.
 #'@param file Specifies the path to the file or folder you want a shareable link to.
 #'@keywords
 #'@seealso
@@ -12,9 +12,12 @@
 #'@examples \dontrun{
 #'
 #'}
-dropbox_share <- function(cred, file) {
+dropbox_share <- function(cred, file = NULL) {
     if (!is.dropbox.cred(cred)) {
-    stop("Invalid Oauth credentials", call. = FALSE)
+    stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", call. = FALSE)
+    }
+    if(is.null(file)) {
+        stop("No file of folder to share", call.= FALSE)
     }
     if(!(exists.in.dropbox(cred, file))) {
         stop("Folder already exists", call.= FALSE)
