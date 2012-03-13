@@ -18,7 +18,7 @@ dropbox_copy <- function(cred, from_path = NULL, to_path = NULL, overwrite = FAL
         stop("Invalid Oauth credentials", call. = FALSE)
     }
     if (is.null(from_path) || is.null(to_path)) {
-        stop("Did not specify full path for source and/or destination",
+        stop("Missing path for source and/or destination",
             call. = F)
     }
     # Check to see if file extenion and name matches up
