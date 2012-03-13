@@ -1,5 +1,3 @@
-#Status: Almost fully works...need error catching
-
 #'Retrieve Dropbox account summary
 #'
 #'@param cred Specifies an object of class ROAuth with Dropobox specific credentials.
