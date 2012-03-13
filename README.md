@@ -71,9 +71,9 @@ This package essentially provides standard Dropbox file operation functions (cre
 
 To load a previously validated Dropbox credential file: <br>
 
-<pre><code>
+<code><pre>
 load('/path/to/my_dropbox_credentials.rdata')
-</pre>
+</pre></code>
 
 **Summary of your Dropbox Account**
 
