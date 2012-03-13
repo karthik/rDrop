@@ -68,7 +68,7 @@ vignette('rdrop') # from the R prompt.
 \# not setup yet.
 </code></pre>
 
-To load a previously validated Dropbox credential file: 
+To load a previously validated Dropbox credential file:
 <pre><code>
 load('/path/to/my_dropbox_credentials.rdata')
 </code></pre>
@@ -76,7 +76,7 @@ load('/path/to/my_dropbox_credentials.rdata')
 ### Summary of your Dropbox Account
 <pre><code>
 dropbox_acc_info(my_dropbox_cred) 
-\# will return a list with your display name, email, quota, referral URL and country.
+\# will return a list with your display name, email, quota, referral URL, and country.
 </code></pre>
 
 ### Directory listing
