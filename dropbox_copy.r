@@ -23,7 +23,14 @@ dropbox_copy <- function(cred, from_path = NULL, to_path = NULL,
     if (is.null(from_path) || is.null(to_path)) {
         stop("Missing path for source and/or destination", call. = F)
     }
-    # Check to see if file extenion and name matches up
+    if(!exists.in.dropbox(cred, from_path)) {
+        stop("Source file or folder does not exist", call. = FALSE)
+    }
+
+    if(!exists.in.dropbox(cred, to_path, is_dir = TRUE)) {
+        stop("Destination is not a valid folder", call. = FALSE)
+    }
+    # Below does not work
     copy <- fromJSON(cred$OAuthRequest("https://api.dropbox.com/1/fileops/copy", 
         list(root = "dropbox", from_path = from_path, to_path = to_path)))
     # OUTPUT SUCCESS MESSAGE
@@ -34,3 +41,7 @@ dropbox_copy <- function(cred, from_path = NULL, to_path = NULL,
 # Error handling needed
 # 1. Check whether from_path exists
 # 2. Check whether to_path exists. 
+
+# Tests
+# copy <- fromJSON(cred$OAuthRequest("https://api.dropbox.com/1/fileops/copy", 
+#         list(root = "dropbox", from_path = "/dryadmetadata2.csv", to_path = "/test_works")))
