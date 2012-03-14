@@ -1,14 +1,3 @@
-#Status: Works but I have not incorporated path and error
-#   handling.
-# Bug: cannot supply a subfolder for search. A search for
-#   'videos' works. also 'ifttt' works. but 'ifttt/videos'
-#   does not. Perhaps I need to escape the / character?
-# my workaround is to search for whatever comes after final
-#   /. So if user supplies 'term' or '/path/to/term' I
-#   still search for term. Then in the results, I look for
-#   '/path/to/term' and return TRUE for match and FALSE for
-#   otherwise.
-
 #'Search your Dropbox Files
 #'
 #'@param cred An object of class ROAuth with Dropobox specific credentials.
