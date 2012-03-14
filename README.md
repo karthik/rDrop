@@ -111,6 +111,7 @@ dropbox_copy(dropbox_credentials, from_path, to_path)
 <pre><code>
 dropbox_share(dropbox_credentials, file)
 # File/folder to share. Returns share URL with expiration information.
+# Link goes directly to files. Folder are automatically zipped up.
 </code></pre>
 
 
