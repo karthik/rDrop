@@ -61,8 +61,8 @@ exists.in.dropbox <- function(cred, path = NULL,
     response <- TRUE
     
     if(is.null(path)) {
-        return(responseis.dropbox.dir(cred))
-        } else {
+        stop("You did not specify an object to verify", call.= FALSE)
+        } 
     # First search Dropbox to see if the object exists
     full_path <- path
     # If leading slash is missing, add it.
@@ -74,7 +74,7 @@ exists.in.dropbox <- function(cred, path = NULL,
     full_path <- str_sub(full_path, end = str_length(full_path) - 1)
     }
     query <- basename(path)
-    }
+    
 
 
     res <- dropbox_search(cred, query)
