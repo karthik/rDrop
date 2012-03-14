@@ -52,6 +52,11 @@ is.dropbox.cred <- function(cred, response = TRUE) {
 #'}
 exists.in.dropbox <- function(cred, path = NULL, 
     is_dir = NULL) {
+
+        if (!is.dropbox.cred(cred)) {
+        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", 
+            call. = FALSE)
+    }
     # default response so function can proceed.
     response <- TRUE
     
@@ -73,9 +78,13 @@ exists.in.dropbox <- function(cred, path = NULL,
 
 
     res <- dropbox_search(cred, query)
+
     if (is.null(res)) {
          response <- FALSE
         }
+     if(empty(res)) {
+        response <- FALSE
+     }   
 
     # OK, object exists, but let's see if there was more than
     #   one result
