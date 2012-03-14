@@ -24,19 +24,16 @@ dropbox_move <- function(cred, from_path = NULL, to_path = NULL,
             call. = F)
     }
     
-    if (is.null(path)) {
-        path <- "/"
-    }
-    if (!(exists.in.dropbox(cred, path = path, query = from_path))) {
+    if (!(exists.in.dropbox(cred, path = from_path))) {
         stop("File or folder does not exist", call. = FALSE)
     }
     
-    if (!(exists.in.dropbox(cred, path = path, query = to_path, 
+    if (!(exists.in.dropbox(cred, path = to_path, 
         is_dir = TRUE))) {
         stop("Destination does not exist or isn't a folder", 
             call. = FALSE)
     }
-    
+    # Worked once but no longer workes.
     move <- fromJSON(cred$OAuthRequest("https://api.dropbox.com/1/fileops/move", 
         list(root = "dropbox", from_path = from_path, to_path = to_path)))
     if (length(move$modified) > 0) {
