@@ -46,4 +46,5 @@ dropbox_copy <- function(cred, from_path = NULL, to_path = NULL) {
     }
 }
 # API documentation: #
-#   https://www.dropbox.com/developers/reference/api#fileops-copy 
+#
+#   https://www.dropbox.com/developers/reference/api#fileops-copy
