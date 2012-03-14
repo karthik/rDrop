@@ -6,10 +6,7 @@
 #'Similar to /shares. The difference is that this bypasses the Dropbox webserver, used to provide a preview of the file, so that you can effectively stream the contents of your media.
 #'@param cred <what param does>
 #'@param path = NULL <what param does>
-#'@keywords
-#'@seealso
-#'@return
-#'@alias
+#'@return file
 #'@import RJSONIO ROAuth
 #'@export dropbox_media
 #'@examples \dontrun{

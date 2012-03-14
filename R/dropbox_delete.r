@@ -4,10 +4,7 @@
 #'@param cred An object of class ROAuth with Dropobox specific credentials.
 #'@param file_to_delete Specifies the path to the file or folder to be deleted.
 #'@param ask logical set to TRUE. If set to false, function will not confirm delete operation
-#'@keywords
-#'@seealso
 #'@return Nothing. A message upon successful deletion.
-#'@alias
 #'@export dropbox_delete
 #'@examples \dontrun{
 #' dropbox_delete(dropbox_credential, 'path/to/file')

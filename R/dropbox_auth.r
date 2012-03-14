@@ -3,10 +3,9 @@
 #'@import RCurl ROAuth RJSONIO plyr
 #'@param cKey A valid Dropbox application key
 #'@param cSecret A valid Dropbox application secret
-#'@keywords
+#'@keywords authentication
 #'@seealso dropbox_acc_info
 #'@return Oauth object with Dropbox keys
-#'@alias
 #'@import RJSONIO ROAuth
 #'@export dropbox_auth
 #'@examples \dontrun{

@@ -1,12 +1,11 @@
-#'Search your Dropbox Files
+#'Search your Dropbox files and folders.
 #'
 #'@param cred An object of class ROAuth with Dropobox specific credentials.
 #'@param  query The search string. Must be at least three characters long.
 #'@param  include_deleted If this parameter is set to true, then files and folders that have been deleted will also be included in the search.
 #'@param  file_limit The maximum and default value is 1,000. No more than file_limit search results will be returned.
-#'@keywords
-#'@seealso
-#'@return
+#'@param  Verbose logical. Default is FALSE. Set to TRUE to get a full file listing.
+#'@return data.frame with results. No results will return empty data.frame
 #'@alias dropbox_acc_info dropbox_dir
 #'@import RJSONIO ROAuth
 #'@export dropbox_search

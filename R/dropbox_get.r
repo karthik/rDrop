@@ -4,10 +4,7 @@
 #'
 #'@param cred Specifies an object of class ROAuth with Dropobox specific credentials.
 #'@param  file_to_get Specifies the path to the file you want to retrieve.
-#'@keywords
-#'@seealso
 #'@return file
-#'@alias
 #'@import RJSONIO ROAuth
 #'@export dropbox_get
 #'@examples \dontrun{

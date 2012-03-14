@@ -1,18 +1,10 @@
-# Status: Still setting up
-# functions to share or possibly move a file to public
-#   folder and
-#   get the public url.
-#'
+#' functions to restore a file to an older version
 #'@param cred Specifies an object of class ROAuth with Dropobox specific credentials.
 #'@param file  The path to the file.
-#'@keywords
-#'@seealso
-#'@return
-#'@alias
 #'@import RJSONIO ROAuth
-#'@export dropbox_restore
+#'@export 
 #'@examples \dontrun{
-#'
+#' dropbox_restore(cred, '/test/file.csv', rev = '213566')
 #'}
 dropbox_restore <- function(cred, path, rev = NULL) {
     if (!is.dropbox.cred(cred)) {
@@ -27,3 +19,4 @@ dropbox_restore <- function(cred, path, rev = NULL) {
 }
 # API documentation:
 #   https://www.dropbox.com/developers/reference/api#restore 
+# Status: Still setting up

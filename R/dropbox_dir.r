@@ -6,10 +6,7 @@
 #'@param path  The directory to list. Not yet implemented
 #'@param verbose logical. FALSE returns a list with file names in root folder. TRUE returns a data.frame with the following fields: .id,revision, rev, thumb_exists, bytes,modified, path, is_dir, icon,root,size,mime_type.
 #'@param recursive logical. Setting this to true will list all your dropbox files. Not yet implemented.
-#'@keywords
-#'@seealso
-#'@return
-#'@alias
+#'@return message
 #'@export dropbox_dir
 #'@import stringr
 #'@examples \dontrun{

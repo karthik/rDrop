@@ -3,10 +3,9 @@
 #'@param cred An object of class ROAuth with Dropobox specific credentials.
 #'@param from_path Specifies the file or folder to be copied from relative to root.
 #'@param to_path Specifies a destination path, including the new name for the file or folder, relative to root.
-#'@keywords
+#'@keywords file_copy
 #'@seealso dropbox_move dropbox_create_folder
-#'@return
-#'@alias
+#'@return Message with success or error.
 #'@import RJSONIO
 #'@export dropbox_copy
 #'@examples \dontrun{

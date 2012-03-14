@@ -3,11 +3,8 @@
 #'Verifies whether a user has specified a correct Oauth credential for Dropbox
 #'
 #'@param cred An object of class ROAuth with Dropobox specific credentials.
-#'@keywords
-#'@seealso
 #'@return logical
-#'@alias
-#'@export is.dropbox.share
+#'@export 
 #'@examples \dontrun{
 #' is.dropbox.cred(your_dropbox_credential_object)
 #'}
@@ -37,10 +34,7 @@ is.dropbox.cred <- function(cred, response = TRUE) {
 #'@param cred An object of class ROAuth with Dropobox specific credentials.
 #'@param path Path to object
 #'@param  type = NULL dir or file if a function needs to know. Otherwise it will ignore type and return TRUE if object exists in Dropbox folder.
-#'@keywords
-#'@seealso
-#'@return
-#'@alias
+#'@return logical
 #'@export
 #'@examples \dontrun{
 #' exists.in.dropbox(cred,'test_folder')
@@ -99,12 +93,10 @@ exists.in.dropbox <- function(cred, path = NULL, is_dir = NULL) {
 #'Checks if a supplied path is a file in users Dropbox account.
 #'
 #'@param cred An object of class ROAuth with Dropobox specific credentials.
-#'@param path <what param does>
-#'@keywords
+#'@param path path to file or folder that needs verification.
 #'@seealso is.dropbox.dir dropbox.file.info
 #'@return logical
-#'@alias
-#'@export is.dropbox.file
+#'@export 
 #'@examples \dontrun{
 #'
 #'}
@@ -133,10 +125,8 @@ is.dropbox.file <- function(cred, path) {
 #'
 #'@param cred An object of class ROAuth with Dropobox specific credentials.
 #'@param path_to_file <what param does>
-#'@keywords
 #'@seealso is.dropbox.file is.dropbox.dir
 #'@return list
-#'@alias
 #'@export dropbox.file.info
 #'@examples \dontrun{
 #'
@@ -153,10 +143,7 @@ dropbox.file.info <- function(cred, path_to_file) {
 #'Function to handle errors if a returned object is not the excepted JSON object
 #'
 #'@param dropbox_call A function call to a Dropbox method via OAuth$handshake()
-#'@keywords
-#'@seealso
-#'@return
-#'@alias
+#'@return logical
 #'@export
 #'@examples \dontrun{
 #' example forthcoming
@@ -170,12 +157,9 @@ is.valid.dropbox.operation <- function(dropbox_call) {
 #'Checks whether supplied revision number is valid on Dropobx
 #'
 #'@param cred An object of class ROAuth with Dropobox specific credentials.
-#'@param path <what param does>
-#'@param revision <what param does>
-#'@keywords
-#'@seealso
-#'@return
-#'@alias
+#'@param path path to file or folder. Full path if file/folder is not in Dropbox root.
+#'@param revision revision number
+#'@return logical
 #'@export
 #'@examples \dontrun{
 #' Not yet coded.
