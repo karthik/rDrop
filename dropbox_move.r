@@ -13,8 +13,7 @@
 #'@examples \dontrun{
 #'
 #'}
-dropbox_move <- function(cred, from_path = NULL, to_path = NULL, 
-    overwrite = FALSE) {
+dropbox_move <- function(cred, from_path = NULL, to_path = NULL) {
     if (!is.dropbox.cred(cred)) {
         stop("Invalid Oauth credentials", call. = FALSE)
     }
@@ -33,16 +32,21 @@ dropbox_move <- function(cred, from_path = NULL, to_path = NULL,
         stop("Destination does not exist or isn't a folder", 
             call. = FALSE)
     }
+
+    if (!grepl("/$", to_path)) {
+      to_path <- paste(to_path, "/", sep="")  
+    }
+    to_path <- paste(to_path, from_path, sep="")
     # Worked once but no longer workes.
     move <- fromJSON(cred$OAuthRequest("https://api.dropbox.com/1/fileops/move", 
-        list(root = "dropbox", from_path = from_path, to_path = to_path)))
-    if (length(move$modified) > 0) {
-        cat("Move to", move$path, "was successful on", move$modified, 
-            " \n")
+        list(root = "dropbox", from_path = from_path, to_path = to_path), "POST"))
+
+if(is.character(move)) {
+    stop(move[[1]], call.= FALSE)
     }
-    if (length(move$modified) == 0) {
-        cat("Unknown error occured. Bug", " \n")
-        invisible()
-    }
+ if(is.list(move)) {
+    cat("File succcessfully moved to", move$path, "on", move$modified)
+ }   
+
 }  
 # API documentation: https://www.dropbox.com/developers/reference/api#fileops-move
