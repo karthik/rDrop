@@ -52,11 +52,3 @@ dropbox_copy <- function(cred, from_path = NULL, to_path = NULL) {
  }   
 }
 # API documentation: https://www.dropbox.com/developers/reference/api#fileops-copy
-
-# Error handling needed
-# 1. Check whether from_path exists
-# 2. Check whether to_path exists. 
-
-# Tests
-# copy <- fromJSON(cred$OAuthRequest("https://api.dropbox.com/1/fileops/copy", 
-#         list(root = "dropbox", from_path = "/dryadmetadata2.csv", to_path = "/test_works")))
