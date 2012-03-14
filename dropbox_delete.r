@@ -1,4 +1,4 @@
-#'Status:  Works, but needs error handling
+#'Status:  Works, But I need to add in search paths.
 
 #'Function to delete a file or folder from Dropbox
 #'
