@@ -27,8 +27,8 @@ is.dropbox.cred <- function(cred, response = TRUE) {
         response <- ifelse(class(cred) != "OAuth", FALSE, TRUE)
     }
     if (response) {
-        response <- ifelse(grep("dropbox", cred$requestURL) != 
-            1, FALSE, TRUE)
+        response <- ifelse(grep("dropbox", cred$requestURL) != 1, 
+            FALSE, TRUE)
     }
     return(response)
 }
@@ -186,4 +186,4 @@ is.valid.revision <- function(cred, path = NULL, revision = NULL) {
 # Check for leading slash first using grep. If missing,
 #   append it.
 # Checks revision number for a file in dropbox and returns
-#   a logical yes/no.
+#   a logical yes/no. 

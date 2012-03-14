@@ -26,8 +26,7 @@ dropbox_move <- function(cred, from_path = NULL, to_path = NULL) {
         stop("File or folder does not exist", call. = FALSE)
     }
     if (!(exists.in.dropbox(cred, path = to_path, is_dir = TRUE))) {
-        stop("Destination does not exist or isn't a folder", 
-            call. = FALSE)
+        stop("Destination does not exist or isn't a folder", call. = FALSE)
     }
     if (!grepl("/$", to_path)) {
         to_path <- paste(to_path, "/", sep = "")

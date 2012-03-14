@@ -26,4 +26,4 @@ dropbox_restore <- function(cred, path, rev = NULL) {
     # 1. Check revision to make sure it exists.
 }
 # API documentation:
-#   https://www.dropbox.com/developers/reference/api#restore
+#   https://www.dropbox.com/developers/reference/api#restore 

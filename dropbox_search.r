@@ -55,8 +55,7 @@ dropbox_search <- function(cred, query = NULL, deleted = FALSE,
         }
     }
     if (dim(search_results)[1] > 0) {
-        small_results <- data.frame(path = search_results$path, 
-            is_dir = search_results$is_dir)
+        small_results <- data.frame(path = search_results$path, is_dir = search_results$is_dir)
     }
     if (dim(search_results)[1] == 0) {
         return(search_results[0, 0])
@@ -69,4 +68,4 @@ dropbox_search <- function(cred, query = NULL, deleted = FALSE,
     }
 }
 # API documentation:
-#   https://www.dropbox.com/developers/reference/api#search
+#   https://www.dropbox.com/developers/reference/api#search 
