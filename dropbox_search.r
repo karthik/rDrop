@@ -17,8 +17,8 @@
 #' results<-dropbox_search(cred,'search_term',verbose=T)
 #' Verbose results include a data.frame with columns: revision,rev,thumb_exists,bytes,modified,path,is_dir,icon,root,mime_type,size
 #'}
-dropbox_search <- function(cred, query = NULL, 
-    deleted = FALSE, file_limit = 1000, is_dir = NULL, verbose = FALSE) {
+dropbox_search <- function(cred, query = NULL, deleted = FALSE, 
+    file_limit = 1000, is_dir = NULL, verbose = FALSE) {
     # Unable to pass on full path. So I must strip the last
     #   bit, search then match the full search path. Right?
     if (!is.dropbox.cred(cred)) {
@@ -35,38 +35,38 @@ dropbox_search <- function(cred, query = NULL,
     results <- fromJSON(cred$OAuthRequest("https://api.dropbox.com/1/search/dropbox/", 
         list(query = query, include_deleted = deleted)))
     search_results <- formatted_results <- ldply(results, data.frame)
-    
-    # If user wanted to search for a file in a specific location.
-    if (!identical(full_path,query)) {
+    # If user wanted to search for a file in a specific
+    #   location.
+    if (!identical(full_path, query)) {
         search_results <- search_results[which(search_results$path == 
             full_path), ]
     }
-    
     # Test if someone is checking whether result is a directory
-     if(dim(search_results)[1]>0) {
-    if (!is.null(is_dir)) {
-        if (is_dir==TRUE) {
-            search_results <- search_results[search_results$is_dir, 
-                ]
-        }
-        if (is_dir==FALSE) {
-            search_results <- search_results[!search_results$is_dir, 
-                ]
+    if (dim(search_results)[1] > 0) {
+        if (!is.null(is_dir)) {
+            if (is_dir == TRUE) {
+                search_results <- search_results[search_results$is_dir, 
+                  ]
+            }
+            if (is_dir == FALSE) {
+                search_results <- search_results[!search_results$is_dir, 
+                  ]
+            }
         }
     }
+    if (dim(search_results)[1] > 0) {
+        small_results <- data.frame(path = search_results$path, 
+            is_dir = search_results$is_dir)
     }
-    if(dim(search_results)[1]>0) {
-    small_results <- data.frame(path = search_results$path, is_dir = search_results$is_dir)
-     }
-     if(dim(search_results)[1]==0) {
-        return(search_results[0,0])
-     }
-
+    if (dim(search_results)[1] == 0) {
+        return(search_results[0, 0])
+    }
     if (!verbose & !empty(small_results)) {
         return(small_results)
     }
     if (verbose & !empty(small_results)) {
         return(search_results)
     }
-} 
-# API documentation: https://www.dropbox.com/developers/reference/api#search
+}
+# API documentation:
+#   https://www.dropbox.com/developers/reference/api#search
