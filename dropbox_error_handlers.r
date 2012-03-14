@@ -20,16 +20,20 @@
 #' is.dropbox.cred(your_dropbox_credential_object)
 #'}
 is.dropbox.cred <- function(cred, response = TRUE) {
+    foo <- deparse(substitute(cred))
     if (missing(cred)) {
         response <- FALSE
     }
+
     if (response) {
-        
-        response <- ifelse(as.character(substitute(cred)) %in% 
-            ls(envir = .GlobalEnv), TRUE, FALSE)
+        if (foo %in% ls( envir=.GlobalEnv)) {
+             response <- TRUE } else {
+                response <- FALSE
+            }
     }
+
     if (response) {
-        response <- ifelse(class(cred) != "OAuth", FALSE, TRUE)
+        response <- ifelse(class(substitute(foo)) != "OAuth", FALSE, TRUE)
     }
     if (response) {
         response <- ifelse(grep("dropbox", cred$requestURL) != 
@@ -67,7 +71,7 @@ exists.in.dropbox <- function(cred, path = NULL,
     if (grepl("/$", full_path)) {
     full_path <- str_sub(full_path, end = str_length(full_path) - 1)
     }
-    
+
     query <- basename(path)
     res <- dropbox_search(cred, query)
     if (is.null(res)) {
