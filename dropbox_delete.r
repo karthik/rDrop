@@ -26,7 +26,7 @@ dropbox_delete <- function(cred, file_to_delete = NULL,
 
     if (ask == TRUE) {
         verify <- readline(paste("Are you sure you want to delete", 
-            file_to_del, " (Y/N)? "))
+            file_to_delete, " (Y/N)? "))
         verify <- toupper(verify)
         if (verify != "Y" & verify != "N") {
             stop("Unexpected response. \n", call. = F)
