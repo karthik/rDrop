@@ -36,10 +36,10 @@ library(rDrop)
 \# Not yet on CRAN. Will make this available via devtools shortly.
 
 \# If you have Dropbox keys in your .rprofile, simply run:
- dropbox_credentials <- dropbox_auth()
+ dropbox_credentials &lt;- dropbox_auth()
 
  \# Otherwise:
- dropbox_credentials <- dropbox_auth("my_consumer_key","my_consumer_secret")
+ dropbox_credentials &lt;- dropbox_auth("my_consumer_key","my_consumer_secret")
 </code></pre>
 
 
