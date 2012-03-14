@@ -39,7 +39,7 @@ library(rDrop)
  dropbox_credentials &lt;- dropbox_auth()
 
 # Otherwise:
- dropbox_credentials &lt;- dropbox_auth("my_consumer_key","my_consumer_secret")
+ dropbox_credentials &lt;- dropbox_auth("Your_consumer_key","Your_consumer_secret")
 </code></pre>
 
 
@@ -52,15 +52,13 @@ If you entered valid keys, you will be directed to a secure Dropbox page on your
 Credentials will remain valid until you revoke them from your [Dropbox Apps page](https://www2.dropbox.com/developers/apps) by clicking the x next to your App's name.
 
 # Quick User Guide
-This package essentially provides standard Dropbox file operation functions (create/copy/move/restore/share) from within `R`. For a vignette, type: 
-<pre><code>
-vignette('rdrop') # from the R prompt.
-# not setup yet.
-</code></pre>
+This package essentially provides standard Dropbox file operation functions (create/copy/move/restore/share) from within `R`. 
 
 To load a previously validated Dropbox credential file:
 <pre><code>
 load('/path/to/my_dropbox_credentials.rdata')
+# or once again run,
+dropbox_credentials &lt;- dropbox_auth('Your_consumer_key', 'Your_consumer_secret')
 </code></pre>
 
 ### Summary of your Dropbox Account
