@@ -1,5 +1,3 @@
-# Status: Works - needs error handling
-
 #' Function to copy files or folder within Dropbox.
 #'
 #'@param cred An object of class ROAuth with Dropobox specific credentials.
@@ -22,33 +20,30 @@ dropbox_copy <- function(cred, from_path = NULL, to_path = NULL) {
     if (is.null(from_path) || is.null(to_path)) {
         stop("Missing path for source and/or destination", call. = F)
     }
-    if(!exists.in.dropbox(cred, from_path)) {
+    if (!exists.in.dropbox(cred, from_path)) {
         stop("Source file or folder does not exist", call. = FALSE)
     }
-
-    if(!exists.in.dropbox(cred, to_path, is_dir = TRUE)) {
+    if (!exists.in.dropbox(cred, to_path, is_dir = TRUE)) {
         stop("Destination is not a valid folder", call. = FALSE)
     }
-
-     if (!grepl("^/", from_path)) {
-    from_path <- paste("/", from_path, sep="")
-    } 
-
-     if (!grepl("^/", to_path)) {
-    to_path <- paste("/", to_path, sep="")
-    }    
-
-    to_path <- paste(to_path, from_path, sep="")
+    if (!grepl("^/", from_path)) {
+        from_path <- paste("/", from_path, sep = "")
+    }
+    if (!grepl("^/", to_path)) {
+        to_path <- paste("/", to_path, sep = "")
+    }
+    to_path <- paste(to_path, from_path, sep = "")
     # Below does not work
     copy <- fromJSON(cred$OAuthRequest("https://api.dropbox.com/1/fileops/copy", 
-        list(root = "dropbox", from_path = from_path, to_path = to_path), ,"POST"))
-
-    if(is.character(copy)) {
-    stop(copy[[1]], call.= FALSE)
+        list(root = "dropbox", from_path = from_path, to_path = to_path), 
+        , "POST"))
+    if (is.character(copy)) {
+        stop(copy[[1]], call. = FALSE)
     }
-
-    if(is.list(copy)) {
-    cat(from_path, "succcessfully copied to", copy$path, "on", copy$modified)
- }   
+    if (is.list(copy)) {
+        cat(from_path, "succcessfully copied to", copy$path, 
+            "on", copy$modified)
+    }
 }
-# API documentation: https://www.dropbox.com/developers/reference/api#fileops-copy
+# API documentation: #
+#   https://www.dropbox.com/developers/reference/api#fileops-copy 
