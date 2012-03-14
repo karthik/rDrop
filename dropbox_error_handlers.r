@@ -101,48 +101,6 @@ exists.in.dropbox <- function(cred, path = NULL,
     return(response)
 }
 
-#'Function to check whether a path supplied exists in a users Dropbox account.
-#'
-#'@param cred An object of class ROAuth with Dropobox specific credentials.
-#'@param path <what param does>
-#'@keywords
-#'@seealso is.dropbox.file dropbox.file.info
-#'@return logical
-#'@alias
-#'@export is.dropbox.dir
-#'@examples \dontrun{
-#'
-#'}
-is.dropbox.dir <- function(cred, path = NULL) {
-    if (!is.dropbox.cred(cred)) {
-        stop("Invalid Dropbox credentials", call. = F)
-    }
-    is_d_dir <- TRUE
-    if(is.null(path)) {
-        return(TRUE)
-    } else {
-    res <- dropbox_search(cred, path)
-    if (is.null(res)) {
-        is_d_dir <- FALSE
-    }
-    if (is_d_dir) {
-        if (dim(res)[1] > 1) {
-            is_d_dir <- FALSE
-        }
-    }
-    if (is_d_dir) {
-        if (!unique(res$is_dir)) {
-            is_d_dir <- FALSE
-        }
-    }
-    return(is_d_dir)
-   }
-}
-# Check for leading slash first using grep. If missing,
-#   append it.
-# if directory, return logical true.
-# else return false.
-
 
 #'Checks if a supplied path is a file in users Dropbox account.
 #'
