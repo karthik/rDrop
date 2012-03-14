@@ -1,5 +1,4 @@
 #'Status:  Works, But I need to add in search paths.
-
 #'Function to delete a file or folder from Dropbox
 #'
 #'@param cred An object of class ROAuth with Dropobox specific credentials.
@@ -20,10 +19,9 @@ dropbox_delete <- function(cred, file_to_delete = NULL,
             call. = FALSE)
     }
     # Replace with a more elegant file exists checker.
-    if(!exists.in.dropbox(cred, file_to_delete)) {
+    if (!exists.in.dropbox(cred, file_to_delete)) {
         stop("File or folder not found", call. = FALSE)
     }
-
     if (ask == TRUE) {
         verify <- readline(paste("Are you sure you want to delete", 
             file_to_delete, " (Y/N)? "))
@@ -35,10 +33,14 @@ dropbox_delete <- function(cred, file_to_delete = NULL,
     if (verify == "Y" | ask == FALSE) {
         deleted <- fromJSON(cred$OAuthRequest("https://api.dropbox.com/1/fileops/delete", 
             list(root = "dropbox", path = file_to_delete)))
-        if(is.list(deleted)) {
+        if (is.list(deleted)) {
             cat(deleted$path, "was successfully deleted on", 
                 deleted$modified, "\n")
         }
     }
-} 
-# API documentation: https://www.dropbox.com/developers/reference/api#fileops-delete
+}
+# API documentation:
+#
+#
+#
+#   https://www.dropbox.com/developers/reference/api#fileops-delete
