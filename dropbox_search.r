@@ -40,12 +40,10 @@ dropbox_search <- function(cred, query = NULL,
     if (!identical(full_path,query)) {
         search_results <- search_results[which(search_results$path == 
             full_path), ]
-        if(dim(search_results)[1]==0) {
-            stop("No results found", call.= FALSE)
-        }
     }
     
     # Test if someone is checking whether result is a directory
+     if(dim(search_results)[1]>0) {
     if (!is.null(is_dir)) {
         if (is_dir==TRUE) {
             search_results <- search_results[search_results$is_dir, 
@@ -56,13 +54,14 @@ dropbox_search <- function(cred, query = NULL,
                 ]
         }
     }
-    
-    
-    small_results <- data.frame(path = search_results$path, is_dir = search_results$is_dir)
-    
-    if (empty(search_results)) {
-        stop("No results found", call.= FALSE)
     }
+    if(dim(search_results)[1]>0) {
+    small_results <- data.frame(path = search_results$path, is_dir = search_results$is_dir)
+     }
+     if(dim(search_results)[1]==0) {
+        return(search_results[0,0])
+     }
+
     if (!verbose & !empty(small_results)) {
         return(small_results)
     }
