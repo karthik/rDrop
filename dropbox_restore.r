@@ -1,5 +1,4 @@
 # Status: Still setting up
-
 # functions to share or possibly move a file to public
 #   folder and
 #   get the public url.
@@ -25,5 +24,6 @@ dropbox_restore <- function(cred, path, rev = NULL) {
     }
     # List should contain path and revision number
     # 1. Check revision to make sure it exists.
-} 
-# API documentation: https://www.dropbox.com/developers/reference/api#restore
+}
+# API documentation:
+#   https://www.dropbox.com/developers/reference/api#restore
