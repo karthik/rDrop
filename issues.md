@@ -20,9 +20,7 @@
 # Error handling todos.
 1. Check destinations for copy/move
 2. Check file name formatting for copy/move for from and to.
-3. <strike> Sort out issue with verifiying `dropbox_cred()`</strike><br>
-4.<strike> **Big Bug:** `dropbox_auth()` fails on R-GUI <br>
-5.`dropbox_auth()` should not ask for a PIN.</strike>
+3. <strike> Sort out issue with verifiying `dropbox_cred()`
 
 # Other rdrop issues
 <strike>1. Authentication is successful from the R GUI but crashes the application while waiting for PIN input. Will add more notes on this behavior.</strike> - As of 03/13, it magically works (with same ROAUth install!?).<br>
