@@ -12,6 +12,7 @@
 #'@return
 #'@alias
 #'@export dropbox_dir
+#'@import stringr
 #'@examples \dontrun{
 #' dropbox_dir(cred)
 #' dropbox_dir(cred, recursive = TRUE)
@@ -32,8 +33,14 @@ dropbox_dir <- function(cred, path = NULL, verbose = FALSE) {
             stop("There is no such folder in your Dropbox", call. = FALSE)
         }
     }
-    if (!is.null(path)) {
-        url <- paste(url, path, sep = "")
+
+    # Remove trailing slash
+    if (grepl("/$", path)) {
+    path <- str_sub(path, end = str_length(path) - 1)
+    }
+
+    if (!is.null(path) & length(path)>0) {
+         url <- paste(url, path, "/", sep = "")
     }
     metadata <- fromJSON(cred$OAuthRequest(url))
     names(metadata$contents) <- basename(sapply(metadata$contents, 
