@@ -1,6 +1,6 @@
 #  Functions that need work
 1. `dropbox_save` - **Not coded.**
-2. `dropbox_get` - Partly works, messy output. no error handling.
+2. `dropbox_get` - Partly works but not sure how to process all the contents of a requested file that it dumps into a R object. No error handling.
 3. `dropbox_restore` - haven't worked on it yet. Will need `dropbox_get()` to work first.
 4. `dropbox_media` - might work as an alternate to `dropbox_get()`
 
