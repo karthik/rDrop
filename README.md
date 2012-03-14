@@ -43,7 +43,7 @@ library(rDrop)
 </code></pre>
 
 
-If you entered valid keys, you will be directed to a secure Dropbox page on your browser asking you to authorize the app you just created. Click authorize to add this to your approved app list and return to R. This is a one time authorization. Once you have completed these steps, return to `R` and press enter. If `is.dropbox.cred(dropbox_credentials)` returns `TRUE`, then you are all set. There is no need to run `dropbox_auth()` for each subsequent run. Simply save your credentials file to disk and load as needed:
+If you entered valid keys, you will be directed to a secure Dropbox page on your browser asking you to authorize the app you just created. Click authorize to add this to your approved app list and return to R. This is a one time authorization. Once you have completed these steps, return to `R` and press enter (Ignore <em>When complete, record the PIN given to you and provide it here</em>). If `is.dropbox.cred(dropbox_credentials)` returns `TRUE`, then you are all set. There is no need to run `dropbox_auth()` for each subsequent run. Simply save your credentials file to disk and load as needed:
 
 <pre><code>
  save(dropbox_credentials, file="/path/to/my_dropbox_credentials.rdata")
