@@ -2,7 +2,7 @@
 
 This package provides a  programmatic interface to [Dropbox](https://www2.dropbox.com/home) from the [R environment](http://www.r-project.org/).
 
-> **Disclaimer: This package is currently in beta and we make no claims or warranties as to the safety of your Dropbox contents. Use at your own risk.**
+> **Disclaimer: This package is currently in development and we make no claims or warranties as to the safety of your Dropbox contents. Use at your own risk.**
 
 Reference:
 [Complete Dropbox API Reference.](https://www2.dropbox.com/developers/reference/api)
