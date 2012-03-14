@@ -1,7 +1,3 @@
-# Status: WORKS and now checks for existing folders.
-# is unable to check for subfolders directly due to a bug
-#   in dropbox_search
-
 #'Function to create new folders in Dropbox.
 #'
 #'@param cred An object of class ROAuth with Dropobox specific credentials.
