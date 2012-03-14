@@ -1,19 +1,20 @@
-#  Files that need  work
+#  Functions that need work
 1. `dropbox_save` - **Not coded.**
 2. `dropbox_get` - Partly works, messy output. no error handling.
-3. `dropbox_move` - Works, but needs error handling.
-4. `dropbox_delete` - Works, but needs error handling.
-5. `dropbox_copy` - Works, but needs major error handling.
-6. `dropbox_restore` - haven't worked on it yet. Will need `dropbox_get()` to work first.
-7. `dropbox_search` - works fine. However, to search files in a specific path, it seems like I need to search all of Dropbox, then subset the result. I've figured it out but not coded it yet.
-8. `dropbox_create_folder()`    - stopped working.
+3. `dropbox_restore` - haven't worked on it yet. Will need `dropbox_get()` to work first.
 
-# Files that work fine.
+
+# Functions that work fine.
 
 1. `dropbox_acc_info()`
 2. `dropbox_dir()`
 3. `dropbox_error_handlers()` - A collection of helper functions                 
-4. `dropbox_share()`                        
+4. `dropbox_share()`  
+5. `dropbox_create_folder()`  
+6. `dropbox_move` - Works, but needs error handling.
+7. `dropbox_delete` - Works, but needs error handling.
+8. `dropbox_copy` - Works, but needs major error handling.
+9. `dropbox_search` - works fine. However, to search files in a specific path, it seems like I need to search all of Dropbox, then subset the result. I've figured it out but not coded it yet.                 
 
 # Error handling todos.
 1. Check destinations for copy/move
