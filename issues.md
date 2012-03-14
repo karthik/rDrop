@@ -6,11 +6,11 @@
 
 # Functions that work fine.
 
-1. `dropbox_acc_info()`
-2. `dropbox_dir()`
-3. `dropbox_error_handlers()` - A collection of helper functions                 
-4. `dropbox_share()`  
-5. `dropbox_create_folder()`  
+1. `dropbox_acc_info`
+2. `dropbox_dir`
+3. `dropbox_error_handlers` - A collection of helper functions                 
+4. `dropbox_share`  
+5. `dropbox_create_folder`  
 6. `dropbox_move` - Works, but needs error handling.
 7. `dropbox_delete` - Works, but needs error handling.
 8. `dropbox_copy` - Works, but needs major error handling.
