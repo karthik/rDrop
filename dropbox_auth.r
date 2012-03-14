@@ -7,7 +7,7 @@
 #'@seealso dropbox_acc_info
 #'@return Oauth object with Dropbox keys
 #'@alias
-#'@import RJSONIO ROAuth 
+#'@import RJSONIO ROAuth
 #'@export dropbox_auth
 #'@examples \dontrun{
 #' dropbox_auth() # if you have keys in .rprofile stored as
@@ -49,5 +49,9 @@ dropbox_auth <- function(cKey = NULL, cSecret = NULL,
             httpheader = c(Range = "bytes=30-70"), verbose = TRUE)
     }
     return(cred)
-} 
-# API documentation: https://www.dropbox.com/developers/reference/api#request-token
+}
+# API documentation:
+#
+#
+#
+#   https://www.dropbox.com/developers/reference/api#request-token
