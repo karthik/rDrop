@@ -1,7 +1,5 @@
 # A set of functions meant to handle errors arising from
 #   all dropbox file ops.
-
-
 #'Verifies whether a user has specified a correct Oauth credential for Dropbox
 #'
 #'@param cred An object of class ROAuth with Dropobox specific credentials.
@@ -18,14 +16,13 @@ is.dropbox.cred <- function(cred, response = TRUE) {
     if (missing(cred)) {
         response <- FALSE
     }
-
     if (response) {
-        if (foo %in% ls( envir=.GlobalEnv)) {
-             response <- TRUE } else {
-                response <- FALSE
-            }
+        if (foo %in% ls(envir = .GlobalEnv)) {
+            response <- TRUE
+        } else {
+            response <- FALSE
+        }
     }
-
     if (response) {
         response <- ifelse(class(cred) != "OAuth", FALSE, TRUE)
     }
@@ -35,7 +32,6 @@ is.dropbox.cred <- function(cred, response = TRUE) {
     }
     return(response)
 }
-
 #' Check to see if an object exists in Dropbox
 #'
 #'@param cred An object of class ROAuth with Dropobox specific credentials.
@@ -50,51 +46,43 @@ is.dropbox.cred <- function(cred, response = TRUE) {
 #' exists.in.dropbox(cred,'test_folder')
 #' exists.in.dropbox(cred,'test_folder',is_dir='dir')
 #'}
-exists.in.dropbox <- function(cred, path = NULL, 
-    is_dir = NULL) {
-
-        if (!is.dropbox.cred(cred)) {
+exists.in.dropbox <- function(cred, path = NULL, is_dir = NULL) {
+    if (!is.dropbox.cred(cred)) {
         stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", 
             call. = FALSE)
     }
     # default response so function can proceed.
     response <- TRUE
-    
-    if(is.null(path)) {
-        stop("You did not specify an object to verify", call.= FALSE)
-        } 
+    if (is.null(path)) {
+        stop("You did not specify an object to verify", call. = FALSE)
+    }
     # First search Dropbox to see if the object exists
     full_path <- path
     # If leading slash is missing, add it.
     if (!grepl("^/", full_path)) {
-    full_path <- paste("/", full_path, sep="")
-    } 
+        full_path <- paste("/", full_path, sep = "")
+    }
     # Remove trailing slash
     if (grepl("/$", full_path)) {
-    full_path <- str_sub(full_path, end = str_length(full_path) - 1)
+        full_path <- str_sub(full_path, end = str_length(full_path) - 
+            1)
     }
     query <- basename(path)
-    
-
-
     res <- dropbox_search(cred, query)
-
     if (is.null(res)) {
-         response <- FALSE
-        }
-     if(empty(res)) {
         response <- FALSE
-     }   
-
+    }
+    if (empty(res)) {
+        response <- FALSE
+    }
     # OK, object exists, but let's see if there was more than
     #   one result
-    if(!identical(query, full_path)) {
-        res <- res[which(res$path==full_path), ]
-        if(dim(res)[1]!=1) {
+    if (!identical(query, full_path)) {
+        res <- res[which(res$path == full_path), ]
+        if (dim(res)[1] != 1) {
             response <- FALSE
         }
     }
-    
     # OK, only one result returned.
     if (response) {
         if (!is.null(is_dir)) {
@@ -106,11 +94,8 @@ exists.in.dropbox <- function(cred, path = NULL,
             }
         }
     }
-    
     return(response)
 }
-
-
 #'Checks if a supplied path is a file in users Dropbox account.
 #'
 #'@param cred An object of class ROAuth with Dropobox specific credentials.
@@ -144,7 +129,6 @@ is.dropbox.file <- function(cred, path) {
     }
     return(is_d_file)
 }
-
 #'Return file attributes for a specified file supplied in the path argument.
 #'
 #'@param cred An object of class ROAuth with Dropobox specific credentials.
@@ -166,7 +150,6 @@ dropbox.file.info <- function(cred, path_to_file) {
     # Return a list containing filename, filetype, date
     #   modified, and revision number.
 }
-
 #'Function to handle errors if a returned object is not the excepted JSON object
 #'
 #'@param dropbox_call A function call to a Dropbox method via OAuth$handshake()
@@ -184,7 +167,6 @@ is.valid.dropbox.operation <- function(dropbox_call) {
     # else
     # \treturn a valid and useful error.
 }
-
 #'Checks whether supplied revision number is valid on Dropobx
 #'
 #'@param cred An object of class ROAuth with Dropobox specific credentials.
@@ -204,4 +186,4 @@ is.valid.revision <- function(cred, path = NULL, revision = NULL) {
 # Check for leading slash first using grep. If missing,
 #   append it.
 # Checks revision number for a file in dropbox and returns
-#   a logical yes/no. 
+#   a logical yes/no.
