@@ -59,7 +59,15 @@ exists.in.dropbox <- function(cred, path = NULL,
     
     # First search Dropbox to see if the object exists
     full_path <- path
+    # If leading slash is missing, add it.
+    if (!grepl("^/", full_path)) {
     full_path <- paste("/", full_path, sep="")
+    } 
+    # Remove trailing slash
+    if (grepl("/$", full_path)) {
+    full_path <- str_sub(full_path, end = str_length(full_path) - 1)
+    }
+    
     query <- basename(path)
     res <- dropbox_search(cred, query)
     if (is.null(res)) {
