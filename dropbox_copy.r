@@ -48,7 +48,7 @@ dropbox_copy <- function(cred, from_path = NULL, to_path = NULL) {
     }
 
     if(is.list(copy)) {
-    cat("File succcessfully copied to", copy$path, "on", copy$modified)
+    cat(from_path, "succcessfully copied to", copy$path, "on", copy$modified)
  }   
 }
 # API documentation: https://www.dropbox.com/developers/reference/api#fileops-copy
