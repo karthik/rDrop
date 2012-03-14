@@ -54,5 +54,4 @@ dropbox_dir <- function(cred, path = NULL, verbose = FALSE) {
     }
 }
 # API documentation:
-#   https://www.dropbox.com/developers/reference/api#metadata 
- FALSE
+#   https://www.dropbox.com/developers/reference/api#metadata
