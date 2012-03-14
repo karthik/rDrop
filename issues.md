@@ -14,13 +14,12 @@
 5. `dropbox_create_folder`  
 6. `dropbox_move` - Works, but needs error handling.
 7. `dropbox_delete` - Works, but needs error handling.
-8. `dropbox_copy` - Works, but needs major error handling.
-9. `dropbox_search` - works fine. minor issues almost resolved.           
+8. `dropbox_copy` - Works, but needs some more error handling.
+9. `dropbox_search` - Works fine. minor issues almost resolved.           
 
 # Error handling todos.
 1. Check destinations for copy/move
 2. Check file name formatting for copy/move for from and to.
-3. <strike> Sort out issue with verifiying `dropbox_cred()`
 
 # Other rdrop issues
 1. <strike>Authentication is successful from the R GUI but crashes the application while waiting for PIN input. Will add more notes on this behavior.</strike> - As of 03/13, it magically works (with same ROAUth install!?).<br>
