@@ -22,31 +22,30 @@ dropbox_move <- function(cred, from_path = NULL, to_path = NULL) {
         stop("Did not specify full path for source and/or destination", 
             call. = F)
     }
-    
     if (!(exists.in.dropbox(cred, path = from_path))) {
         stop("File or folder does not exist", call. = FALSE)
     }
-    
-    if (!(exists.in.dropbox(cred, path = to_path, 
-        is_dir = TRUE))) {
+    if (!(exists.in.dropbox(cred, path = to_path, is_dir = TRUE))) {
         stop("Destination does not exist or isn't a folder", 
             call. = FALSE)
     }
-
     if (!grepl("/$", to_path)) {
-      to_path <- paste(to_path, "/", sep="")  
+        to_path <- paste(to_path, "/", sep = "")
     }
-    to_path <- paste(to_path, from_path, sep="")
+    to_path <- paste(to_path, from_path, sep = "")
     # Worked once but no longer workes.
     move <- fromJSON(cred$OAuthRequest("https://api.dropbox.com/1/fileops/move", 
-        list(root = "dropbox", from_path = from_path, to_path = to_path), "POST"))
-
-if(is.character(move)) {
-    stop(move[[1]], call.= FALSE)
+        list(root = "dropbox", from_path = from_path, to_path = to_path), 
+        "POST"))
+    if (is.character(move)) {
+        stop(move[[1]], call. = FALSE)
     }
- if(is.list(move)) {
-    cat("File succcessfully moved to", move$path, "on", move$modified)
- }   
-
-}  
-# API documentation: https://www.dropbox.com/developers/reference/api#fileops-move
+    if (is.list(move)) {
+        cat("File succcessfully moved to", move$path, "on", move$modified)
+    }
+}
+# API documentation:
+#
+#
+#
+#   https://www.dropbox.com/developers/reference/api#fileops-move 
