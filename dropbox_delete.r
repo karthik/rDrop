@@ -11,7 +11,7 @@
 #'@alias
 #'@export dropbox_delete
 #'@examples \dontrun{
-#'
+#' dropbox_delete(dropbox_credential, 'path/to/file')
 #'}
 dropbox_delete <- function(cred, file_to_delete = NULL, 
     ask = TRUE) {
