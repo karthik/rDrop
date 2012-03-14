@@ -9,7 +9,7 @@ Authors@R: c(person("Karthik", "Ram", role = c("aut", "cre"),
     person("Duncan", "Temple Lang", role = "aut",
     email = "duncan at wald.ucdavis.edu"))
 Description: Programmatic interface to the Dropbox file system.
-URL: http://github.com/karthik/rDrop
+URL: http://github.com/karthikram/rDrop
 Collate:
     'dropbox_acc_info.r'
     'dropbox_auth.r'
