@@ -31,16 +31,16 @@ options(DropboxSecret = "Your_App_secret")
 If you prefer not to specify keys in a `.rprofile` (especially if you are on a public computer/cluster/cloud server), you can specify both keys in the `dropbox_auth()` function directly (more below). <em>Note that once you have authorized an app, there is no need to call this function again.</em> You can just use your saved credential file to access your Dropbox. If for any reason, the file becomes compromised, just revoke access from your [list of authorized apps.](https://www2.dropbox.com/account#applications)
 
 ### Authorizing your app
-<pre><code>
+<pre>
 library(rDrop)
-\# Not yet on CRAN. Will make this available via devtools shortly.
+# Not yet on CRAN. Will make this available via devtools shortly.
 
-\# If you have Dropbox keys in your .rprofile, simply run:
+# If you have Dropbox keys in your .rprofile, simply run:
  dropbox_credentials &lt;- dropbox_auth()
 
- \# Otherwise:
+# Otherwise:
  dropbox_credentials &lt;- dropbox_auth("my_consumer_key","my_consumer_secret")
-</code></pre>
+</pre>
 
 
 If you entered valid keys, you will be directed to a secure page on Dropbox asking you to authorize this app. Click authorize to add this to your approved app list and to return to R. This is a one time authorization. Once you have completed these steps, return to `R` and press enter. If `is.dropbox.cred(dropbox_credentials)` returns `TRUE`, then you are all set. There is no need to run `dropbox_auth()` for each subsequent run. Simply save your credentials file to disk and load as needed:
