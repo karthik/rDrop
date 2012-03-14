@@ -1,9 +1,9 @@
 #' functions to restore a file to an older version
-#'@param cred Specifies an object of class ROAuth with Dropobox specific credentials.
-#'@param file  The path to the file.
-#'@import RJSONIO ROAuth
-#'@export 
-#'@examples \dontrun{
+#' @param cred Specifies an object of class ROAuth with Dropobox specific credentials.
+#' @param file  The path to the file.
+#' @import RJSONIO ROAuth
+#' @export 
+#' @examples \dontrun{
 #' dropbox_restore(cred, '/test/file.csv', rev = '213566')
 #'}
 dropbox_restore <- function(cred, path, rev = NULL) {

@@ -2,12 +2,12 @@
 #   data (real data but badly formatted)
 #'Downloads a file from your Dropbox
 #'
-#'@param cred Specifies an object of class ROAuth with Dropobox specific credentials.
-#'@param  file_to_get Specifies the path to the file you want to retrieve.
-#'@return file
-#'@import RJSONIO ROAuth
-#'@export dropbox_get
-#'@examples \dontrun{
+#' @param cred Specifies an object of class ROAuth with Dropobox specific credentials.
+#' @param  file_to_get Specifies the path to the file you want to retrieve.
+#' @return file
+#' @import RJSONIO ROAuth
+#' @export dropbox_get
+#' @examples \dontrun{
 #'
 #'}
 dropbox_get <- function(cred, file_to_get) {

@@ -2,15 +2,15 @@
 #'
 #' Returns a URL to a zipped copy of a folder or a direct link in
 #' case input is a file. Also returns a date when link will expire.
-#'@param cred An object of class ROAuth with Dropobox specific credentials.
-#'@param file Path to the file or folder you want a shareable link to.
-#'@keywords sharing share_url
-#'@return list with url to file or zipped folder and expiry date.
-#'@import RJSONIO ROAuth
-#'@examples \dontrun{
+#' @param cred An object of class ROAuth with Dropobox specific credentials.
+#' @param file Path to the file or folder you want a shareable link to.
+#' @keywords sharing share_url
+#' @return list with url to file or zipped folder and expiry date.
+#' @import RJSONIO ROAuth
+#' @examples \dontrun{
 #' dropbox_share(cred, 'test_folder')
 #'}
-#'@export 
+#' @export 
 dropbox_share <- function(cred, file = NULL) {
     if (!is.dropbox.cred(cred)) {
         stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", 

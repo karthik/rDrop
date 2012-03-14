@@ -2,13 +2,16 @@
 #   all dropbox file ops.
 #'Verifies whether a user has specified a correct Oauth credential for Dropbox
 #'
-#'@param cred An object of class ROAuth with Dropobox specific credentials.
-#'@return logical
-#'@export 
-#'@examples \dontrun{
+#' @param cred An object of class ROAuth with Dropobox specific credentials.
+#' @return logical
+#' @export 
+#' @examples \dontrun{
 #' is.dropbox.cred(your_dropbox_credential_object)
 #'}
-is.dropbox.cred <- function(cred, response = TRUE) {
+is.dropbox.cred <- function(cred, response = TRUE, verified = FALSE) {
+    if(verified) {
+        response <- TRUE
+    } else {
     foo <- deparse(substitute(cred))
     if (missing(cred)) {
         response <- FALSE
@@ -27,16 +30,17 @@ is.dropbox.cred <- function(cred, response = TRUE) {
         response <- ifelse(grep("dropbox", cred$requestURL) != 1, 
             FALSE, TRUE)
     }
+}
     return(response)
 }
 #' Check to see if an object exists in Dropbox
 #'
-#'@param cred An object of class ROAuth with Dropobox specific credentials.
-#'@param path Path to object
-#'@param  type = NULL dir or file if a function needs to know. Otherwise it will ignore type and return TRUE if object exists in Dropbox folder.
-#'@return logical
-#'@export
-#'@examples \dontrun{
+#' @param cred An object of class ROAuth with Dropobox specific credentials.
+#' @param path Path to object
+#' @param  type = NULL dir or file if a function needs to know. Otherwise it will ignore type and return TRUE if object exists in Dropbox folder.
+#' @return logical
+#' @export
+#' @examples \dontrun{
 #' exists.in.dropbox(cred,'test_folder')
 #' exists.in.dropbox(cred,'test_folder',is_dir='dir')
 #'}
@@ -92,12 +96,12 @@ exists.in.dropbox <- function(cred, path = NULL, is_dir = NULL) {
 }
 #'Checks if a supplied path is a file in users Dropbox account.
 #'
-#'@param cred An object of class ROAuth with Dropobox specific credentials.
-#'@param path path to file or folder that needs verification.
-#'@seealso is.dropbox.dir dropbox.file.info
-#'@return logical
-#'@export 
-#'@examples \dontrun{
+#' @param cred An object of class ROAuth with Dropobox specific credentials.
+#' @param path path to file or folder that needs verification.
+#' @seealso is.dropbox.dir dropbox.file.info
+#' @return logical
+#' @export 
+#' @examples \dontrun{
 #'
 #'}
 is.dropbox.file <- function(cred, path) {
@@ -123,12 +127,12 @@ is.dropbox.file <- function(cred, path) {
 }
 #'Return file attributes for a specified file supplied in the path argument.
 #'
-#'@param cred An object of class ROAuth with Dropobox specific credentials.
-#'@param path_to_file <what param does>
-#'@seealso is.dropbox.file is.dropbox.dir
-#'@return list
-#'@export dropbox.file.info
-#'@examples \dontrun{
+#' @param cred An object of class ROAuth with Dropobox specific credentials.
+#' @param path_to_file <what param does>
+#' @seealso is.dropbox.file is.dropbox.dir
+#' @return list
+#' @export dropbox.file.info
+#' @examples \dontrun{
 #'
 #'}
 dropbox.file.info <- function(cred, path_to_file) {
@@ -142,10 +146,10 @@ dropbox.file.info <- function(cred, path_to_file) {
 }
 #'Function to handle errors if a returned object is not the excepted JSON object
 #'
-#'@param dropbox_call A function call to a Dropbox method via OAuth$handshake()
-#'@return logical
-#'@export
-#'@examples \dontrun{
+#' @param dropbox_call A function call to a Dropbox method via OAuth$handshake()
+#' @return logical
+#' @export
+#' @examples \dontrun{
 #' example forthcoming
 #'}
 is.valid.dropbox.operation <- function(dropbox_call) {
@@ -156,12 +160,12 @@ is.valid.dropbox.operation <- function(dropbox_call) {
 }
 #'Checks whether supplied revision number is valid on Dropobx
 #'
-#'@param cred An object of class ROAuth with Dropobox specific credentials.
-#'@param path path to file or folder. Full path if file/folder is not in Dropbox root.
-#'@param revision revision number
-#'@return logical
-#'@export
-#'@examples \dontrun{
+#' @param cred An object of class ROAuth with Dropobox specific credentials.
+#' @param path path to file or folder. Full path if file/folder is not in Dropbox root.
+#' @param revision revision number
+#' @return logical
+#' @export
+#' @examples \dontrun{
 #' Not yet coded.
 #'}
 is.valid.revision <- function(cred, path = NULL, revision = NULL) {

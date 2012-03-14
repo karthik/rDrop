@@ -2,14 +2,15 @@
 #   users to specify a certain directory.
 #'Function to list contents of a Dropbox folder. If no folder is specified, function will list contents of root folder.
 #'
-#'@param cred An object of class ROAuth with Dropobox specific credentials.
-#'@param path  The directory to list. Not yet implemented
-#'@param verbose logical. FALSE returns a list with file names in root folder. TRUE returns a data.frame with the following fields: .id,revision, rev, thumb_exists, bytes,modified, path, is_dir, icon,root,size,mime_type.
-#'@param recursive logical. Setting this to true will list all your dropbox files. Not yet implemented.
-#'@return message
-#'@export dropbox_dir
-#'@import stringr
-#'@examples \dontrun{
+#' @param cred An object of class ROAuth with Dropobox specific credentials.
+#' @param path  The directory to list. Not yet implemented
+#' @param verbose logical. FALSE returns a list with file names in root folder. TRUE returns a data.frame with the following fields: .id,revision, rev, thumb_exists, bytes,modified, path, is_dir, icon,root,size,mime_type.
+#' @param recursive logical. Setting this to true will list all your dropbox files. Not yet implemented.
+#' @param deleted logical. Default is FALSE. Set to TRUE to also list deleted files.
+#' @return message
+#' @export dropbox_dir
+#' @import stringr
+#' @examples \dontrun{
 #' dropbox_dir(cred)
 #' dropbox_dir(cred, recursive = TRUE)
 #' dropbox_dir(cred,path='/specific_folder')

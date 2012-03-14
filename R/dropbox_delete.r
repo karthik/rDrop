@@ -1,12 +1,12 @@
 #'Status:  Works, But I need to add in search paths.
 #'Function to delete a file or folder from Dropbox
 #'
-#'@param cred An object of class ROAuth with Dropobox specific credentials.
-#'@param file_to_delete Specifies the path to the file or folder to be deleted.
-#'@param ask logical set to TRUE. If set to false, function will not confirm delete operation
-#'@return Nothing. A message upon successful deletion.
-#'@export dropbox_delete
-#'@examples \dontrun{
+#' @param cred An object of class ROAuth with Dropobox specific credentials.
+#' @param file_to_delete Specifies the path to the file or folder to be deleted.
+#' @param ask logical set to TRUE. If set to false, function will not confirm delete operation
+#' @return Nothing. A message upon successful deletion.
+#' @export dropbox_delete
+#' @examples \dontrun{
 #' dropbox_delete(dropbox_credential, 'path/to/file')
 #'}
 dropbox_delete <- function(cred, file_to_delete = NULL, 

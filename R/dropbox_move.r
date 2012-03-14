@@ -1,14 +1,14 @@
 #' Function to move files with a Dropbox account
 #'
 #' Allows users to move files or folders inside the dropbox storage.
-#'@param cred Specifies an object of class ROAuth with Dropobox specific credentials.
-#'@param from_path Specifies the file or folder to be copied from relative to root.
-#'@param to_path Specifies a destination path, including the new name for the file or folder, relative to root.
-#'@seealso dropbox_copy dropbox_create_folder
-#'@return Message on successful completion or error.
-#'@import RJSONIO ROAuth
-#'@export dropbox_move
-#'@examples \dontrun{
+#' @param cred Specifies an object of class ROAuth with Dropobox specific credentials.
+#' @param from_path Specifies the file or folder to be copied from relative to root.
+#' @param to_path Specifies a destination path, including the new name for the file or folder, relative to root.
+#' @seealso dropbox_copy dropbox_create_folder
+#' @return Message on successful completion or error.
+#' @import RJSONIO ROAuth
+#' @export dropbox_move
+#' @examples \dontrun{
 #'
 #'}
 dropbox_move <- function(cred, from_path = NULL, to_path = NULL) {

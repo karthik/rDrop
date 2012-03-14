@@ -1,11 +1,11 @@
 #'Function to create new folders in Dropbox.
 #'
-#'@param cred An object of class ROAuth with Dropobox specific credentials.
-#'@param folder_name Specifies the path to the new folder to create relative to root.
-#'@return message with success or failure
-#'@import stringr plyr
-#'@export dropbox_create_folder
-#'@examples \dontrun{
+#' @param cred An object of class ROAuth with Dropobox specific credentials.
+#' @param folder_name Specifies the path to the new folder to create relative to root.
+#' @return message with success or failure
+#' @import stringr plyr
+#' @export dropbox_create_folder
+#' @examples \dontrun{
 #'
 #'}
 dropbox_create_folder <- function(cred, folder_name = NULL) {
