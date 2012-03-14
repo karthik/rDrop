@@ -38,7 +38,7 @@ dropbox_dir <- function(cred, path = NULL, verbose = FALSE) {
     # Remove trailing slash
     if (grepl("/$", path)) {
     path <- str_sub(path, end = str_length(path) - 1)
-    }
+            }
     }
 
     if (!is.null(path) & length(path)>0) {
@@ -57,19 +57,3 @@ dropbox_dir <- function(cred, path = NULL, verbose = FALSE) {
     }
 } 
 # API documentation: https://www.dropbox.com/developers/reference/api#metadata
-
-
-# # tests
-# metadata <-
-#
-#   fromJSON(cred$OAuthRequest('https://api.dropbox.com/1/metadata/dropbox/Public'))
-# names(metadata$contents) =
-#   basename(sapply(metadata$contents, `[[`,
-#         'path'))
-#     x <- ldply(metadata$contents, data.frame)
-
-
-# Todos:
-# Need to check validity of path as an input. Should be
-#   is.dropbox.dir(path)
-# Need to allow for a recursive directory listing. 
