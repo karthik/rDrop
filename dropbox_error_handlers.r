@@ -1,12 +1,6 @@
 # A set of functions meant to handle errors arising from
 #   all dropbox file ops.
 
-# startup checks that need to get done.
-# .onLoad <- function()
-# if(packageVersion('ROAuth') < '0.9.1') {
-# stop('You will version 0.9.1 (or higher) of ROAuth for
-#   rDrop to work.')
-# }
 
 #'Verifies whether a user has specified a correct Oauth credential for Dropbox
 #'
@@ -105,8 +99,6 @@ exists.in.dropbox <- function(cred, path = NULL,
     }
     
     return(response)
-
-
 }
 
 #'Function to check whether a path supplied exists in a users Dropbox account.
