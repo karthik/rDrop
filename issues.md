@@ -14,7 +14,7 @@
 6. `dropbox_move` - Works, but needs error handling.
 7. `dropbox_delete` - Works, but needs error handling.
 8. `dropbox_copy` - Works, but needs major error handling.
-9. `dropbox_search` - works fine. However, to search files in a specific path, it seems like I need to search all of Dropbox, then subset the result. I've figured it out but not coded it yet.                 
+9. `dropbox_search` - works fine. minor issues almost resolved.           
 
 # Error handling todos.
 1. Check destinations for copy/move
