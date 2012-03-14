@@ -14,8 +14,7 @@
 #'@examples \dontrun{
 #' dropbox_copy(dropbox_token, 'file.csv', 'folder2')
 #'}
-dropbox_copy <- function(cred, from_path = NULL, to_path = NULL, 
-    overwrite = FALSE) {
+dropbox_copy <- function(cred, from_path = NULL, to_path = NULL) {
     if (!is.dropbox.cred(cred)) {
         stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", 
             call. = FALSE)
@@ -30,11 +29,27 @@ dropbox_copy <- function(cred, from_path = NULL, to_path = NULL,
     if(!exists.in.dropbox(cred, to_path, is_dir = TRUE)) {
         stop("Destination is not a valid folder", call. = FALSE)
     }
+
+     if (!grepl("^/", from_path)) {
+    from_path <- paste("/", from_path, sep="")
+    } 
+
+     if (!grepl("^/", to_path)) {
+    to_path <- paste("/", to_path, sep="")
+    }    
+
+    to_path <- paste(to_path, from_path, sep="")
     # Below does not work
     copy <- fromJSON(cred$OAuthRequest("https://api.dropbox.com/1/fileops/copy", 
-        list(root = "dropbox", from_path = from_path, to_path = to_path)))
-    # OUTPUT SUCCESS MESSAGE
-    invisible()
+        list(root = "dropbox", from_path = from_path, to_path = to_path), ,"POST"))
+
+    if(is.character(copy)) {
+    stop(copy[[1]], call.= FALSE)
+    }
+
+    if(is.list(copy)) {
+    cat("File succcessfully copied to", copy$path, "on", copy$modified)
+ }   
 }
 # API documentation: https://www.dropbox.com/developers/reference/api#fileops-copy
 
