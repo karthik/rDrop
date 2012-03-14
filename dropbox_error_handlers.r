@@ -52,22 +52,27 @@ is.dropbox.cred <- function(cred, response = TRUE) {
 #' exists.in.dropbox(cred,'test_folder')
 #' exists.in.dropbox(cred,'test_folder',is_dir='dir')
 #'}
-exists.in.dropbox <- function(cred, path = NULL, query, 
+exists.in.dropbox <- function(cred, path = NULL, 
     is_dir = NULL) {
+    # default response so function can proceed.
     response <- TRUE
+    
     # First search Dropbox to see if the object exists
-    if (is.null(path)) {
-        path <- "/"
-    }
-    res <- dropbox_search(cred, path = path, query = query)
+    full_path <- path
+    full_path <- paste("/", full_path, sep="")
+    query <- basename(path)
+    res <- dropbox_search(cred, query)
     if (is.null(res)) {
-        response <- FALSE
+         response <- FALSE
     }
+
     # OK, object exists, but let's see if there was more than
     #   one result
-    if (response) {
-        if (dim(res)[1] > 1) 
+    if(!identical(query, full_path)) {
+        res <- res[which(res$path==full_path), ]
+        if(dim(res)[1]!=1) {
             response <- FALSE
+        }
     }
     
     # OK, only one result returned.
