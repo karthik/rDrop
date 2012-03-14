@@ -34,9 +34,11 @@ dropbox_dir <- function(cred, path = NULL, verbose = FALSE) {
         }
     }
 
+    if(!is.null(path)) {
     # Remove trailing slash
     if (grepl("/$", path)) {
     path <- str_sub(path, end = str_length(path) - 1)
+    }
     }
 
     if (!is.null(path) & length(path)>0) {
