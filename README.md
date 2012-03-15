@@ -77,10 +77,10 @@ dropbox_dir(dropbox_credentials, verbose = TRUE)
 
 
 dropbox_dir(dropbox_credentials, path = 'folder_name')
-# To see contents of a specific path.
+# To see contents of a specified path.
 
 dropbox_dir(dropbox_credentials, path = 'folder_name', verbose = TRUE)
-# For verbose content listing of a specific path.
+# For verbose content listing for a specified path (relative to Dropbox root).
 </code></pre>
 
 
@@ -98,7 +98,6 @@ dropbox_dir(dropbox_credentials, path = 'folder_name', verbose = TRUE)
 <pre><code>
 dropbox_move(dropbox_credentials, from_path, to_path)	
 # from_to can be a folder or file. to_path has to be a folder.
-# To overwrite existing file/folder in destination, add overwrite = TRUE.
 </code></pre>
 
 ### Copying files within Dropbox
