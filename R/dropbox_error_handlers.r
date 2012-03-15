@@ -94,37 +94,7 @@ exists.in.dropbox <- function(cred, path = NULL, is_dir = NULL) {
     }
     return(response)
 }
-#'Checks if a supplied path is a file in users Dropbox account.
-#'
-#' @param cred An object of class ROAuth with Dropobox specific credentials.
-#' @param path path to file or folder that needs verification.
-#' @seealso is.dropbox.dir dropbox.file.info
-#' @return logical
-#' @export 
-#' @examples \dontrun{
-#'
-#'}
-is.dropbox.file <- function(cred, path) {
-    if (!is.dropbox.cred(cred)) {
-        stop("Invalid Dropbox credentials", call. = F)
-    }
-    is_d_file <- TRUE
-    res <- dropbox_search(cred, path)
-    if (is.null(res)) {
-        is_d_file <- FALSE
-    }
-    if (is_d_file) {
-        if (dim(res)[1] > 1) {
-            is_d_file <- FALSE
-        }
-    }
-    if (is_d_file) {
-        if (!unique(res$is_dir)) {
-            is_d_file <- FALSE
-        }
-    }
-    return(is_d_file)
-}
+
 #'Return file attributes for a specified file supplied in the path argument.
 #'
 #' @param cred An object of class ROAuth with Dropobox specific credentials.
