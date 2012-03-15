@@ -39,7 +39,7 @@ library(rDrop)
  dropbox_credentials &lt;- dropbox_auth()
 
 # Otherwise:
- dropbox_credentials &lt;- dropbox_auth("Your_consumer_key","Your_consumer_secret")
+ dropbox_credentials &lt;- dropbox_auth("Your_consumer_key", "Your_consumer_secret")
 </code></pre>
 
 
