@@ -1,5 +1,3 @@
-#Status: Works fine but have not implemented a way for
-#   users to specify a certain directory.
 #'Function to list contents of a Dropbox folder. If no folder is specified, function will list contents of root folder.
 #'
 #' @param cred An object of class ROAuth with Dropobox specific credentials.
@@ -19,7 +17,7 @@
 #'}
 dropbox_dir <- function(cred, path = NULL, verbose = FALSE, deleted = FALSE) {
     if (!is.dropbox.cred(cred)) {
-        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", 
+        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.",
             call. = FALSE)
     }
     url <- "https://api.dropbox.com/1/metadata/dropbox/"
@@ -40,8 +38,9 @@ dropbox_dir <- function(cred, path = NULL, verbose = FALSE, deleted = FALSE) {
         url <- paste(url, path, "/", sep = "")
     }
     metadata <- fromJSON(cred$OAuthRequest(url, list(include_deleted = deleted)))
-    names(metadata$contents) <- basename(sapply(metadata$contents, 
+    names(metadata$contents) <- basename(sapply(metadata$contents,
         `[[`, "path"))
+
     file_sys <- ldply(metadata$contents, data.frame)
     # Verbose will return all file information. Otherwise only
     #   return relevant fields.
@@ -52,4 +51,5 @@ dropbox_dir <- function(cred, path = NULL, verbose = FALSE, deleted = FALSE) {
     }
 }
 # API documentation:
-#   https://www.dropbox.com/developers/reference/api#metadata 
+#   https://www.dropbox.com/developers/reference/api#metadata
+# Issues: Fails with empty directories
