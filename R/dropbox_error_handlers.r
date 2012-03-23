@@ -4,7 +4,7 @@
 #'
 #' @param cred An object of class ROAuth with Dropobox specific credentials.
 #' @return logical
-#' @export 
+#' @export
 #' @examples \dontrun{
 #' is.dropbox.cred(your_dropbox_credential_object)
 #'}
@@ -27,7 +27,7 @@ is.dropbox.cred <- function(cred, response = TRUE, verified = FALSE) {
         response <- ifelse(class(cred) != "OAuth", FALSE, TRUE)
     }
     if (response) {
-        response <- ifelse(grep("dropbox", cred$requestURL) != 1, 
+        response <- ifelse(grep("dropbox", cred$requestURL) != 1,
             FALSE, TRUE)
     }
 }
@@ -46,7 +46,7 @@ is.dropbox.cred <- function(cred, response = TRUE, verified = FALSE) {
 #'}
 exists.in.dropbox <- function(cred, path = NULL, is_dir = NULL) {
     if (!is.dropbox.cred(cred)) {
-        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", 
+        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.",
             call. = FALSE)
     }
     # default response so function can proceed.
@@ -62,7 +62,7 @@ exists.in.dropbox <- function(cred, path = NULL, is_dir = NULL) {
     }
     # Remove trailing slash
     if (grepl("/$", full_path)) {
-        full_path <- str_sub(full_path, end = str_length(full_path) - 
+        full_path <- str_sub(full_path, end = str_length(full_path) -
             1)
     }
     query <- basename(path)
@@ -144,4 +144,20 @@ is.valid.revision <- function(cred, path = NULL, revision = NULL) {
 # Check for leading slash first using grep. If missing,
 #   append it.
 # Checks revision number for a file in dropbox and returns
-#   a logical yes/no. 
+#   a logical yes/no.
+
+#'Checks for valid internet connection
+#' @return logical TRUE/FALSE
+#' @examples \dontrun{
+#' havingIP()
+#'}
+#' @export
+havingIP <- function() {
+  if (.Platform$OS.type == "windows") {
+    ipmessage <- system("ipconfig", intern = TRUE)
+  } else {
+    ipmessage <- system("ifconfig", intern = TRUE)
+  }
+  validIP <- "((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)[.]){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)"
+  any(grep(validIP, ipmessage))
+}
