@@ -86,8 +86,11 @@ dropbox_dir(dropbox_credentials, path = 'folder_name', verbose = TRUE)
 
 ### Download files from your Dropbox account to R
 <pre><code>
+	<strong> Reading text files</strong>
 file &lt;- dropbox_get(dropbox_credentials, 'my_data.csv')
 data &lt;- read.csv(textConnection(file))
+<br>
+<strong>Reading images</strong>
 </code></pre>
 
 ### Upload R objects to your Dropbox
