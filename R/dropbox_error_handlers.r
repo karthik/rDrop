@@ -8,10 +8,8 @@
 #' @examples \dontrun{
 #' is.dropbox.cred(your_dropbox_credential_object)
 #'}
-is.dropbox.cred <- function(cred, response = TRUE, verified = FALSE) {
-    if(verified) {
-        response <- TRUE
-    } else {
+is.dropbox.cred <- function(cred) {
+    response = TRUE
     foo <- deparse(substitute(cred))
     if (missing(cred)) {
         response <- FALSE
@@ -26,13 +24,14 @@ is.dropbox.cred <- function(cred, response = TRUE, verified = FALSE) {
     if (response) {
         response <- ifelse(class(cred) != "OAuth", FALSE, TRUE)
     }
+
     if (response) {
         response <- ifelse(grep("dropbox", cred$requestURL) != 1,
             FALSE, TRUE)
     }
-}
     return(response)
 }
+
 #' Check to see if an object exists in Dropbox
 #'
 #' @param cred An object of class ROAuth with Dropobox specific credentials.

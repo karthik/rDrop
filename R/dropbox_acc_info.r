@@ -4,7 +4,6 @@
 #' @keywords authentication OAuth
 #' @seealso \code{\link{dropbox_auth}}
 #' @return list containing referral_link, display_name, uid, country, quota_info, and email.
-#' @alias
 #' @import RJSONIO ROAuth
 #' @export dropbox_acc_info
 #' @examples \dontrun{
@@ -12,7 +11,7 @@
 #'}
 dropbox_acc_info <- function(cred) {
     if (!is.dropbox.cred(cred)) {
-        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", 
+        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.",
             call. = FALSE)
     }
     status <- fromJSON(cred$OAuthRequest("https://api.dropbox.com/1/account/info"))
@@ -22,4 +21,4 @@ dropbox_acc_info <- function(cred) {
 #
 #
 #
-#   https://www.dropbox.com/developers/reference/api#account-info 
+#   https://www.dropbox.com/developers/reference/api#account-info
