@@ -2,7 +2,8 @@
 \alias{dropbox_dir}
 \title{Function to list contents of a Dropbox folder. If no folder is specified, function will list contents of root folder.}
 \usage{
-  dropbox_dir(cred, path = NULL, verbose = FALSE)
+  dropbox_dir(cred, path = NULL, verbose = FALSE,
+    deleted = FALSE)
 }
 \arguments{
   \item{cred}{An object of class ROAuth with Dropobox
@@ -17,6 +18,9 @@
 
   \item{recursive}{logical. Setting this to true will list
   all your dropbox files. Not yet implemented.}
+
+  \item{deleted}{logical. Default is FALSE. Set to TRUE to
+  also list deleted files.}
 }
 \value{
   message
