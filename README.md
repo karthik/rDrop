@@ -52,7 +52,7 @@ If you entered valid keys, you will be directed to a secure Dropbox page on your
 Credentials will remain valid until you revoke them from your [Dropbox Apps page](https://www2.dropbox.com/developers/apps) by clicking the x next to your App's name.
 
 # Quick User Guide
-This package essentially provides standard Dropbox file operation functions (create/copy/move/restore/share) from within `R`. 
+This package essentially provides standard Dropbox file operation functions (create/copy/move/restore/share) from within `R`.
 
 To load a previously validated Dropbox credential file:
 <pre><code>
@@ -63,14 +63,14 @@ dropbox_credentials &lt;- dropbox_auth('Your_consumer_key', 'Your_consumer_secre
 
 ### Summary of your Dropbox Account
 <pre><code>
-dropbox_acc_info(dropbox_credentials) 
+dropbox_acc_info(dropbox_credentials)
 # will return a list with your display name, email, quota, referral URL, and country.
 </code></pre>
 
 ### Directory listing
 <pre><code>
 dropbox_dir(dropbox_credentials)
-# To list files and folders in your Dropbox root. 
+# To list files and folders in your Dropbox root.
 
 dropbox_dir(dropbox_credentials, verbose = TRUE)
 # for a complete listing (filename, revision, thumb, bytes, modified, path, and is_dir) with detailed information.
@@ -86,7 +86,8 @@ dropbox_dir(dropbox_credentials, path = 'folder_name', verbose = TRUE)
 
 ### Download files from your Dropbox account to R
 <pre><code>
-# Example
+file &lt;- dropbox_get(dropbox_credentials, 'my_data.csv')
+data &lt;- read.csv(textConnection(file))
 </code></pre>
 
 ### Upload R objects to your Dropbox
@@ -96,7 +97,7 @@ dropbox_dir(dropbox_credentials, path = 'folder_name', verbose = TRUE)
 
 ### Moving files within Dropobx
 <pre><code>
-dropbox_move(dropbox_credentials, from_path, to_path)	
+dropbox_move(dropbox_credentials, from_path, to_path)
 # from_to can be a folder or file. to_path has to be a folder.
 </code></pre>
 
