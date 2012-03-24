@@ -3,7 +3,7 @@
 2. `dropbox_restore` - haven't worked on it yet.
 
 # Functions with issues
-1. dropbox_get()
+1. dropbox_get() - needs work, especially when pulling non-text files.
 
 
 # Error handling todos.
