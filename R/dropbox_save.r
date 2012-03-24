@@ -16,7 +16,7 @@ dropbox_save <- function(cred, path, file) {
     content <- "This is simple content"
     inputz <- RCurl:::uploadFunctionHandler(df, TRUE)
     trace(inputz)
-    # Below crashes R64.app
+        # Below crashes R64.app
     xx <- cred$OAuthRequest("https://api-content.dropbox.com/1/files_put/dropbox/", 
         , "POST", upload = TRUE, readdata = inputz, infilesize = nchar(content) - 
             3L, verbose = TRUE)
@@ -39,4 +39,4 @@ dropbox_save <- function(cred, path, file) {
 #
 #
 #   cred$OAuthRequest('https://api-content.dropbox.com/1/files_put/dropbox/',list(file=df,
-#   filename='file.rdata', mime_type='text/csv'), 'POST') 
+#   filename='file.rdata', mime_type='text/csv'), 'POST')  

@@ -13,7 +13,7 @@
 #'
 #'}
 dropbox_media <- function(cred, path = NULL) {
-    # function guts.
+        # function guts.
 }
 # API Documentation:
-#   https://www.dropbox.com/developers/reference/api#media 
+#   https://www.dropbox.com/developers/reference/api#media  
