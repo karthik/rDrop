@@ -4,7 +4,6 @@
 #' @param cred An object of class ROAuth with Dropobox specific credentials.
 #' @param path  The directory to list. Not yet implemented
 #' @param verbose logical. FALSE returns a list with file names in root folder. TRUE returns a data.frame with the following fields: .id,revision, rev, thumb_exists, bytes,modified, path, is_dir, icon,root,size,mime_type.
-#' @param recursive logical. Setting this to true will list all your dropbox files. Not yet implemented.
 #' @param deleted logical. Default is FALSE. Set to TRUE to also list deleted files.
 #' @return message
 #' @export dropbox_dir
@@ -23,15 +22,15 @@ dropbox_dir <- function(cred, path = NULL, verbose = FALSE,
             call. = FALSE)
     }
     url <- "https://api.dropbox.com/1/metadata/dropbox/"
-        # Assuming user did specify a path to list, then make sure
-        #   it exists
+            # Assuming user did specify a path to list, then make sure
+            #   it exists
     if (!is.null(path)) {
         if (!exists.in.dropbox(cred, path, is_dir = TRUE)) {
             stop("There is no such folder in your Dropbox", call. = FALSE)
         }
     }
     if (!is.null(path)) {
-                # Remove trailing slash
+                        # Remove trailing slash
         if (grepl("/$", path)) {
             path <- str_sub(path, end = str_length(path) - 1)
         }
@@ -43,8 +42,8 @@ dropbox_dir <- function(cred, path = NULL, verbose = FALSE,
     names(metadata$contents) <- basename(sapply(metadata$contents,
         `[[`, "path"))
     file_sys <- ldply(metadata$contents, data.frame)
-        # Verbose will return all file information. Otherwise only
-        #   return relevant fields.
+            # Verbose will return all file information. Otherwise only
+            #   return relevant fields.
     if (!verbose) {
         return(file_sys$.id)
     } else {
