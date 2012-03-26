@@ -12,14 +12,16 @@
   \item{query}{The search string. Must be at least three
   characters long.}
 
-  \item{include_deleted}{If this parameter is set to true,
-  then files and folders that have been deleted will also
-  be included in the search.}
+  \item{deleted}{If this parameter is set to true, then
+  files and folders that have been deleted will also be
+  included in the search.}
 
   \item{file_limit}{The maximum and default value is 1,000.
   No more than file_limit search results will be returned.}
 
-  \item{Verbose}{logical. Default is FALSE. Set to TRUE to
+  \item{is_dir}{logical, TRUE looks for directories only.}
+
+  \item{verbose}{logical. Default is FALSE. Set to TRUE to
   get a full file listing.}
 }
 \value{

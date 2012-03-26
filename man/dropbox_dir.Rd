@@ -16,9 +16,6 @@
   following fields: .id,revision, rev, thumb_exists,
   bytes,modified, path, is_dir, icon,root,size,mime_type.}
 
-  \item{recursive}{logical. Setting this to true will list
-  all your dropbox files. Not yet implemented.}
-
   \item{deleted}{logical. Default is FALSE. Set to TRUE to
   also list deleted files.}
 }

@@ -10,9 +10,8 @@
 
   \item{path}{Path to object}
 
-  \item{type}{= NULL dir or file if a function needs to
-  know. Otherwise it will ignore type and return TRUE if
-  object exists in Dropbox folder.}
+  \item{is_dir}{if set to TRUE, will only look for folders.
+  Otherwise will return file or folder.}
 }
 \value{
   logical

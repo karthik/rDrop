@@ -3,8 +3,7 @@
 \title{Function to authenticate into your Dropbox account and get access keys}
 \usage{
   dropbox_auth(cKey = getOption("DropboxKey", NULL),
-    cSecret = getOption("DropboxSecret", NULL),
-    verbose = FALSE)
+    cSecret = getOption("DropboxSecret", NULL))
 }
 \arguments{
   \item{cKey}{A valid Dropbox application key}
@@ -22,8 +21,8 @@
   steps to create your application and copy the generated
   consumer key/secret combo. Ideally you should save those
   keys in your options as: \code{options(DropboxKey =
-  "Your_App_key")} \code{options(DropboxSecret =
-  "Your_App_secret")}. If you are unable to do so (assuming
+  'Your_App_key')} \code{options(DropboxSecret =
+  'Your_App_secret')}. If you are unable to do so (assuming
   you are on some public machine), then you can just
   specifiy both keys inline. Once you have authenticated,
   there is absolutely no reason to repeat this step for
