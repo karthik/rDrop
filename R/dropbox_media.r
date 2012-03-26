@@ -13,7 +13,10 @@
 #'
 #'}
 dropbox_media <- function(cred, path = NULL) {
+	    if (!is.dropbox.cred(cred)) {
+        stop("Invalid Oauth credentials", call. = FALSE)
+    }
         # function guts.
 }
 # API Documentation:
-#   https://www.dropbox.com/developers/reference/api#media  
+#   https://www.dropbox.com/developers/reference/api#media
