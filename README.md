@@ -9,6 +9,11 @@ This package provides a  programmatic interface to [Dropbox](https://www2.dropbo
 **Reference:**
 [Complete Dropbox API Reference.](https://www2.dropbox.com/developers/reference/api)
 
+# Installing
+```
+require(devtools)
+install_github("rDrop", "karthikram")
+```
 
 # Initial setup
 * To begin, create an `App` on Dropbox from the [Dropbox Developer site](https://www2.dropbox.com/developers/apps). You will need to log in with your Dropbox username and password.Then, click `Create An App`.
@@ -35,7 +40,7 @@ If you prefer not to specify keys in a `.rprofile` (especially if you are on a p
 ### Authorizing your app
 <pre><code>
 library(rDrop)
-# Not yet on CRAN. Will make this available via devtools shortly.
+# Not yet on CRAN but available via devtools.
 
 # If you have Dropbox keys in your .rprofile, simply run:
  dropbox_credentials &lt;- dropbox_auth()
