@@ -21,7 +21,7 @@
 #'}
 dropbox_auth <- function(cKey = getOption("DropboxKey",
     NULL), cSecret = getOption("DropboxSecret", NULL)) {
-    setClass("DropboxCredentials", contains = "OAuthCredentials")
+    # setClass("DropboxCredentials", contains = "OAuthCredentials")
             #Checking to make sure you specify keys either in options or directly\.{}
     if (is.null(cKey) && is.null(cSecret)) {
         stop("Could not find your Dropbox keys in the function arguments or in your options. ?rDrop for more help")
@@ -41,17 +41,14 @@ dropbox_auth <- function(cKey = getOption("DropboxKey",
     if (TRUE) {
         cat("\n Dropbox Authentication completed successfully.\n")
     }
-        # if (FALSE) {
-        #     cred$OAuthRequest('https://api.dropbox.com/1/account/info')
-        #     cred$OAuthRequest('https://api-content.dropbox.com/1/files/dropbox/foo')
-        #     cred$OAuthRequest('https://api-content.dropbox.com/1/files/dropbox/foo',
-        #         httpheader = c(Range = 'bytes=30-70'), verbose = TRUE)
-        # }
+
+    if(FALSE) {
+info = OAuthRequest(dropbox_oa, "https://api.dropbox.com/1/account/info")
+OAuthRequest(dropbox_oa, "https://api-content.dropbox.com/1/files/dropbox/foo")
+OAuthRequest(dropbox_oa, "https://api-content.dropbox.com/1/files/dropbox/foo",
+                httpheader = c(Range = "bytes=30-70"), verbose = TRUE)
+    }
     return(cred)
 }
 # API documentation:
-#
-#
-#
-#
 #   https://www.dropbox.com/developers/reference/api#request-token
