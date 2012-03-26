@@ -29,15 +29,14 @@ dropbox_create_folder
 dropbox_delete
 dropbox_share.r
 dropbox_get.r
+dropbox_search.r
+dropbox_move.r
 
 To fix
 =======
 dropbox_copy.r
 dropbox_error_handlers.r
-dropbox_get.r
 dropbox_media.r
-dropbox_move.r
 dropbox_restore.r
 dropbox_save.r
-dropbox_search.r
 

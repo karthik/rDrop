@@ -1,6 +1,6 @@
 \name{dropbox_restore}
 \alias{dropbox_restore}
-\title{functions to restore a file to an older version}
+\title{functions to restore a file to an older version (not working)}
 \usage{
   dropbox_restore(cred, file, rev = NULL)
 }

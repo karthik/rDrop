@@ -16,11 +16,11 @@ dropbox_get <- function(cred, file_to_get) {
     if (!(exists.in.dropbox(cred, path = file_to_get, is_dir = FALSE))) {
         stop("File or folder does not exist", call. = FALSE)
     }
-    downloaded_file <- cred$OAuthRequest("https://api-content.dropbox.com/1/files/", 
+    downloaded_file <- OAuthRequest(cred, "https://api-content.dropbox.com/1/files/", 
         list(root = "dropbox", path = file_to_get), "GET")
 }
 # API documentation:
 #
 #
 #
-#   https://www.dropbox.com/developers/reference/api#files-GET 
+#   https://www.dropbox.com/developers/reference/api#files-GET  

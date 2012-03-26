@@ -1,6 +1,6 @@
 \name{dropbox_media}
 \alias{dropbox_media}
-\title{Returns a link directly to a file.}
+\title{Returns a link directly to a file (not working)}
 \usage{
   dropbox_media(cred, path = NULL)
 }

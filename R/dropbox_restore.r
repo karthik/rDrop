@@ -1,4 +1,4 @@
-#' functions to restore a file to an older version
+#' functions to restore a file to an older version (not working)
 #'
 #' This function currently does not work.
 #' @param cred Specifies an object of class ROAuth with Dropobox specific credentials.
@@ -14,12 +14,12 @@ dropbox_restore <- function(cred, file, rev = NULL) {
         stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.")
     }
     if (is.null(rev)) {
-        stop("You need to specify a revision number to restore a file \n", 
+        stop("You need to specify a revision number to restore a file \n",
             call. = F)
     }
-                # List should contain path and revision number
-                # 1. Check revision to make sure it exists.
+                        # List should contain path and revision number
+                        # 1. Check revision to make sure it exists.
 }
 # API documentation:
 #   https://www.dropbox.com/developers/reference/api#restore
-# Status: Still setting up 
+# Status: Still setting up

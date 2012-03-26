@@ -1,8 +1,8 @@
 \name{dropbox_save}
 \alias{dropbox_save}
-\title{Function to save an object from R into Dropbox}
+\title{Function to save an object from R into Dropbox (not working)}
 \usage{
-  dropbox_save(cred, content)
+  dropbox_save(cred, content, file = NULL)
 }
 \arguments{
   \item{cred}{Specifies an object of class ROAuth with
@@ -15,6 +15,9 @@
   for OAuth, the file parameter should be set to the
   destination filename, and then switched to the file
   contents when preparing the multipart request.}
+
+  \item{file}{Name of file to be saved. If blank, the name
+  of the R object will be used.}
 }
 \description{
   This function currently does not work.
