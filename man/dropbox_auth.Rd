@@ -2,7 +2,8 @@
 \alias{dropbox_auth}
 \title{Function to authenticate into your Dropbox account and get access keys}
 \usage{
-  dropbox_auth(cKey = NULL, cSecret = NULL,
+  dropbox_auth(cKey = getOption("DropboxKey", NULL),
+    cSecret = getOption("DropboxSecret", NULL),
     verbose = FALSE)
 }
 \arguments{
@@ -14,8 +15,22 @@
   Oauth object with Dropbox keys
 }
 \description{
-  Function to authenticate into your Dropbox account and
-  get access keys
+  Before using any of rDrop's functions, you must first
+  create an application on the Dropobox developer site
+  (https://www2.dropbox.com/developers/apps). This
+  application is specific to you. Follow through with the
+  steps to create your application and copy the generated
+  consumer key/secret combo. Ideally you should save those
+  keys in your options as: \code{options(DropboxKey =
+  "Your_App_key")} \code{options(DropboxSecret =
+  "Your_App_secret")}. If you are unable to do so (assuming
+  you are on some public machine), then you can just
+  specifiy both keys inline. Once you have authenticated,
+  there is absolutely no reason to repeat this step for
+  subsequent sessions. Simply save the OAuth object and
+  load as necessary. Future versions of ROAuth will make it
+  easier for you to just update the token without having to
+  reauthoize via the web.
 }
 \examples{
 \dontrun{

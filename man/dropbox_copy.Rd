@@ -18,7 +18,9 @@
   Message with success or error.
 }
 \description{
-  Function to copy files or folder within Dropbox.
+  Use this function to copy files or folders within your
+  Dropbox. Destination must be a folder otherwise the
+  function will return an error.
 }
 \examples{
 \dontrun{

@@ -15,9 +15,9 @@
   list with url to file or zipped folder and expiry date.
 }
 \description{
-  Returns a URL to a zipped copy of a folder or a direct
-  link in case input is a file. Also returns a date when
-  link will expire.
+  Returns a list containing the URL to a zipped copy of a
+  folder or a direct link in case input is a file. Also
+  returns a date when link will expire.
 }
 \examples{
 \dontrun{

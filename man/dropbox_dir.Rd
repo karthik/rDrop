@@ -1,6 +1,6 @@
 \name{dropbox_dir}
 \alias{dropbox_dir}
-\title{Function to list contents of a Dropbox folder. If no folder is specified, function will list contents of root folder.}
+\title{Function to list contents of a Dropbox folder.}
 \usage{
   dropbox_dir(cred, path = NULL, verbose = FALSE,
     deleted = FALSE)
@@ -26,9 +26,8 @@
   message
 }
 \description{
-  Function to list contents of a Dropbox folder. If no
-  folder is specified, function will list contents of root
-  folder.
+  If no folder is specifies, it will only list contents of
+  the root folder.
 }
 \examples{
 \dontrun{

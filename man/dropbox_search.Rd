@@ -1,6 +1,6 @@
 \name{dropbox_search}
 \alias{dropbox_search}
-\title{Search your Dropbox files and folders.}
+\title{Search Dropbox files and folders.}
 \usage{
   dropbox_search(cred, query = NULL, deleted = FALSE,
     file_limit = 1000, is_dir = NULL, verbose = FALSE)
@@ -27,7 +27,10 @@
   data.frame
 }
 \description{
-  Search your Dropbox files and folders.
+  If you are searching for a file/folder in the root
+  directory, you can ignore the path. If searching for a
+  file/folder in a specific location, then you should
+  provide a full path to the object.
 }
 \examples{
 \dontrun{

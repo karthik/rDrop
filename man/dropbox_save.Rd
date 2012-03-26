@@ -22,7 +22,7 @@
   contents when preparing the multipart request.}
 }
 \description{
-  Function to save an object from R into Dropbox
+  This function currently does not work.
 }
 \examples{
 \dontrun{

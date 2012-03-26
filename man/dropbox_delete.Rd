@@ -1,7 +1,6 @@
 \name{dropbox_delete}
 \alias{dropbox_delete}
-\title{Status:  Works, But I need to add in search paths.
-Function to delete a file or folder from Dropbox}
+\title{Function to delete a file or folder from Dropbox}
 \usage{
   dropbox_delete(cred, file_to_delete = NULL, ask = TRUE)
 }
@@ -19,8 +18,10 @@ Function to delete a file or folder from Dropbox}
   Nothing. A message upon successful deletion.
 }
 \description{
-  Status: Works, But I need to add in search paths.
-  Function to delete a file or folder from Dropbox
+  Function will delete specified object in Dropbox
+  (assuming it exists). To skip deletion conformation, set
+  ask = FALSE in function call. Accidentally deleted
+  objects may be recovered using Dropbox's restore feature.
 }
 \examples{
 \dontrun{

@@ -11,7 +11,7 @@
   \item{file}{The path to the file.}
 }
 \description{
-  functions to restore a file to an older version
+  This function currently does not work.
 }
 \examples{
 \dontrun{

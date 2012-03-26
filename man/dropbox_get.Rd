@@ -15,7 +15,10 @@
   file
 }
 \description{
-  Downloads a file from your Dropbox
+  Currently the function does not provide much support
+  other than retrieving the contents of whatever Dropbox
+  file you specify. Use \code{TextConnection} to process
+  data files for the time being.
 }
 \examples{
 \dontrun{
