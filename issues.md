@@ -19,3 +19,23 @@ The call to `is.dropbox.cred()` inside `drobpox_search()` is necessary because o
 
 ## Reference for the API
 [https://www2.dropbox.com/developers/reference/](https://www2.dropbox.com/developers/reference/)
+
+
+Done
+====
+dropbox_acc_info
+dropbox_dir
+dropbox_create_folder
+dropbox_delete
+
+To fix
+=======
+dropbox_copy.r
+dropbox_error_handlers.r
+dropbox_get.r
+dropbox_media.r
+dropbox_move.r
+dropbox_restore.r
+dropbox_save.r
+dropbox_search.r
+dropbox_share.r
