@@ -4,7 +4,7 @@ This package provides a  programmatic interface to [Dropbox](https://www2.dropbo
 
 > **Disclaimer: This package is currently in development and somewhat buggy so please <u>use at your own risk.</u>**
 
-**Important** This package relies on ROAuth and the version currently available on CRAN does not play so well with rDrop. Use [this version](http://dl.dropbox.com/u/2223411/ROAuth_0.91.0.tar.gz) for the time being till reference class issues get patched up.
+**Important**: This package relies on ROAuth and the version currently available on CRAN does not play so well with rDrop. Use [this version](http://dl.dropbox.com/u/2223411/ROAuth_0.91.0.tar.gz) and install from source for the time being till reference class issues get patched up.
 
 **Reference:**
 [Complete Dropbox API Reference.](https://www2.dropbox.com/developers/reference/api)
@@ -16,7 +16,7 @@ This package provides a  programmatic interface to [Dropbox](https://www2.dropbo
 ![Create an app for your personal use on Dropbox](https://github.com/karthikram/rDrop/blob/master/screenshots/create_app.png?raw=true
 )
 
-* Name your personal version of this app. Dropbox requires that your app have a unique name. Dropbox [branding guidelines](https://www2.dropbox.com/developers/reference/branding) also prohibit the use of the word **"Dropbox"** or names that begin with "**Drop**". We recommend that you name the app something like "**Your_first_name_last_name_rDrop**" to avoid naming conflicts. You won't have to deal with the app name after this step.
+* Next, provide a unique name to your personal app. Dropbox requires that your app have a unique name. Dropbox [branding guidelines](https://www2.dropbox.com/developers/reference/branding) also prohibit the use of the word **"Dropbox"** or names that begin with "**Drop**". We recommend that you name the app something like "**Your_first_name_last_name_rDrop**" to avoid naming conflicts but call it whatever you like. You won't have to deal with the app name after this step.
 
 
 ![Alt text](https://github.com/karthikram/rDrop/blob/master/screenshots/name_your_app.png?raw=true)
