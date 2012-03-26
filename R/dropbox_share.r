@@ -13,7 +13,7 @@
 #' @export
 dropbox_share <- function(cred, file = NULL) {
     if (!is.dropbox.cred(cred)) {
-        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.",
+        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", 
             call. = FALSE)
     }
     if (is.null(file)) {
@@ -22,7 +22,7 @@ dropbox_share <- function(cred, file = NULL) {
     if (!(exists.in.dropbox(cred, file))) {
         stop("Folder already exists", call. = FALSE)
     }
-    path_to_share <- paste("https://api.dropbox.com/1/shares/dropbox/",
+    path_to_share <- paste("https://api.dropbox.com/1/shares/dropbox/", 
         file, sep = "")
     cred$OAuthRequest(path_to_share)
     result <- fromJSON(cred$OAuthRequest(path_to_share))
@@ -32,4 +32,4 @@ dropbox_share <- function(cred, file = NULL) {
     return(res)
 }
 # API documentation:
-#   https://www.dropbox.com/developers/reference/api#shares
+#   https://www.dropbox.com/developers/reference/api#shares 
