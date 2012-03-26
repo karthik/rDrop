@@ -1,5 +1,5 @@
 #'Function to authenticate into your Dropbox account and get access keys
-#'
+#' Before using any of rDrop's functions, you must first create an application on the Dropobox developer site (https://www2.dropbox.com/developers/apps). This application is specific to you. Follow through with the steps to create your application and copy the  generated consumer key/secret combo. Ideally you should save those keys in your options as DropboxKey="Your_dropbox_key" and DropboxSecret="". If you are unable to do so (assuming you are on some public machine), then you can just specifiy both keys inline. Once you have authenticated, there is absolutely no reason to repeat this step for subsequent sessions. Simply save the OAuth object and load as necessary. Future versions of ROAuth will make it easier for you to just update the token without having to reauthoize via the web.
 #' @import RCurl ROAuth RJSONIO plyr
 #' @param cKey A valid Dropbox application key
 #' @param cSecret A valid Dropbox application secret
@@ -20,8 +20,7 @@
 #'}
 dropbox_auth <- function(cKey = getOption("DropboxKey", NULL), cSecret = getOption("DropboxSecret", NULL),
     verbose = FALSE) {
-        #Checking to make sure you specify keys one way or
-        #   another
+        #Checking to make sure you specify keys either in options or directly\.{}
     if (is.null(cKey) && is.null(cSecret)) {
             stop("Could not find your Dropbox keys in the function arguments or in your options. ?rDrop for more help")
     }
