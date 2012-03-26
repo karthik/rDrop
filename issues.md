@@ -3,7 +3,7 @@
 2. `dropbox_restore` - haven't worked on it yet.
 
 # Functions with issues
-1. dropbox_get()
+1. dropbox_get() - Does not know how to deal with mime-types at this time (but that is also a larger issue with R in general.)
 
 
 # Error handling todos.
