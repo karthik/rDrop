@@ -10,8 +10,8 @@
 #'
 #'}
 dropbox_get <- function(cred, file_to_get) {
-    if (!is.dropbox.cred(cred)) {
-        stop("Invalid Oauth credentials", call. = FALSE)
+    if (class(cred) != "DropboxCredentials" | missing(cred)) {
+        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.")
     }
     if (!(exists.in.dropbox(cred, path = file_to_get, is_dir = FALSE))) {
         stop("File or folder does not exist", call. = FALSE)

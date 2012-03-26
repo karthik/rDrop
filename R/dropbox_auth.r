@@ -19,36 +19,34 @@
 #' dropbox_token <- dropbox_auth('consumey_key', 'consumer_secret')
 #' save(dropbox_token, file = 'dropbox_auth.rdata')
 #'}
-dropbox_auth <- function(cKey = getOption("DropboxKey",
+dropbox_auth <- function(cKey = getOption("DropboxKey", 
     NULL), cSecret = getOption("DropboxSecret", NULL)) {
-    # setClass("DropboxCredentials", contains = "OAuthCredentials")
-            #Checking to make sure you specify keys either in options or directly\.{}
+    setClass("DropboxCredentials", contains = "OAuthCredentials")
     if (is.null(cKey) && is.null(cSecret)) {
         stop("Could not find your Dropbox keys in the function arguments or in your options. ?rDrop for more help")
     }
     reqURL <- "https://api.dropbox.com/1/oauth/request_token"
     authURL <- "https://www.dropbox.com/1/oauth/authorize"
     accessURL <- "https://api.dropbox.com/1/oauth/access_token/"
-    dropbox_oa <- oauth(cKey, cSecret, reqURL, authURL, accessURL,
+    dropbox_oa <- oauth(cKey, cSecret, reqURL, authURL, accessURL, 
         obj = new("DropboxCredentials"))
     cred <- handshake(dropbox_oa, post = FALSE)
-        # cred <- OAuthFactory$new(consumerKey = cKey, consumerSecret = cSecret,
-        #     requestURL = reqURL, accessURL = accessURL, authURL = authURL)
-        # cat('Beginning authenticating with Dropbox... \n')
-        # cred$handshake(post = FALSE)
-            # Need to hide the enter PIN request for Dropbox but not
-            #   critical.
+            # cred <- OAuthFactory$new(consumerKey = cKey, consumerSecret = cSecret,
+            #     requestURL = reqURL, accessURL = accessURL, authURL = authURL)
+            # cat('Beginning authenticating with Dropbox... \n')
+            # cred$handshake(post = FALSE)
+                # Need to hide the enter PIN request for Dropbox but not
+                #   critical.
     if (TRUE) {
         cat("\n Dropbox Authentication completed successfully.\n")
     }
-
-    if(FALSE) {
-info = OAuthRequest(dropbox_oa, "https://api.dropbox.com/1/account/info")
-OAuthRequest(dropbox_oa, "https://api-content.dropbox.com/1/files/dropbox/foo")
-OAuthRequest(dropbox_oa, "https://api-content.dropbox.com/1/files/dropbox/foo",
-                httpheader = c(Range = "bytes=30-70"), verbose = TRUE)
+    if (FALSE) {
+        info <- OAuthRequest(dropbox_oa, "https://api.dropbox.com/1/account/info")
+        OAuthRequest(dropbox_oa, "https://api-content.dropbox.com/1/files/dropbox/foo")
+        OAuthRequest(dropbox_oa, "https://api-content.dropbox.com/1/files/dropbox/foo", 
+            httpheader = c(Range = "bytes=30-70"), verbose = TRUE)
     }
     return(cred)
 }
 # API documentation:
-#   https://www.dropbox.com/developers/reference/api#request-token
+#   https://www.dropbox.com/developers/reference/api#request-token 

@@ -10,10 +10,10 @@
 #'
 #'}
 dropbox_media <- function(cred, path = NULL) {
-    if (!is.dropbox.cred(cred)) {
-        stop("Invalid Oauth credentials", call. = FALSE)
+    if (class(cred) != "DropboxCredentials" | missing(cred)) {
+        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.")
     }
-            # function guts.
+                # function guts.
 }
 # API Documentation:
 #   https://www.dropbox.com/developers/reference/api#media

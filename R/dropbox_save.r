@@ -9,15 +9,18 @@
 #' dropbox_save(robject, file='filename')
 #'}
 dropbox_save <- function(cred, content) {
-    if (!is.dropbox.cred(cred)) {
-        stop("Invalid Oauth credentials", call. = FALSE)
+    if (class(cred) != "DropboxCredentials" | missing(cred)) {
+        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.")
     }
     if (is.null(content)) {
         stop("Nothing to save", call. = FALSE)
     }
     input <- RCurl:::uploadFunctionHandler(content, TRUE)
-    content_upload <- cred$put("https://api-content.dropbox.com/1/files_put/dropbox/Public/",
-        .opts = list(readfunction = input, infilesize = nchar(content),
+    content_upload <- OAuthRequest(cred, "https://api-content.dropbox.com/1/files_put/dropbox/", 
+        "POST", upload = TRUE, .opts = list(readfunction = input, 
+            infilesize = nchar(content), verbose = TRUE))
+    content_upload <- cred$put("https://api-content.dropbox.com/1/files_put/dropbox/Public/", 
+        .opts = list(readfunction = input, infilesize = nchar(content), 
             verbose = TRUE))
 }
 # API documentation: GET:
@@ -31,4 +34,4 @@ dropbox_save <- function(cred, content) {
 #
 #   https://www.dropbox.com/developers/reference/api#files-POST
 # Testing
-# df <- data.frame(x=1:10, y=rnorm(10))
+# df <- data.frame(x=1:10, y=rnorm(10)) 

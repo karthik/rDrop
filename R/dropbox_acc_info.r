@@ -11,8 +11,7 @@
 #'}
 dropbox_acc_info <- function(cred) {
     if (class(cred) != "DropboxCredentials" | missing(cred)) {
-        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.",
-            call. = FALSE)
+        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.")
     }
     info <- fromJSON(OAuthRequest(cred, "https://api.dropbox.com/1/account/info"))
     return(info)
@@ -21,4 +20,4 @@ dropbox_acc_info <- function(cred) {
 #
 #
 #
-#   https://www.dropbox.com/developers/reference/api#account-info
+#   https://www.dropbox.com/developers/reference/api#account-info 

@@ -11,11 +11,10 @@
 #'}
 dropbox_delete <- function(cred, file_to_delete = NULL, 
     ask = TRUE) {
-    if (!is.dropbox.cred(cred)) {
-        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", 
-            call. = FALSE)
+    if (class(cred) != "DropboxCredentials" | missing(cred)) {
+        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.")
     }
-            # Replace with a more elegant file exists checker.
+                # Replace with a more elegant file exists checker.
     if (!exists.in.dropbox(cred, file_to_delete)) {
         stop("File or folder not found", call. = FALSE)
     }
@@ -28,7 +27,7 @@ dropbox_delete <- function(cred, file_to_delete = NULL,
         }
     }
     if (verify == "Y" | ask == FALSE) {
-        deleted <- fromJSON(cred$OAuthRequest("https://api.dropbox.com/1/fileops/delete", 
+        deleted <- fromJSON(OAuthRequest(cred, "https://api.dropbox.com/1/fileops/delete", 
             list(root = "dropbox", path = file_to_delete)))
         if (is.list(deleted)) {
             cat(deleted$path, "was successfully deleted on", 

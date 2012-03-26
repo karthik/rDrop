@@ -12,9 +12,8 @@
 #'}
 #' @export
 dropbox_share <- function(cred, file = NULL) {
-    if (!is.dropbox.cred(cred)) {
-        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", 
-            call. = FALSE)
+    if (class(cred) != "DropboxCredentials" | missing(cred)) {
+        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.")
     }
     if (is.null(file)) {
         stop("No file of folder to share", call. = FALSE)

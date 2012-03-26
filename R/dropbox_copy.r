@@ -13,9 +13,8 @@
 #' dropbox_copy(dropbox_token, 'file.csv', 'folder2')
 #'}
 dropbox_copy <- function(cred, from_path = NULL, to_path = NULL) {
-    if (!is.dropbox.cred(cred)) {
-        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", 
-            call. = FALSE)
+    if (class(cred) != "DropboxCredentials" | missing(cred)) {
+        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.")
     }
     if (is.null(from_path) || is.null(to_path)) {
         stop("Missing path for source and/or destination", call. = F)
@@ -33,8 +32,8 @@ dropbox_copy <- function(cred, from_path = NULL, to_path = NULL) {
         to_path <- paste("/", to_path, sep = "")
     }
     to_path <- paste(to_path, from_path, sep = "")
-            # Below does not work
-    copy <- fromJSON(cred$OAuthRequest("https://api.dropbox.com/1/fileops/copy", 
+                # Below does not work
+    copy <- fromJSON(OAuthRequest(cred, "https://api.dropbox.com/1/fileops/copy", 
         list(root = "dropbox", from_path = from_path, to_path = to_path), 
         , "POST"))
     if (is.character(copy)) {

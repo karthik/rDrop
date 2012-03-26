@@ -12,10 +12,10 @@
 #'
 #'}
 dropbox_move <- function(cred, from_path = NULL, to_path = NULL) {
-    if (!is.dropbox.cred(cred)) {
-        stop("Invalid Oauth credentials", call. = FALSE)
+    if (class(cred) != "DropboxCredentials" | missing(cred)) {
+        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.")
     }
-            # Note: to_path needs a leading / because root is 'dropbox'
+                # Note: to_path needs a leading / because root is 'dropbox'
     if (is.null(from_path) || is.null(to_path)) {
         stop("Did not specify full path for source and/or destination", 
             call. = F)
@@ -31,8 +31,8 @@ dropbox_move <- function(cred, from_path = NULL, to_path = NULL) {
         to_path <- paste(to_path, "/", sep = "")
     }
     to_path <- paste(to_path, from_path, sep = "")
-            # Worked once but no longer workes.
-    move <- fromJSON(cred$OAuthRequest("https://api.dropbox.com/1/fileops/move", 
+                # Worked once but no longer workes.
+    move <- fromJSON(OAuthRequest(cred, "https://api.dropbox.com/1/fileops/move", 
         list(root = "dropbox", from_path = from_path, to_path = to_path), 
         "POST"))
     if (is.character(move)) {
