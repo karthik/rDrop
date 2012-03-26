@@ -93,17 +93,19 @@ file &lt;- dropbox_get(dropbox_credentials, 'my_data.csv')
 data &lt;- read.csv(textConnection(file))
 <br>
 <strong>Reading images</strong>
+...
 </code></pre>
 
 ### Upload R objects to your Dropbox
 <pre><code>
 # Example
+# Function not yet ready
 </code></pre>
 
 ### Moving files within Dropobx
 <pre><code>
 dropbox_move(dropbox_credentials, from_path, to_path)
-# from_to can be a folder or file. to_path has to be a folder.
+# from_path can be a folder or file. to_path has to be a folder.
 </code></pre>
 
 ### Copying files within Dropbox
