@@ -10,13 +10,13 @@
 #'
 #'}
 dropbox_media <- function(cred, path = NULL) {
-	    if (!is.dropbox.cred(cred)) {
+    if (!is.dropbox.cred(cred)) {
         stop("Invalid Oauth credentials", call. = FALSE)
     }
-        # function guts.
+            # function guts.
 }
 # API Documentation:
 #   https://www.dropbox.com/developers/reference/api#media
 # Duncan: Perhaps this might be a better way to read
 #   contents of a Dropbox file in R rather than
-#   dropbox_get()?
+#   dropbox_get()? 
