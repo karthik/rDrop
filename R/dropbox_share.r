@@ -19,16 +19,15 @@ dropbox_share <- function(cred, file = NULL) {
         stop("No file of folder to share", call. = FALSE)
     }
     if (!(exists.in.dropbox(cred, file))) {
-        stop("Folder already exists", call. = FALSE)
+        stop("Folder doesn't exist")
     }
-    path_to_share <- paste("https://api.dropbox.com/1/shares/dropbox/", 
+    path_to_share <- paste("https://api.dropbox.com/1/shares/dropbox/Monday",
         file, sep = "")
-    cred$OAuthRequest(path_to_share)
-    result <- fromJSON(cred$OAuthRequest(path_to_share))
+    result <- fromJSON(OAuthRequest(cred, path_to_share))
     res <- list()
     res$url <- result[[1]]
     res$expires <- result[[2]]
     return(res)
 }
 # API documentation:
-#   https://www.dropbox.com/developers/reference/api#shares 
+#   https://www.dropbox.com/developers/reference/api#shares
