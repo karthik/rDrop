@@ -1,8 +1,6 @@
 #' An S4 class that stores Dropbox credentials
-#' @slot a contains a string
 #' @export
 setClass("DropboxCredentials", contains = "OAuthCredentials")
-
 
 #'Function to authenticate into your Dropbox account and get access keys
 #'
@@ -16,6 +14,7 @@ setClass("DropboxCredentials", contains = "OAuthCredentials")
 #' @import RJSONIO ROAuth
 #' @export dropbox_auth
 #' @exportClass DropboxCredentials
+#' @alias DropboxCredentials-methods
 #' @examples \dontrun{
 #' dropbox_auth() # if you have keys in .rprofile stored as
 #' # options(DropboxKey='YOUR_APP_KEY')
@@ -27,8 +26,8 @@ setClass("DropboxCredentials", contains = "OAuthCredentials")
 #' save(dropbox_token, file = 'dropbox_auth.rdata')
 #'}
 dropbox_auth <- function(cKey = getOption("DropboxKey",
-    stop("Need your Dropbox consumer key")), cSecret = getOption("DropboxSecret",
-    stop("Need your Dropbox secret key"))) {
+    stop("Missing Dropbox consumer key")), cSecret = getOption("DropboxSecret",
+    stop("Missing Dropbox app secret"))) {
     reqURL <- "https://api.dropbox.com/1/oauth/request_token"
     authURL <- "https://www.dropbox.com/1/oauth/authorize"
     accessURL <- "https://api.dropbox.com/1/oauth/access_token/"
