@@ -27,6 +27,8 @@ dropbox_acc_info
 dropbox_dir
 dropbox_create_folder
 dropbox_delete
+dropbox_share.r
+dropbox_get.r
 
 To fix
 =======
@@ -38,4 +40,4 @@ dropbox_move.r
 dropbox_restore.r
 dropbox_save.r
 dropbox_search.r
-dropbox_share.r
+
