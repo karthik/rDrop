@@ -1,5 +1,6 @@
 #' Function to copy files or folder within Dropbox.
 #'
+#' Use this function to copy files or folders within your Dropbox. Destination must be a folder otherwise the function will return an error.
 #' @param cred An object of class ROAuth with Dropobox specific credentials.
 #' @param from_path Specifies the file or folder to be copied from relative to root.
 #' @param to_path Specifies a destination path, including the new name for the file or folder, relative to root.
@@ -13,7 +14,7 @@
 #'}
 dropbox_copy <- function(cred, from_path = NULL, to_path = NULL) {
     if (!is.dropbox.cred(cred)) {
-        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", 
+        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.",
             call. = FALSE)
     }
     if (is.null(from_path) || is.null(to_path)) {
@@ -33,17 +34,17 @@ dropbox_copy <- function(cred, from_path = NULL, to_path = NULL) {
     }
     to_path <- paste(to_path, from_path, sep = "")
         # Below does not work
-    copy <- fromJSON(cred$OAuthRequest("https://api.dropbox.com/1/fileops/copy", 
-        list(root = "dropbox", from_path = from_path, to_path = to_path), 
+    copy <- fromJSON(cred$OAuthRequest("https://api.dropbox.com/1/fileops/copy",
+        list(root = "dropbox", from_path = from_path, to_path = to_path),
         , "POST"))
     if (is.character(copy)) {
         stop(copy[[1]], call. = FALSE)
     }
     if (is.list(copy)) {
-        cat(from_path, "succcessfully copied to", copy$path, 
+        cat(from_path, "succcessfully copied to", copy$path,
             "on", copy$modified)
     }
 }
 # API documentation: #
 #
-#   https://www.dropbox.com/developers/reference/api#fileops-copy  
+#   https://www.dropbox.com/developers/reference/api#fileops-copy

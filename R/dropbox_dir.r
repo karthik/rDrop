@@ -1,5 +1,6 @@
-#'Function to list contents of a Dropbox folder. If no folder is specified, function will list contents of root folder.
+#'Function to list contents of a Dropbox folder.
 #'
+#' If no folder is specifies, it will only list contents of the root folder.
 #' @param cred An object of class ROAuth with Dropobox specific credentials.
 #' @param path  The directory to list. Not yet implemented
 #' @param verbose logical. FALSE returns a list with file names in root folder. TRUE returns a data.frame with the following fields: .id,revision, rev, thumb_exists, bytes,modified, path, is_dir, icon,root,size,mime_type.
@@ -15,10 +16,10 @@
 #' dropbox_dir(cred,path='/specific_folder',verbose = TRUE)
 #' returns a dataframe with fields .id,
 #'}
-dropbox_dir <- function(cred, path = NULL, verbose = FALSE, 
+dropbox_dir <- function(cred, path = NULL, verbose = FALSE,
     deleted = FALSE) {
     if (!is.dropbox.cred(cred)) {
-        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", 
+        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.",
             call. = FALSE)
     }
     url <- "https://api.dropbox.com/1/metadata/dropbox/"
@@ -39,7 +40,7 @@ dropbox_dir <- function(cred, path = NULL, verbose = FALSE,
         url <- paste(url, path, "/", sep = "")
     }
     metadata <- fromJSON(cred$OAuthRequest(url, list(include_deleted = deleted)))
-    names(metadata$contents) <- basename(sapply(metadata$contents, 
+    names(metadata$contents) <- basename(sapply(metadata$contents,
         `[[`, "path"))
     file_sys <- ldply(metadata$contents, data.frame)
         # Verbose will return all file information. Otherwise only
@@ -52,4 +53,4 @@ dropbox_dir <- function(cred, path = NULL, verbose = FALSE,
 }
 # API documentation:
 #   https://www.dropbox.com/developers/reference/api#metadata
-# Issues: Fails with empty directories 
+# Issues: Fails with empty directories

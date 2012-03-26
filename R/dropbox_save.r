@@ -1,5 +1,6 @@
 #' Function to save an object from R into Dropbox
 #'
+#' This function currently does not work.
 #' @param cred Specifies an object of class ROAuth with Dropobox specific credentials.
 #' @param  path The path to the folder the file should be uploaded to. This parameter should not point to a file. Function will return an error if path is not a directory.
 #' @param  file The file contents to be uploaded. Requires a multipart upload (multipart/form-data), and the filename parameter of this field should be set to the desired destination filename. While signing this request for OAuth, the file parameter should be set to the destination filename, and then switched to the file contents when preparing the multipart request.
@@ -17,8 +18,8 @@ dropbox_save <- function(cred, path, file) {
     inputz <- RCurl:::uploadFunctionHandler(df, TRUE)
     trace(inputz)
         # Below crashes R64.app
-    xx <- cred$OAuthRequest("https://api-content.dropbox.com/1/files_put/dropbox/", 
-        , "POST", upload = TRUE, readdata = inputz, infilesize = nchar(content) - 
+    xx <- cred$OAuthRequest("https://api-content.dropbox.com/1/files_put/dropbox/",
+        , "POST", upload = TRUE, readdata = inputz, infilesize = nchar(content) -
             3L, verbose = TRUE)
 }
 # API documentation: GET:
@@ -39,4 +40,4 @@ dropbox_save <- function(cred, path, file) {
 #
 #
 #   cred$OAuthRequest('https://api-content.dropbox.com/1/files_put/dropbox/',list(file=df,
-#   filename='file.rdata', mime_type='text/csv'), 'POST')  
+#   filename='file.rdata', mime_type='text/csv'), 'POST')
