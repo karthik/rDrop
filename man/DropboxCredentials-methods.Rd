@@ -1,8 +1,8 @@
 \docType{methods}
 \name{DropboxCredentials}
 \alias{DropboxCredentials}
-\title{Method for Dropbox credentials}
+\title{Class for Dropbox credentials}
 \description{
-  Method for Dropbox credentials
+  Class for Dropbox credentials
 }
 
