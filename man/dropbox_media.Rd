@@ -1,6 +1,6 @@
 \name{dropbox_media}
 \alias{dropbox_media}
-\title{Returns a link directly to a file (not working)}
+\title{Similar to /shares. The difference is that this bypasses the Dropbox webserver, used to provide a preview of the file, so that you can effectively stream the contents of your media.}
 \usage{
   dropbox_media(cred, path = NULL)
 }

@@ -17,16 +17,16 @@ dropbox_save <- function(cred, content, file = NULL) {
         stop("Nothing to save", call. = FALSE)
     }
     if (is.null(file)) {
-        filename <- paste(deparse(substitute(content)), ".rda",
+        filename <- paste(deparse(substitute(content)), ".rda", 
             sep = "")
     } else {
         filename <- paste(file, ".rda", sep = "")
     }
     input <- RCurl:::uploadFunctionHandler(content, TRUE)
-    destination <- paste("https://api-content.dropbox.com/1/files_put/dropbox/",
+    destination <- paste("https://api-content.dropbox.com/1/files_put/dropbox/", 
         filename, sep = "")
-    content_upload <- OAuthRequest(cred, destination, "POST",
-        upload = TRUE, .opts = list(readfunction = input, infilesize = nchar(content),
+    content_upload <- OAuthRequest(cred, destination, "POST", 
+        upload = TRUE, .opts = list(readfunction = input, infilesize = nchar(content), 
             verbose = TRUE))
 }
 # API documentation: GET:
@@ -40,4 +40,4 @@ dropbox_save <- function(cred, content, file = NULL) {
 #
 #   https://www.dropbox.com/developers/reference/api#files-POST
 # Testing
-# df <- data.frame(x=1:10, y=rnorm(10))
+# df <- data.frame(x=1:10, y=rnorm(10))  

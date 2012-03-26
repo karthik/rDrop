@@ -1,8 +1,8 @@
-#' Class for Dropbox credentials
+#' An S4 class that stores Dropbox credentials
+#' @slot a contains a string
 #' @export
-#' @docType methods
-#' @rdname DropboxCredentials-methods
 setClass("DropboxCredentials", contains = "OAuthCredentials")
+
 
 #'Function to authenticate into your Dropbox account and get access keys
 #'
@@ -27,7 +27,8 @@ setClass("DropboxCredentials", contains = "OAuthCredentials")
 #' save(dropbox_token, file = 'dropbox_auth.rdata')
 #'}
 dropbox_auth <- function(cKey = getOption("DropboxKey",
-    stop("Need your Dropbox consumer key")), cSecret = getOption("DropboxSecret", stop("Need your Dropbox secret key"))) {
+    stop("Need your Dropbox consumer key")), cSecret = getOption("DropboxSecret",
+    stop("Need your Dropbox secret key"))) {
     reqURL <- "https://api.dropbox.com/1/oauth/request_token"
     authURL <- "https://www.dropbox.com/1/oauth/authorize"
     accessURL <- "https://api.dropbox.com/1/oauth/access_token/"

@@ -32,7 +32,7 @@ dropbox_copy <- function(cred, from_path = NULL, to_path = NULL) {
         to_path <- paste("/", to_path, sep = "")
     }
     to_path <- paste(to_path, from_path, sep = "")
-                        # Below does not work
+                                # Below does not work
     copy <- fromJSON(OAuthRequest(cred, "https://api.dropbox.com/1/fileops/copy", 
         list(root = "dropbox", from_path = from_path, to_path = to_path), 
         , "POST"))
@@ -46,4 +46,4 @@ dropbox_copy <- function(cred, from_path = NULL, to_path = NULL) {
 }
 # API documentation: #
 #
-#   https://www.dropbox.com/developers/reference/api#fileops-copy   
+#   https://www.dropbox.com/developers/reference/api#fileops-copy     

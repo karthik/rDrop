@@ -23,4 +23,4 @@ dropbox_get <- function(cred, file_to_get) {
 #
 #
 #
-#   https://www.dropbox.com/developers/reference/api#files-GET  
+#   https://www.dropbox.com/developers/reference/api#files-GET    
