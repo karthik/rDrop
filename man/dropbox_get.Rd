@@ -2,7 +2,8 @@
 \alias{dropbox_get}
 \title{Downloads a file from your Dropbox}
 \usage{
-  dropbox_get(cred, file_to_get)
+  dropbox_get(cred, file_to_get, curl = getCurlHandle(),
+    ...)
 }
 \arguments{
   \item{cred}{Specifies an object of class ROAuth with
@@ -10,6 +11,13 @@
 
   \item{file_to_get}{Specifies the path to the file you
   want to retrieve.}
+
+  \item{curl}{If using in a loop, call getCurlHandle()
+  first and pass the returned value in here (avoids
+  unnecessary footprint)}
+
+  \item{...}{optional additional curl options (debugging
+  tools mostly)#'}
 }
 \value{
   file

@@ -1,39 +1,8 @@
-#'Verifies whether a user has specified a correct Oauth credential for Dropbox
-#'
-#' @param cred An object of class ROAuth with Dropobox specific credentials.
-#' @return logical
-#' @export
-#' @examples \dontrun{
-#' is.dropbox.cred(your_dropbox_credential_object)
-#'}
-is.dropbox.cred <- function(cred) {
-    response <- TRUE
-    foo <- deparse(substitute(cred))
-    if (missing(cred)) {
-        response <- FALSE
-    }
-    if (response) {
-        if (foo %in% ls(envir = .GlobalEnv)) {
-            response <- TRUE
-        } else {
-            response <- FALSE
-        }
-    }
-    if (response) {
-        response <- ifelse(class(cred) != "OAuth", FALSE, TRUE)
-    }
-    if (response) {
-        response <- ifelse(grep("dropbox", cred$requestURL) != 
-            1, FALSE, TRUE)
-    }
-    return(response)
-}
 #' Check to see if an object exists in Dropbox
 #'
 #' @param cred An object of class ROAuth with Dropobox specific credentials.
 #' @param path Path to object
 #' @param  is_dir if set to TRUE, will only look for folders. Otherwise will return file or folder.
-#' @return logical
 #' @export
 #' @examples \dontrun{
 #' exists.in.dropbox(cred,'test_folder')
@@ -56,7 +25,7 @@ exists.in.dropbox <- function(cred, path = NULL, is_dir = NULL) {
     }
                                         # Remove trailing slash
     if (grepl("/$", full_path)) {
-        full_path <- str_sub(full_path, end = str_length(full_path) - 
+        full_path <- str_sub(full_path, end = str_length(full_path) -
             1)
     }
     query <- basename(path)
@@ -137,4 +106,4 @@ dropbox.file.info <- function(cred, path_to_file) {
 # # Check for leading slash first using grep. If missing,
 # #   append it.
 # # Checks revision number for a file in dropbox and returns
-# #   a logical yes/no.       
+# #   a logical yes/no.

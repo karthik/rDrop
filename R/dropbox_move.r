@@ -4,27 +4,29 @@
 #' @param cred Specifies an object of class ROAuth with Dropobox specific credentials.
 #' @param from_path Specifies the file or folder to be copied from relative to root.
 #' @param to_path Specifies a destination path, including the new name for the file or folder, relative to root.
-#' @seealso dropbox_copy dropbox_create_folder
+#' @param curl If using in a loop, call getCurlHandle() first and pass
+#'  the returned value in here (avoids unnecessary footprint)
+#' @param ... optional additional curl options (debugging tools mostly)#' @seealso dropbox_copy dropbox_create_folder
 #' @return Message on successful completion or error.
 #' @import RJSONIO ROAuth
 #' @export dropbox_move
 #' @examples \dontrun{
 #'
 #'}
-dropbox_move <- function(cred, from_path = NULL, to_path = NULL) {
+dropbox_move <- function(cred, from_path = NULL, to_path = NULL, curl=getCurlHandle(), ...) {
     if (class(cred) != "DropboxCredentials" | missing(cred)) {
         stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.")
     }
                                         # Note: to_path needs a leading / because root is 'dropbox'
     if (is.null(from_path) || is.null(to_path)) {
-        stop("Did not specify full path for source and/or destination", 
+        stop("Did not specify full path for source and/or destination",
             call. = F)
     }
     if (!(exists.in.dropbox(cred, path = from_path))) {
         stop("File or folder does not exist", call. = FALSE)
     }
     if (!(exists.in.dropbox(cred, path = to_path, is_dir = TRUE))) {
-        stop("Destination does not exist or isn't a folder", 
+        stop("Destination does not exist or isn't a folder",
             call. = FALSE)
     }
     if (!grepl("/$", to_path)) {
@@ -32,8 +34,8 @@ dropbox_move <- function(cred, from_path = NULL, to_path = NULL) {
     }
     to_path <- paste(to_path, from_path, sep = "")
                                         # Worked once but no longer workes.
-    move <- fromJSON(OAuthRequest(cred, "https://api.dropbox.com/1/fileops/move", 
-        list(root = "dropbox", from_path = from_path, to_path = to_path), 
+    move <- fromJSON(OAuthRequest(cred, "https://api.dropbox.com/1/fileops/move",
+        list(root = "dropbox", from_path = from_path, to_path = to_path),
         "POST"))
     if (is.character(move)) {
         stop(move[[1]], call. = FALSE)
@@ -46,4 +48,4 @@ dropbox_move <- function(cred, from_path = NULL, to_path = NULL) {
 #
 #
 #
-#   https://www.dropbox.com/developers/reference/api#fileops-move      
+#   https://www.dropbox.com/developers/reference/api#fileops-move

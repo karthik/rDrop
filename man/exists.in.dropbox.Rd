@@ -13,9 +13,6 @@
   \item{is_dir}{if set to TRUE, will only look for folders.
   Otherwise will return file or folder.}
 }
-\value{
-  logical
-}
 \description{
   Check to see if an object exists in Dropbox
 }

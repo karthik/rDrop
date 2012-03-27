@@ -3,7 +3,7 @@
 \title{Function to list contents of a Dropbox folder.}
 \usage{
   dropbox_dir(cred, path = NULL, verbose = FALSE,
-    deleted = FALSE)
+    deleted = FALSE, curl = getCurlHandle(), ...)
 }
 \arguments{
   \item{cred}{An object of class ROAuth with Dropobox
@@ -18,6 +18,13 @@
 
   \item{deleted}{logical. Default is FALSE. Set to TRUE to
   also list deleted files.}
+
+  \item{curl}{If using in a loop, call getCurlHandle()
+  first and pass the returned value in here (avoids
+  unnecessary footprint)}
+
+  \item{...}{optional additional curl options (debugging
+  tools mostly)#'}
 }
 \value{
   message

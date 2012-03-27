@@ -3,7 +3,8 @@
 \title{Search Dropbox files and folders.}
 \usage{
   dropbox_search(cred, query = NULL, deleted = FALSE,
-    file_limit = 1000, is_dir = NULL, verbose = FALSE)
+    file_limit = 1000, is_dir = NULL, verbose = FALSE,
+    curl = getCurlHandle(), ...)
 }
 \arguments{
   \item{cred}{An object of class ROAuth with Dropobox
@@ -23,6 +24,13 @@
 
   \item{verbose}{logical. Default is FALSE. Set to TRUE to
   get a full file listing.}
+
+  \item{curl}{If using in a loop, call getCurlHandle()
+  first and pass the returned value in here (avoids
+  unnecessary footprint)}
+
+  \item{...}{optional additional curl options (debugging
+  tools mostly)'}
 }
 \value{
   data.frame with results. No results will return empty

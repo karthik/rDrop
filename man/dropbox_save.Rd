@@ -2,7 +2,8 @@
 \alias{dropbox_save}
 \title{Function to save an object from R into Dropbox (not working)}
 \usage{
-  dropbox_save(cred, content, file = NULL)
+  dropbox_save(cred, content, file = NULL,
+    curl = getCurlHandle(), ...)
 }
 \arguments{
   \item{cred}{Specifies an object of class ROAuth with
@@ -15,6 +16,13 @@
   for OAuth, the file parameter should be set to the
   destination filename, and then switched to the file
   contents when preparing the multipart request.}
+
+  \item{curl}{If using in a loop, call getCurlHandle()
+  first and pass the returned value in here (avoids
+  unnecessary footprint)}
+
+  \item{...}{optional additional curl options (debugging
+  tools mostly)#'}
 
   \item{file}{Name of file to be saved. If blank, the name
   of the R object will be used.}

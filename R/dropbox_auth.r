@@ -1,4 +1,6 @@
 #' An S4 class that stores Dropbox credentials
+#' @name DropboxCredentials-class
+#' @rdname DropboxCredentials-class
 #' @exportClass DropboxCredentials
 setClass("DropboxCredentials", contains = "OAuthCredentials")
 
@@ -8,10 +10,13 @@ setClass("DropboxCredentials", contains = "OAuthCredentials")
 #' @import RCurl ROAuth RJSONIO plyr
 #' @param cKey A valid Dropbox application key
 #' @param cSecret A valid Dropbox application secret
-#' @seealso dropbox_acc_info
+#' @param curl If using in a loop, call getCurlHandle() first and pass
+#'  the returned value in here (avoids unnecessary footprint)
+#' @param ... optional additional curl options (debugging tools mostly)#' @seealso dropbox_acc_info
 #' @return Oauth object with Dropbox keys
 #' @import RJSONIO ROAuth
 #' @export dropbox_auth
+#' @aliases rDrop
 #' @examples \dontrun{
 #' dropbox_auth() # if you have keys in .rprofile stored as
 #' # options(DropboxKey='YOUR_APP_KEY')
@@ -24,7 +29,7 @@ setClass("DropboxCredentials", contains = "OAuthCredentials")
 #'}
 dropbox_auth <- function(cKey = getOption("DropboxKey",
     stop("Missing Dropbox consumer key")), cSecret = getOption("DropboxSecret",
-    stop("Missing Dropbox app secret"))) {
+    stop("Missing Dropbox app secret")), curl=getCurlHandle(), ...) {
     reqURL <- "https://api.dropbox.com/1/oauth/request_token"
     authURL <- "https://www.dropbox.com/1/oauth/authorize"
     accessURL <- "https://api.dropbox.com/1/oauth/access_token/"

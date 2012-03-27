@@ -1,14 +1,23 @@
 \name{dropbox_auth}
 \alias{dropbox_auth}
+\alias{rDrop}
 \title{Function to authenticate into your Dropbox account and get access keys}
 \usage{
   dropbox_auth(cKey = getOption("DropboxKey", stop("Missing Dropbox consumer key")),
-    cSecret = getOption("DropboxSecret", stop("Missing Dropbox app secret")))
+    cSecret = getOption("DropboxSecret", stop("Missing Dropbox app secret")),
+    curl = getCurlHandle(), ...)
 }
 \arguments{
   \item{cKey}{A valid Dropbox application key}
 
   \item{cSecret}{A valid Dropbox application secret}
+
+  \item{curl}{If using in a loop, call getCurlHandle()
+  first and pass the returned value in here (avoids
+  unnecessary footprint)}
+
+  \item{...}{optional additional curl options (debugging
+  tools mostly)#'}
 }
 \value{
   Oauth object with Dropbox keys

@@ -2,7 +2,8 @@
 \alias{dropbox_share}
 \title{Creates and returns a shareable link to files or folders.}
 \usage{
-  dropbox_share(cred, file = NULL)
+  dropbox_share(cred, file = NULL, curl = getCurlHandle(),
+    ...)
 }
 \arguments{
   \item{cred}{An object of class ROAuth with Dropobox
@@ -10,6 +11,13 @@
 
   \item{file}{Path to the file or folder you want a
   shareable link to.}
+
+  \item{curl}{If using in a loop, call getCurlHandle()
+  first and pass the returned value in here (avoids
+  unnecessary footprint)}
+
+  \item{...}{optional additional curl options (debugging
+  tools mostly)#'}
 }
 \value{
   list with url to file or zipped folder and expiry date.

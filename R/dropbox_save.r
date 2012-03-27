@@ -3,13 +3,15 @@
 #' This function currently does not work.
 #' @param cred Specifies an object of class ROAuth with Dropobox specific credentials.
 #' @param content The file contents to be uploaded. Requires a multipart upload (multipart/form-data), and the filename parameter of this field should be set to the desired destination filename. While signing this request for OAuth, the file parameter should be set to the destination filename, and then switched to the file contents when preparing the multipart request.
-#' @param file Name of file to be saved. If blank, the name of the R object will be used.
+#' @param curl If using in a loop, call getCurlHandle() first and pass
+#'  the returned value in here (avoids unnecessary footprint)
+#' @param ... optional additional curl options (debugging tools mostly)#' @param file Name of file to be saved. If blank, the name of the R object will be used.
 #' @export
 #' @import RJSONIO ROAuth
 #' @examples \dontrun{
 #' dropbox_save(robject, file='filename')
 #'}
-dropbox_save <- function(cred, content, file = NULL) {
+dropbox_save <- function(cred, content, file = NULL, curl=getCurlHandle(), ...) {
     if (class(cred) != "DropboxCredentials" | missing(cred)) {
         stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.")
     }
@@ -17,27 +19,19 @@ dropbox_save <- function(cred, content, file = NULL) {
         stop("Nothing to save", call. = FALSE)
     }
     if (is.null(file)) {
-        filename <- paste(deparse(substitute(content)), ".rda", 
+        filename <- paste(deparse(substitute(content)), ".rda",
             sep = "")
-    } else {
+    }
+    if(!is.null(file)) {
         filename <- paste(file, ".rda", sep = "")
     }
-    input <- RCurl:::uploadFunctionHandler(content, TRUE)
-    destination <- paste("https://api-content.dropbox.com/1/files_put/dropbox/", 
+      destination <- paste("https://api-content.dropbox.com/1/files_put/dropbox/",
         filename, sep = "")
-    content_upload <- OAuthRequest(cred, destination, "POST", 
-        upload = TRUE, .opts = list(readfunction = input, infilesize = nchar(content), 
+    input <- RCurl:::uploadFunctionHandler(content, TRUE)
+    xx <-OAuthRequest(cred, "https://api-content.dropbox.com/1/files_put/dropbox/Public/up.rda",
+        , "PUT", .opts = list(readfunction = input, infilesize = nchar(content),
             verbose = TRUE))
+    return(fromJSON(xx))
 }
 # API documentation: GET:
-#
-#
-#
 #   https://www.dropbox.com/developers/reference/api#files-GET
-# POST:
-#
-#
-#
-#   https://www.dropbox.com/developers/reference/api#files-POST
-# Testing
-# df <- data.frame(x=1:10, y=rnorm(10))    

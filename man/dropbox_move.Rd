@@ -2,7 +2,8 @@
 \alias{dropbox_move}
 \title{Move files within Dropbox}
 \usage{
-  dropbox_move(cred, from_path = NULL, to_path = NULL)
+  dropbox_move(cred, from_path = NULL, to_path = NULL,
+    curl = getCurlHandle(), ...)
 }
 \arguments{
   \item{cred}{Specifies an object of class ROAuth with
@@ -13,6 +14,13 @@
 
   \item{to_path}{Specifies a destination path, including
   the new name for the file or folder, relative to root.}
+
+  \item{curl}{If using in a loop, call getCurlHandle()
+  first and pass the returned value in here (avoids
+  unnecessary footprint)}
+
+  \item{...}{optional additional curl options (debugging
+  tools mostly)#'}
 }
 \value{
   Message on successful completion or error.
