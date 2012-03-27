@@ -2,8 +2,8 @@
 \alias{dropbox_dir}
 \title{Function to list contents of a Dropbox folder.}
 \usage{
-  dropbox_dir(cred, path = NULL, verbose = FALSE, deleted =
-  FALSE)
+  dropbox_dir(cred, path = NULL, verbose = FALSE,
+    deleted = FALSE)
 }
 \arguments{
   \item{cred}{An object of class ROAuth with Dropobox
