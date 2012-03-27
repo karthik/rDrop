@@ -1,10 +1,10 @@
 #' An S4 class that stores Dropbox credentials
-#' @export
+#' @exportClass DropboxCredentials
 setClass("DropboxCredentials", contains = "OAuthCredentials")
 
 #'Function to authenticate into your Dropbox account and get access keys
 #'
-#' Before using any of rDrop's functions, you must first create an application on the Dropobox developer site (https://www2.dropbox.com/developers/apps). This application is specific to you. Follow through with the steps to create your application and copy the  generated consumer key/secret combo. Ideally you should save those keys in your options as: \code{options(DropboxKey = 'Your_App_key')}  \code{options(DropboxSecret = 'Your_App_secret')}. If you are unable to do so (assuming you are on some public machine), then you can just specifiy both keys inline. Once you have authenticated, there is absolutely no reason to repeat this step for subsequent sessions. Simply save the OAuth object and load as necessary. Future versions of ROAuth will make it easier for you to just update the token without having to reauthoize via the web.
+#' Before using any of rDrop's functions, you must first create an application on the Dropobox developer site (\url{https://www2.dropbox.com/developers/apps}). This application is specific to you. Follow through with the steps to create your application and copy the  generated consumer key/secret combo. Ideally you should save those keys in your options as: \code{options(DropboxKey = 'Your_App_key')}  \code{options(DropboxSecret = 'Your_App_secret')}. If you are unable to do so (assuming you are on some public machine), then you can just specifiy both keys inline. Once you have authenticated, there is absolutely no reason to repeat this step for subsequent sessions. Simply save the OAuth object and load as necessary. Future versions of ROAuth will make it easier for you to just update the token without having to reauthoize via the web. \emph{Do not store these keys in your .rprofile if you are on a public machine}.
 #' @import RCurl ROAuth RJSONIO plyr
 #' @param cKey A valid Dropbox application key
 #' @param cSecret A valid Dropbox application secret
@@ -12,7 +12,6 @@ setClass("DropboxCredentials", contains = "OAuthCredentials")
 #' @return Oauth object with Dropbox keys
 #' @import RJSONIO ROAuth
 #' @export dropbox_auth
-#' @exportClass DropboxCredentials
 #' @examples \dontrun{
 #' dropbox_auth() # if you have keys in .rprofile stored as
 #' # options(DropboxKey='YOUR_APP_KEY')
