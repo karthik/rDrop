@@ -20,4 +20,4 @@ dropbox_acc_info <- function(cred) {
 #
 #
 #
-#   https://www.dropbox.com/developers/reference/api#account-info    
+#   https://www.dropbox.com/developers/reference/api#account-info      

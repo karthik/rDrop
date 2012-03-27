@@ -40,4 +40,4 @@ dropbox_save <- function(cred, content, file = NULL) {
 #
 #   https://www.dropbox.com/developers/reference/api#files-POST
 # Testing
-# df <- data.frame(x=1:10, y=rnorm(10))  
+# df <- data.frame(x=1:10, y=rnorm(10))    

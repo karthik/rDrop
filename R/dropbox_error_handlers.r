@@ -43,18 +43,18 @@ exists.in.dropbox <- function(cred, path = NULL, is_dir = NULL) {
     if (class(cred) != "DropboxCredentials") {
         stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.")
     }
-                                # default response so function can proceed.
+                                        # default response so function can proceed.
     response <- TRUE
     if (is.null(path)) {
         stop("You did not specify an object to verify", call. = FALSE)
     }
-                                # First search Dropbox to see if the object exists
+                                        # First search Dropbox to see if the object exists
     full_path <- path
-                                # If leading slash is missing, add it.
+                                        # If leading slash is missing, add it.
     if (!grepl("^/", full_path)) {
         full_path <- paste("/", full_path, sep = "")
     }
-                                # Remove trailing slash
+                                        # Remove trailing slash
     if (grepl("/$", full_path)) {
         full_path <- str_sub(full_path, end = str_length(full_path) - 
             1)
@@ -67,15 +67,15 @@ exists.in.dropbox <- function(cred, path = NULL, is_dir = NULL) {
     if (empty(res)) {
         response <- FALSE
     }
-                                # OK, object exists, but let's see if there was more than
-                                #   one result
+                                        # OK, object exists, but let's see if there was more than
+                                        #   one result
     if (!identical(query, full_path)) {
         res <- res[which(res$path == full_path), ]
         if (dim(res)[1] != 1) {
             response <- FALSE
         }
     }
-                                # OK, only one result returned.
+                                        # OK, only one result returned.
     if (response) {
         if (!is.null(is_dir)) {
             if (is_dir) {
@@ -99,13 +99,13 @@ exists.in.dropbox <- function(cred, path = NULL, is_dir = NULL) {
 #'
 #'}
 dropbox.file.info <- function(cred, path_to_file) {
-                                # Add leading slash in case it is missing
+                                        # Add leading slash in case it is missing
     if (!grepl("^/", path_to_file)) {
         path_to_file <- paste("/", path_to_file, sep = "")
     }
     dfile <- dropbox_search(cred, path_to_file)
-                                # Return a list containing filename, filetype, date
-                                #   modified, and revision number.
+                                        # Return a list containing filename, filetype, date
+                                        #   modified, and revision number.
 }
 # #'Function to handle errors if a returned object is not the excepted JSON object
 # #'
@@ -137,4 +137,4 @@ dropbox.file.info <- function(cred, path_to_file) {
 # # Check for leading slash first using grep. If missing,
 # #   append it.
 # # Checks revision number for a file in dropbox and returns
-# #   a logical yes/no.     
+# #   a logical yes/no.       

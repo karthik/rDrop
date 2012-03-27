@@ -30,4 +30,4 @@ dropbox_share <- function(cred, file = NULL) {
     return(res)
 }
 # API documentation:
-#   https://www.dropbox.com/developers/reference/api#shares  
+#   https://www.dropbox.com/developers/reference/api#shares    

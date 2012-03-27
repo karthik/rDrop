@@ -21,15 +21,15 @@ dropbox_dir <- function(cred, path = NULL, verbose = FALSE,
         stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.")
     }
     url <- "https://api.dropbox.com/1/metadata/dropbox/"
-                                # Assuming user did specify a path to list, then make sure
-                                #   it exists
+                                        # Assuming user did specify a path to list, then make sure
+                                        #   it exists
     if (!is.null(path)) {
         if (!exists.in.dropbox(cred, path, is_dir = TRUE)) {
             stop("There is no such folder in your Dropbox", call. = FALSE)
         }
     }
     if (!is.null(path)) {
-                                                                # Remove trailing slash
+                                                                                # Remove trailing slash
         if (grepl("/$", path)) {
             path <- str_sub(path, end = str_length(path) - 1)
         }
@@ -41,8 +41,8 @@ dropbox_dir <- function(cred, path = NULL, verbose = FALSE,
     names(metadata$contents) <- basename(sapply(metadata$contents, 
         `[[`, "path"))
     file_sys <- ldply(metadata$contents, data.frame)
-                                # Verbose will return all file information. Otherwise only
-                                #   return relevant fields.
+                                        # Verbose will return all file information. Otherwise only
+                                        #   return relevant fields.
     if (!verbose) {
         return(file_sys$.id)
     } else {
@@ -51,4 +51,4 @@ dropbox_dir <- function(cred, path = NULL, verbose = FALSE,
 }
 # API documentation:
 #   https://www.dropbox.com/developers/reference/api#metadata
-# Issues: Fails with empty directories    
+# Issues: Fails with empty directories      

@@ -3,7 +3,7 @@
 \title{Search Dropbox files and folders.}
 \usage{
   dropbox_search(cred, query = NULL, deleted = FALSE,
-    file_limit = 1000, is_dir = NULL, verbose = FALSE)
+  file_limit = 1000, is_dir = NULL, verbose = FALSE)
 }
 \arguments{
   \item{cred}{An object of class ROAuth with Dropobox

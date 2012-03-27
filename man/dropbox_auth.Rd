@@ -2,8 +2,10 @@
 \alias{dropbox_auth}
 \title{Function to authenticate into your Dropbox account and get access keys}
 \usage{
-  dropbox_auth(cKey = getOption("DropboxKey", stop("Need your Dropbox consumer key")),
-    cSecret = getOption("DropboxSecret", stop("Need your Dropbox secret key")))
+  dropbox_auth(cKey = getOption("DropboxKey", stop("Missing
+  Dropbox consumer key")), cSecret =
+  getOption("DropboxSecret", stop("Missing Dropbox app
+  secret")))
 }
 \arguments{
   \item{cKey}{A valid Dropbox application key}
@@ -46,5 +48,4 @@ save(dropbox_token, file = 'dropbox_auth.rdata')
 \seealso{
   dropbox_acc_info
 }
-\keyword{authentication}
 

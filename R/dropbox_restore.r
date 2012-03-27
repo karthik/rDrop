@@ -17,9 +17,9 @@ dropbox_restore <- function(cred, file, rev = NULL) {
         stop("You need to specify a revision number to restore a file \n", 
             call. = F)
     }
-                                # List should contain path and revision number
-                                # 1. Check revision to make sure it exists.
+                                        # List should contain path and revision number
+                                        # 1. Check revision to make sure it exists.
 }
 # API documentation:
 #   https://www.dropbox.com/developers/reference/api#restore
-# Status: Still setting up  
+# Status: Still setting up    

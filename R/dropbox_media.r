@@ -24,4 +24,4 @@ dropbox_media <- function(cred, path = NULL) {
     return(media)
 }
 # API Documentation:
-#   https://www.dropbox.com/developers/reference/api#media  
+#   https://www.dropbox.com/developers/reference/api#media    

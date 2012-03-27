@@ -4,12 +4,13 @@ Title: Dropbox R interface.
 Version: 0.1
 License: BSD
 Date: 2012-03-14
-Authors@R: c(person("Karthik", "Ram", role = c("aut", "cre"),
-    email = "karthik.ram at gmail.com"),
-    person("Duncan", "Temple Lang", role = "aut",
-    email = "duncan at wald.ucdavis.edu"))
+Authors@R: c(person("Karthik", "Ram", role = c("aut",
+    "cre"), email = "karthik.ram at gmail.com"),
+    person("Duncan", "Temple Lang", role = "aut", email =
+    "duncan at wald.ucdavis.edu"))
 Maintainer: Karthik Ram <karthik.ram@gmail.com>
-Description: Programmatic interface to the Dropbox file system.
+Description: Programmatic interface to the Dropbox file
+    system.
 URL: http://github.com/karthikram/rDrop
 Imports:
     RJSONIO,
