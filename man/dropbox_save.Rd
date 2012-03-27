@@ -2,30 +2,33 @@
 \alias{dropbox_save}
 \title{Function to save an object from R into Dropbox (not working)}
 \usage{
-  dropbox_save(cred, content, file = NULL,
-    curl = getCurlHandle(), ...)
+  dropbox_save(cred, ..., list = character(),
+    file = stop("'file' must be specified"),
+    envir = parent.frame(), precheck = TRUE,
+    curl = getCurlHandle())
 }
 \arguments{
   \item{cred}{Specifies an object of class ROAuth with
   Dropobox specific credentials.}
 
-  \item{content}{The file contents to be uploaded. Requires
-  a multipart upload (multipart/form-data), and the
-  filename parameter of this field should be set to the
-  desired destination filename. While signing this request
-  for OAuth, the file parameter should be set to the
-  destination filename, and then switched to the file
-  contents when preparing the multipart request.}
+  \item{list}{List of objects from the current R
+  environment that needs to be saved into dropbox}
+
+  \item{file}{Required filename. No extenstion needs to be
+  supplied. If you provide one, it will be stripped and
+  replace with rda.}
+
+  \item{envir}{optional. Defaults to parent environment.}
+
+  \item{precheck}{internal use. Checks to make sure all
+  objects are in the parent environment.}
 
   \item{curl}{If using in a loop, call getCurlHandle()
   first and pass the returned value in here (avoids
   unnecessary footprint)}
 
   \item{...}{optional additional curl options (debugging
-  tools mostly)#'}
-
-  \item{file}{Name of file to be saved. If blank, the name
-  of the R object will be used.}
+  tools mostly)}
 }
 \description{
   This function currently does not work.
