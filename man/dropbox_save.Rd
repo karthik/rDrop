@@ -30,12 +30,15 @@
   \item{...}{optional additional curl options (debugging
   tools mostly)}
 }
+\value{
+  JSON object
+}
 \description{
   This function currently does not work.
 }
 \examples{
 \dontrun{
-dropbox_save(robject, file='filename')
+dropbox_save(cred, robject, file='filename')
 }
 }
 
