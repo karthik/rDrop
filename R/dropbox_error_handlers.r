@@ -25,7 +25,7 @@ exists.in.dropbox <- function(cred, path = NULL, is_dir = NULL) {
     }
                                                         # Remove trailing slash
     if (grepl("/$", full_path)) {
-        full_path <- str_sub(full_path, end = str_length(full_path) - 
+        full_path <- str_sub(full_path, end = str_length(full_path) -
             1)
     }
     query <- basename(path)
@@ -60,7 +60,7 @@ exists.in.dropbox <- function(cred, path = NULL, is_dir = NULL) {
 #'Return file attributes for a specified file supplied in the path argument.
 #'
 #' @param cred An object of class ROAuth with Dropobox specific credentials.
-#' @param path_to_file <what param does>
+#' @param path_to_file Path to file.
 #' @seealso is.dropbox.file is.dropbox.dir
 #' @return list
 #' @export dropbox.file.info
@@ -106,4 +106,4 @@ dropbox.file.info <- function(cred, path_to_file) {
 # # Check for leading slash first using grep. If missing,
 # #   append it.
 # # Checks revision number for a file in dropbox and returns
-# #   a logical yes/no.    
+# #   a logical yes/no.

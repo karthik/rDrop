@@ -8,7 +8,7 @@
   \item{cred}{An object of class ROAuth with Dropobox
   specific credentials.}
 
-  \item{path_to_file}{<what param does>}
+  \item{path_to_file}{Path to file.}
 }
 \value{
   list
