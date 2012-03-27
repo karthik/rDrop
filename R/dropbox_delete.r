@@ -7,11 +7,12 @@
 #'  the returned value in here (avoids unnecessary footprint)
 #' @param ... optional additional curl options (debugging tools mostly)#' @param ask logical set to TRUE. If set to false, function will not confirm delete operation
 #' @return Nothing. A message upon successful deletion.
+#' @import RJSONIO ROAuth RCurl
 #' @export dropbox_delete
 #' @examples \dontrun{
 #' dropbox_delete(dropbox_credential, 'path/to/file')
 #'}
-dropbox_delete <- function(cred, file_to_delete = NULL, 
+dropbox_delete <- function(cred, file_to_delete = NULL,
     ask = TRUE, curl = getCurlHandle(), ...) {
     if (class(cred) != "DropboxCredentials" | missing(cred)) {
         stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.")
@@ -21,7 +22,7 @@ dropbox_delete <- function(cred, file_to_delete = NULL,
         stop("File or folder not found", call. = FALSE)
     }
     if (ask == TRUE) {
-        verify <- readline(paste("Are you sure you want to delete", 
+        verify <- readline(paste("Are you sure you want to delete",
             file_to_delete, " (Y/N)? "))
         verify <- toupper(verify)
         if (verify != "Y" & verify != "N") {
@@ -29,10 +30,10 @@ dropbox_delete <- function(cred, file_to_delete = NULL,
         }
     }
     if (verify == "Y" | ask == FALSE) {
-        deleted <- fromJSON(OAuthRequest(cred, "https://api.dropbox.com/1/fileops/delete", 
+        deleted <- fromJSON(OAuthRequest(cred, "https://api.dropbox.com/1/fileops/delete",
             list(root = "dropbox", path = file_to_delete)))
         if (is.list(deleted)) {
-            cat(deleted$path, "was successfully deleted on", deleted$modified, 
+            cat(deleted$path, "was successfully deleted on", deleted$modified,
                 "\n")
         }
     }
@@ -42,4 +43,4 @@ dropbox_delete <- function(cred, file_to_delete = NULL,
 #
 #
 #
-#   https://www.dropbox.com/developers/reference/api#fileops-delete 
+#   https://www.dropbox.com/developers/reference/api#fileops-delete

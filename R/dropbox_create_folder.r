@@ -6,11 +6,12 @@
 #' @param curl If using in a loop, call getCurlHandle() first and pass
 #'  the returned value in here (avoids unnecessary footprint)
 #' @param ... optional additional curl options (debugging tools mostly)#' @import stringr plyr
+#' @import RJSONIO ROAuth RCurl
 #' @export dropbox_create_folder
 #' @examples \dontrun{
 #'
 #'}
-dropbox_create_folder <- function(cred, folder_name = NULL, 
+dropbox_create_folder <- function(cred, folder_name = NULL,
     curl = getCurlHandle(), ...) {
     if (class(cred) != "DropboxCredentials" | missing(cred)) {
         stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.")
@@ -24,7 +25,7 @@ dropbox_create_folder <- function(cred, folder_name = NULL,
         folder_name <- str_sub(folder_name, start = 2)
     }
     if (grepl("/$", folder_name)) {
-        folder_name <- str_sub(folder_name, end = str_length(folder_name) - 
+        folder_name <- str_sub(folder_name, end = str_length(folder_name) -
             1)
     }
                                             # Check for duplicates.
@@ -32,10 +33,10 @@ dropbox_create_folder <- function(cred, folder_name = NULL,
         stop("Folder already exists", call. = FALSE)
     }
                                             # Now create the folder.
-    dir_metadata <- fromJSON(OAuthRequest(cred, "https://api.dropbox.com/1/fileops/create_folder/", 
+    dir_metadata <- fromJSON(OAuthRequest(cred, "https://api.dropbox.com/1/fileops/create_folder/",
         list(root = "dropbox", path = folder_name)))
     location <- paste(dir_metadata$root, dir_metadata$path, sep = "")
-    cat("Folder successfully created at", location, "on", dir_metadata$modified, 
+    cat("Folder successfully created at", location, "on", dir_metadata$modified,
         "\n")
 }
 # API documentation:
@@ -43,4 +44,4 @@ dropbox_create_folder <- function(cred, folder_name = NULL,
 #
 #
 #
-#   https://www.dropbox.com/developers/reference/api#fileops-create-folder 
+#   https://www.dropbox.com/developers/reference/api#fileops-create-folder

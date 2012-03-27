@@ -9,12 +9,12 @@
 #' @param curl If using in a loop, call getCurlHandle() first and pass
 #'  the returned value in here (avoids unnecessary footprint)
 #' @param ... optional additional curl options (debugging tools mostly)#' @return Message with success or error.
-#' @import RJSONIO
+#' @import RJSONIO ROAuth RCurl
 #' @export dropbox_copy
 #' @examples \dontrun{
 #' dropbox_copy(dropbox_token, 'file.csv', 'folder2')
 #'}
-dropbox_copy <- function(cred, from_path = NULL, to_path = NULL, 
+dropbox_copy <- function(cred, from_path = NULL, to_path = NULL,
     curl = getCurlHandle(), ...) {
     if (class(cred) != "DropboxCredentials" | missing(cred)) {
         stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.")
@@ -36,17 +36,17 @@ dropbox_copy <- function(cred, from_path = NULL, to_path = NULL,
     }
     to_path <- paste(to_path, from_path, sep = "")
                                             # Below does not work
-    copy <- fromJSON(OAuthRequest(cred, "https://api.dropbox.com/1/fileops/copy", 
-        list(root = "dropbox", from_path = from_path, to_path = to_path), 
+    copy <- fromJSON(OAuthRequest(cred, "https://api.dropbox.com/1/fileops/copy",
+        list(root = "dropbox", from_path = from_path, to_path = to_path),
         , "POST"))
     if (is.character(copy)) {
         stop(copy[[1]], call. = FALSE)
     }
     if (is.list(copy)) {
-        cat(from_path, "succcessfully copied to", copy$path, "on", 
+        cat(from_path, "succcessfully copied to", copy$path, "on",
             copy$modified)
     }
 }
 # API documentation: #
 #
-#   https://www.dropbox.com/developers/reference/api#fileops-copy 
+#   https://www.dropbox.com/developers/reference/api#fileops-copy

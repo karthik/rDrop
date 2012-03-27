@@ -9,7 +9,7 @@
 #'  the returned value in here (avoids unnecessary footprint)
 #' @param ... optional additional curl options (debugging tools mostly)#' @return message
 #' @export dropbox_dir
-#' @import stringr
+#' @import stringr RJSONIO ROAuth
 #' @examples \dontrun{
 #' dropbox_dir(cred)
 #' dropbox_dir(cred, recursive = TRUE)
@@ -17,7 +17,7 @@
 #' dropbox_dir(cred,path='/specific_folder',verbose = TRUE)
 #' returns a dataframe with fields .id,
 #'}
-dropbox_dir <- function(cred, path = NULL, verbose = FALSE, 
+dropbox_dir <- function(cred, path = NULL, verbose = FALSE,
     deleted = FALSE, curl = getCurlHandle(), ...) {
     if (class(cred) != "DropboxCredentials" | missing(cred)) {
         stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.")
@@ -40,7 +40,7 @@ dropbox_dir <- function(cred, path = NULL, verbose = FALSE,
         url <- paste(url, path, "/", sep = "")
     }
     metadata <- fromJSON(OAuthRequest(cred, url, list(include_deleted = deleted)))
-    names(metadata$contents) <- basename(sapply(metadata$contents, 
+    names(metadata$contents) <- basename(sapply(metadata$contents,
         `[[`, "path"))
     file_sys <- ldply(metadata$contents, data.frame)
                                             # Verbose will return all file information. Otherwise only
@@ -53,4 +53,4 @@ dropbox_dir <- function(cred, path = NULL, verbose = FALSE,
 }
 # API documentation:
 #   https://www.dropbox.com/developers/reference/api#metadata
-# Issues: Fails with empty directories 
+# Issues: Fails with empty directories
