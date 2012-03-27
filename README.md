@@ -126,7 +126,3 @@ dropbox_share(dropbox_credentials, file)
 # Link goes directly to files. Folder are automatically zipped up.
 </code></pre>
 
-
-For more information on usage and tips, see: <br>
-<em>Blog posts and CRAN repo forthcoming.</em>
-
