@@ -22,6 +22,7 @@ setClass("DropboxCredentials", contains = "OAuthCredentials")
 #' @import RJSONIO
 #' @import ROAuth
 #' @import RCurl
+#' @usage dropbox_auth("YOUR_DROPBOX_KEY", "YOUR_DROPBOX_SECRET")
 #' @examples \dontrun{
 #' dropbox_auth() # if you have keys in .rprofile stored as
 #' # options(DropboxKey='YOUR_APP_KEY')

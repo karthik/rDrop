@@ -3,9 +3,7 @@
 \alias{rDrop}
 \title{rDrop: programmatic access to Dropbox from R.}
 \usage{
-  dropbox_auth(cKey = getOption("DropboxKey", stop("Missing Dropbox consumer key")),
-    cSecret = getOption("DropboxSecret", stop("Missing Dropbox app secret")),
-    curl = getCurlHandle(), ...)
+  dropbox_auth("YOUR_DROPBOX_KEY", "YOUR_DROPBOX_SECRET")
 }
 \arguments{
   \item{cKey}{A valid Dropbox application key}
