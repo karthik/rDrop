@@ -41,10 +41,10 @@ If you prefer not to specify keys in a `.rprofile` (especially if you are on a p
 <pre><code>
 library(rDrop)
 
-# If you have Dropbox keys in your .rprofile, simply run:
+&#35; If you have Dropbox keys in your .rprofile, simply run:
  dropbox_credentials &lt;- dropbox_auth()
 
-# Otherwise:
+&#35; Otherwise:
  dropbox_credentials &lt;- dropbox_auth("Your_consumer_key", "Your_consumer_secret")
 </code></pre>
 
@@ -63,30 +63,30 @@ This package essentially provides standard Dropbox file operation functions (cre
 To load a previously validated Dropbox credential file:
 <pre><code>
 load('/path/to/my_dropbox_credentials.rdata')
-# or once again run,
+&#35; or once again run,
 dropbox_credentials &lt;- dropbox_auth('Your_consumer_key', 'Your_consumer_secret')
 </code></pre>
 
 ### Summary of your Dropbox Account
 <pre><code>
 dropbox_acc_info(dropbox_credentials)
-# will return a list with your display name, email, quota, referral URL, and country.
+&#35; will return a list with your display name, email, quota, referral URL, and country.
 </code></pre>
 
 ### Directory listing
 <pre><code>
 dropbox_dir(dropbox_credentials)
-# To list files and folders in your Dropbox root.
+&#35; To list files and folders in your Dropbox root.
 
 dropbox_dir(dropbox_credentials, verbose = TRUE)
-# for a complete listing (filename, revision, thumb, bytes, modified, path, and is_dir) with detailed information.
+&#35; for a complete listing (filename, revision, thumb, bytes, modified, path, and is_dir) with detailed information.
 
 
 dropbox_dir(dropbox_credentials, path = 'folder_name')
-# To see contents of a specified path.
+&#35; To see contents of a specified path.
 
 dropbox_dir(dropbox_credentials, path = 'folder_name', verbose = TRUE)
-# For verbose content listing for a specified path (relative to Dropbox root).
+&#35; For verbose content listing for a specified path (relative to Dropbox root).
 </code></pre>
 
 
@@ -102,26 +102,26 @@ data &lt;- read.csv(textConnection(file))
 
 ### Upload R objects to your Dropbox
 <pre><code>
-# Example
-# Function not yet ready
+&#35; Function is not working correctly at the moment.
+dropbox_save(dropbox_credentials, r_objects, file="filename")
 </code></pre>
 
 ### Moving files within Dropobx
 <pre><code>
 dropbox_move(dropbox_credentials, from_path, to_path)
-# from_path can be a folder or file. to_path has to be a folder.
+&#35; from_path can be a folder or file. to_path has to be a folder.
 </code></pre>
 
 ### Copying files within Dropbox
 <pre><code>
 dropbox_copy(dropbox_credentials, from_path, to_path)
-# To overwrite existing file/folder in destination, add overwrite = TRUE.
+&#35; To overwrite existing file/folder in destination, add overwrite = TRUE.
 </code></pre>
 
 ### Creating a public share for any Dropbox file or folder
 <pre><code>
 dropbox_share(dropbox_credentials, file)
-# File/folder to share. Returns share URL with expiration information.
-# Link goes directly to files. Folder are automatically zipped up.
+&#35; File/folder to share. Returns share URL with expiration information.
+&#35; Link goes directly to files. Folder are automatically zipped up.
 </code></pre>
 
