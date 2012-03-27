@@ -15,13 +15,13 @@ URL: http://github.com/karthikram/rDrop
 Depends:
     RJSONIO,
     RCurl (>= 1.6),
-    ROAuth,
+    ROAuth (>= 0.92.0),
     methods,
     plyr,
     stringr
 Imports:
     RJSONIO,
-    RCurl (>= 1.6),
+    RCurl,
     ROAuth,
     methods,
     plyr,
