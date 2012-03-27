@@ -21,7 +21,7 @@ install_github("rDrop", "karthikram")
 ![Create an app for your personal use on Dropbox](https://github.com/karthikram/rDrop/blob/master/screenshots/create_app.png?raw=true
 )
 
-* Next, provide a unique (in the universe of Dropbox apps) name to your personal app. Dropbox [branding guidelines](https://www2.dropbox.com/developers/reference/branding) also prohibit the use of the word **"Dropbox"** or names that begin with "**Drop**". We recommend that you name the app something like "**Your_first_name_last_name_rDrop**" to avoid naming conflicts but call it whatever you like. You won't have to deal with the app name after this step.
+* Next, provide a unique (in the universe of Dropbox apps) name to your personal app. Dropbox [branding guidelines](https://www2.dropbox.com/developers/reference/branding)  prohibit the use of the word **"Dropbox"** or names that begin with "**Drop**". We recommend that you name the app "**Your_first_name_last_name_rDrop**" to avoid naming conflicts but feel free to call it whatever you like. You won't have to deal with the app name after this step.
 
 
 ![Alt text](https://github.com/karthikram/rDrop/blob/master/screenshots/name_your_app.png?raw=true)
