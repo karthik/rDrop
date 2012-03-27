@@ -29,7 +29,8 @@ setClass("DropboxCredentials", contains = "OAuthCredentials")
 #'}
 dropbox_auth <- function(cKey = getOption("DropboxKey",
     stop("Missing Dropbox consumer key")), cSecret = getOption("DropboxSecret",
-    stop("Missing Dropbox app secret"))) {
+    stop("Missing Dropbox app secret")), , curl = getCurlHandle(),
+    ...) {
     reqURL <- "https://api.dropbox.com/1/oauth/request_token"
     authURL <- "https://www.dropbox.com/1/oauth/authorize"
     accessURL <- "https://api.dropbox.com/1/oauth/access_token/"
