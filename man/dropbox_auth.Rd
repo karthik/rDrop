@@ -5,7 +5,7 @@
 \usage{
   dropbox_auth(cKey = getOption("DropboxKey", stop("Missing Dropbox consumer key")),
     cSecret = getOption("DropboxSecret", stop("Missing Dropbox app secret")),
-    curl = getCurlHandle(), ...)
+    ..., curl = getCurlHandle())
 }
 \arguments{
   \item{cKey}{A valid Dropbox application key}
