@@ -17,10 +17,10 @@
   unnecessary footprint)}
 
   \item{...}{optional additional curl options (debugging
-  tools mostly)#'}
+  tools mostly)}
 }
 \value{
-  file
+  R object
 }
 \description{
   Currently the function does not provide much support

@@ -16,10 +16,10 @@
   unnecessary footprint)}
 
   \item{...}{optional additional curl options (debugging
-  tools mostly)#'}
+  tools mostly)}
 }
 \value{
-  file
+  list with URL to R object and expiration date/time.
 }
 \description{
   This function behaves very similar to

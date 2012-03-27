@@ -24,10 +24,10 @@
   unnecessary footprint)}
 
   \item{...}{optional additional curl options (debugging
-  tools mostly)#'}
+  tools mostly)}
 }
 \value{
-  message
+  nothing
 }
 \description{
   If no folder is specifies, it will only list contents of

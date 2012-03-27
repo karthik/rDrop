@@ -12,7 +12,8 @@ setClass("DropboxCredentials", contains = "OAuthCredentials")
 #' @param cSecret A valid Dropbox application secret
 #' @param curl If using in a loop, call getCurlHandle() first and pass
 #'  the returned value in here (avoids unnecessary footprint)
-#' @param ... optional additional curl options (debugging tools mostly)#' @return Message with success or error.
+#' @param ... optional additional curl options (debugging tools mostly)
+#' @return Message with success or error.
 #' @return Oauth object with Dropbox keys
 #' @import RJSONIO ROAuth
 #' @export dropbox_auth
@@ -22,7 +23,6 @@ setClass("DropboxCredentials", contains = "OAuthCredentials")
 #' @import RJSONIO
 #' @import ROAuth
 #' @import RCurl
-#' @usage dropbox_auth("YOUR_DROPBOX_KEY", "YOUR_DROPBOX_SECRET")
 #' @examples \dontrun{
 #' dropbox_auth() # if you have keys in .rprofile stored as
 #' # options(DropboxKey='YOUR_APP_KEY')
