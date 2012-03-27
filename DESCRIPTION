@@ -12,6 +12,13 @@ Maintainer: Karthik Ram <karthik.ram@gmail.com>
 Description: Programmatic interface to the Dropbox file
     system.
 URL: http://github.com/karthikram/rDrop
+Depends:
+    RJSONIO,
+    RCurl (>= 1.6),
+    ROAuth,
+    methods,
+    plyr,
+    stringr
 Imports:
     RJSONIO,
     RCurl (>= 1.6),
