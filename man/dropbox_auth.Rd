@@ -4,20 +4,12 @@
 \title{Function to authenticate into your Dropbox account and get access keys}
 \usage{
   dropbox_auth(cKey = getOption("DropboxKey", stop("Missing Dropbox consumer key")),
-    cSecret = getOption("DropboxSecret", stop("Missing Dropbox app secret")),
-    ..., curl = getCurlHandle())
+    cSecret = getOption("DropboxSecret", stop("Missing Dropbox app secret")))
 }
 \arguments{
   \item{cKey}{A valid Dropbox application key}
 
   \item{cSecret}{A valid Dropbox application secret}
-
-  \item{curl}{If using in a loop, call getCurlHandle()
-  first and pass the returned value in here (avoids
-  unnecessary footprint)}
-
-  \item{...}{optional additional curl options (debugging
-  tools mostly)#'}
 }
 \value{
   Oauth object with Dropbox keys
@@ -52,8 +44,5 @@ dropbox_tokens <- dropbox_auth()
 dropbox_token <- dropbox_auth('consumey_key', 'consumer_secret')
 save(dropbox_token, file = 'dropbox_auth.rdata')
 }
-}
-\seealso{
-  dropbox_acc_info
 }
 
