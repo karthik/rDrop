@@ -7,12 +7,13 @@
 #' @param curl If using in a loop, call getCurlHandle() first and pass
 #'  the returned value in here (avoids unnecessary footprint)
 #' @param ... optional additional curl options (debugging tools mostly)#' @seealso dropbox_copy dropbox_create_folder
+#' @param verbose default is FALSE. Set to true to receive full outcome.
 #' @return Message on successful completion or error.
 #' @export dropbox_move
 #' @examples \dontrun{
 #'
 #'}
-dropbox_move <- function(cred, from_path = NULL, to_path = NULL,
+dropbox_move <- function(cred, from_path = NULL, to_path = NULL, verbose = FALSE,
     curl = getCurlHandle(), ...) {
     if (class(cred) != "DropboxCredentials" | missing(cred)) {
         stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.")
@@ -39,8 +40,12 @@ dropbox_move <- function(cred, from_path = NULL, to_path = NULL,
     if (is.character(move)) {
         stop(move[[1]], call. = FALSE)
     }
+    if(verbose) {
+        return(move)
+    } else {
     if (is.list(move)) {
         cat("File succcessfully moved to", move$path, "on", move$modified)
+    }
     }
 }
 # API documentation:
