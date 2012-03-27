@@ -40,7 +40,6 @@ If you prefer not to specify keys in a `.rprofile` (especially if you are on a p
 ### Authorizing your app
 <pre><code>
 library(rDrop)
-# Not yet on CRAN but available via devtools.
 
 # If you have Dropbox keys in your .rprofile, simply run:
  dropbox_credentials &lt;- dropbox_auth()
