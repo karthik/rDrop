@@ -8,15 +8,16 @@
 #' @param precheck internal use. Checks to make sure all objects are in the parent environment.
 #' @param curl If using in a loop, call getCurlHandle() first and pass
 #'  the returned value in here (avoids unnecessary footprint)
+#' @param verbose default is FALSE. Set to true to receive full outcome.
 #' @param ... optional additional curl options (debugging tools mostly)
 #' @export
 #' @return JSON object
 #' @examples \dontrun{
 #' dropbox_save(cred, robject, file='filename')
 #'}
-dropbox_save <- function(cred, ..., list = character(),
+dropbox_save <- function(cred, list = character(),
     file = stop("'file' must be specified"), envir = parent.frame(),
-    precheck = TRUE, curl = getCurlHandle()) {
+    precheck = TRUE, verbose = FALSE, curl = getCurlHandle(), ...) {
     if (class(cred) != "DropboxCredentials" | missing(cred)) {
         stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.")
     }
@@ -34,21 +35,25 @@ dropbox_save <- function(cred, ..., list = character(),
         if (!nzchar(file))
             stop("'file' must be non-empty string")
     }
-    filename <- paste(str_trim(str_extract(file, "[^.]*")), ".rda",
+    filename <- paste(str_trim(str_extract(file, "[^.]*")), ".rdata",
         sep = "")
     url <- paste("https://api-content.dropbox.com/1/files_put/dropbox/",
         filename, sep = "")
     con <- rawConnection(raw(), "w")
-    serialize(list(a = 1:10, b = letters), con)
+   serialize(list(a = 1:10, b = letters), con)
     z <- rawConnectionValue(con)
     input <- RCurl:::uploadFunctionHandler(z, TRUE)
     drop_save <- fromJSON(OAuthRequest(cred, url, , "PUT", upload = TRUE,
         readfunction = input, infilesize = nchar(z), verbose = FALSE,
-        httpheader = c(`Content-Type` = "application/binary")))
+        httpheader = c(`Content-Type` = "application/octet-stream")))
     close(con)
+    if(verbose) {
+        return(drop_save)
+    } else {
     if (is.list(drop_save)) {
-        cat("File succcessfully saved to", drop_save$path, "on", drop_save$modified)
+        cat("File succcessfully drop_saved to", drop_save$path, "on", drop_save$modified)
     }
+}
 }
 # API documentation: GET:
 #   https://www.dropbox.com/developers/reference/api#files-GET
