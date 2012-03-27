@@ -11,7 +11,8 @@
 #' @examples \dontrun{
 #' dropbox_acc_info(cred)
 #'}
-dropbox_acc_info <- function(cred, curl=getCurlHandle(), ...) {
+dropbox_acc_info <- function(cred, curl = getCurlHandle(), 
+    ...) {
     if (class(cred) != "DropboxCredentials" | missing(cred)) {
         stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.")
     }
@@ -22,4 +23,4 @@ dropbox_acc_info <- function(cred, curl=getCurlHandle(), ...) {
 #
 #
 #
-#   https://www.dropbox.com/developers/reference/api#account-info
+#   https://www.dropbox.com/developers/reference/api#account-info 
