@@ -1,17 +1,27 @@
 \name{dropbox_auth}
 \alias{dropbox_auth}
 \alias{rDrop}
-\title{Function to authenticate into your Dropbox account and get access keys}
+\title{rDrop: programmatic access to Dropbox from R.}
 \usage{
   dropbox_auth(cKey = getOption("DropboxKey", stop("Missing Dropbox consumer key")),
-    cSecret = getOption("DropboxSecret", stop("Missing Dropbox app secret")))
+    cSecret = getOption("DropboxSecret", stop("Missing Dropbox app secret")),
+    curl = getCurlHandle(), ...)
 }
 \arguments{
   \item{cKey}{A valid Dropbox application key}
 
   \item{cSecret}{A valid Dropbox application secret}
+
+  \item{curl}{If using in a loop, call getCurlHandle()
+  first and pass the returned value in here (avoids
+  unnecessary footprint)}
+
+  \item{...}{optional additional curl options (debugging
+  tools mostly)#'}
 }
 \value{
+  Message with success or error.
+
   Oauth object with Dropbox keys
 }
 \description{
@@ -32,6 +42,10 @@
   easier for you to just update the token without having to
   reauthoize via the web. \emph{Do not store these keys in
   your .rprofile if you are on a public machine}.
+}
+\details{
+  Once you have created an app, retrieve your access keys
+  using \code{dropbox_auth()}
 }
 \examples{
 \dontrun{

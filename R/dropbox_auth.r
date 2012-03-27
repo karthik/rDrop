@@ -3,11 +3,16 @@
 #' @rdname DropboxCredentials-class
 #' @exportClass DropboxCredentials
 setClass("DropboxCredentials", contains = "OAuthCredentials")
-#'Function to authenticate into your Dropbox account and get access keys
+#' rDrop: programmatic access to Dropbox from R.
 #'
 #' Before using any of rDrop's functions, you must first create an application on the Dropobox developer site (\url{https://www2.dropbox.com/developers/apps}). This application is specific to you. Follow through with the steps to create your application and copy the  generated consumer key/secret combo. Ideally you should save those keys in your options as: \code{options(DropboxKey = 'Your_App_key')}  \code{options(DropboxSecret = 'Your_App_secret')}. If you are unable to do so (assuming you are on some public machine), then you can just specifiy both keys inline. Once you have authenticated, there is absolutely no reason to repeat this step for subsequent sessions. Simply save the OAuth object and load as necessary. Future versions of ROAuth will make it easier for you to just update the token without having to reauthoize via the web. \emph{Do not store these keys in your .rprofile if you are on a public machine}.
+#'
+#' Once you have created an app, retrieve your access keys using \code{dropbox_auth()}
 #' @param cKey A valid Dropbox application key
 #' @param cSecret A valid Dropbox application secret
+#' @param curl If using in a loop, call getCurlHandle() first and pass
+#'  the returned value in here (avoids unnecessary footprint)
+#' @param ... optional additional curl options (debugging tools mostly)#' @return Message with success or error.
 #' @return Oauth object with Dropbox keys
 #' @import RJSONIO ROAuth
 #' @export dropbox_auth
@@ -29,7 +34,7 @@ setClass("DropboxCredentials", contains = "OAuthCredentials")
 #'}
 dropbox_auth <- function(cKey = getOption("DropboxKey",
     stop("Missing Dropbox consumer key")), cSecret = getOption("DropboxSecret",
-    stop("Missing Dropbox app secret")), , curl = getCurlHandle(),
+    stop("Missing Dropbox app secret")), curl = getCurlHandle(),
     ...) {
     reqURL <- "https://api.dropbox.com/1/oauth/request_token"
     authURL <- "https://www.dropbox.com/1/oauth/authorize"

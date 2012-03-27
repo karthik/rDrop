@@ -3,7 +3,7 @@
 \title{Move files within Dropbox}
 \usage{
   dropbox_move(cred, from_path = NULL, to_path = NULL,
-    curl = getCurlHandle(), ...)
+    verbose = FALSE, curl = getCurlHandle(), ...)
 }
 \arguments{
   \item{cred}{Specifies an object of class ROAuth with
@@ -21,6 +21,9 @@
 
   \item{...}{optional additional curl options (debugging
   tools mostly)#'}
+
+  \item{verbose}{default is FALSE. Set to true to receive
+  full outcome.}
 }
 \value{
   Message on successful completion or error.

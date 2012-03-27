@@ -2,10 +2,10 @@
 \alias{dropbox_save}
 \title{Function to save an object from R into Dropbox (not working)}
 \usage{
-  dropbox_save(cred, ..., list = character(),
+  dropbox_save(cred, list = character(),
     file = stop("'file' must be specified"),
     envir = parent.frame(), precheck = TRUE,
-    curl = getCurlHandle())
+    verbose = FALSE, curl = getCurlHandle(), ...)
 }
 \arguments{
   \item{cred}{Specifies an object of class ROAuth with
@@ -26,6 +26,9 @@
   \item{curl}{If using in a loop, call getCurlHandle()
   first and pass the returned value in here (avoids
   unnecessary footprint)}
+
+  \item{verbose}{default is FALSE. Set to true to receive
+  full outcome.}
 
   \item{...}{optional additional curl options (debugging
   tools mostly)}

@@ -10,7 +10,7 @@
 #' @examples \dontrun{
 #'
 #'}
-dropbox_media <- function(cred, path = NULL, curl = getCurlHandle(),
+dropbox_media <- function(cred, path = NULL, curl = getCurlHandle(), 
     ...) {
     if (class(cred) != "DropboxCredentials" | missing(cred)) {
         stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.")
@@ -19,11 +19,11 @@ dropbox_media <- function(cred, path = NULL, curl = getCurlHandle(),
         stop("Content does not exist in dropbox", call. = FALSE)
     }
     if (!is.null(path)) {
-        url <- paste("https://api.dropbox.com/1/media/dropbox/", path,
-            sep = "")
+        url <- paste("https://api.dropbox.com/1/media/dropbox/", 
+            path, sep = "")
     }
     media <- fromJSON(OAuthRequest(cred, url))
     return(media)
 }
 # API Documentation:
-#   https://www.dropbox.com/developers/reference/api#media
+#   https://www.dropbox.com/developers/reference/api#media   
