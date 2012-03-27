@@ -6,7 +6,6 @@
 #' @param curl If using in a loop, call getCurlHandle() first and pass
 #'  the returned value in here (avoids unnecessary footprint)
 #' @param ... optional additional curl options (debugging tools mostly)#' @return file
-#' @import RJSONIO ROAuth RCurl
 #' @export dropbox_media
 #' @examples \dontrun{
 #'

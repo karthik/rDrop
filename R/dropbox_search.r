@@ -10,7 +10,6 @@
 ##' @param curl If using in a loop, call getCurlHandle() first and pass
 #'  the returned value in here (avoids unnecessary footprint)
 #' @param ... optional additional curl options (debugging tools mostly)' @return data.frame with results. No results will return empty data.frame
-#' @import RJSONIO ROAuth RCurl
 #' @export dropbox_search
 #' @examples \dontrun{
 #' results<-dropbox_search(cred,'file or folder name')

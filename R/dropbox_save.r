@@ -11,7 +11,6 @@
 #' @param ... optional additional curl options (debugging tools mostly)
 #' @export
 #' @return JSON object
-#' @import RJSONIO ROAuth RCurl
 #' @examples \dontrun{
 #' dropbox_save(cred, robject, file='filename')
 #'}

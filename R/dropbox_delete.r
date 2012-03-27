@@ -7,7 +7,6 @@
 #'  the returned value in here (avoids unnecessary footprint)
 #' @param ... optional additional curl options (debugging tools mostly)#' @param ask logical set to TRUE. If set to false, function will not confirm delete operation
 #' @return Nothing. A message upon successful deletion.
-#' @import RJSONIO ROAuth RCurl
 #' @export dropbox_delete
 #' @examples \dontrun{
 #' dropbox_delete(dropbox_credential, 'path/to/file')

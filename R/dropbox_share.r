@@ -8,7 +8,6 @@
 #'  the returned value in here (avoids unnecessary footprint)
 #' @param ... optional additional curl options (debugging tools mostly)#' @keywords sharing share_url
 #' @return list with url to file or zipped folder and expiry date.
-#' @import RJSONIO ROAuth RCurl
 #' @examples \dontrun{
 #' dropbox_share(cred, 'test_folder')
 #'}

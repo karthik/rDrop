@@ -9,7 +9,6 @@
 #'  the returned value in here (avoids unnecessary footprint)
 #' @param ... optional additional curl options (debugging tools mostly)#' @return message
 #' @export dropbox_dir
-#' @import stringr RJSONIO ROAuth
 #' @examples \dontrun{
 #' dropbox_dir(cred)
 #' dropbox_dir(cred, recursive = TRUE)

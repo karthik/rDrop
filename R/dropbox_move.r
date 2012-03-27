@@ -8,7 +8,6 @@
 #'  the returned value in here (avoids unnecessary footprint)
 #' @param ... optional additional curl options (debugging tools mostly)#' @seealso dropbox_copy dropbox_create_folder
 #' @return Message on successful completion or error.
-#' @import RJSONIO ROAuth RCurl
 #' @export dropbox_move
 #' @examples \dontrun{
 #'

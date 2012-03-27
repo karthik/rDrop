@@ -9,7 +9,6 @@
 #' @param curl If using in a loop, call getCurlHandle() first and pass
 #'  the returned value in here (avoids unnecessary footprint)
 #' @param ... optional additional curl options (debugging tools mostly)#' @return Message with success or error.
-#' @import RJSONIO ROAuth RCurl
 #' @export dropbox_copy
 #' @examples \dontrun{
 #' dropbox_copy(dropbox_token, 'file.csv', 'folder2')
