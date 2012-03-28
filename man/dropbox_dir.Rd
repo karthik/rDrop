@@ -12,9 +12,9 @@
   \item{path}{The directory to list. Not yet implemented}
 
   \item{verbose}{logical. FALSE returns a list with file
-  names in root folder. TRUE returns a data.frame with the
-  following fields: .id,revision, rev, thumb_exists,
-  bytes,modified, path, is_dir, icon,root,size,mime_type.}
+  names in root folder. TRUE returns a \code{data.frame}
+  with the following fields: id, revision, rev,
+  thumb_exists, bytes, path, modified, and is_dir}
 
   \item{deleted}{logical. Default is FALSE. Set to TRUE to
   also list deleted files.}
@@ -27,7 +27,8 @@
   tools mostly)}
 }
 \value{
-  nothing
+  directory listing with file/folder names
+  unless\code{verbose = TRUE}
 }
 \description{
   If no folder is specifies, it will only list contents of
