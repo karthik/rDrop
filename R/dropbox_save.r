@@ -14,48 +14,68 @@
 #' @return JSON object
 #' @examples \dontrun{
 #' dropbox_save(cred, robject, file='filename')
+#' dropbox_save(cred, file = "testRData", .objs = list(a = 1:3, b = letters[1:10]))
+#' a = dropbox_get(cred, "testRData.rdata", binary = TRUE)
+#' val = unserialize(rawConnection(a))
 #'}
-dropbox_save <- function(cred, list = character(), 
-    file = stop("'file' must be specified"), envir = parent.frame(), 
-    precheck = TRUE, verbose = FALSE, curl = getCurlHandle(), 
-    ...) {
-    if (class(cred) != "DropboxCredentials" | missing(cred)) {
+dropbox_save <-
+ function(cred, list = character(), 
+          file = stop("'file' must be specified"), envir = parent.frame(), 
+          precheck = TRUE, verbose = FALSE, curl = getCurlHandle(), 
+          ..., .objs = NULL)
+{
+    if (!is(cred, "DropboxCredentials") || missing(cred)) 
         stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.")
-    }
-    names <- as.character(substitute(list(...)))[-1L]
-    list <- c(list, names)
-    if (precheck) {
-        ok <- unlist(lapply(list, exists, envir = envir))
-        if (!all(ok)) {
+
+
+    if(missing(.objs)) {
+        names <- as.character(substitute(list(...)))[-1L]
+        list <- c(list, names)
+        if (precheck) {
+          ok <- unlist(lapply(list, exists, envir = envir))
+          if (!all(ok)) {
             n <- sum(!ok)
             stop(sprintf(ngettext(n, "object %s not found", "objects %s not found"), 
-                paste(sQuote(list[!ok]), collapse = ", ")), domain = NA)
+                         paste(sQuote(list[!ok]), collapse = ", ")), domain = NA)
+          }
         }
-    }
-    if (is.character(file)) {
-        if (!nzchar(file)) 
-            stop("'file' must be non-empty string")
-    }
-    filename <- paste(str_trim(str_extract(file, "[^.]*")), ".rdata", 
-        sep = "")
-    url <- paste("https://api-content.dropbox.com/1/files_put/dropbox/", 
-        filename, sep = "")
+        .objs = structure(lapply(list, get, envir),
+                           names = list)
+     }
+
+    
+    if (is.character(file) && !nzchar(file))  
+        stop("'file' must be non-empty string")
+
+
+    filename <- if(!is(file, "AsIs"))
+                    paste(str_trim(str_extract(file, "[^.]*")), ".rdata", 
+                           sep = "")
+                else
+                    file
+ 
+     url <- sprintf("https://api-content.dropbox.com/1/files_put/dropbox/%s", filename)
+
     con <- rawConnection(raw(), "w")
-    serialize(list(a = 1:10, b = letters), con)
+    serialize(.objs, con)
+#    serialize(list(a = 1:10, b = letters), con)
+    
     z <- rawConnectionValue(con)
+    on.exit(close(con))    
     input <- RCurl:::uploadFunctionHandler(z, TRUE)
+    
     drop_save <- fromJSON(OAuthRequest(cred, url, , "PUT", upload = TRUE, 
-        readfunction = input, infilesize = nchar(z), verbose = FALSE, 
+        readfunction = input, infilesize = length(z), verbose = FALSE, 
         httpheader = c(`Content-Type` = "application/octet-stream")))
-    close(con)
+
     if (verbose) {
-        return(drop_save)
-    } else {
-        if (is.list(drop_save)) {
+      if (is.list(drop_save)) {
             cat("File succcessfully drop_saved to", drop_save$path, 
                 "on", drop_save$modified)
-        }
+      }
     }
+    
+    drop_save
 }
 # API documentation: GET:
 #   https://www.dropbox.com/developers/reference/api#files-GET   

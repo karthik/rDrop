@@ -22,7 +22,7 @@
 dropbox_search <- function(cred, query = NULL, deleted = FALSE,
     file_limit = 1000, is_dir = NULL, verbose = FALSE, curl = getCurlHandle(),
     ...) {
-    if (class(cred) != "DropboxCredentials" | missing(cred)) {
+    if (!is(cred, "DropboxCredentials") || missing(cred)) {
         stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.")
     }
     if (is.null(query)) {
@@ -32,7 +32,7 @@ dropbox_search <- function(cred, query = NULL, deleted = FALSE,
     full_path <- query
     query <- basename(query)
     results <- fromJSON(OAuthRequest(cred, "https://api.dropbox.com/1/search/dropbox/",
-        list(query = query, include_deleted = deleted)))
+        list(query = query, include_deleted = deleted), ..., curl = curl))
     search_results <- formatted_results <- ldply(results, data.frame)
                                                         # If user wanted to search for a file in a specific
                                                         #   location.

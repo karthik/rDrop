@@ -8,7 +8,7 @@
 #' exists.in.dropbox(cred,'test_folder')
 #' exists.in.dropbox(cred,'test_folder',is_dir='dir')
 #'}
-exists.in.dropbox <- function(cred, path = NULL, is_dir = NULL) {
+exists.in.dropbox <- function(cred, path = NULL, is_dir = NULL, ..., curl = getCurlHandle()) {
     if (class(cred) != "DropboxCredentials") {
         stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.")
     }
@@ -29,7 +29,7 @@ exists.in.dropbox <- function(cred, path = NULL, is_dir = NULL) {
             1)
     }
     query <- basename(path)
-    res <- dropbox_search(cred, query)
+    res <- dropbox_search(cred, query, ..., curl = curl)
     if (is.null(res)) {
         response <- FALSE
     }
