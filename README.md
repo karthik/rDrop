@@ -29,7 +29,7 @@ install_github("rDrop", "karthikram")
 * Once you click create, be sure to **copy your App key and App secret** and store it somewhere safe. If you forget it, you can always find it [here](https://www.dropbox.com/developers/apps) (Just click on options next to your App name).  If you use your `.rprofile` and no one else uses your computer,  then we recommend you save your keys there by adding the following lines: <br><br>
 <pre><code>
 options(DropboxKey = "Your_App_key")
-options(DropboxSecret = "Your_App_secret")
+options(DropboxSecret = "Your_App_Secret")
 </code></pre>
 <br>
 
