@@ -62,7 +62,7 @@ exists.in.dropbox <- function(cred, path = NULL, is_dir = NULL) {
 #'
 #' @param cred An object of class DropboxCredentials with Dropobox specific credentials.
 #' @param path_to_file Path to file relative to Dropbox root.
-#' @seealso \code{link{is.dropbox.file}},  \code{\link{is.dropbox.dir}}
+#' @seealso \code{link{is.dropbox.file}}
 #' @return list
 #' @export dropbox.file.info
 #' @examples \dontrun{
