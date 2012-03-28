@@ -26,24 +26,21 @@ dropbox_move <- function(cred, from_path = NULL, to_path = NULL,
             call. = F)
     }
 
-     if (!exists.in.dropbox(cred, to_path, is_dir = TRUE,..., curl = getCurlHandle())) {
+    check_paths <- sanitize_paths(from_path, to_path)
+    from_path <- check_paths[[1]]
+    to_path <- check_paths[[2]]
+
+    if (!exists.in.dropbox(cred, from_path,..., curl = getCurlHandle()))
+        stop("Source file or folder does not exist", call. = FALSE)
+
+
+    if (!exists.in.dropbox(cred, dirname(to_path), is_dir = TRUE,..., curl = getCurlHandle()))
         stop("Destination is not a valid folder", call. = FALSE)
+
+    if(grepl('\\.',to_path)) {
+    if (exists.in.dropbox(cred, to_path,..., curl = getCurlHandle()))
+        stop("File already exists in destination", call. = FALSE)
     }
-    if (!(exists.in.dropbox(cred, path = from_path,..., curl = getCurlHandle()))) {
-        stop("File or folder does not exist", call. = FALSE)
-    }
-    if (!(exists.in.dropbox(cred, path = to_path, is_dir = TRUE,..., curl = getCurlHandle()))) {
-        stop("Destination does not exist or isn't a folder",
-            call. = FALSE)
-    }
-  from_path <- basename(from_path)
-    if (!grepl("/$", to_path)) {
-        to_path <- paste(to_path, "/", sep = "")
-    }
-      if (!grepl("^/", to_path)) {
-        to_path <- paste("/", to_path, sep = "")
-    }
-    to_path <- paste(to_path, from_path, sep = "")
 
     move <- fromJSON(OAuthRequest(cred, "https://api.dropbox.com/1/fileops/move",
         list(root = "dropbox", from_path = from_path, to_path = to_path),
