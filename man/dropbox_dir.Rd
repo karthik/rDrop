@@ -27,8 +27,9 @@
   tools mostly)}
 }
 \value{
-  directory listing with file/folder names
-  unless\code{verbose = TRUE}
+  directory listing with file/folder names unless
+  \code{verbose = TRUE} in which case a data.frame is
+  returned.
 }
 \description{
   If no folder is specifies, it will only list contents of
@@ -36,10 +37,9 @@
 }
 \examples{
 \dontrun{
-dropbox_dir(cred)
-dropbox_dir(cred, recursive = TRUE)
-dropbox_dir(cred,path='/specific_folder')
-dropbox_dir(cred,path='/specific_folder',verbose = TRUE)
+dropbox_dir(db_cred)
+dropbox_dir(db_cred, path='/specific_folder')
+dropbox_dir(db_cred,path='/specific_folder', verbose = TRUE)
 returns a dataframe with fields .id,
 }
 }

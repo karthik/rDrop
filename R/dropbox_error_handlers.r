@@ -4,6 +4,7 @@
 #' @param path Path to object
 #' @param  is_dir if set to TRUE, will only look for folders. Otherwise will return file or folder.
 #' @export
+#' @return logical. TRUE/FALSE
 #' @examples \dontrun{
 #' exists.in.dropbox(cred,'test_folder')
 #' exists.in.dropbox(cred,'test_folder',is_dir='dir')
@@ -61,7 +62,7 @@ exists.in.dropbox <- function(cred, path = NULL, is_dir = NULL) {
 #'
 #' @param cred An object of class DropboxCredentials with Dropobox specific credentials.
 #' @param path_to_file Path to file relative to Dropbox root.
-#' @seealso is.dropbox.file is.dropbox.dir
+#' @seealso \code{link{is.dropbox.file}},  \code{\link{is.dropbox.dir}}
 #' @return list
 #' @export dropbox.file.info
 #' @examples \dontrun{

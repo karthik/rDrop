@@ -14,7 +14,7 @@ setClass("DropboxCredentials", contains = "OAuthCredentials")
 #'  the returned value in here (avoids unnecessary footprint)
 #' @param ... optional additional curl options (debugging tools mostly)
 #' @return Message with success or error.
-#' @return Oauth object with Dropbox keys
+#' @return Oauth object of class \code{DropboxCredentials}
 #' @import RJSONIO ROAuth
 #' @export dropbox_auth
 #' @aliases rDrop

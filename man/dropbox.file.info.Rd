@@ -24,6 +24,7 @@ dropbox.file.inco(cred, '/folder/file.txt')
 }
 }
 \seealso{
-  is.dropbox.file is.dropbox.dir
+  \code{link{is.dropbox.file}},
+  \code{\link{is.dropbox.dir}}
 }
 

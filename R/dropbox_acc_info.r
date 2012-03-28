@@ -7,7 +7,7 @@
 #' @export dropbox_acc_info
 #' @keywords authentication OAuth
 #' @seealso related: \code{\link{dropbox_auth}}
-#' @return list containing \item{referral link}{- Dropbox referral link.} \item{display_name}{desc} \item{uid}{Dropbox user id} \item{country}{Dropbox country} \item{quota_info}{shared, quota, and normal.} \item{email}{Dropbox user email}
+#' @return list containing \item{referral link}{Dropbox referral link.} \item{display_name}{Dropbox display name} \item{uid}{Dropbox user id} \item{country}{Dropbox country} \item{quota_info}{Information on shared, quota, and normal.} \item{email}{Dropbox user email}
 #' @examples \dontrun{
 #' dropbox_acc_info(cred)
 #'}

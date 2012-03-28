@@ -16,11 +16,11 @@
   tools mostly)}
 }
 \value{
-  list containing \item{referral link}{- Dropbox referral
-  link.} \item{display_name}{desc} \item{uid}{Dropbox user
-  id} \item{country}{Dropbox country}
-  \item{quota_info}{shared, quota, and normal.}
-  \item{email}{Dropbox user email}
+  list containing \item{referral link}{Dropbox referral
+  link.} \item{display_name}{Dropbox display name}
+  \item{uid}{Dropbox user id} \item{country}{Dropbox
+  country} \item{quota_info}{Information on shared, quota,
+  and normal.} \item{email}{Dropbox user email}
 }
 \description{
   Retrieve Dropbox account summary

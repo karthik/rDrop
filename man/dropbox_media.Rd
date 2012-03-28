@@ -1,6 +1,6 @@
 \name{dropbox_media}
 \alias{dropbox_media}
-\title{Similar to \code{dropbox_share}. The difference is that this bypasses the Dropbox webserver, used to provide a preview of the file, so that you can effectively stream the contents of your media.}
+\title{Stream data from Dropbox}
 \usage{
   dropbox_media(cred, path = NULL, curl = getCurlHandle(),
     ...)

@@ -8,13 +8,12 @@
 #' @param curl If using in a loop, call getCurlHandle() first and pass
 #'  the returned value in here (avoids unnecessary footprint)
 #' @param ... optional additional curl options (debugging tools mostly)
-#' @return directory listing with file/folder names unless\code{verbose = TRUE}
+#' @return directory listing with file/folder names unless \code{verbose = TRUE} in which case a data.frame is returned.
 #' @export dropbox_dir
 #' @examples \dontrun{
-#' dropbox_dir(cred)
-#' dropbox_dir(cred, recursive = TRUE)
-#' dropbox_dir(cred,path='/specific_folder')
-#' dropbox_dir(cred,path='/specific_folder',verbose = TRUE)
+#' dropbox_dir(db_cred)
+#' dropbox_dir(db_cred, path='/specific_folder')
+#' dropbox_dir(db_cred,path='/specific_folder', verbose = TRUE)
 #' returns a dataframe with fields .id,
 #'}
 dropbox_dir <- function(cred, path = NULL, verbose = FALSE,

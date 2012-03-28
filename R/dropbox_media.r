@@ -1,4 +1,4 @@
-#' Similar to \code{dropbox_share}. The difference is that this bypasses the Dropbox webserver, used to provide a preview of the file, so that you can effectively stream the contents of your media.
+#' Stream data from Dropbox
 #'
 #' This function behaves very similar to \code{dropbox_share}. The difference is that this bypasses the Dropbox webserver, used to provide a preview of the file, so that you can effectively stream the contents of your media.
 #' @param cred  Specifies an object of class DropboxCredentials with Dropobox specific credentials.
