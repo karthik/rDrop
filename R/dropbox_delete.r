@@ -1,7 +1,7 @@
 #'Function to delete a file or folder from Dropbox
 #'
 #' Function will delete specified object in Dropbox (assuming it exists). To skip deletion conformation, set ask = FALSE in function call. Accidentally deleted objects may be recovered using Dropbox's restore feature.
-#' @param cred An object of class ROAuth with Dropobox specific credentials.
+#' @param cred An object of class DropboxCredentials with Dropobox specific credentials.
 #' @param file_to_delete Specifies the path to the file or folder to be deleted.
 #' @param curl If using in a loop, call getCurlHandle() first and pass
 #'  the returned value in here (avoids unnecessary footprint)

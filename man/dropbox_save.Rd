@@ -8,8 +8,8 @@
     verbose = FALSE, curl = getCurlHandle(), ...)
 }
 \arguments{
-  \item{cred}{Specifies an object of class ROAuth with
-  Dropobox specific credentials.}
+  \item{cred}{Specifies an object of class
+  DropboxCredentials with Dropobox specific credentials.}
 
   \item{list}{List of objects from the current R
   environment that needs to be saved into dropbox}

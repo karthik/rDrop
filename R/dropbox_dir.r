@@ -1,20 +1,19 @@
 #'Function to list contents of a Dropbox folder.
 #'
 #' If no folder is specifies, it will only list contents of the root folder.
-#' @param cred An object of class ROAuth with Dropobox specific credentials.
+#' @param cred An object of class DropboxCredentials with Dropobox specific credentials.
 #' @param path  The directory to list. Not yet implemented
-#' @param verbose logical. FALSE returns a list with file names in root folder. TRUE returns a data.frame with the following fields: .id,revision, rev, thumb_exists, bytes,modified, path, is_dir, icon,root,size,mime_type.
+#' @param verbose logical. FALSE returns a list with file names in root folder. TRUE returns a \code{data.frame} with the following fields: id, revision, rev, thumb_exists, bytes, path, modified, and is_dir
 #' @param deleted logical. Default is FALSE. Set to TRUE to also list deleted files.
 #' @param curl If using in a loop, call getCurlHandle() first and pass
 #'  the returned value in here (avoids unnecessary footprint)
 #' @param ... optional additional curl options (debugging tools mostly)
-#' @return nothing
+#' @return directory listing with file/folder names unless \code{verbose = TRUE} in which case a data.frame is returned.
 #' @export dropbox_dir
 #' @examples \dontrun{
-#' dropbox_dir(cred)
-#' dropbox_dir(cred, recursive = TRUE)
-#' dropbox_dir(cred,path='/specific_folder')
-#' dropbox_dir(cred,path='/specific_folder',verbose = TRUE)
+#' dropbox_dir(db_cred)
+#' dropbox_dir(db_cred, path='/specific_folder')
+#' dropbox_dir(db_cred,path='/specific_folder', verbose = TRUE)
 #' returns a dataframe with fields .id,
 #'}
 dropbox_dir <- function(cred, path = NULL, verbose = FALSE,
@@ -54,3 +53,4 @@ dropbox_dir <- function(cred, path = NULL, verbose = FALSE,
 # API documentation:
 #   https://www.dropbox.com/developers/reference/api#metadata
 # Issues: Fails with empty directories
+# filename, revision, thumb, bytes, modified, path, and is_dir

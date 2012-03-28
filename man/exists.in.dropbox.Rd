@@ -5,13 +5,16 @@
   exists.in.dropbox(cred, path = NULL, is_dir = NULL)
 }
 \arguments{
-  \item{cred}{An object of class ROAuth with Dropobox
-  specific credentials.}
+  \item{cred}{An object of class DropboxCredentials with
+  Dropobox specific credentials.}
 
   \item{path}{Path to object}
 
   \item{is_dir}{if set to TRUE, will only look for folders.
   Otherwise will return file or folder.}
+}
+\value{
+  logical. TRUE/FALSE
 }
 \description{
   Check to see if an object exists in Dropbox

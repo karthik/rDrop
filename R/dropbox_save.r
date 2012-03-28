@@ -1,7 +1,7 @@
 #' Function to save an object from R into Dropbox (not working)
 #'
 #' This function currently does not work.
-#' @param cred Specifies an object of class ROAuth with Dropobox specific credentials.
+#' @param cred Specifies an object of class DropboxCredentials with Dropobox specific credentials.
 #' @param list List of objects from the current R environment that needs to be saved into dropbox
 #' @param file Required filename. No extenstion needs to be supplied. If you provide one, it will be stripped and replace with rda.
 #' @param envir optional. Defaults to parent environment.
@@ -53,7 +53,6 @@ dropbox_save <-
                            names = list)
      }
 
-    
     if (is.character(file) && !nzchar(file))  
         stop("'file' must be non-empty string")
 
@@ -65,7 +64,7 @@ dropbox_save <-
                 else
                     file
  
-     url <- sprintf("https://api-content.dropbox.com/1/files_put/dropbox/%s", filename)
+    url <- sprintf("https://api-content.dropbox.com/1/files_put/dropbox/%s", filename)
 
     con <- rawConnection(raw(), "w")
     on.exit(close(con))        
@@ -87,4 +86,4 @@ dropbox_save <-
     drop_save
 }
 # API documentation: GET:
-#   https://www.dropbox.com/developers/reference/api#files-GET   
+#   https://www.dropbox.com/developers/reference/api#files-GET

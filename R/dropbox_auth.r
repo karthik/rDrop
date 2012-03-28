@@ -14,7 +14,7 @@ setClass("DropboxCredentials", contains = "OAuthCredentials")
 #'  the returned value in here (avoids unnecessary footprint)
 #' @param ... optional additional curl options (debugging tools mostly)
 #' @return Message with success or error.
-#' @return Oauth object with Dropbox keys
+#' @return Oauth object of class \code{DropboxCredentials}
 #' @import RJSONIO ROAuth
 #' @export dropbox_auth
 #' @aliases rDrop
@@ -44,7 +44,7 @@ dropbox_auth <- function(cKey = getOption("DropboxKey",
         obj = new("DropboxCredentials"))
     cred <- handshake(dropbox_oa, post = FALSE)
     if (TRUE) {
-        cat("\n Dropbox Authentication completed successfully.\n")
+        cat("\n Dropbox authentication completed successfully.\n")
     }
     if (FALSE) {
         info <- OAuthRequest(dropbox_oa, "https://api.dropbox.com/1/account/info")

@@ -6,8 +6,8 @@
     ...)
 }
 \arguments{
-  \item{cred}{An object of class ROAuth with Dropobox
-  specific credentials.}
+  \item{cred}{An object of class DropboxCredentials with
+  Dropobox specific credentials.}
 
   \item{file}{Path to the file or folder you want a
   shareable link to.}
@@ -31,6 +31,9 @@
 \dontrun{
 dropbox_share(cred, 'test_folder')
 }
+}
+\seealso{
+  \code{\link{dropbox_media}}
 }
 \keyword{share_url}
 \keyword{sharing}

@@ -4,7 +4,7 @@ This package provides a  programmatic interface to [Dropbox](https://www2.dropbo
 
 > **Disclaimer: This package is currently in development so please <u>use at your own risk.</u>**
 
-**Important**: This package relies on ROAuth and the version currently available on CRAN does not play so well with rDrop. Use [this version](http://dl.dropbox.com/u/2223411/ROAuth_0.92.0.tar.gz) and install from source for the time being till issues get patched up.
+**Important**: This package relies on `ROAuth` and the version currently available on CRAN does not play so well with `rDrop`. Use [ROAuth_0.92.0 version](http://dl.dropbox.com/u/2223411/ROAuth_0.92.0.tar.gz) and install from source for the time being till issues get patched up.
 
 **Reference:**
 [Complete Dropbox API Reference.](https://www2.dropbox.com/developers/reference/api)
@@ -16,7 +16,7 @@ install_github("rDrop", "karthikram")
 ```
 
 # Initial setup
-* To begin, create an `App` on Dropbox from the [Dropbox Developer site](https://www2.dropbox.com/developers/apps). You will need to log in with your Dropbox username and password.Then, click `Create An App`.
+* To begin, create an `App` on Dropbox from the [Dropbox developer site](https://www2.dropbox.com/developers/apps). You will need to log in with your Dropbox username and password.Then, click **Create An App**.
 
 ![Create an app for your personal use on Dropbox](https://github.com/karthikram/rDrop/blob/master/screenshots/create_app.png?raw=true
 )
@@ -29,7 +29,7 @@ install_github("rDrop", "karthikram")
 * Once you click create, be sure to **copy your App key and App secret** and store it somewhere safe. If you forget it, you can always find it [here](https://www.dropbox.com/developers/apps) (Just click on options next to your App name).  If you use your `.rprofile` and no one else uses your computer,  then we recommend you save your keys there by adding the following lines: <br><br>
 <pre><code>
 options(DropboxKey = "Your_App_key")
-options(DropboxSecret = "Your_App_secret")
+options(DropboxSecret = "Your_App_Secret")
 </code></pre>
 <br>
 

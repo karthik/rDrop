@@ -1,6 +1,3 @@
 .onAttach <- function(...) {
-    if (stats::runif(1) > 0.1) 
-        return()
-    tips <- c("New to rDrop? Start with ?dropbox_auth()\n", "Use suppressPackageStartupMessages to eliminate package startup messages.")
-    packageStartupMessage(tips)
-} 
+packageStartupMessage("\n\n New to rDrop? Look up ?dropbox_auth() for setting up an app. Use suppressPackageStartupMessages() to suppress this message in future\n")
+}

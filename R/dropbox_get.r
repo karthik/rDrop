@@ -1,15 +1,15 @@
 #'Downloads a file from your Dropbox
 #'
-#' Currently the function does not provide much support other than retrieving the contents of whatever Dropbox file you specify. Use \code{TextConnection} to process data files for the time being.
-#' @param cred Specifies an object of class ROAuth with Dropobox specific credentials.
-#' @param  file_to_get Specifies the path to the file you want to retrieve.
+#' Currently the function does not provide much support other than retrieving the contents of whatever Dropbox file you specify. Use \code{TextConnection} to process ascii files for the time being.
+#' @param cred Specifies an object of class DropboxCredentials with Dropobox specific credentials.
+#' @param  file_to_get Specifies the path to the file you want to retrieve. Path must be relative to \code{Dropbox root}.
 #' @param curl If using in a loop, call getCurlHandle() first and pass
 #'  the returned value in here (avoids unnecessary footprint)
 #' @param ... optional additional curl options (debugging tools mostly)
 #' @return R object
 #' @export dropbox_get
 #' @examples \dontrun{
-#'
+#' x <- dropbox_get(db_cred, '/folder/file.csv')
 #'}
 dropbox_get <- function(cred, file_to_get, curl = getCurlHandle(),
     ..., binary = NA) {

@@ -6,15 +6,15 @@
     deleted = FALSE, curl = getCurlHandle(), ...)
 }
 \arguments{
-  \item{cred}{An object of class ROAuth with Dropobox
-  specific credentials.}
+  \item{cred}{An object of class DropboxCredentials with
+  Dropobox specific credentials.}
 
   \item{path}{The directory to list. Not yet implemented}
 
   \item{verbose}{logical. FALSE returns a list with file
-  names in root folder. TRUE returns a data.frame with the
-  following fields: .id,revision, rev, thumb_exists,
-  bytes,modified, path, is_dir, icon,root,size,mime_type.}
+  names in root folder. TRUE returns a \code{data.frame}
+  with the following fields: id, revision, rev,
+  thumb_exists, bytes, path, modified, and is_dir}
 
   \item{deleted}{logical. Default is FALSE. Set to TRUE to
   also list deleted files.}
@@ -27,7 +27,9 @@
   tools mostly)}
 }
 \value{
-  nothing
+  directory listing with file/folder names unless
+  \code{verbose = TRUE} in which case a data.frame is
+  returned.
 }
 \description{
   If no folder is specifies, it will only list contents of
@@ -35,10 +37,9 @@
 }
 \examples{
 \dontrun{
-dropbox_dir(cred)
-dropbox_dir(cred, recursive = TRUE)
-dropbox_dir(cred,path='/specific_folder')
-dropbox_dir(cred,path='/specific_folder',verbose = TRUE)
+dropbox_dir(db_cred)
+dropbox_dir(db_cred, path='/specific_folder')
+dropbox_dir(db_cred,path='/specific_folder', verbose = TRUE)
 returns a dataframe with fields .id,
 }
 }

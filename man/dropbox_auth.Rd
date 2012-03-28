@@ -22,7 +22,7 @@
 \value{
   Message with success or error.
 
-  Oauth object with Dropbox keys
+  Oauth object of class \code{DropboxCredentials}
 }
 \description{
   Before using any of rDrop's functions, you must first
