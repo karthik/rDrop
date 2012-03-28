@@ -6,11 +6,12 @@
     ...)
 }
 \arguments{
-  \item{cred}{Specifies an object of class ROAuth with
-  Dropobox specific credentials.}
+  \item{cred}{Specifies an object of class
+  DropboxCredentials with Dropobox specific credentials.}
 
   \item{file_to_get}{Specifies the path to the file you
-  want to retrieve.}
+  want to retrieve. Path must be relative to \code{Dropbox
+  root}.}
 
   \item{curl}{If using in a loop, call getCurlHandle()
   first and pass the returned value in here (avoids
@@ -30,7 +31,7 @@
 }
 \examples{
 \dontrun{
-
+x <- dropbox_get(db_cred, '/folder/file.csv')
 }
 }
 

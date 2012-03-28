@@ -6,8 +6,8 @@
     curl = getCurlHandle(), ...)
 }
 \arguments{
-  \item{cred}{An object of class ROAuth with Dropobox
-  specific credentials.}
+  \item{cred}{An object of class DropboxCredentials with
+  Dropobox specific credentials.}
 
   \item{folder_name}{Specifies the path to the new folder
   to create relative to root.}
@@ -27,7 +27,7 @@
 }
 \examples{
 \dontrun{
-
+dropbox_create_folder(db_cred, 'folder_name')
 }
 }
 

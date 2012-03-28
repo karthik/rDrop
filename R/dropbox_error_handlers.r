@@ -1,6 +1,6 @@
 #' Check to see if an object exists in Dropbox
 #'
-#' @param cred An object of class ROAuth with Dropobox specific credentials.
+#' @param cred An object of class DropboxCredentials with Dropobox specific credentials.
 #' @param path Path to object
 #' @param  is_dir if set to TRUE, will only look for folders. Otherwise will return file or folder.
 #' @export
@@ -59,13 +59,13 @@ exists.in.dropbox <- function(cred, path = NULL, is_dir = NULL) {
 }
 #'Return file attributes for a specified file supplied in the path argument.
 #'
-#' @param cred An object of class ROAuth with Dropobox specific credentials.
-#' @param path_to_file Path to file.
+#' @param cred An object of class DropboxCredentials with Dropobox specific credentials.
+#' @param path_to_file Path to file relative to Dropbox root.
 #' @seealso is.dropbox.file is.dropbox.dir
 #' @return list
 #' @export dropbox.file.info
 #' @examples \dontrun{
-#'
+#' dropbox.file.inco(cred, '/folder/file.txt')
 #'}
 dropbox.file.info <- function(cred, path_to_file) {
                                                         # Add leading slash in case it is missing
@@ -92,7 +92,7 @@ dropbox.file.info <- function(cred, path_to_file) {
 # }
 # #'Checks whether supplied revision number is valid on Dropobx
 # #'
-# #' @param cred An object of class ROAuth with Dropobox specific credentials.
+# #' @param cred An object of class DropboxCredentials with Dropobox specific credentials.
 # #' @param path path to file or folder. Full path if file/folder is not in Dropbox root.
 # #' @param revision revision number
 # #' @return logical

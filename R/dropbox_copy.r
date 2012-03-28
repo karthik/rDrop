@@ -1,7 +1,7 @@
 #' Function to copy files or folder within Dropbox.
 #'
 #' Use this function to copy files or folders within your Dropbox. Destination must be a folder otherwise the function will return an error.
-#' @param cred An object of class ROAuth with Dropobox specific credentials.
+#' @param cred An object of class DropboxCredentials with Dropobox specific credentials.
 #' @param from_path Specifies the file or folder to be copied from relative to root.
 #' @param to_path Specifies a destination path, including the new name for the file or folder, relative to root.
 #' @keywords file_copy
@@ -10,9 +10,10 @@
 #'  the returned value in here (avoids unnecessary footprint)
 #' @param ... optional additional curl options (debugging tools mostly).
 #' @return Message with success or error.
+#' @seealso related: \code{\link{dropbox_move}}
 #' @export dropbox_copy
 #' @examples \dontrun{
-#' dropbox_copy(dropbox_token, 'file.csv', 'folder2')
+#' dropbox_copy(dropbox_token, 'file.csv', 'new_folder')
 #'}
 dropbox_copy <- function(cred, from_path = NULL, to_path = NULL,
     curl = getCurlHandle(), ...) {

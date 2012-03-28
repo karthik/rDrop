@@ -2,12 +2,13 @@
 #'
 #' Returns a list containing the URL to a zipped copy of a folder or a direct link in
 #' case input is a file. Also returns a date when link will expire.
-#' @param cred An object of class ROAuth with Dropobox specific credentials.
+#' @param cred An object of class DropboxCredentials with Dropobox specific credentials.
 #' @param file Path to the file or folder you want a shareable link to.
 #' @param curl If using in a loop, call getCurlHandle() first and pass
 #'  the returned value in here (avoids unnecessary footprint)
 #' @param ... optional additional curl options (debugging tools mostly)
 #' @keywords sharing share_url
+#' @seealso \code{\link{dropbox_media}}
 #' @return list with url to file or zipped folder and expiry date.
 #' @examples \dontrun{
 #' dropbox_share(cred, 'test_folder')

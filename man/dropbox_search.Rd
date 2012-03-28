@@ -7,8 +7,8 @@
     curl = getCurlHandle(), ...)
 }
 \arguments{
-  \item{cred}{An object of class ROAuth with Dropobox
-  specific credentials.}
+  \item{cred}{An object of class DropboxCredentials with
+  Dropobox specific credentials.}
 
   \item{query}{The search string. Must be at least three
   characters long.}

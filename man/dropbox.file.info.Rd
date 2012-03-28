@@ -5,10 +5,11 @@
   dropbox.file.info(cred, path_to_file)
 }
 \arguments{
-  \item{cred}{An object of class ROAuth with Dropobox
-  specific credentials.}
+  \item{cred}{An object of class DropboxCredentials with
+  Dropobox specific credentials.}
 
-  \item{path_to_file}{Path to file.}
+  \item{path_to_file}{Path to file relative to Dropbox
+  root.}
 }
 \value{
   list
@@ -19,7 +20,7 @@
 }
 \examples{
 \dontrun{
-
+dropbox.file.inco(cred, '/folder/file.txt')
 }
 }
 \seealso{

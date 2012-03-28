@@ -5,8 +5,8 @@
   dropbox_acc_info(cred, curl = getCurlHandle(), ...)
 }
 \arguments{
-  \item{cred}{An object of class ROAuth with Dropobox
-  specific credentials.}
+  \item{cred}{An object of class DropboxCredentials with
+  Dropobox specific credentials.}
 
   \item{curl}{If using in a loop, call getCurlHandle()
   first and pass the returned value in here (avoids
@@ -16,8 +16,11 @@
   tools mostly)}
 }
 \value{
-  list containing referral_link, display_name, uid,
-  country, quota_info, and email.
+  list containing \item{referral link}{- Dropbox referral
+  link.} \item{display_name}{desc} \item{uid}{Dropbox user
+  id} \item{country}{Dropbox country}
+  \item{quota_info}{shared, quota, and normal.}
+  \item{email}{Dropbox user email}
 }
 \description{
   Retrieve Dropbox account summary
@@ -28,7 +31,7 @@ dropbox_acc_info(cred)
 }
 }
 \seealso{
-  \code{\link{dropbox_auth}}
+  related: \code{\link{dropbox_auth}}
 }
 \keyword{authentication}
 \keyword{OAuth}

@@ -6,8 +6,8 @@
     curl = getCurlHandle(), ...)
 }
 \arguments{
-  \item{cred}{An object of class ROAuth with Dropobox
-  specific credentials.}
+  \item{cred}{An object of class DropboxCredentials with
+  Dropobox specific credentials.}
 
   \item{from_path}{Specifies the file or folder to be
   copied from relative to root.}
@@ -32,11 +32,13 @@
 }
 \examples{
 \dontrun{
-dropbox_copy(dropbox_token, 'file.csv', 'folder2')
+dropbox_copy(dropbox_token, 'file.csv', 'new_folder')
 }
 }
 \seealso{
   dropbox_move dropbox_create_folder
+
+  related: \code{\link{dropbox_move}}
 }
 \keyword{file_copy}
 

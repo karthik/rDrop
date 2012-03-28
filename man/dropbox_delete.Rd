@@ -6,8 +6,8 @@
     curl = getCurlHandle(), ...)
 }
 \arguments{
-  \item{cred}{An object of class ROAuth with Dropobox
-  specific credentials.}
+  \item{cred}{An object of class DropboxCredentials with
+  Dropobox specific credentials.}
 
   \item{file_to_delete}{Specifies the path to the file or
   folder to be deleted.}

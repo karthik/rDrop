@@ -44,7 +44,7 @@ dropbox_auth <- function(cKey = getOption("DropboxKey",
         obj = new("DropboxCredentials"))
     cred <- handshake(dropbox_oa, post = FALSE)
     if (TRUE) {
-        cat("\n Dropbox Authentication completed successfully.\n")
+        cat("\n Dropbox authentication completed successfully.\n")
     }
     if (FALSE) {
         info <- OAuthRequest(dropbox_oa, "https://api.dropbox.com/1/account/info")

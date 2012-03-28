@@ -6,8 +6,8 @@
     deleted = FALSE, curl = getCurlHandle(), ...)
 }
 \arguments{
-  \item{cred}{An object of class ROAuth with Dropobox
-  specific credentials.}
+  \item{cred}{An object of class DropboxCredentials with
+  Dropobox specific credentials.}
 
   \item{path}{The directory to list. Not yet implemented}
 

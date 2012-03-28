@@ -5,8 +5,8 @@
   exists.in.dropbox(cred, path = NULL, is_dir = NULL)
 }
 \arguments{
-  \item{cred}{An object of class ROAuth with Dropobox
-  specific credentials.}
+  \item{cred}{An object of class DropboxCredentials with
+  Dropobox specific credentials.}
 
   \item{path}{Path to object}
 
