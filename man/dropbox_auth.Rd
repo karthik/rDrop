@@ -31,17 +31,18 @@
   application is specific to you. Follow through with the
   steps to create your application and copy the generated
   consumer key/secret combo. Ideally you should save those
-  keys in your options as: \code{options(DropboxKey =
-  'Your_App_key')} \code{options(DropboxSecret =
-  'Your_App_secret')}. If you are unable to do so (assuming
-  you are on some public machine), then you can just
-  specifiy both keys inline. Once you have authenticated,
-  there is absolutely no reason to repeat this step for
-  subsequent sessions. Simply save the OAuth object and
-  load as necessary. Future versions of ROAuth will make it
-  easier for you to just update the token without having to
-  reauthoize via the web. \emph{Do not store these keys in
-  your .rprofile if you are on a public machine}.
+  keys in your options as: \n \code{options(DropboxKey =
+  'Your_App_key')} \n \code{options(DropboxSecret =
+  'Your_App_secret')}. \n If you are unable to do so
+  (assuming you are on some public machine), then you can
+  just specifiy both keys inline. Once you have
+  authenticated, there is absolutely no reason to repeat
+  this step for subsequent sessions. Simply save the OAuth
+  object and load as necessary. Future versions of ROAuth
+  will make it easier for you to just update the token
+  without having to reauthoize via the web. \emph{Do not
+  store these keys in your .rprofile if you are on a public
+  machine}.
 }
 \details{
   Once you have created an app, retrieve your access keys
