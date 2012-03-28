@@ -4,7 +4,7 @@ This package provides a  programmatic interface to [Dropbox](https://www2.dropbo
 
 > **Disclaimer: This package is currently in development so please <u>use at your own risk.</u>**
 
-**Important**: This package relies on ROAuth and the version currently available on CRAN does not play so well with rDrop. Use [this version](http://dl.dropbox.com/u/2223411/ROAuth_0.92.0.tar.gz) and install from source for the time being till issues get patched up.
+**Important**: This package relies on `ROAuth` and the version currently available on CRAN does not play so well with `rDrop`. Use [ROAuth_0.92.0 version](http://dl.dropbox.com/u/2223411/ROAuth_0.92.0.tar.gz) and install from source for the time being till issues get patched up.
 
 **Reference:**
 [Complete Dropbox API Reference.](https://www2.dropbox.com/developers/reference/api)
