@@ -19,15 +19,16 @@ dropbox_share <- function(cred, file = NULL, curl = getCurlHandle(),
     if (!is(cred, "DropboxCredentials") || missing(cred))
         stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.")
 
-    if (is.null(file)) {
+    if (is.null(file))
         stop("No file of folder to share", call. = FALSE)
-    }
-    if (!(exists.in.dropbox(cred, file,..., curl = getCurlHandle()))) {
+
+
+    if (!(exists.in.dropbox(cred, file,..., curl = getCurlHandle())))
         stop("Folder doesn't exist", call.= FALSE)
-    }
-    if (grepl("^/", file)) {
+
+    if (grepl("^/", file))
         file <- str_sub(file,2)
-    }
+
 
     path_to_share <- sprintf("https://api.dropbox.com/1/shares/dropbox/%s",
         file, sep = "")
