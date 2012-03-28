@@ -102,8 +102,8 @@ data &lt;- read.csv(textConnection(file))
 
 ### Upload R objects to your Dropbox
 <pre><code>
-&#35; Function works
-dropbox_save(dropbox_credentials, list(r_objec1, r_object2), file="filename")
+&#35; ext default is .rda.
+dropbox_save(dropbox_credentials, list(a = 1:4, b = letters[1:3]), "duncan", verbose = TRUE, ext = ".rda")
 </code></pre>
 
 ### Moving files within Dropobx
