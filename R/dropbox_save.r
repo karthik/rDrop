@@ -9,7 +9,8 @@
 #' @param curl If using in a loop, call getCurlHandle() first and pass
 #'  the returned value in here (avoids unnecessary footprint)
 #' @param verbose default is FALSE. Set to true to receive full outcome.
-#' @param ... optional additional curl options (debugging tools mostly)
+#' @param ... optional additional curl options (debugging tools mostly).
+#' @param ext file extension. Default is \code{.rda}
 #' @export
 #' @return JSON object
 #' @examples \dontrun{
@@ -18,19 +19,19 @@
 #' a = dropbox_get(cred, "testRData.rdata", binary = TRUE)
 #' val = unserialize(rawConnection(a))
 #'
-#'   # specifying our own name without the standard .rdata 
+#'   # specifying our own name without the standard .rdata
 #' dropbox_save(cred, list(a = 1:4, b = letters[1:3]), I("duncan.rda"), verbose = TRUE)
 #'   # or
 #' dropbox_save(cred, list(a = 1:4, b = letters[1:3]), "duncan", verbose = TRUE, ext = ".rda")
 #'}
 dropbox_save <-
- function(cred, list = character(), 
-          file = stop("'file' must be specified"), envir = parent.frame(), 
-          precheck = TRUE, verbose = FALSE, curl = getCurlHandle(), 
+ function(cred, list = character(),
+          file = stop("'file' must be specified"), envir = parent.frame(),
+          precheck = TRUE, verbose = FALSE, curl = getCurlHandle(),
           ..., ext = ".rdata")
 {
-    if (!is(cred, "DropboxCredentials") || missing(cred)) 
-        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.")
+    if (!is(cred, "DropboxCredentials") || missing(cred))
+        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", call.= FALSE)
 
     # I suggest we discard this approach. The caller specifies
     #   dropbox_save(cred, list(x, y, z)).  It is up to the caller
@@ -38,6 +39,7 @@ dropbox_save <-
     # We could use ... and then use the names from that.
     # We can use a ..., list = character() approach as in rm()
     # but is not needed or really sane. It is non-standard evaluation.
+    #Karthik: OK.
     if(FALSE && missing(.objs)) {
         names <- as.character(substitute(list(...)))[-1L]
         list <- c(list, names)
@@ -45,7 +47,7 @@ dropbox_save <-
           ok <- unlist(lapply(list, exists, envir = envir))
           if (!all(ok)) {
             n <- sum(!ok)
-            stop(sprintf(ngettext(n, "object %s not found", "objects %s not found"), 
+            stop(sprintf(ngettext(n, "object %s not found", "objects %s not found"),
                          paste(sQuote(list[!ok]), collapse = ", ")), domain = NA)
           }
         }
@@ -53,36 +55,36 @@ dropbox_save <-
                            names = list)
      }
 
-    if (is.character(file) && !nzchar(file))  
+    if (is.character(file) && !nzchar(file))
         stop("'file' must be non-empty string")
 
 
        # Allow the caller to force a particular name.
     filename <- if(!is(file, "AsIs"))
-                    paste(str_trim(str_extract(file, "[^.]*")), ext, 
+                    paste(str_trim(str_extract(file, "[^.]*")), ext,
                            sep = "")
                 else
                     file
- 
+
     url <- sprintf("https://api-content.dropbox.com/1/files_put/dropbox/%s", filename)
 
     con <- rawConnection(raw(), "w")
-    on.exit(close(con))        
+    on.exit(close(con))
 
     serialize(list, con)
     z <- rawConnectionValue(con)
 
     input <- RCurl:::uploadFunctionHandler(z, TRUE)
-    
-    drop_save <- fromJSON(OAuthRequest(cred, url, , "PUT", upload = TRUE, 
-        readfunction = input, infilesize = length(z), verbose = FALSE, 
+
+    drop_save <- fromJSON(OAuthRequest(cred, url, , "PUT", upload = TRUE,
+        readfunction = input, infilesize = length(z), verbose = FALSE,
         httpheader = c(`Content-Type` = "application/octet-stream"), ..., curl = curl))
 
     if (verbose && is.list(drop_save))  {
-        message("File succcessfully drop_saved to", drop_save$path, 
+        message("File succcessfully drop_saved to", drop_save$path,
                   "on", drop_save$modified)
     }
-    
+
     drop_save
 }
 # API documentation: GET:

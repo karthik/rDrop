@@ -3,7 +3,7 @@
 \title{Downloads a file from your Dropbox}
 \usage{
   dropbox_get(cred, file_to_get, curl = getCurlHandle(),
-    ...)
+    ..., binary = NA)
 }
 \arguments{
   \item{cred}{Specifies an object of class
@@ -15,10 +15,13 @@
 
   \item{curl}{If using in a loop, call getCurlHandle()
   first and pass the returned value in here (avoids
-  unnecessary footprint)}
+  unnecessary footprint).}
+
+  \item{binary}{set if the object you are retrieving is
+  binary.}
 
   \item{...}{optional additional curl options (debugging
-  tools mostly)}
+  tools mostly)..}
 }
 \value{
   R object

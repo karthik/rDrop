@@ -17,7 +17,7 @@
   unnecessary footprint)}
 
   \item{...}{optional additional curl options (debugging
-  tools mostly)}
+  tools mostly).}
 }
 \value{
   list with url to file or zipped folder and expiry date.

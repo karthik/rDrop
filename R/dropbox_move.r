@@ -6,7 +6,7 @@
 #' @param to_path Specifies a destination path, including the new name for the file or folder, relative to root.
 #' @param curl If using in a loop, call getCurlHandle() first and pass
 #'  the returned value in here (avoids unnecessary footprint)
-#' @param ... optional additional curl options (debugging tools mostly)
+#' @param ... optional additional curl options (debugging tools mostly).
 #' @seealso dropbox_copy dropbox_create_folder
 #' @param verbose default is FALSE. Set to true to receive full outcome.
 #' @seealso related: \code{\link{dropbox_copy}}
@@ -17,18 +17,18 @@
 #'}
 dropbox_move <- function(cred, from_path = NULL, to_path = NULL,
     verbose = FALSE, curl = getCurlHandle(), ...) {
-    if (class(cred) != "DropboxCredentials" | missing(cred)) {
-        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.")
-    }
+    if (!is(cred, "DropboxCredentials") || missing(cred))
+        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", call.= FALSE)
+
                                                         # Note: to_path needs a leading / because root is 'dropbox'
     if (is.null(from_path) || is.null(to_path)) {
         stop("Did not specify full path for source and/or destination",
             call. = F)
     }
-    if (!(exists.in.dropbox(cred, path = from_path))) {
+    if (!(exists.in.dropbox(cred, path = from_path,..., curl = getCurlHandle()))) {
         stop("File or folder does not exist", call. = FALSE)
     }
-    if (!(exists.in.dropbox(cred, path = to_path, is_dir = TRUE))) {
+    if (!(exists.in.dropbox(cred, path = to_path, is_dir = TRUE,..., curl = getCurlHandle()))) {
         stop("Destination does not exist or isn't a folder",
             call. = FALSE)
     }
@@ -39,7 +39,7 @@ dropbox_move <- function(cred, from_path = NULL, to_path = NULL,
                                                         # Worked once but no longer workes.
     move <- fromJSON(OAuthRequest(cred, "https://api.dropbox.com/1/fileops/move",
         list(root = "dropbox", from_path = from_path, to_path = to_path),
-        "POST"))
+        "POST"), ..., curl = curl)
     if (is.character(move)) {
         stop(move[[1]], call. = FALSE)
     }

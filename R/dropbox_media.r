@@ -5,7 +5,7 @@
 #' @param path Path to object on Dropbox.
 #' @param curl If using in a loop, call getCurlHandle() first and pass
 #'  the returned value in here (avoids unnecessary footprint)
-#' @param ... optional additional curl options (debugging tools mostly)
+#' @param ... optional additional curl options (debugging tools mostly).
 #' @seealso \code{\link{dropbox_share}}
 #' @return list with URL to R object and expiration date/time.
 #' @export dropbox_media
@@ -14,17 +14,17 @@
 #'}
 dropbox_media <- function(cred, path = NULL, curl = getCurlHandle(),
     ...) {
-    if (class(cred) != "DropboxCredentials" | missing(cred)) {
-        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.")
-    }
-    if (!(exists.in.dropbox(cred, path = path))) {
+    if (!is(cred, "DropboxCredentials") || missing(cred))
+        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", call.= FALSE)
+
+    if (!(exists.in.dropbox(cred, path = path,..., curl = getCurlHandle()))) {
         stop("Content does not exist in dropbox", call. = FALSE)
     }
     if (!is.null(path)) {
         url <- paste("https://api.dropbox.com/1/media/dropbox/",
             path, sep = "")
     }
-    media <- fromJSON(OAuthRequest(cred, url))
+    media <- fromJSON(OAuthRequest(cred, url), ..., curl = curl)
     return(media)
 }
 # API Documentation:

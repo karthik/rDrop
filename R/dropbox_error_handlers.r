@@ -3,6 +3,8 @@
 #' @param cred An object of class DropboxCredentials with Dropobox specific credentials.
 #' @param path Path to object
 #' @param  is_dir if set to TRUE, will only look for folders. Otherwise will return file or folder.
+#' @param curl If using in a loop, call getCurlHandle() first and pass
+#' @param ... optional additional curl options (debugging tools mostly).
 #' @export
 #' @return logical. TRUE/FALSE
 #' @examples \dontrun{
@@ -10,9 +12,9 @@
 #' exists.in.dropbox(cred,'test_folder',is_dir='dir')
 #'}
 exists.in.dropbox <- function(cred, path = NULL, is_dir = NULL, ..., curl = getCurlHandle()) {
-    if (class(cred) != "DropboxCredentials") {
+    if (!is(cred, "DropboxCredentials") || missing(cred))
         stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.")
-    }
+
                                                         # default response so function can proceed.
     response <- TRUE
     if (is.null(path)) {
@@ -74,7 +76,7 @@ dropbox.file.info <- function(cred, path_to_file) {
         path_to_file <- paste("/", path_to_file, sep = "")
     }
     dfile <- dropbox_search(cred, path_to_file)
-                                                        # Return a list containing filename, filetype, date
+   dfile                               # Return a list containing filename, filetype, date
                                                         #   modified, and revision number.
 }
 # #'Function to handle errors if a returned object is not the excepted JSON object

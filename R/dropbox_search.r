@@ -9,7 +9,7 @@
 #' @param verbose logical. Default is FALSE. Set to TRUE to get a full file listing.
 #' @param curl If using in a loop, call getCurlHandle() first and pass
 #'  the returned value in here (avoids unnecessary footprint)
-#' @param ... optional additional curl options (debugging tools mostly)
+#' @param ... optional additional curl options (debugging tools mostly).
 #' @return data.frame with results. No results will return empty data.frame
 #' @export dropbox_search
 #' @examples \dontrun{
@@ -23,7 +23,7 @@ dropbox_search <- function(cred, query = NULL, deleted = FALSE,
     file_limit = 1000, is_dir = NULL, verbose = FALSE, curl = getCurlHandle(),
     ...) {
     if (!is(cred, "DropboxCredentials") || missing(cred)) {
-        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.")
+        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", call.= FALSE)
     }
     if (is.null(query)) {
         stop("No term to query")

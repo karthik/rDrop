@@ -17,7 +17,7 @@
   unnecessary footprint)}
 
   \item{...}{optional additional curl options (debugging
-  tools mostly)}
+  tools mostly).}
 
   \item{ask}{logical set to TRUE. If set to false, function
   will not confirm delete operation}

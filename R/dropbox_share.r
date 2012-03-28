@@ -6,7 +6,7 @@
 #' @param file Path to the file or folder you want a shareable link to.
 #' @param curl If using in a loop, call getCurlHandle() first and pass
 #'  the returned value in here (avoids unnecessary footprint)
-#' @param ... optional additional curl options (debugging tools mostly)
+#' @param ... optional additional curl options (debugging tools mostly).
 #' @keywords sharing share_url
 #' @seealso \code{\link{dropbox_media}}
 #' @return list with url to file or zipped folder and expiry date.
@@ -16,18 +16,18 @@
 #' @export
 dropbox_share <- function(cred, file = NULL, curl = getCurlHandle(),
     ...) {
-    if (class(cred) != "DropboxCredentials" | missing(cred)) {
+    if (!is(cred, "DropboxCredentials") || missing(cred))
         stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.")
-    }
+
     if (is.null(file)) {
         stop("No file of folder to share", call. = FALSE)
     }
-    if (!(exists.in.dropbox(cred, file))) {
-        stop("Folder doesn't exist")
+    if (!(exists.in.dropbox(cred, file,..., curl = getCurlHandle()))) {
+        stop("Folder doesn't exist", call.= FALSE)
     }
-    path_to_share <- paste("https://api.dropbox.com/1/shares/dropbox/",
+    path_to_share <- sprintf("https://api.dropbox.com/1/shares/dropbox/%s",
         file, sep = "")
-    result <- fromJSON(OAuthRequest(cred, path_to_share))
+    result <- fromJSON(OAuthRequest(cred, path_to_share), ..., curl = curl)
     res <- list()
     res$url <- result[[1]]
     res$expires <- result[[2]]

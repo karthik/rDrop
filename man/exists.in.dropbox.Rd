@@ -2,7 +2,8 @@
 \alias{exists.in.dropbox}
 \title{Check to see if an object exists in Dropbox}
 \usage{
-  exists.in.dropbox(cred, path = NULL, is_dir = NULL)
+  exists.in.dropbox(cred, path = NULL, is_dir = NULL, ...,
+    curl = getCurlHandle())
 }
 \arguments{
   \item{cred}{An object of class DropboxCredentials with
@@ -12,6 +13,12 @@
 
   \item{is_dir}{if set to TRUE, will only look for folders.
   Otherwise will return file or folder.}
+
+  \item{curl}{If using in a loop, call getCurlHandle()
+  first and pass}
+
+  \item{...}{optional additional curl options (debugging
+  tools mostly).}
 }
 \value{
   logical. TRUE/FALSE

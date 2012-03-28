@@ -5,7 +5,8 @@
   dropbox_save(cred, list = character(),
     file = stop("'file' must be specified"),
     envir = parent.frame(), precheck = TRUE,
-    verbose = FALSE, curl = getCurlHandle(), ...)
+    verbose = FALSE, curl = getCurlHandle(), ...,
+    ext = ".rdata")
 }
 \arguments{
   \item{cred}{Specifies an object of class
@@ -31,7 +32,9 @@
   full outcome.}
 
   \item{...}{optional additional curl options (debugging
-  tools mostly)}
+  tools mostly).}
+
+  \item{ext}{file extension. Default is \code{.rda}}
 }
 \value{
   JSON object
@@ -42,6 +45,14 @@
 \examples{
 \dontrun{
 dropbox_save(cred, robject, file='filename')
+dropbox_save(cred, file = "testRData", .objs = list(a = 1:3, b = letters[1:10]))
+a = dropbox_get(cred, "testRData.rdata", binary = TRUE)
+val = unserialize(rawConnection(a))
+
+  # specifying our own name without the standard .rdata
+dropbox_save(cred, list(a = 1:4, b = letters[1:3]), I("duncan.rda"), verbose = TRUE)
+  # or
+dropbox_save(cred, list(a = 1:4, b = letters[1:3]), "duncan", verbose = TRUE, ext = ".rda")
 }
 }
 

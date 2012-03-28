@@ -13,7 +13,7 @@
   unnecessary footprint)}
 
   \item{...}{optional additional curl options (debugging
-  tools mostly)}
+  tools mostly).}
 }
 \value{
   list containing \item{referral link}{Dropbox referral

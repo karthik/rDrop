@@ -24,7 +24,7 @@
   unnecessary footprint)}
 
   \item{...}{optional additional curl options (debugging
-  tools mostly)}
+  tools mostly).}
 }
 \value{
   directory listing with file/folder names unless
