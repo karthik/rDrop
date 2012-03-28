@@ -22,6 +22,9 @@ exists.in.dropbox <- function(cred, path = NULL, is_dir = NULL, ..., curl = getC
     }
                                                         # First search Dropbox to see if the object exists
     full_path <- path
+   if(full_path=="/") {
+    response <- TRUE
+    } else {
                                                         # If leading slash is missing, add it.
     if (!grepl("^/", full_path)) {
         full_path <- paste("/", full_path, sep = "")
@@ -32,6 +35,7 @@ exists.in.dropbox <- function(cred, path = NULL, is_dir = NULL, ..., curl = getC
             1)
     }
     query <- basename(path)
+
     res <- dropbox_search(cred, query, ..., curl = curl)
     if (is.null(res)) {
         response <- FALSE
@@ -39,6 +43,7 @@ exists.in.dropbox <- function(cred, path = NULL, is_dir = NULL, ..., curl = getC
     if (empty(res)) {
         response <- FALSE
     }
+
                                                         # OK, object exists, but let's see if there was more than
                                                         #   one result
     if (!identical(query, full_path)) {
@@ -58,6 +63,7 @@ exists.in.dropbox <- function(cred, path = NULL, is_dir = NULL, ..., curl = getC
             }
         }
     }
+} # end the else
     return(response)
 }
 #'Return file attributes for a specified file supplied in the path argument.
