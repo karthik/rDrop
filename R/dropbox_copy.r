@@ -20,23 +20,32 @@ dropbox_copy <- function(cred, from_path = NULL, to_path = NULL,
     if (!is(cred, "DropboxCredentials") || missing(cred))
         stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", call.= FALSE)
 
-    if (is.null(from_path) || is.null(to_path)) {
-        stop("Missing path for source and/or destination", call. = F)
+    if (is.null(from_path)) {
+        stop("Missing path for source", call. = F)
     }
-    if (!exists.in.dropbox(cred, from_path)) {
+    if(is.null(to_path) || nchar(to_path)==0) {
+        to_path <- "/"
+    }
+    if (!exists.in.dropbox(cred, from_path,..., curl = getCurlHandle())) {
         stop("Source file or folder does not exist", call. = FALSE)
     }
+
     if (!exists.in.dropbox(cred, to_path, is_dir = TRUE,..., curl = getCurlHandle())) {
         stop("Destination is not a valid folder", call. = FALSE)
     }
     if (!grepl("^/", from_path)) {
         from_path <- paste("/", from_path, sep = "")
     }
+
     if (!grepl("^/", to_path)) {
         to_path <- paste("/", to_path, sep = "")
     }
-    to_path <- paste(to_path, from_path, sep = "")
-                                                        # Below does not work
+    to_path <- paste(to_path, basename(from_path), sep = "")
+
+    if (exists.in.dropbox(cred, to_path,..., curl = getCurlHandle())) {
+        stop("File already exists in destination", call. = FALSE)
+    }
+
     copy <- fromJSON(OAuthRequest(cred, "https://api.dropbox.com/1/fileops/copy",
         list(root = "dropbox", from_path = from_path, to_path = to_path),
         , "POST"), ..., curl = curl)
