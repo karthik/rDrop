@@ -104,6 +104,14 @@ data &lt;- read.csv(textConnection(file))
 <br>
 <strong>Reading images</strong>
 ...
+
+&#35; Another quick/dirty way to read private content from your Dropbox into R is using the dropbox_media() function.
+&#35; Example:
+dropbox_media(cred, 'test_works/move.txt')
+ &#35;                                                                url
+&#35; "https://dl.dropbox.com/0/view/6w2a4zixxxxpyy1/test_works/move.txt"
+      &#35;                                                       expires
+                                 &#35;  "Fri, 30 Mar 2012 00:42:59 +0000"
 </code></pre>
 
 ### Upload R objects to your Dropbox
