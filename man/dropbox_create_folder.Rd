@@ -27,7 +27,8 @@
 }
 \examples{
 \dontrun{
-dropbox_create_folder(db_cred, 'folder_name')
+> dropbox_create_folder(db_cred, 'new_folder')
+Folder successfully created at dropbox/new_folder on Thu, 29 Mar 2012 20:51:16 +0000
 }
 }
 

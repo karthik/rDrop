@@ -27,7 +27,7 @@
 }
 \examples{
 \dontrun{
-dropbox_acc_info(cred)
+dropbox_acc_info(db_cred)
 }
 }
 \seealso{

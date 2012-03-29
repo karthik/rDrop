@@ -32,7 +32,8 @@
 }
 \examples{
 \dontrun{
-dropbox_copy(dropbox_token, 'file.csv', 'new_folder')
+> dropbox_copy(cred, 'copy.txt', 'Public')
+/copy.txt succcessfully copied to /Public/copy.txt on Thu, 29 Mar 2012 20:37:51 +0000
 }
 }
 \seealso{

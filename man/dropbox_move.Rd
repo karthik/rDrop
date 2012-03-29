@@ -34,7 +34,8 @@
 }
 \examples{
 \dontrun{
-dropbox_move(db_cred, '/data.csv', 'data/data.csv')
+dropbox_move(cred, 'move.txt','test_works')
+File succcessfully moved to /test_works/move.txt on Thu, 29 Mar 2012 20:41:45 +0000
 }
 }
 \seealso{
