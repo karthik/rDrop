@@ -54,7 +54,8 @@ dropbox_move <- function(cred, from_path = NULL, to_path = NULL,
     } else {
         if (is.list(move)) {
             cat("File succcessfully moved to", move$path, "on",
-                move$modified)
+                move$modified,
+        "\n")
         }
     }
 }
