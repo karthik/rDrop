@@ -9,7 +9,20 @@
 #' @seealso related: \code{\link{dropbox_auth}}
 #' @return list containing \item{referral link}{Dropbox referral link.} \item{display_name}{Dropbox display name} \item{uid}{Dropbox user id} \item{country}{Dropbox country} \item{quota_info}{Information on shared, quota, and normal.} \item{email}{Dropbox user email}
 #' @examples \dontrun{
-#' dropbox_acc_info(cred)
+#' > dropbox_acc_info(db_cred)
+#' $referral_link
+#' [1] "https://www.dropbox.com/referrals/NTIyMjM0MTE5"
+#' $display_name
+#' [1] "Karthik Ram"
+#' $uid
+#' [1] 2223411
+#' $country
+#' [1] "US"
+#' $quota_info
+#'     shared      quota     normal
+#'  270644391 8589934592  577783767
+#' $email
+#' [1] "karthik.ram@gmail.com"
 #'}
 dropbox_acc_info <- function(cred, curl = getCurlHandle(),
     ...) {
