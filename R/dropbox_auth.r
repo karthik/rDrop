@@ -42,7 +42,9 @@ dropbox_auth <- function(cKey = getOption("DropboxKey",
     accessURL <- "https://api.dropbox.com/1/oauth/access_token/"
     dropbox_oa <- oauth(cKey, cSecret, reqURL, authURL, accessURL,
         obj = new("DropboxCredentials"))
-    cred <- handshake(dropbox_oa, post = FALSE)
+    cred <- handshake(dropbox_oa, post = FALSE,
+                      verify = paste("Use the Web browser to grant permission to this code",
+                                      "to access Dropbox on your behalf.\nWhen you see 'Success!', hit enter in R", sep = "\n"))
     if (TRUE) {
         cat("\n Dropbox authentication completed successfully.\n")
     }
