@@ -7,7 +7,7 @@
 #' @param deleted logical. Default is FALSE. Set to TRUE to also list deleted files.
 #' @param curl If using in a loop, call getCurlHandle() first and pass
 #'  the returned value in here (avoids unnecessary footprint)
-#' @param ... optional additional curl options (debugging tools mostly)
+#' @param ... optional additional curl options (debugging tools mostly).
 #' @return directory listing with file/folder names unless \code{verbose = TRUE} in which case a data.frame is returned.
 #' @export dropbox_dir
 #' @examples \dontrun{
@@ -18,14 +18,14 @@
 #'}
 dropbox_dir <- function(cred, path = NULL, verbose = FALSE,
     deleted = FALSE, curl = getCurlHandle(), ...) {
-    if (class(cred) != "DropboxCredentials" | missing(cred)) {
-        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.")
-    }
+    if (!is(cred, "DropboxCredentials") || missing(cred))
+        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", call.= FALSE)
+
     url <- "https://api.dropbox.com/1/metadata/dropbox/"
                                                         # Assuming user did specify a path to list, then make sure
                                                         #   it exists
     if (!is.null(path)) {
-        if (!exists.in.dropbox(cred, path, is_dir = TRUE)) {
+        if (!exists.in.dropbox(cred, path, is_dir = TRUE,..., curl = getCurlHandle())) {
             stop("There is no such folder in your Dropbox", call. = FALSE)
         }
     }
@@ -38,7 +38,7 @@ dropbox_dir <- function(cred, path = NULL, verbose = FALSE,
     if (!is.null(path) & length(path) > 0) {
         url <- paste(url, path, "/", sep = "")
     }
-    metadata <- fromJSON(OAuthRequest(cred, url, list(include_deleted = deleted)))
+    metadata <- fromJSON(OAuthRequest(cred, url, list(include_deleted = deleted)), ..., curl = curl)
     names(metadata$contents) <- basename(sapply(metadata$contents,
         `[[`, "path"))
     file_sys <- ldply(metadata$contents, data.frame)

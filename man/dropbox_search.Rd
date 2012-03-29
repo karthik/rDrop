@@ -30,7 +30,7 @@
   unnecessary footprint)}
 
   \item{...}{optional additional curl options (debugging
-  tools mostly)}
+  tools mostly).}
 }
 \value{
   data.frame with results. No results will return empty

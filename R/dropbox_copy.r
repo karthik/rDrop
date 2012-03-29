@@ -8,7 +8,7 @@
 #' @seealso dropbox_move dropbox_create_folder
 #' @param curl If using in a loop, call getCurlHandle() first and pass
 #'  the returned value in here (avoids unnecessary footprint)
-#' @param ... optional additional curl options (debugging tools mostly).
+#' @param ... optional additional curl options (debugging tools mostly)..
 #' @return Message with success or error.
 #' @seealso related: \code{\link{dropbox_move}}
 #' @export dropbox_copy
@@ -17,35 +17,35 @@
 #'}
 dropbox_copy <- function(cred, from_path = NULL, to_path = NULL,
     curl = getCurlHandle(), ...) {
-    if (class(cred) != "DropboxCredentials" | missing(cred)) {
-        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.")
+    if (!is(cred, "DropboxCredentials") || missing(cred))
+        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.",
+            call. = FALSE)
+    if (is.null(from_path)) {
+        stop("Did not specify full path for source", call. = F)
     }
-    if (is.null(from_path) || is.null(to_path)) {
-        stop("Missing path for source and/or destination", call. = F)
-    }
-    if (!exists.in.dropbox(cred, from_path)) {
+    check_paths <- sanitize_paths(from_path, to_path)
+    from_path <- check_paths[[1]]
+    to_path <- check_paths[[2]]
+    if (!exists.in.dropbox(cred, from_path, ..., curl = getCurlHandle()))
         stop("Source file or folder does not exist", call. = FALSE)
-    }
-    if (!exists.in.dropbox(cred, to_path, is_dir = TRUE)) {
+
+    if (!exists.in.dropbox(cred, dirname(to_path), is_dir = TRUE, ...,
+        curl = getCurlHandle()))
         stop("Destination is not a valid folder", call. = FALSE)
+
+    if (grepl("\\.", to_path)) {
+        if (exists.in.dropbox(cred, to_path, ..., curl = getCurlHandle()))
+            stop("File already exists in destination", call. = FALSE)
     }
-    if (!grepl("^/", from_path)) {
-        from_path <- paste("/", from_path, sep = "")
-    }
-    if (!grepl("^/", to_path)) {
-        to_path <- paste("/", to_path, sep = "")
-    }
-    to_path <- paste(to_path, from_path, sep = "")
-                                                        # Below does not work
     copy <- fromJSON(OAuthRequest(cred, "https://api.dropbox.com/1/fileops/copy",
         list(root = "dropbox", from_path = from_path, to_path = to_path),
-        , "POST"))
+        , "POST"), ..., curl = curl)
     if (is.character(copy)) {
         stop(copy[[1]], call. = FALSE)
     }
     if (is.list(copy)) {
-        cat(from_path, "succcessfully copied to", copy$path,
-            "on", copy$modified)
+        cat(from_path, "succcessfully copied to", copy$path, "on",
+            copy$modified)
     }
 }
 # API documentation: #

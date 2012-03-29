@@ -5,7 +5,7 @@
 #' @param file_to_delete Specifies the path to the file or folder to be deleted.
 #' @param curl If using in a loop, call getCurlHandle() first and pass
 #'  the returned value in here (avoids unnecessary footprint)
-#' @param ... optional additional curl options (debugging tools mostly)
+#' @param ... optional additional curl options (debugging tools mostly).
 #' @param ask logical set to TRUE. If set to false, function will not confirm delete operation
 #' @return Nothing. A message upon successful deletion.
 #' @export dropbox_delete
@@ -14,14 +14,15 @@
 #'}
 dropbox_delete <- function(cred, file_to_delete = NULL,
     ask = TRUE, curl = getCurlHandle(), ...) {
-    if (class(cred) != "DropboxCredentials" | missing(cred)) {
-        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.")
-    }
+    verify <- ""
+     if (!is(cred, "DropboxCredentials") || missing(cred))
+        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", call.= FALSE)
+
                                                         # Replace with a more elegant file exists checker.
-    if (!exists.in.dropbox(cred, file_to_delete)) {
+    if (!exists.in.dropbox(cred, file_to_delete,..., curl = getCurlHandle())) {
         stop("File or folder not found", call. = FALSE)
     }
-    if (ask == TRUE) {
+    if (ask) {
         verify <- readline(paste("Are you sure you want to delete",
             file_to_delete, " (Y/N)? "))
         verify <- toupper(verify)
@@ -29,9 +30,9 @@ dropbox_delete <- function(cred, file_to_delete = NULL,
             stop("Unexpected response. \n", call. = F)
         }
     }
-    if (verify == "Y" | ask == FALSE) {
+    if (verify == "Y" || !(ask)) {
         deleted <- fromJSON(OAuthRequest(cred, "https://api.dropbox.com/1/fileops/delete",
-            list(root = "dropbox", path = file_to_delete)))
+            list(root = "dropbox", path = file_to_delete)), ..., curl = curl)
         if (is.list(deleted)) {
             cat(deleted$path, "was successfully deleted on",
                 deleted$modified, "\n")

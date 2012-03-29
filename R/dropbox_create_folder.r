@@ -5,7 +5,7 @@
 #' @return message with success or failure
 #' @param curl If using in a loop, call getCurlHandle() first and pass
 #'  the returned value in here (avoids unnecessary footprint)
-#' @param ... optional additional curl options (debugging tools mostly)
+#' @param ... optional additional curl options (debugging tools mostly).
 #' @import stringr
 #' @import  plyr
 #' @export dropbox_create_folder
@@ -14,9 +14,9 @@
 #'}
 dropbox_create_folder <- function(cred, folder_name = NULL,
     curl = getCurlHandle(), ...) {
-    if (class(cred) != "DropboxCredentials" | missing(cred)) {
-        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.")
-    }
+        if (!is(cred, "DropboxCredentials") || missing(cred))
+        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", call.= FALSE)
+
     if (is.null(folder_name)) {
         stop("You did not specify a folder name", call. = FALSE)
     }
@@ -30,12 +30,12 @@ dropbox_create_folder <- function(cred, folder_name = NULL,
             1)
     }
                                                         # Check for duplicates.
-    if ((exists.in.dropbox(cred, folder_name, is_dir = TRUE))) {
+    if ((exists.in.dropbox(cred, folder_name, is_dir = TRUE,..., curl = getCurlHandle()))) {
         stop("Folder already exists", call. = FALSE)
     }
                                                         # Now create the folder.
     dir_metadata <- fromJSON(OAuthRequest(cred, "https://api.dropbox.com/1/fileops/create_folder/",
-        list(root = "dropbox", path = folder_name)))
+        list(root = "dropbox", path = folder_name)), ..., curl = curl)
     location <- paste(dir_metadata$root, dir_metadata$path, sep = "")
     cat("Folder successfully created at", location, "on", dir_metadata$modified,
         "\n")

@@ -17,7 +17,7 @@
   unnecessary footprint)}
 
   \item{...}{optional additional curl options (debugging
-  tools mostly)}
+  tools mostly).}
 }
 \value{
   message with success or failure

@@ -3,7 +3,7 @@
 #' @param cred An object of class DropboxCredentials with Dropobox specific credentials.
 #' @param curl If using in a loop, call getCurlHandle() first and pass
 #'  the returned value in here (avoids unnecessary footprint)
-#' @param ... optional additional curl options (debugging tools mostly)
+#' @param ... optional additional curl options (debugging tools mostly).
 #' @export dropbox_acc_info
 #' @keywords authentication OAuth
 #' @seealso related: \code{\link{dropbox_auth}}
@@ -13,10 +13,10 @@
 #'}
 dropbox_acc_info <- function(cred, curl = getCurlHandle(),
     ...) {
-    if (class(cred) != "DropboxCredentials" | missing(cred)) {
-        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.")
-    }
-    info <- fromJSON(OAuthRequest(cred, "https://api.dropbox.com/1/account/info"))
+    if (!is(cred, "DropboxCredentials") || missing(cred))
+        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", call.= FALSE)
+
+    info <- fromJSON(OAuthRequest(cred, "https://api.dropbox.com/1/account/info"), ..., curl = curl)
     return(info)
 }
 # API documentation:

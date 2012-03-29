@@ -102,18 +102,20 @@ data &lt;- read.csv(textConnection(file))
 
 ### Upload R objects to your Dropbox
 <pre><code>
-&#35; Function is not working correctly at the moment.
-dropbox_save(dropbox_credentials, r_objects, file="filename")
+&#35; ext default is .rda.
+dropbox_save(dropbox_credentials, list(a = 1:4, b = letters[1:3]), "duncan", verbose = TRUE, ext = ".rda")
 </code></pre>
 
 ### Moving files within Dropobx
 <pre><code>
+&#35; Note that all paths are relative to your dropbox root. Leave blank or use / for root.
 dropbox_move(dropbox_credentials, from_path, to_path)
 &#35; from_path can be a folder or file. to_path has to be a folder.
 </code></pre>
 
 ### Copying files within Dropbox
 <pre><code>
+&#35; Note that all paths are relative to your dropbox root. Leave blank or use / for root.
 dropbox_copy(dropbox_credentials, from_path, to_path)
 &#35; To overwrite existing file/folder in destination, add overwrite = TRUE.
 </code></pre>

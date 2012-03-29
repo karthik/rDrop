@@ -12,7 +12,7 @@ setClass("DropboxCredentials", contains = "OAuthCredentials")
 #' @param cSecret A valid Dropbox application secret
 #' @param curl If using in a loop, call getCurlHandle() first and pass
 #'  the returned value in here (avoids unnecessary footprint)
-#' @param ... optional additional curl options (debugging tools mostly)
+#' @param ... optional additional curl options (debugging tools mostly).
 #' @return Message with success or error.
 #' @return Oauth object of class \code{DropboxCredentials}
 #' @import RJSONIO ROAuth
