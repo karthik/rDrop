@@ -9,11 +9,17 @@
 #' @param ... optional additional curl options (debugging tools mostly).
 #' @keywords sharing share_url
 #' @seealso \code{\link{dropbox_media}}
+#' @export
 #' @return list with url to file or zipped folder and expiry date.
 #' @examples \dontrun{
 #' dropbox_share(cred, 'test_folder')
+#' > dropbox_share(db_cred, 'test_works/test.csv')
+#' $url
+#' [1] "http://db.tt/vlwCtRxr"
+#' $expires
+#' [1] "Sat, 28 Apr 2012 20:55:42 +0000"
 #'}
-#' @export
+
 dropbox_share <- function(cred, file = NULL, curl = getCurlHandle(),
     ...) {
     if (!is(cred, "DropboxCredentials") || missing(cred))
