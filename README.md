@@ -4,7 +4,13 @@ This package provides a  programmatic interface to [Dropbox](https://www2.dropbo
 
 > **Disclaimer: This package is currently in development so please <u>use at your own risk.</u>**
 
-**Important**: This package relies on `ROAuth` and the version currently available on CRAN does not play so well with `rDrop`. Use [ROAuth_0.92.0 version](http://dl.dropbox.com/u/2223411/ROAuth_0.92.0.tar.gz) and install from source for the time being till issues get patched up.
+**Important**: This package relies on `ROAuth` and the version currently available on CRAN does not play so well with `rDrop`. Install the version on Duncan's github:
+
+```
+library(devtools)
+install_github("ROAuth", "duncaltl")
+```
+
 
 **Reference:**
 [Complete Dropbox API Reference.](https://www2.dropbox.com/developers/reference/api)
@@ -49,7 +55,7 @@ library(rDrop)
 </code></pre>
 
 
-If you entered valid keys, you will be directed to a secure Dropbox page on your browser asking you to authorize the app you just created. Click authorize to add this to your approved app list and return to R. This is a one time authorization. Once you have completed these steps, return to `R` and press enter (Ignore <em>When complete, record the PIN given to you and provide it here</em>). There is no need to run `dropbox_auth()` for each subsequent run. Simply save your credentials file to disk and load as needed:
+If you entered valid keys, you will be directed to a secure Dropbox page on your browser asking you to authorize the app you just created. Click authorize to add this to your approved app list and return to R. This is a one time authorization. Once you have completed these steps, return to `R`. There is no need to run `dropbox_auth()` for each subsequent run. Simply save your credentials file to disk and load as needed:
 
 <pre><code>
  save(dropbox_credentials, file="/path/to/my_dropbox_credentials.rdata")
