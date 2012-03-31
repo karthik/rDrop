@@ -14,7 +14,7 @@
 #' dropbox_dir(db_cred)
 #' dropbox_dir(db_cred, path='/specific_folder')
 #' dropbox_dir(db_cred,path='/specific_folder', verbose = TRUE)
-#' returns a dataframe with fields \item{.id} \item{revision} \item{rev} \item{thumb_exists} \item{bytes} \item{modified\item} \item{path} \item{is_dir} \item{icon} \item{root} \item{size} \item{client_mtime} \item{mimetype}.
+#' returns a dataframe with fields .id, revision, rev, thumb_exists, bytes, modified path, is_dir, icon, root, size, client_mtime, mimetype.
 #'}
 dropbox_dir <- function(cred, path = NULL, verbose = FALSE,
     deleted = FALSE, curl = getCurlHandle(), ...) {
