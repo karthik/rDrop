@@ -40,7 +40,7 @@ dropbox_copy <- function(cred, from_path = NULL, to_path = NULL,
     }
     copy <- fromJSON(OAuthRequest(cred, "https://api.dropbox.com/1/fileops/copy",
         list(root = "dropbox", from_path = from_path, to_path = to_path),
-        , "POST"), ..., curl = curl)
+        , "POST", ..., curl = curl))
     if (is.character(copy)) {
         stop(copy[[1]], call. = FALSE)
     }
