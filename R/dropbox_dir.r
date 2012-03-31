@@ -37,7 +37,7 @@ dropbox_dir <- function(cred, path = NULL, verbose = FALSE,
     if (!is.null(path) & length(path) > 0) {
         url <- paste(url, path, "/", sep = "")
     }
-    metadata <- fromJSON(OAuthRequest(cred, url, list(include_deleted = deleted)), ..., curl = curl)
+    metadata <- fromJSON(OAuthRequest(cred, url, list(include_deleted = deleted), ..., curl = curl))
     names(metadata$contents) <- basename(sapply(metadata$contents,
         `[[`, "path"))
     file_sys <- ldply(metadata$contents, data.frame)
