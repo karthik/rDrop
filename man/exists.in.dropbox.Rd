@@ -24,7 +24,8 @@
   logical. TRUE/FALSE
 }
 \description{
-  Check to see if an object exists in Dropbox
+  This function is meant for internal use especially when
+  copying or moving files.
 }
 \examples{
 \dontrun{

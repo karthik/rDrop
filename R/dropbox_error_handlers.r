@@ -1,5 +1,6 @@
 #' Check to see if an object exists in Dropbox
 #'
+#' This function is meant for internal use especially when copying or moving files.
 #' @param cred An object of class DropboxCredentials with Dropobox specific credentials.
 #' @param path Path to object
 #' @param  is_dir if set to TRUE, will only look for folders. Otherwise will return file or folder.
