@@ -40,7 +40,7 @@
 dropbox_dir(db_cred)
 dropbox_dir(db_cred, path='/specific_folder')
 dropbox_dir(db_cred,path='/specific_folder', verbose = TRUE)
-returns a dataframe with fields .id,
+returns a dataframe with fields \\item{.id} \\item{revision} \\item{rev} \\item{thumb_exists} \\item{bytes} \\item{modified\\item} \\item{path} \\item{is_dir} \\item{icon} \\item{root} \\item{size} \\item{client_mtime} \\item{mimetype}.
 }
 }
 
