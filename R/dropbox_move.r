@@ -45,7 +45,7 @@ dropbox_move <- function(cred, from_path = NULL, to_path = NULL,
 
     move <- fromJSON(OAuthRequest(cred, "https://api.dropbox.com/1/fileops/move",
         list(root = "dropbox", from_path = from_path, to_path = to_path),
-        "POST"), ..., curl = curl)
+        "POST", ..., curl = curl))
     if (is.character(move)) {
         stop(move[[1]], call. = FALSE)
     }
