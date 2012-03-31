@@ -38,7 +38,7 @@ dropbox_share <- function(cred, file = NULL, curl = getCurlHandle(),
 
     path_to_share <- sprintf("https://api.dropbox.com/1/shares/dropbox/%s",
         file, sep = "")
-    result <- fromJSON(OAuthRequest(cred, path_to_share), ..., curl = curl)
+    result <- fromJSON(OAuthRequest(cred, path_to_share,, ..., curl = curl))
     res <- list()
     res$url <- result[[1]]
     res$expires <- result[[2]]
