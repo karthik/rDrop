@@ -36,7 +36,7 @@ dropbox_create_folder <- function(cred, folder_name = NULL,
     }
                                                         # Now create the folder.
     dir_metadata <- fromJSON(OAuthRequest(cred, "https://api.dropbox.com/1/fileops/create_folder/",
-        list(root = "dropbox", path = folder_name)), ..., curl = curl)
+        list(root = "dropbox", path = folder_name), ..., curl = curl))
     location <- paste(dir_metadata$root, dir_metadata$path, sep = "")
     cat("Folder successfully created at", location, "on", dir_metadata$modified,
         "\n")
