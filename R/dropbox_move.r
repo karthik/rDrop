@@ -2,8 +2,8 @@
 #'
 #' Allows users to move files or folders inside the dropbox storage.
 #' @param cred Specifies an object of class DropboxCredentials with Dropobox specific credentials.
-#' @param from_path Specifies the file or folder to be copied from relative to root.
-#' @param to_path Specifies a destination path, including the new name for the file or folder, relative to root.
+#' @param from_path Path to file or folder to be copied, relative to root.
+#' @param to_path Path to destination, including the new name for the file or folder, relative to root.
 #' @param curl If using in a loop, call getCurlHandle() first and pass
 #'  the returned value in here (avoids unnecessary footprint)
 #' @param ... optional additional curl options (debugging tools mostly).

@@ -27,7 +27,7 @@
   tools mostly).}
 }
 \value{
-  directory listing with file/folder names unless
+  directory listing with file or folder names unless
   \code{verbose = TRUE} in which case a data.frame is
   returned.
 }

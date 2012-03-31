@@ -9,11 +9,11 @@
   \item{cred}{Specifies an object of class
   DropboxCredentials with Dropobox specific credentials.}
 
-  \item{from_path}{Specifies the file or folder to be
-  copied from relative to root.}
+  \item{from_path}{Path to file or folder to be copied,
+  relative to root.}
 
-  \item{to_path}{Specifies a destination path, including
-  the new name for the file or folder, relative to root.}
+  \item{to_path}{Path to destination, including the new
+  name for the file or folder, relative to root.}
 
   \item{curl}{If using in a loop, call getCurlHandle()
   first and pass the returned value in here (avoids

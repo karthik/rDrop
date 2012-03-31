@@ -2,8 +2,8 @@
 #'
 #' Use this function to copy files or folders within your Dropbox. Destination must be a folder otherwise the function will return an error.
 #' @param cred An object of class DropboxCredentials with Dropobox specific credentials.
-#' @param from_path Specifies the file or folder to be copied from relative to root.
-#' @param to_path Specifies a destination path, including the new name for the file or folder, relative to root.
+#' @param from_path Path to file or folder to be copied, relative to dropbox root.
+#' @param to_path Path to destination, including the new name for the file or folder, relative to dropbox root.
 #' @keywords file_copy
 #' @seealso dropbox_move dropbox_create_folder
 #' @param curl If using in a loop, call getCurlHandle() first and pass

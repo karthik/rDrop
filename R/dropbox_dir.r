@@ -8,7 +8,7 @@
 #' @param curl If using in a loop, call getCurlHandle() first and pass
 #'  the returned value in here (avoids unnecessary footprint)
 #' @param ... optional additional curl options (debugging tools mostly).
-#' @return directory listing with file/folder names unless \code{verbose = TRUE} in which case a data.frame is returned.
+#' @return directory listing with file or folder names unless \code{verbose = TRUE} in which case a data.frame is returned.
 #' @export dropbox_dir
 #' @examples \dontrun{
 #' dropbox_dir(db_cred)

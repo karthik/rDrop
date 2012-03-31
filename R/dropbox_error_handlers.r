@@ -89,6 +89,7 @@ dropbox.file.info <- function(cred, path_to_file) {
 
 #' Verify paths for copy and move operations
 #'
+#' Function is meant for internal use in \code{\link{dropbox_move}} and \code{\link{dropbox_copy}}
 #' @param from_path source path
 #' @param  to_path destination path. Leave blank for dropbox root.
 #' @return list with clean paths
