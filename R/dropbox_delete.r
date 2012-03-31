@@ -32,7 +32,7 @@ dropbox_delete <- function(cred, file_to_delete = NULL,
     }
     if (verify == "Y" || !(ask)) {
         deleted <- fromJSON(OAuthRequest(cred, "https://api.dropbox.com/1/fileops/delete",
-            list(root = "dropbox", path = file_to_delete)), ..., curl = curl)
+            list(root = "dropbox", path = file_to_delete), ..., curl = curl))
         if (is.list(deleted)) {
             cat(deleted$path, "was successfully deleted on",
                 deleted$modified, "\n")

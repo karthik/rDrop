@@ -33,15 +33,18 @@
   consumer key/secret combo. Ideally you should save those
   keys in your options as: \code{options(DropboxKey =
   'Your_App_key')} \code{options(DropboxSecret =
-  'Your_App_secret')}. If you are unable to do so (assuming
-  you are on some public machine), then you can just
-  specifiy both keys inline. Once you have authenticated,
-  there is absolutely no reason to repeat this step for
-  subsequent sessions. Simply save the OAuth object and
-  load as necessary. Future versions of ROAuth will make it
-  easier for you to just update the token without having to
-  reauthoize via the web. \emph{Do not store these keys in
-  your .rprofile if you are on a public machine}.
+  'Your_App_secret')} If you are unable to do so (assuming
+  you are on some public machine), then just specifiy both
+  keys inline. After your initial authentication is
+  complete, there is absolutely no reason to repeat this
+  step for subsequent sessions. Simply save the
+  \code{DropboxCredentials} object and load as necessary.
+  Future versions of \code{ROAuth} will make it easier for
+  you to just update the token (when necessary) without
+  having to reauthoize via the web. \emph{Caution: Do not
+  store these keys in your .rprofile if you are on a public
+  machine}. Anyone with access to the key + secret combo
+  has full access to the contents of your Dropbox.
 }
 \details{
   Once you have created an app, retrieve your access keys
