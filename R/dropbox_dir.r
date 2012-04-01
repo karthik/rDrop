@@ -5,6 +5,7 @@
 #' @param path  The directory to list. Not yet implemented
 #' @param verbose logical. FALSE returns a list with file names in root folder. TRUE returns a \code{data.frame} with the following fields: id, revision, rev, thumb_exists, bytes, path, modified, and is_dir
 #' @param deleted logical. Default is FALSE. Set to TRUE to also list deleted files.
+#' @param pattern an optional regular expression. Only file names which match the regular expression will be returned.
 #' @param curl If using in a loop, call getCurlHandle() first and pass
 #'  the returned value in here (avoids unnecessary footprint)
 #' @param ... optional additional curl options (debugging tools mostly).
@@ -17,7 +18,7 @@
 #' returns a dataframe with fields .id, revision, rev, thumb_exists, bytes, modified path, is_dir, icon, root, size, client_mtime, mimetype.
 #'}
 dropbox_dir <- function(cred, path = NULL, verbose = FALSE,
-    deleted = FALSE, curl = getCurlHandle(), ...) {
+    deleted = FALSE, pattern = NULL, curl = getCurlHandle(), ...) {
     if (!is(cred, "DropboxCredentials") || missing(cred))
         stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", call.= FALSE)
 
@@ -41,6 +42,11 @@ dropbox_dir <- function(cred, path = NULL, verbose = FALSE,
     names(metadata$contents) <- basename(sapply(metadata$contents,
         `[[`, "path"))
     file_sys <- ldply(metadata$contents, data.frame)
+
+    if(!is.null(pattern)) {
+       matches <- str_detect(file_sys$.id, pattern)
+       file_sys <- file_sys[matches,]
+    }
 
     if (!verbose) {
         return(file_sys$.id)

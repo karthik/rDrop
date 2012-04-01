@@ -3,7 +3,8 @@
 \title{Function to list contents of a Dropbox folder.}
 \usage{
   dropbox_dir(cred, path = NULL, verbose = FALSE,
-    deleted = FALSE, curl = getCurlHandle(), ...)
+    deleted = FALSE, pattern = NULL,
+    curl = getCurlHandle(), ...)
 }
 \arguments{
   \item{cred}{An object of class DropboxCredentials with
@@ -18,6 +19,10 @@
 
   \item{deleted}{logical. Default is FALSE. Set to TRUE to
   also list deleted files.}
+
+  \item{pattern}{an optional regular expression. Only file
+  names which match the regular expression will be
+  returned.}
 
   \item{curl}{If using in a loop, call getCurlHandle()
   first and pass the returned value in here (avoids
