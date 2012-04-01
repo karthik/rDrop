@@ -45,6 +45,7 @@
 dropbox_dir(db_cred)
 dropbox_dir(db_cred, path='/specific_folder')
 dropbox_dir(db_cred,path='/specific_folder', verbose = TRUE)
+dropbox_dir(db_cred,path='/specific_folder', pattern='file', verbose = TRUE)
 returns a dataframe with fields .id, revision, rev, thumb_exists, bytes, modified path, is_dir, icon, root, size, client_mtime, mimetype.
 }
 }
