@@ -2,7 +2,7 @@
 
 This package provides a  programmatic interface to [Dropbox](https://www2.dropbox.com/home) from the [R environment](http://www.r-project.org/).
 
-> **Disclaimer: This package is currently in development so please <u>use at your own risk.</u>**
+> **Disclaimer: This package is currently in development so please <u>use at your own risk. Please report any bugs</u>**
 
 **Important**: This package relies on `ROAuth` and the version currently available on CRAN does not play so well with `rDrop`. Install the version on Duncan's github:
 
@@ -10,10 +10,6 @@ This package provides a  programmatic interface to [Dropbox](https://www2.dropbo
 library(devtools)
 install_github("ROAuth", "duncaltl")
 ```
-
-
-**Reference:**
-[Complete Dropbox API Reference.](https://www2.dropbox.com/developers/reference/api)
 
 # Installing
 ```
@@ -140,4 +136,7 @@ dropbox_share(dropbox_credentials, file)
 &#35; File/folder to share. Returns share URL with expiration information.
 &#35; Link goes directly to files. Folder are automatically zipped up.
 </code></pre>
+
+**Reference:**
+[Complete Dropbox API Reference.](https://www2.dropbox.com/developers/reference/api)
 
