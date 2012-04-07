@@ -47,10 +47,10 @@ If you prefer not to specify keys in a `.rprofile` (especially if you are on a p
 ```R
 library(rDrop)
 
-&#35; If you have Dropbox keys in your .rprofile, simply run:
- dropbox_credentials &lt;- dropbox_auth()
+# If you have Dropbox keys in your .rprofile, simply run:
+ dropbox_credentials <- dropbox_auth()
 
-&#35; Otherwise:
+# Otherwise:
  dropbox_credentials <- dropbox_auth("Your_consumer_key", "Your_consumer_secret")
 ```
 
@@ -69,38 +69,38 @@ This package essentially provides standard Dropbox file operation functions (cre
 To load a previously validated Dropbox credential file:
 ```R
 load('/path/to/my_dropbox_credentials.rdata')
-&#35; or once again run,
+# or once again run,
 dropbox_credentials <- dropbox_auth('Your_consumer_key', 'Your_consumer_secret')
 ```
 
 ### Summary of your Dropbox Account
 ```R
 dropbox_acc_info(dropbox_credentials)
-&#35; will return a list with your display name, email, quota, referral URL, and country.
+# will return a list with your display name, email, quota, referral URL, and country.
 ```
 
 ### Directory listing
 ```R
 dropbox_dir(dropbox_credentials)
-&#35; To list files and folders in your Dropbox root.
+# To list files and folders in your Dropbox root.
 
 dropbox_dir(dropbox_credentials, verbose = TRUE)
-&#35; for a complete listing (filename, revision, thumb, bytes, modified, path, and is_dir) with detailed information.
+# for a complete listing (filename, revision, thumb, bytes, modified, path, and is_dir) with detailed information.
 
 
 dropbox_dir(dropbox_credentials, path = 'folder_name')
-&#35; To see contents of a specified path.
+# To see contents of a specified path.
 
 dropbox_dir(dropbox_credentials, path = 'folder_name', verbose = TRUE)
-&#35; For verbose content listing for a specified path (relative to Dropbox root).
+# For verbose content listing for a specified path (relative to Dropbox root).
 ```
 
 
 ### Download files from your Dropbox account to R
 ```R
 <strong>Reading text files</strong>
-file &lt;- dropbox_get(dropbox_credentials, 'my_data.csv')
-data &lt;- read.csv(textConnection(file))
+file <- dropbox_get(dropbox_credentials, 'my_data.csv')
+data <- read.csv(textConnection(file))
 ```
 
 
@@ -108,40 +108,40 @@ data &lt;- read.csv(textConnection(file))
 **Reading images**
 ...
 
-&#35; Another quick/dirty way to read private content from your Dropbox into R is using the dropbox_media() function.
-&#35; Example:
+# Another quick/dirty way to read private content from your Dropbox into R is using the dropbox_media() function.
+# Example:
 dropbox_media(cred, 'test_works/move.txt')
- &#35;                                                                url
-&#35; "https://dl.dropbox.com/0/view/6w2a4zixxxxpyy1/test_works/move.txt"
-      &#35;                                                       expires
-                                 &#35;  "Fri, 30 Mar 2012 00:42:59 +0000"
+ #                                                                url
+# "https://dl.dropbox.com/0/view/6w2a4zixxxxpyy1/test_works/move.txt"
+      #                                                       expires
+                                 #  "Fri, 30 Mar 2012 00:42:59 +0000"
 ```
 
 ### Upload R objects to your Dropbox
 ```R
-&#35; ext default is .rda.
+# ext default is .rda.
 dropbox_save(dropbox_credentials, list(a = 1:4, b = letters[1:3]), "duncan", verbose = TRUE, ext = ".rda")
 ```
 
 ### Moving files within Dropobx
 ```R
-&#35; Note that all paths are relative to your dropbox root. Leave blank or use / for root.
+# Note that all paths are relative to your dropbox root. Leave blank or use / for root.
 dropbox_move(dropbox_credentials, from_path, to_path)
-&#35; from_path can be a folder or file. to_path has to be a folder.
+# from_path can be a folder or file. to_path has to be a folder.
 ```
 
 ### Copying files within Dropbox
 ```R
-&#35; Note that all paths are relative to your dropbox root. Leave blank or use / for root.
+# Note that all paths are relative to your dropbox root. Leave blank or use / for root.
 dropbox_copy(dropbox_credentials, from_path, to_path)
-&#35; To overwrite existing file/folder in destination, add overwrite = TRUE.
+# To overwrite existing file/folder in destination, add overwrite = TRUE.
 ```
 
 ### Creating a public share for any Dropbox file or folder
 ```R
 dropbox_share(dropbox_credentials, file)
-&#35; File/folder to share. Returns share URL with expiration information.
-&#35; Link goes directly to files. Folder are automatically zipped up.
+# File/folder to share. Returns share URL with expiration information.
+# Link goes directly to files. Folder are automatically zipped up.
 ```
 
 **Reference:**
