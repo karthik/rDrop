@@ -98,14 +98,11 @@ dropbox_dir(dropbox_credentials, path = 'folder_name', verbose = TRUE)
 
 ### Download files from your Dropbox account to R
 ```R
-<strong>Reading text files</strong>
+# Reading text files
 file <- dropbox_get(dropbox_credentials, 'my_data.csv')
 data <- read.csv(textConnection(file))
-```
 
-
-```R
-**Reading images**
+# Reading images
 ...
 
 # Another quick/dirty way to read private content from your Dropbox into R is using the dropbox_media() function.
