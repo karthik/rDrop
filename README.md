@@ -6,13 +6,13 @@ This package provides a  programmatic interface to [Dropbox](https://www2.dropbo
 
 **Important**: This package relies on `ROAuth` and the version currently available on CRAN does not play so well with `rDrop`. Install the version on Duncan's github:
 
-```
+```R
 library(devtools)
 install_github("ROAuth", "duncaltl")
 ```
 
 # Installing
-```
+```R
 require(devtools)
 install_github("rDrop", "karthikram")
 ```
@@ -63,20 +63,20 @@ Credentials will remain valid until you revoke them from your [Dropbox Apps page
 This package essentially provides standard Dropbox file operation functions (create/copy/move/restore/share) from within `R`.
 
 To load a previously validated Dropbox credential file:
-<pre><code>
+```R
 load('/path/to/my_dropbox_credentials.rdata')
 &#35; or once again run,
 dropbox_credentials &lt;- dropbox_auth('Your_consumer_key', 'Your_consumer_secret')
-</code></pre>
+```
 
 ### Summary of your Dropbox Account
-<pre><code>
+```R
 dropbox_acc_info(dropbox_credentials)
 &#35; will return a list with your display name, email, quota, referral URL, and country.
-</code></pre>
+```
 
 ### Directory listing
-<pre><code>
+```R
 dropbox_dir(dropbox_credentials)
 &#35; To list files and folders in your Dropbox root.
 
@@ -89,16 +89,19 @@ dropbox_dir(dropbox_credentials, path = 'folder_name')
 
 dropbox_dir(dropbox_credentials, path = 'folder_name', verbose = TRUE)
 &#35; For verbose content listing for a specified path (relative to Dropbox root).
-</code></pre>
+```
 
 
 ### Download files from your Dropbox account to R
-<pre><code>
+```R
 <strong>Reading text files</strong>
 file &lt;- dropbox_get(dropbox_credentials, 'my_data.csv')
 data &lt;- read.csv(textConnection(file))
-<br>
-<strong>Reading images</strong>
+```
+
+
+```R
+**Reading images**
 ...
 
 &#35; Another quick/dirty way to read private content from your Dropbox into R is using the dropbox_media() function.
@@ -108,7 +111,7 @@ dropbox_media(cred, 'test_works/move.txt')
 &#35; "https://dl.dropbox.com/0/view/6w2a4zixxxxpyy1/test_works/move.txt"
       &#35;                                                       expires
                                  &#35;  "Fri, 30 Mar 2012 00:42:59 +0000"
-</code></pre>
+```
 
 ### Upload R objects to your Dropbox
 <pre><code>
