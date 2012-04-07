@@ -29,33 +29,35 @@ install_github("rDrop", "karthikram")
 ![Alt text](https://github.com/karthikram/rDrop/blob/master/screenshots/name_your_app.png?raw=true)
 
 * Once you click create, be sure to **copy your App key and App secret** and store it somewhere safe. If you forget it, you can always find it [here](https://www.dropbox.com/developers/apps) (Just click on options next to your App name).  If you use your `.rprofile` and no one else uses your computer,  then we recommend you save your keys there by adding the following lines: <br><br>
-<pre><code>
+```R
 options(DropboxKey = "Your_App_key")
 options(DropboxSecret = "Your_App_Secret")
-</code></pre>
-<br>
+```
+
+
+
 
 ![Alt text](https://github.com/karthikram/rDrop/blob/master/screenshots/keys.png?raw=true)
 
 If you prefer not to specify keys in a `.rprofile` (especially if you are on a public computer/cluster/cloud server), you can specify both keys in the `dropbox_auth()` function directly (more below). <em>Note that once you have authorized an app, there is no need to call this function again.</em> You can just use your saved credential file to access your Dropbox. If for any reason, the file becomes compromised, just revoke access from your [list of authorized apps.](https://www2.dropbox.com/account#applications)
 
 ### Authorizing your app
-<pre><code>
+```R
 library(rDrop)
 
 &#35; If you have Dropbox keys in your .rprofile, simply run:
  dropbox_credentials &lt;- dropbox_auth()
 
 &#35; Otherwise:
- dropbox_credentials &lt;- dropbox_auth("Your_consumer_key", "Your_consumer_secret")
-</code></pre>
+ dropbox_credentials <- dropbox_auth("Your_consumer_key", "Your_consumer_secret")
+```
 
 
 If you entered valid keys, you will be directed to a secure Dropbox page on your browser asking you to authorize the app you just created. Click authorize to add this to your approved app list and return to R. This is a one time authorization. Once you have completed these steps, return to `R`. There is no need to run `dropbox_auth()` for each subsequent run. Simply save your credentials file to disk and load as needed:
 
-<pre><code>
+```R
  save(dropbox_credentials, file="/path/to/my_dropbox_credentials.rdata")
-</code></pre>
+```
 
 Credentials will remain valid until you revoke them from your [Dropbox Apps page](https://www2.dropbox.com/developers/apps) by clicking the x next to your App's name.
 
@@ -66,7 +68,7 @@ To load a previously validated Dropbox credential file:
 ```R
 load('/path/to/my_dropbox_credentials.rdata')
 &#35; or once again run,
-dropbox_credentials &lt;- dropbox_auth('Your_consumer_key', 'Your_consumer_secret')
+dropbox_credentials <- dropbox_auth('Your_consumer_key', 'Your_consumer_secret')
 ```
 
 ### Summary of your Dropbox Account
@@ -114,31 +116,31 @@ dropbox_media(cred, 'test_works/move.txt')
 ```
 
 ### Upload R objects to your Dropbox
-<pre><code>
+```R
 &#35; ext default is .rda.
 dropbox_save(dropbox_credentials, list(a = 1:4, b = letters[1:3]), "duncan", verbose = TRUE, ext = ".rda")
-</code></pre>
+```
 
 ### Moving files within Dropobx
-<pre><code>
+```R
 &#35; Note that all paths are relative to your dropbox root. Leave blank or use / for root.
 dropbox_move(dropbox_credentials, from_path, to_path)
 &#35; from_path can be a folder or file. to_path has to be a folder.
-</code></pre>
+```
 
 ### Copying files within Dropbox
-<pre><code>
+```R
 &#35; Note that all paths are relative to your dropbox root. Leave blank or use / for root.
 dropbox_copy(dropbox_credentials, from_path, to_path)
 &#35; To overwrite existing file/folder in destination, add overwrite = TRUE.
-</code></pre>
+```
 
 ### Creating a public share for any Dropbox file or folder
-<pre><code>
+```R
 dropbox_share(dropbox_credentials, file)
 &#35; File/folder to share. Returns share URL with expiration information.
 &#35; Link goes directly to files. Folder are automatically zipped up.
-</code></pre>
+```
 
 **Reference:**
 [Complete Dropbox API Reference.](https://www2.dropbox.com/developers/reference/api)
