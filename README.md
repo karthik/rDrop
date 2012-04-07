@@ -117,7 +117,9 @@ dropbox_media(cred, 'test_works/move.txt')
 ### Upload R objects to your Dropbox
 ```R
 # ext default is .rda.
-dropbox_save(dropbox_credentials, list(a = 1:4, b = letters[1:3]), "duncan", verbose = TRUE, ext = ".rda")
+a = 1:4
+b = letters[1:3]
+dropbox_save(dropbox_credentials, list(a,b), "duncan", verbose = TRUE, ext = ".rda")
 ```
 
 ### Moving files within Dropobx
