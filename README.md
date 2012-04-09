@@ -3,9 +3,9 @@
 
 This package provides a  programmatic interface to [Dropbox](https://www2.dropbox.com/home) from the [R environment](http://www.r-project.org/).
 
-> **Disclaimer: This package is currently in development so please <u>use at your own risk. Please report any bugs</u>**
+> **Disclaimer: This package is fairly new and likely to contain bugs so please use discretion and report any issues here on github</u>**
 
-**Important**: This package relies on `ROAuth` and the version currently available on CRAN does not play so well with `rDrop`. Install the version on Duncan's github:
+**Important**: This package relies on `ROAuth 0.92` and the version currently available on CRAN does not play so well with `rDrop`. Install the version on Duncan's github:
 
 ```R
 library(devtools)
@@ -46,10 +46,11 @@ If you prefer not to specify keys in a `.rprofile` (especially if you are on a p
 ### Authorizing your app
 ```R
 library(rDrop)
+```
 
+```R
 # If you have Dropbox keys in your .rprofile, simply run:
  dropbox_credentials <- dropbox_auth()
-
 # Otherwise:
  dropbox_credentials <- dropbox_auth("Your_consumer_key", "Your_consumer_secret")
 ```
@@ -83,14 +84,10 @@ dropbox_acc_info(dropbox_credentials)
 ```R
 dropbox_dir(dropbox_credentials)
 # To list files and folders in your Dropbox root.
-
 dropbox_dir(dropbox_credentials, verbose = TRUE)
 # for a complete listing (filename, revision, thumb, bytes, modified, path, and is_dir) with detailed information.
-
-
 dropbox_dir(dropbox_credentials, path = 'folder_name')
 # To see contents of a specified path.
-
 dropbox_dir(dropbox_credentials, path = 'folder_name', verbose = TRUE)
 # For verbose content listing for a specified path (relative to Dropbox root).
 ```
@@ -101,10 +98,7 @@ dropbox_dir(dropbox_credentials, path = 'folder_name', verbose = TRUE)
 # Reading text files
 file <- dropbox_get(dropbox_credentials, 'my_data.csv')
 data <- read.csv(textConnection(file))
-
 # Reading images
-...
-
 # Another quick/dirty way to read private content from your Dropbox into R is using the dropbox_media() function.
 # Example:
 dropbox_media(cred, 'test_works/move.txt')
