@@ -18,7 +18,6 @@ dropbox_delete <- function(cred, file_to_delete = NULL,
      if (!is(cred, "DropboxCredentials") || missing(cred))
         stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", call.= FALSE)
 
-                                                        # Replace with a more elegant file exists checker.
     if (!exists.in.dropbox(cred, file_to_delete,..., curl = getCurlHandle())) {
         stop("File or folder not found", call. = FALSE)
     }
@@ -45,3 +44,4 @@ dropbox_delete <- function(cred, file_to_delete = NULL,
 #
 #
 #   https://www.dropbox.com/developers/reference/api#fileops-delete
+
