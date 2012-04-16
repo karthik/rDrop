@@ -22,7 +22,7 @@
 dropbox_search <- function(cred, query = NULL, deleted = FALSE,
     file_limit = 1000, is_dir = NULL, verbose = FALSE, curl = getCurlHandle(),
     ...) {
-    if (!is(cred, "DropboxCredentials") || missing(cred)) {
+    if (!is(cred, "DropboxCredentials")) {
         stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", call.= FALSE)
     }
     if (is.null(query)) {

@@ -18,7 +18,7 @@
 #'}
 dropbox_move <- function(cred, from_path = NULL, to_path = NULL,
     verbose = FALSE, curl = getCurlHandle(), ...) {
-    if (!is(cred, "DropboxCredentials") || missing(cred))
+    if (!is(cred, "DropboxCredentials"))
         stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", call.= FALSE)
 
                                                         # Note: to_path needs a leading / because root is 'dropbox'

@@ -13,7 +13,7 @@
 #' exists.in.dropbox(cred,'test_folder',is_dir='dir')
 #'}
 exists.in.dropbox <- function(cred, path = NULL, is_dir = NULL, ..., curl = getCurlHandle()) {
-    if (!is(cred, "DropboxCredentials") || missing(cred))
+    if (!is(cred, "DropboxCredentials"))
         stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.")
 
                                                         # default response so function can proceed.

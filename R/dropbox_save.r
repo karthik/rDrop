@@ -30,7 +30,7 @@ dropbox_save <-
           precheck = TRUE, verbose = FALSE, curl = getCurlHandle(),
           ..., ext = ".rdata")
 {
-    if (!is(cred, "DropboxCredentials") || missing(cred))
+    if (!is(cred, "DropboxCredentials"))
         stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", call.= FALSE)
 
     # I suggest we discard this approach. The caller specifies

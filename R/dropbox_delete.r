@@ -15,7 +15,7 @@
 dropbox_delete <- function(cred, file_to_delete = NULL,
     ask = TRUE, curl = getCurlHandle(), ...) {
     verify <- ""
-     if (!is(cred, "DropboxCredentials") || missing(cred))
+     if (!is(cred, "DropboxCredentials"))
         stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", call.= FALSE)
 
     if (!exists.in.dropbox(cred, file_to_delete,..., curl = getCurlHandle())) {

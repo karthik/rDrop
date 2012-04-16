@@ -18,7 +18,7 @@
 #'}
 dropbox_copy <- function(cred, from_path = NULL, to_path = NULL,
     curl = getCurlHandle(), ...) {
-    if (!is(cred, "DropboxCredentials") || missing(cred))
+    if (!is(cred, "DropboxCredentials"))
         stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.",
             call. = FALSE)
     if (is.null(from_path)) {

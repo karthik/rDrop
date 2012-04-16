@@ -20,7 +20,7 @@
 #'}
 dropbox_dir <- function(cred, path = NULL, verbose = FALSE,
     deleted = FALSE, pattern = NULL, curl = getCurlHandle(), ...) {
-    if (!is(cred, "DropboxCredentials") || missing(cred))
+    if (!is(cred, "DropboxCredentials"))
         stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", call.= FALSE)
 
     url <- "https://api.dropbox.com/1/metadata/dropbox/"

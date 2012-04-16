@@ -22,7 +22,7 @@
 
 dropbox_share <- function(cred, file = NULL, curl = getCurlHandle(),
     ...) {
-    if (!is(cred, "DropboxCredentials") || missing(cred))
+    if (!is(cred, "DropboxCredentials"))
         stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.")
 
     if (is.null(file))

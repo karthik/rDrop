@@ -14,7 +14,7 @@
 #'}
 dropbox_get <- function(cred, file_to_get, curl = getCurlHandle(),
     ..., binary = NA) {
-    if (!is(cred, "DropboxCredentials") || missing(cred))
+    if (!is(cred, "DropboxCredentials"))
         stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", call.= FALSE)
 
     #XXX This should use the curl handle.
