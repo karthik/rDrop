@@ -86,6 +86,8 @@ dropbox_acc_info(dropbox_credentials)
 ```R
 dropbox_dir(dropbox_credentials)
 # To list files and folders in your Dropbox root.
+dropbox_dir(dropbox_credentials, pattern=".rdata")
+# To list files and folders matching a pattern. Any regex should work.
 dropbox_dir(dropbox_credentials, verbose = TRUE)
 # for a complete listing (filename, revision, thumb, bytes, modified, path, and is_dir) with detailed information.
 dropbox_dir(dropbox_credentials, path = 'folder_name')
