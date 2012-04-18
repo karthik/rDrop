@@ -11,6 +11,7 @@ This package provides a  programmatic interface to [Dropbox](https://www2.dropbo
 library(devtools)
 install_github("ROAuth", "duncaltl")
 ```
+**Without th newest `ROAuth` `rDrop` WILL NOT WORK!**
 
 # Installing
 ```R
@@ -68,6 +69,7 @@ Credentials will remain valid until you revoke them from your [Dropbox Apps page
 This package essentially provides standard Dropbox file operation functions (create/copy/move/restore/share) from within `R`.
 
 To load a previously validated Dropbox credential file:
+
 ```R
 load('/path/to/my_dropbox_credentials.rdata')
 # or once again run,
