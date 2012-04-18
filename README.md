@@ -102,7 +102,6 @@ file <- dropbox_get(dropbox_credentials, 'my_data.csv')
 data <- read.csv(textConnection(file))
 
 # Reading .rdata files
-```R
 df <- data.frame(x=1:10, y=rnorm(10))
 dropbox_save(dropbox_credentials, df, file="df.rdata")
 # Now let's download this file back into R
