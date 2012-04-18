@@ -106,8 +106,6 @@ dropbox_save(dropbox_credentials, df, file="df.rdata")
 # Now let's download this file back into R
 rm(df)
 downloaded_df <- unserialize(dropbox_get(dropbox_credentials, "df.rdata"))
-```
-
 # Another quick/dirty way to read private content from your Dropbox into R is using the dropbox_media() function.
 # Example:
 source <- dropbox_media(cred, 'test_works/move.txt')
