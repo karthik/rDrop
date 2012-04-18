@@ -98,14 +98,20 @@ dropbox_dir(dropbox_credentials, path = 'folder_name', verbose = TRUE)
 # Reading text files
 file <- dropbox_get(dropbox_credentials, 'my_data.csv')
 data <- read.csv(textConnection(file))
-# Reading images
+
+# Reading .rdata files
+```R
+df <- data.frame(x=1:10, y=rnorm(10))
+dropbox_save(dropbox_credentials, df, file="df.rdata")
+# Now let's download this file back into R
+rm(df)
+downloaded_df <- unserialize(dropbox_get(dropbox_credentials, "df.rdata"))
+```
+
 # Another quick/dirty way to read private content from your Dropbox into R is using the dropbox_media() function.
 # Example:
-dropbox_media(cred, 'test_works/move.txt')
- #                                                                url
-# "https://dl.dropbox.com/0/view/6w2a4zixxxxpyy1/test_works/move.txt"
-      #                                                       expires
-                                 #  "Fri, 30 Mar 2012 00:42:59 +0000"
+source <- dropbox_media(cred, 'test_works/move.txt')
+read.csv(source$url)
 ```
 
 ### Upload R objects to your Dropbox

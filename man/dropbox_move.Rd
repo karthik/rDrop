@@ -1,5 +1,6 @@
 \name{dropbox_move}
 \alias{dropbox_move}
+\alias{dropbox_mv}
 \title{Move files within Dropbox}
 \usage{
   dropbox_move(cred, from_path = NULL, to_path = NULL,

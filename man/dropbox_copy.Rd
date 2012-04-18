@@ -1,5 +1,6 @@
 \name{dropbox_copy}
 \alias{dropbox_copy}
+\alias{dropbox_cp}
 \title{Function to copy files or folder within Dropbox.}
 \usage{
   dropbox_copy(cred, from_path = NULL, to_path = NULL,

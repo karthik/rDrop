@@ -11,6 +11,7 @@
 #' @param verbose default is FALSE. Set to true to receive full outcome.
 #' @seealso related: \code{\link{dropbox_copy}}
 #' @return Message on successful completion or error.
+#' @aliases dropbox_mv
 #' @export dropbox_move
 #' @examples \dontrun{
 #' dropbox_move(cred, 'move.txt','test_works')

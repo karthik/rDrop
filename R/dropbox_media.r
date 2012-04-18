@@ -25,7 +25,7 @@ dropbox_media <- function(cred, path = NULL, curl = getCurlHandle(),
             path, sep = "")
     }
     media <- fromJSON(OAuthRequest(cred, url), ..., curl = curl)
-    return(media)
+    return(as.list(media))
 }
 # API Documentation:
 #   https://www.dropbox.com/developers/reference/api#media

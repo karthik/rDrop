@@ -11,6 +11,7 @@
 #' @param ... optional additional curl options (debugging tools mostly)..
 #' @return Message with success or error.
 #' @seealso related: \code{\link{dropbox_move}}
+#' @aliases dropbox_cp
 #' @export dropbox_copy
 #' @examples \dontrun{
 #' > dropbox_copy(cred, 'copy.txt', 'Public')
