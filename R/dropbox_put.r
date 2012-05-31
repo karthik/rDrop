@@ -1,7 +1,17 @@
 #'  Function to upload content (in-memory or a file) to Dropbox.
 
-#' dropbox_put(auth, "DESCRIPTION", "rDrop_DESCRIPTION")
-#' print(dropbox_get(auth, "rDrop_DESCRIPTION"))
+#' @param cred Specifies an object of class DropboxCredentials with Dropobox specific credentials.
+#' @param what the content to upload, which is either the name of a file, in-memory text or a raw vector.
+#' @param filename the name of the file to create in the Dropbox folder.
+#' @param curl If using in a loop, call getCurlHandle() first and pass
+#'  the returned value in here (avoids unnecessary footprint)
+#' @param ... optional additional curl options (debugging tools mostly).
+#' @param verbose default is FALSE. Set to true to receive full outcome.
+#' @return information about the uploaded file on dropbox.
+#' @examples \dontrun{
+#'   dropbox_put(auth, "DESCRIPTION", "rDrop_DESCRIPTION")
+#'   print(dropbox_get(auth, "rDrop_DESCRIPTION"))
+#' }
 dropbox_put <-
 function(cred, what, filename = what, curl = getCurlHandle(), ..., verbose = FALSE)
 {

@@ -1,6 +1,7 @@
 #' Function to save an object from R into Dropbox (not working)
 #'
-#' This function currently does not work.
+#' This function saves an R object to Dropbox. One can then retrieve it and load
+#' it back into R.
 #' @param cred Specifies an object of class DropboxCredentials with Dropobox specific credentials.
 #' @param list List of objects from the current R environment that needs to be saved into dropbox
 #' @param file Required filename. No extenstion needs to be supplied. If you provide one, it will be stripped and replace with rda.
