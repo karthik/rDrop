@@ -12,8 +12,9 @@
 #' @examples \dontrun{
 #' dropbox_delete(dropbox_credential, 'path/to/file')
 #'}
-dropbox_delete <- function(cred, file_to_delete = NULL,
-    ask = TRUE, curl = getCurlHandle(), ...) {
+dropbox_delete <-
+function(cred, file_to_delete = NULL,
+         ask = interactive(), curl = getCurlHandle(), ...) {
     verify <- ""
      if (!is(cred, "DropboxCredentials"))
         stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", call.= FALSE)

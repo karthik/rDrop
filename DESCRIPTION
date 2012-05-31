@@ -41,3 +41,4 @@ Collate:
     'dropbox_search.r'
     'dropbox_share.r'
     'startup.r'
+    dropbox_put.r
