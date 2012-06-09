@@ -32,11 +32,9 @@
   steps to create your application and copy the generated
   consumer key/secret combo. Ideally you should save those
   keys (on separate lines) in your options as:
-
   \code{options(DropboxKey = 'Your_App_key')}
-  \code{options(DropboxSecret = 'Your_App_secret')}
-
-  If you are unable to do so (example: Using \code{rDrop} from a
+  \code{options(DropboxSecret = 'Your_App_secret')} If you
+  are unable to do so (example: Using \code{rDrop} from a
   public machine), then you can just specifiy both keys
   inline. Once you have authenticated, there is no reason
   to repeat this step for subsequent sessions. Simply save

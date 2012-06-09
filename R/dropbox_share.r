@@ -15,34 +15,27 @@
 #' dropbox_share(cred, 'test_folder')
 #' > dropbox_share(db_cred, 'test_works/test.csv')
 #' $url
-#' [1] "http://db.tt/vlwCtRxr"
+#' [1] 'http://db.tt/vlwCtRxr'
 #' $expires
-#' [1] "Sat, 28 Apr 2012 20:55:42 +0000"
+#' [1] 'Sat, 28 Apr 2012 20:55:42 +0000'
 #'}
-
-dropbox_share <- function(cred, file = NULL, curl = getCurlHandle(),
+dropbox_share <- function(cred, file = NULL, curl = getCurlHandle(), 
     ...) {
-    if (!is(cred, "DropboxCredentials"))
+    if (!is(cred, "DropboxCredentials")) 
         stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.")
-
-    if (is.null(file))
+    if (is.null(file)) 
         stop("No file of folder to share", call. = FALSE)
-
-
-    if (!(exists.in.dropbox(cred, file,..., curl = getCurlHandle())))
-        stop("Folder doesn't exist", call.= FALSE)
-
-    if (grepl("^/", file))
-        file <- str_sub(file,2)
-
-
-    path_to_share <- sprintf("https://api.dropbox.com/1/shares/dropbox/%s",
+    if (!(exists.in.dropbox(cred, file, ..., curl = getCurlHandle()))) 
+        stop("Folder doesn't exist", call. = FALSE)
+    if (grepl("^/", file)) 
+        file <- str_sub(file, 2)
+    path_to_share <- sprintf("https://api.dropbox.com/1/shares/dropbox/%s", 
         file, sep = "")
-    result <- fromJSON(OAuthRequest(cred, path_to_share,, ..., curl = curl))
+    result <- fromJSON(OAuthRequest(cred, path_to_share, , ..., curl = curl))
     res <- list()
     res$url <- result[[1]]
     res$expires <- result[[2]]
     return(res)
 }
 # API documentation:
-#   https://www.dropbox.com/developers/reference/api#shares
+#   https://www.dropbox.com/developers/reference/api#shares   

@@ -3,8 +3,6 @@
 #' @rdname DropboxCredentials-class
 #' @exportClass DropboxCredentials
 setClass("DropboxCredentials", contains = "OAuthCredentials")
-
-
 #' rDrop: programmatic access to Dropbox from R.
 #'
 #' Before using any of rDrop's functions, you must first create an application on the Dropobox developer site (\url{https://www2.dropbox.com/developers/apps}). This application is specific to you. Follow through with the steps to create your application and copy the  generated consumer key/secret combo. Ideally you should save those keys (on separate lines) in your options as:
@@ -38,28 +36,28 @@ setClass("DropboxCredentials", contains = "OAuthCredentials")
 #' dropbox_token <- dropbox_auth('consumey_key', 'consumer_secret')
 #' save(dropbox_token, file = 'dropbox_auth.rdata')
 #'}
-dropbox_auth <- function(cKey = getOption("DropboxKey",
-    stop("Missing Dropbox consumer key")), cSecret = getOption("DropboxSecret",
-    stop("Missing Dropbox app secret")), curl = getCurlHandle(),
+dropbox_auth <- function(cKey = getOption("DropboxKey", 
+    stop("Missing Dropbox consumer key")), cSecret = getOption("DropboxSecret", 
+    stop("Missing Dropbox app secret")), curl = getCurlHandle(), 
     ...) {
     reqURL <- "https://api.dropbox.com/1/oauth/request_token"
     authURL <- "https://www.dropbox.com/1/oauth/authorize"
     accessURL <- "https://api.dropbox.com/1/oauth/access_token/"
-    dropbox_oa <- oauth(cKey, cSecret, reqURL, authURL, accessURL,
+    dropbox_oa <- oauth(cKey, cSecret, reqURL, authURL, accessURL, 
         obj = new("DropboxCredentials"))
-    cred <- handshake(dropbox_oa, post = FALSE,
-                      verify = paste("Use the Web browser to grant permission to this code",
-                                      "to access Dropbox on your behalf.\nWhen you see 'Success!', hit enter in R", sep = "\n"))
+    cred <- handshake(dropbox_oa, post = FALSE, verify = paste("Use the Web browser to grant permission to this code", 
+        "to access Dropbox on your behalf.\nWhen you see 'Success!', hit enter in R", 
+        sep = "\n"))
     if (TRUE) {
         cat("\n Dropbox authentication completed successfully.\n")
     }
     if (FALSE) {
         info <- OAuthRequest(dropbox_oa, "https://api.dropbox.com/1/account/info")
         OAuthRequest(dropbox_oa, "https://api-content.dropbox.com/1/files/dropbox/foo")
-        OAuthRequest(dropbox_oa, "https://api-content.dropbox.com/1/files/dropbox/foo",
+        OAuthRequest(dropbox_oa, "https://api-content.dropbox.com/1/files/dropbox/foo", 
             httpheader = c(Range = "bytes=30-70"), verbose = TRUE)
     }
     return(cred)
 }
 # API documentation:
-#   https://www.dropbox.com/developers/reference/api#request-token
+#   https://www.dropbox.com/developers/reference/api#request-token   

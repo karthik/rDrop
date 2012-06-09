@@ -32,9 +32,9 @@
 dropbox_share(cred, 'test_folder')
 > dropbox_share(db_cred, 'test_works/test.csv')
 $url
-[1] "http://db.tt/vlwCtRxr"
+[1] 'http://db.tt/vlwCtRxr'
 $expires
-[1] "Sat, 28 Apr 2012 20:55:42 +0000"
+[1] 'Sat, 28 Apr 2012 20:55:42 +0000'
 }
 }
 \seealso{

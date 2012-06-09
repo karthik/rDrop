@@ -18,20 +18,18 @@
 #' dropbox_dir(db_cred,path='/specific_folder', pattern='file', verbose = TRUE)
 #' returns a dataframe with fields .id, revision, rev, thumb_exists, bytes, modified path, is_dir, icon, root, size, client_mtime, mimetype.
 #'}
-dropbox_dir <- function(cred, path = NULL, verbose = FALSE,
+dropbox_dir <- function(cred, path = NULL, verbose = FALSE, 
     deleted = FALSE, pattern = NULL, curl = getCurlHandle(), ...) {
-    if (!is(cred, "DropboxCredentials"))
-        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", call.= FALSE)
-
+    if (!is(cred, "DropboxCredentials")) 
+        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", 
+            call. = FALSE)
     url <- "https://api.dropbox.com/1/metadata/dropbox/"
-
     if (!is.null(path)) {
-        if (!exists.in.dropbox(cred, path, is_dir = TRUE,..., curl = getCurlHandle())) {
+        if (!exists.in.dropbox(cred, path, is_dir = TRUE, ..., curl = getCurlHandle())) {
             stop("There is no such folder in your Dropbox", call. = FALSE)
         }
     }
     if (!is.null(path)) {
-
         if (grepl("/$", path)) {
             path <- str_sub(path, end = str_length(path) - 1)
         }
@@ -39,16 +37,15 @@ dropbox_dir <- function(cred, path = NULL, verbose = FALSE,
     if (!is.null(path) & length(path) > 0) {
         url <- paste(url, path, "/", sep = "")
     }
-    metadata <- fromJSON(OAuthRequest(cred, url, list(include_deleted = deleted), ..., curl = curl))
-    names(metadata$contents) <- basename(sapply(metadata$contents,
+    metadata <- fromJSON(OAuthRequest(cred, url, list(include_deleted = deleted), 
+        ..., curl = curl))
+    names(metadata$contents) <- basename(sapply(metadata$contents, 
         `[[`, "path"))
     file_sys <- ldply(metadata$contents, data.frame)
-
-    if(!is.null(pattern)) {
-       matches <- str_detect(file_sys$.id, pattern)
-       file_sys <- file_sys[matches,]
+    if (!is.null(pattern)) {
+        matches <- str_detect(file_sys$.id, pattern)
+        file_sys <- file_sys[matches, ]
     }
-
     if (!verbose) {
         return(file_sys$.id)
     } else {
@@ -58,4 +55,4 @@ dropbox_dir <- function(cred, path = NULL, verbose = FALSE,
 # API documentation:
 #   https://www.dropbox.com/developers/reference/api#metadata
 # Issues: Fails with empty directories
-# filename, revision, thumb, bytes, modified, path, and is_dir
+# filename, revision, thumb, bytes, modified, path, and is_dir   

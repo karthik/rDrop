@@ -40,19 +40,20 @@
   JSON object
 }
 \description{
-  This function currently does not work.
+  This function saves an R object to Dropbox. One can then
+  retrieve it and load it back into R.
 }
 \examples{
 \dontrun{
 dropbox_save(cred, robject, file='filename')
-dropbox_save(cred, file = "testRData", .objs = list(a = 1:3, b = letters[1:10]))
-a = dropbox_get(cred, "testRData.rdata", binary = TRUE)
+dropbox_save(cred, file = 'testRData', .objs = list(a = 1:3, b = letters[1:10]))
+a = dropbox_get(cred, 'testRData.rdata', binary = TRUE)
 val = unserialize(rawConnection(a))
 
   # specifying our own name without the standard .rdata
-dropbox_save(cred, list(a = 1:4, b = letters[1:3]), I("duncan.rda"), verbose = TRUE)
+dropbox_save(cred, list(a = 1:4, b = letters[1:3]), I('duncan.rda'), verbose = TRUE)
   # or
-dropbox_save(cred, list(a = 1:4, b = letters[1:3]), "duncan", verbose = TRUE, ext = ".rda")
+dropbox_save(cred, list(a = 1:4, b = letters[1:3]), 'duncan', verbose = TRUE, ext = '.rda')
 }
 }
 

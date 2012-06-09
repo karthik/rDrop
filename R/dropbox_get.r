@@ -12,20 +12,21 @@
 #' @examples \dontrun{
 #' x <- dropbox_get(db_cred, '/folder/file.csv')
 #'}
-dropbox_get <- function(cred, file_to_get, curl = getCurlHandle(),
+dropbox_get <- function(cred, file_to_get, curl = getCurlHandle(), 
     ..., binary = NA) {
-    if (!is(cred, "DropboxCredentials"))
-        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", call.= FALSE)
-
-    #XXX This should use the curl handle.
-    if (!(exists.in.dropbox(cred, path = file_to_get, is_dir = FALSE,..., curl = getCurlHandle()))) {
+    if (!is(cred, "DropboxCredentials")) 
+        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", 
+            call. = FALSE)
+                #XXX This should use the curl handle.
+    if (!(exists.in.dropbox(cred, path = file_to_get, is_dir = FALSE, 
+        ..., curl = getCurlHandle()))) {
         stop("File or folder does not exist", call. = FALSE)
     }
-    downloaded_file <- suppressWarnings(OAuthRequest(cred, "https://api-content.dropbox.com/1/files/",
+    downloaded_file <- suppressWarnings(OAuthRequest(cred, "https://api-content.dropbox.com/1/files/", 
         list(root = "dropbox", path = file_to_get), "GET", binary = binary))
 }
 # API documentation:
 #
 #
 #
-#   https://www.dropbox.com/developers/reference/api#files-GET
+#   https://www.dropbox.com/developers/reference/api#files-GET   

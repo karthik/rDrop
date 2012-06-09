@@ -12,20 +12,20 @@
 #' @examples \dontrun{
 #' dropbox_media(db_cred, '/data/file.csv')
 #'}
-dropbox_media <- function(cred, path = NULL, curl = getCurlHandle(),
+dropbox_media <- function(cred, path = NULL, curl = getCurlHandle(), 
     ...) {
-    if (!is(cred, "DropboxCredentials"))
-        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", call.= FALSE)
-
-    if (!(exists.in.dropbox(cred, path = path,..., curl = getCurlHandle()))) {
+    if (!is(cred, "DropboxCredentials")) 
+        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", 
+            call. = FALSE)
+    if (!(exists.in.dropbox(cred, path = path, ..., curl = getCurlHandle()))) {
         stop("Content does not exist in dropbox", call. = FALSE)
     }
     if (!is.null(path)) {
-        url <- paste("https://api.dropbox.com/1/media/dropbox/",
+        url <- paste("https://api.dropbox.com/1/media/dropbox/", 
             path, sep = "")
     }
     media <- fromJSON(OAuthRequest(cred, url), ..., curl = curl)
     return(as.list(media))
 }
 # API Documentation:
-#   https://www.dropbox.com/developers/reference/api#media
+#   https://www.dropbox.com/developers/reference/api#media   

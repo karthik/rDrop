@@ -12,18 +12,17 @@
 #' @examples \dontrun{
 #' dropbox_delete(dropbox_credential, 'path/to/file')
 #'}
-dropbox_delete <-
-function(cred, file_to_delete = NULL,
-         ask = interactive(), curl = getCurlHandle(), ...) {
+dropbox_delete <- function(cred, file_to_delete = NULL, 
+    ask = interactive(), curl = getCurlHandle(), ...) {
     verify <- ""
-     if (!is(cred, "DropboxCredentials"))
-        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", call.= FALSE)
-
-    if (!exists.in.dropbox(cred, file_to_delete,..., curl = getCurlHandle())) {
+    if (!is(cred, "DropboxCredentials")) 
+        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", 
+            call. = FALSE)
+    if (!exists.in.dropbox(cred, file_to_delete, ..., curl = getCurlHandle())) {
         stop("File or folder not found", call. = FALSE)
     }
     if (ask) {
-        verify <- readline(paste("Are you sure you want to delete",
+        verify <- readline(paste("Are you sure you want to delete", 
             file_to_delete, " (Y/N)? "))
         verify <- toupper(verify)
         if (verify != "Y" & verify != "N") {
@@ -31,11 +30,12 @@ function(cred, file_to_delete = NULL,
         }
     }
     if (verify == "Y" || !(ask)) {
-        deleted <- fromJSON(OAuthRequest(cred, "https://api.dropbox.com/1/fileops/delete",
-            list(root = "dropbox", path = file_to_delete)), ..., curl = curl)
+        deleted <- fromJSON(OAuthRequest(cred, "https://api.dropbox.com/1/fileops/delete", 
+            list(root = "dropbox", path = file_to_delete)), ..., 
+            curl = curl)
         if (is.list(deleted)) {
-            cat(deleted$path, "was successfully deleted on",
-                deleted$modified, "\n")
+            cat(deleted$path, "was successfully deleted on", deleted$modified, 
+                "\n")
         }
     }
 }
@@ -44,5 +44,4 @@ function(cred, file_to_delete = NULL,
 #
 #
 #
-#   https://www.dropbox.com/developers/reference/api#fileops-delete
-
+#   https://www.dropbox.com/developers/reference/api#fileops-delete   

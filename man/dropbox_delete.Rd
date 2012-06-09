@@ -2,8 +2,8 @@
 \alias{dropbox_delete}
 \title{Function to delete a file or folder from Dropbox}
 \usage{
-  dropbox_delete(cred, file_to_delete = NULL, ask = TRUE,
-    curl = getCurlHandle(), ...)
+  dropbox_delete(cred, file_to_delete = NULL,
+    ask = interactive(), curl = getCurlHandle(), ...)
 }
 \arguments{
   \item{cred}{An object of class DropboxCredentials with

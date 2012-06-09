@@ -27,6 +27,7 @@ Imports:
     plyr,
     stringr
 Collate:
+    'db.read.csv.r'
     'dropbox_acc_info.r'
     'dropbox_auth.r'
     'dropbox_copy.r'
@@ -37,8 +38,8 @@ Collate:
     'dropbox_get.r'
     'dropbox_media.r'
     'dropbox_move.r'
+    'dropbox_put.r'
     'dropbox_save.r'
     'dropbox_search.r'
     'dropbox_share.r'
     'startup.r'
-    dropbox_put.r
