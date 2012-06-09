@@ -1,7 +1,7 @@
 
 # rDrop: Dropbox interface via R
 
-This package provides a  programmatic interface to [Dropbox](https://www2.dropbox.com/home) from the [R environment](http://www.r-project.org/).
+This package provides a  programmatic interface to [Dropbox](https://www2.dropbox.com/home) from the [R environment](http://www.r-project.org/). The package is complete and fully working but waiting on a dependency to be updated on CRAN before it can be submitted.
 
 > **Disclaimer: This package is fairly new and likely to contain bugs so please use discretion and report any issues here on github</u>**
 
