@@ -103,6 +103,11 @@ dropbox_dir(dropbox_credentials, path = 'folder_name', verbose = TRUE)
 file <- dropbox_get(dropbox_credentials, 'my_data.csv')
 data <- read.csv(textConnection(file))
 
+# Reading CSV files (a wrapper around dropbox_get specific to csv files)
+my_data <- db.read.csv(dropbox_credentials, 'my_data.csv', header = TRUE)
+
+
+
 # Reading .rdata files
 df <- data.frame(x=1:10, y=rnorm(10))
 dropbox_save(dropbox_credentials, df, file="df.rdata")
