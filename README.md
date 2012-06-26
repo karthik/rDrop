@@ -144,7 +144,10 @@ dropbox_copy(dropbox_credentials, from_path, to_path)
 
 ### Creating a public share for any Dropbox file or folder
 ```R
-dropbox_share(dropbox_credentials, file)
+share <- dropbox_share(dropbox_credentials, file)
+# returns a list of two (url and expires)
+share$url # returns a URL to the share
+share$expires # shows when the link will expire
 # File/folder to share. Returns share URL with expiration information.
 # Link goes directly to files. Folder are automatically zipped up.
 ```
