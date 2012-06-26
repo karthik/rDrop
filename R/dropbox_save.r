@@ -27,7 +27,7 @@
 #'}
 dropbox_save <- function(cred, list = character(), file = stop("'file' must be specified"), 
     envir = parent.frame(), precheck = TRUE, verbose = FALSE, curl = getCurlHandle(), 
-    ..., ext = ".rdata") {
+    ..., ext = ".rda") {
     if (!is(cred, "DropboxCredentials")) 
         stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", 
             call. = FALSE)
