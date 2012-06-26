@@ -7,14 +7,14 @@ This package provides a  programmatic interface to [Dropbox](https://www2.dropbo
 
 **Important**: This package relies on `ROAuth 0.92` and the version currently available on CRAN does not play so well with `rDrop`. Install the version on Duncan's github:
 
-```R
+```r
 library(devtools)
 install_github("ROAuth", "duncaltl")
 ```
 **Without th newest `ROAuth` `rDrop` WILL NOT WORK!**
 
 # Installing
-```R
+```r
 require(devtools)
 install_github("rDrop", "karthikram")
 ```
@@ -32,7 +32,7 @@ install_github("rDrop", "karthikram")
 
 * Once you click create, be sure to **copy your App key and App secret** and store it somewhere safe. If you forget it, you can always find it [here](https://www.dropbox.com/developers/apps) (Just click on options next to your App name).  If you use your `.rprofile` and no one else uses your computer,  then we recommend you save your keys there by adding the following lines: <br><br>
 
-```R
+```r
 options(DropboxKey = "Your_App_key")
 options(DropboxSecret = "Your_App_Secret")
 ```
@@ -45,7 +45,7 @@ options(DropboxSecret = "Your_App_Secret")
 If you prefer not to specify keys in a `.rprofile` (especially if you are on a public computer/cluster/cloud server), you can specify both keys in the `dropbox_auth()` function directly (more below). <em>Note that once you have authorized an app, there is no need to call this function again.</em> You can just use your saved credential file to access your Dropbox. If for any reason, the file becomes compromised, just revoke access from your [list of authorized apps.](https://www2.dropbox.com/account#applications)
 
 ### Authorizing your app
-```R
+```r
 library(rDrop)
 ```
 
@@ -136,14 +136,14 @@ dropbox_move(dropbox_credentials, from_path, to_path)
 ```
 
 ### Copying files within Dropbox
-```R
+```r
 # Note that all paths are relative to your dropbox root. Leave blank or use / for root.
 dropbox_copy(dropbox_credentials, from_path, to_path)
 # To overwrite existing file/folder in destination, add overwrite = TRUE.
 ```
 
 ### Creating a public share for any Dropbox file or folder
-```R
+```r
 share <- dropbox_share(dropbox_credentials, file)
 # returns a list of two (url and expires)
 share$url # returns a URL to the share
