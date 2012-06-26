@@ -1,7 +1,7 @@
 Package: rDrop
 Type: Package
 Title: Dropbox R interface.
-Version: 0.1
+Version: 0.3
 License: BSD
 Date: 2012-03-14
 Authors@R: c(person("Karthik", "Ram", role = c("aut",
@@ -12,12 +12,15 @@ Maintainer: Karthik Ram <karthik.ram@gmail.com>
 Description: Programmatic interface to the Dropbox file
     system.
 URL: http://github.com/karthikram/rDrop
+Bug reports: http://github.com/karthikram/rDrop/issues
 Depends:
     RJSONIO,
     RCurl (>= 1.6),
     ROAuth (>= 0.92.0),
     methods,
     plyr,
+    Rcpp,
+    colorspace,
     stringr
 Imports:
     RJSONIO,
@@ -25,9 +28,11 @@ Imports:
     ROAuth,
     methods,
     plyr,
+    Rcpp,
+    colorspace,
     stringr
 Collate:
-    'db.read.csv.r'
+    'db.wrappers.r'
     'dropbox_acc_info.r'
     'dropbox_auth.r'
     'dropbox_copy.r'

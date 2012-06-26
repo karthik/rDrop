@@ -33,6 +33,6 @@ dropbox_acc_info(db_cred)
 \seealso{
   related: \code{\link{dropbox_auth}}
 }
-\keyword{authentication}
 \keyword{OAuth}
+\keyword{authentication}
 

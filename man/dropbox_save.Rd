@@ -6,7 +6,7 @@
     file = stop("'file' must be specified"),
     envir = parent.frame(), precheck = TRUE,
     verbose = FALSE, curl = getCurlHandle(), ...,
-    ext = ".rdata")
+    ext = ".rda")
 }
 \arguments{
   \item{cred}{Specifies an object of class
