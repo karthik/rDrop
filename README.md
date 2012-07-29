@@ -5,11 +5,11 @@ This package provides a  programmatic interface to [Dropbox](https://www2.dropbo
 
 > **Disclaimer: This package is fairly new and likely to contain bugs so please use discretion and report any issues here on github</u>**
 
-**Important**: This package relies on `ROAuth 0.92` and the version currently available on CRAN does not play so well with `rDrop`. Install the version on Duncan's github:
+**Important**: This package relies on `ROAuth 0.92` and the version currently available on CRAN does not play so well with `rDrop`. Install the version on ropensci's github:
 
 ```r
 library(devtools)
-install_github("ROAuth", "duncaltl")
+install_github("ROAuth", "ropensci")
 ```
 **Without th newest `ROAuth` `rDrop` WILL NOT WORK!**
 
