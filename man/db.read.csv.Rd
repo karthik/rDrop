@@ -2,8 +2,7 @@
 \alias{db.read.csv}
 \title{Read CSV files stored in Dropbox}
 \usage{
-  db.read.csv(dropbox_credentials, file_to_get,
-    header = TRUE)
+  db.read.csv(dropbox_credentials, file_to_get)
 }
 \arguments{
   \item{dropbox_credentials}{Specifies an object of class
@@ -12,9 +11,6 @@
   \item{file_to_get}{Specifies the path to the file you
   want to retrieve. Path must be relative to \code{Dropbox
   root}.}
-
-  \item{header}{Default is \code{TRUE}. Set to \code{FALSE}
-  if your csv file does not have a header row.}
 }
 \value{
   data.frame
