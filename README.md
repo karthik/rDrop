@@ -1,4 +1,3 @@
-
 # rDrop: Dropbox interface via R
 
 This package provides a  programmatic interface to [Dropbox](https://www2.dropbox.com/home) from the [R environment](http://www.r-project.org/). The package is complete and fully working but waiting on a dependency to be updated on CRAN before it can be submitted.
@@ -9,7 +8,7 @@ This package provides a  programmatic interface to [Dropbox](https://www2.dropbo
 
 ```r
 library(devtools)
-install_github("ROAuth", "ropensci")
+install_github("ROAuth", "duncantl")
 ```
 **Without th newest `ROAuth` `rDrop` WILL NOT WORK!**
 
