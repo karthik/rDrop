@@ -4,7 +4,7 @@ This package provides a  programmatic interface to [Dropbox](https://www2.dropbo
 
 > **Disclaimer: This package is fairly new and likely to contain bugs so please use discretion and report any issues here on github</u>**
 
-**Important**: This package relies on `ROAuth 0.92` and the version currently available on CRAN does not play so well with `rDrop`. Install the version on ropensci's github:
+**Important**: This package relies on `ROAuth 0.92` and the version currently available on CRAN does not play so well with `rDrop`. Install the version on Duncan's github:
 
 ```r
 library(devtools)
@@ -41,14 +41,11 @@ options(DropboxSecret = "Your_App_Secret")
 
 ![Alt text](https://github.com/karthikram/rDrop/blob/master/screenshots/keys.png?raw=true)
 
-If you prefer not to specify keys in a `.rprofile` (especially if you are on a public computer/cluster/cloud server), you can specify both keys in the `dropbox_auth()` function directly (more below). <em>Note that once you have authorized an app, there is no need to call this function again.</em> You can just use your saved credential file to access your Dropbox. If for any reason, the file becomes compromised, just revoke access from your [list of authorized apps.](https://www2.dropbox.com/account#applications)
+If you prefer not to specify keys in a `.rprofile` (especially if you are on a public computer/cluster/the cloud), you can specify both keys in the `dropbox_auth()` function directly (more on this below). <em>Note that once you have authorized an app, there is no need to call this function again.</em> You can just use your saved credential file to access your Dropbox. If for any reason, the credential file becomes compromised, just revoke access from your [list of authorized apps and start over.](https://www2.dropbox.com/account#applications)
 
 ### Authorizing your app
-```r
-library(rDrop)
-```
-
 ```R
+library(rDrop)
 # If you have Dropbox keys in your .rprofile, simply run:
  dropbox_credentials <- dropbox_auth()
 # Otherwise:
