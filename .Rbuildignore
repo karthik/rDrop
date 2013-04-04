@@ -3,3 +3,5 @@ screenshots
 testing.r
 README.md
 .gitignore
+GNUmakefile
+

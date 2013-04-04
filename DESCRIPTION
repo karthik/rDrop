@@ -1,7 +1,7 @@
 Package: rDrop
 Type: Package
 Title: Dropbox R interface.
-Version: 0.3
+Version: 0.3-0
 License: BSD
 Date: 2012-03-14
 Authors@R: c(person("Karthik", "Ram", role = c("aut",
