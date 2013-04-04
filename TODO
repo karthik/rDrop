@@ -1,3 +1,6 @@
+why not have dropbox_get and _put use the same parameter
+name for the file.
+
 get content type correct for dropbox_save
 
 have dropbox_save handle ... as named objects

@@ -19,6 +19,8 @@ function(cred, what, filename = what, curl = getCurlHandle(), ..., verbose = FAL
 {
     url <- sprintf("https://api-content.dropbox.com/1/files_put/dropbox/%s", filename)
 
+    filename = paste(filename, collapse = "/")
+    
     input <- RCurl:::uploadFunctionHandler(what)
 
     size = if(is(what, "AsIs")) {

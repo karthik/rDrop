@@ -39,8 +39,13 @@ We can use a DropboxCredentials object to invoke methods with
 The top-level/root dropbox versus other.
 
 Give an example/case study of how we would use this and for what purpose.
+  e.g. provenance?
+       working on multiple machines, e.g. timings on different machines 
+         write back to a folder for that project with a file for each 
+         then collect in a dynamic document to put on same plot.
 
-Similar to Amazon S3 - see RAmazonS3, Google Drive
+Similar to Amazon S3 - see RAmazonS3, Google Drive.
+Would like a common interface and intersection of facilities.
 
 
-Sync API
+Sync API ?

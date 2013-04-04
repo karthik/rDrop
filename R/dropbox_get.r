@@ -7,22 +7,27 @@
 #'  the returned value in here (avoids unnecessary footprint).
 #' @param binary set if the object you are retrieving is binary content.
 #' @param ... optional additional curl options (debugging tools mostly)..
+#' @param root  the name of the root folder
 #' @return R object
 #' @export dropbox_get
 #' @examples \dontrun{
 #' x <- dropbox_get(db_cred, '/folder/file.csv')
 #'}
-dropbox_get <- function(cred, file_to_get, curl = getCurlHandle(),
-    ..., binary = NA) {
+dropbox_get <-
+function(cred, file_to_get, curl = getCurlHandle(), ..., binary = NA,
+         root = "dropbox")
+{
     if (!is(cred, "DropboxCredentials") || missing(cred))
         stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", call.= FALSE)
 
+    file_to_get = paste(file_to_get, collapse = "/")
 
     if (!(exists.in.dropbox(cred, path = file_to_get, is_dir = FALSE,..., curl = curl))) {
         stop("File or folder does not exist", call. = FALSE)
     }
-    downloaded_file <- suppressWarnings(OAuthRequest(cred, "https://api-content.dropbox.com/1/files/",
-        list(root = "dropbox", path = file_to_get), "GET", binary = binary, ..., curl = curl))
+    invisible(suppressWarnings(OAuthRequest(cred, "https://api-content.dropbox.com/1/files/",
+                                            list(root = root, path = file_to_get), "GET",
+                                            binary = binary, ..., curl = curl)))
 }
 # API documentation:
 #
