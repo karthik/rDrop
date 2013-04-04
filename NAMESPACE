@@ -1,3 +1,11 @@
+import(RCurl)
+import(RJSONIO)
+import(ROAuth)
+import(plyr)
+import(stringr)
+
+
+
 export(db.read.csv)
 export(dropbox.file.info)
 export(dropbox_acc_info)
@@ -10,17 +18,12 @@ export(dropbox_get)
 export(dropbox_media)
 export(dropbox_move)
 export(dropbox_save)
+export(dropbox_load)
 export(dropbox_search)
 export(dropbox_share)
 export(exists.in.dropbox)
 export(sanitize_paths)
 exportClasses(DropboxCredentials)
-import(RCurl)
-import(RJSONIO)
-import(ROAuth)
-import(plyr)
-import(stringr)
 
 export(dropbox_serialize)
 exportMethods("$", "[[", "[[<-")
-

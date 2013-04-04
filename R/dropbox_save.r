@@ -1,4 +1,4 @@
-#' Function to save an object from R into Dropbox (not working)
+#' Function to save an object from R into Dropbox
 #'
 #' This function saves an R object to Dropbox. One can then retrieve it and load
 #' it back into R.
