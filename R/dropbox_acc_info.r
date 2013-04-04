@@ -11,13 +11,13 @@
 #' @examples \dontrun{
 #' dropbox_acc_info(db_cred)
 #'}
-dropbox_acc_info <- function(cred, curl = getCurlHandle(), 
-    ...) {
+dropbox_acc_info <-
+function(cred, curl = getCurlHandle(),  ...) {
     if (!is(cred, "DropboxCredentials")) 
         stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", 
             call. = FALSE)
     info <- fromJSON(OAuthRequest(cred, "https://api.dropbox.com/1/account/info", 
-        ..., curl = curl))
+                                  ..., curl = curl))
     return(info)
 }
 # API documentation:

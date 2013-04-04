@@ -47,4 +47,9 @@ Collate:
     'dropbox_save.r'
     'dropbox_search.r'
     'dropbox_share.r'
+    dropbox_load.r
+    dropbox_serialize.r
     'startup.r'
+    dropboxMethods.r
+
+    

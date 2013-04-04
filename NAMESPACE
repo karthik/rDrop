@@ -20,3 +20,7 @@ import(RJSONIO)
 import(ROAuth)
 import(plyr)
 import(stringr)
+
+export(dropbox_serialize)
+exportMethods("$", "[[", "[[<-")
+

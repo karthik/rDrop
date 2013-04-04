@@ -1,0 +1,46 @@
+
+Basics of dropbox
+
+Why not use a loca folder that automatically updates?
+
+Can do this with calls to system commands. Not very portable
+and unnecessary reading and writing to disk. Also lose
+control over the communication (persistent connections),
+not as secure (secrets as command line arguments)
+Better to do it directly in R.
+
+Dropbox API is REST and JSON based.
+Uses OAuth 1.0 to 
+
+The basic operations are 
+  get and put a document
+  search for text
+  information about a document
+  information about the account and user
+
+  share a document
+
+  list directory
+  create directory
+  copy, move/rename, delete
+
+  revisions
+  restore
+
+  chunked upload
+
+Add save and load for R objects
+
+We can use a DropboxCredentials object to invoke methods with
+  drop$get("filename")
+  drop$delete("filename")
+  drop[["filename"]]
+
+The top-level/root dropbox versus other.
+
+Give an example/case study of how we would use this and for what purpose.
+
+Similar to Amazon S3 - see RAmazonS3, Google Drive
+
+
+Sync API

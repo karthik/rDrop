@@ -1,0 +1,10 @@
+get content type correct for dropbox_save
+
+have dropbox_save handle ... as named objects
+ and make it behave better than save which looks for global variables. 
+ Allow both.
+
+[Done] Ensure dropbox_get obeys the binary
+  o = dropbox_get(drop, "x.rda", binary = TRUE)
+
+Have dropbox_get detect binary.

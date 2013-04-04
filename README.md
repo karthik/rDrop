@@ -10,7 +10,7 @@ This package provides a  programmatic interface to [Dropbox](https://www2.dropbo
 library(devtools)
 install_github("ROAuth", "duncantl")
 ```
-**Without th newest `ROAuth` `rDrop` WILL NOT WORK!**
+**Without the newest `ROAuth` `rDrop` WILL NOT WORK!**
 
 # Installing
 ```r

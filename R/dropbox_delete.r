@@ -12,36 +12,39 @@
 #' @examples \dontrun{
 #' dropbox_delete(dropbox_credential, 'path/to/file')
 #'}
-dropbox_delete <- function(cred, file_to_delete = NULL, 
-    ask = interactive(), curl = getCurlHandle(), ...) {
+dropbox_delete <- function(cred, file_to_delete = NULL,
+                           ask = interactive(), curl = getCurlHandle(), ...)
+{
     verify <- ""
-    if (!is(cred, "DropboxCredentials")) 
-        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", 
-            call. = FALSE)
-    if (!exists.in.dropbox(cred, file_to_delete, ..., curl = getCurlHandle())) {
+    if (!is(cred, "DropboxCredentials"))
+        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", call.= FALSE)
+
+    if(!exists.in.dropbox(cred, file_to_delete, ..., curl = getCurlHandle())) 
         stop("File or folder not found", call. = FALSE)
-    }
-    if (ask) {
-        verify <- readline(paste("Are you sure you want to delete", 
-            file_to_delete, " (Y/N)? "))
+
+    if(ask) {
+        verify <- readline(paste("Are you sure you want to delete",
+                                 file_to_delete, " (Y/N)? "))
         verify <- toupper(verify)
-        if (verify != "Y" & verify != "N") {
+        if(verify != "Y" & verify != "N") {
             stop("Unexpected response. \n", call. = F)
         }
     }
-    if (verify == "Y" || !(ask)) {
-        deleted <- fromJSON(OAuthRequest(cred, "https://api.dropbox.com/1/fileops/delete", 
-            list(root = "dropbox", path = file_to_delete)), ..., 
-            curl = curl)
-        if (is.list(deleted)) {
-            cat(deleted$path, "was successfully deleted on", deleted$modified, 
-                "\n")
+    if (verify == "Y" || !ask) {
+        deleted <- fromJSON(OAuthRequest(cred, "https://api.dropbox.com/1/fileops/delete",
+                                         list(root = "dropbox", path = file_to_delete)),
+                                         ..., curl = curl)
+        if(is.list(deleted)) {
+            cat(deleted$path, "was successfully deleted on",
+                deleted$modified, "\n")
         }
     }
+    TRUE
 }
 # API documentation:
 #
 #
 #
 #
-#   https://www.dropbox.com/developers/reference/api#fileops-delete   
+#   https://www.dropbox.com/developers/reference/api#fileops-delete
+

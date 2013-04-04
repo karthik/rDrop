@@ -1,6 +1,6 @@
 #'Function to list contents of a Dropbox folder.
 #'
-#' If no folder is specifies, it will only list contents of the root folder.
+#' If no folder is specified, it will only list contents of the root folder.
 #' @param cred An object of class DropboxCredentials with Dropobox specific credentials.
 #' @param path  The directory to list. Not yet implemented
 #' @param verbose logical. FALSE returns a list with file names in root folder. TRUE returns a \code{data.frame} with the following fields: id, revision, rev, thumb_exists, bytes, path, modified, and is_dir
