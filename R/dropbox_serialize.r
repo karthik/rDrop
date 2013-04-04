@@ -36,13 +36,17 @@ function(cred, file, object,
 
     if (is.character(file) && !nzchar(file)) 
         stop("'file' must be non-empty string")
+
+    if(is.character(file))
+      file = paste(file, collapse = "/")
+    
                    # Allow the caller to force a particular name.
     filename <- if(!is(file, "AsIs") && !grepl(sprintf("%s$", ext), file)) 
                    paste(str_trim(str_extract(file, "[^.]*")), ext, sep = "")
                 else
                    file
     url <- sprintf("https://api-content.dropbox.com/1/files_put/dropbox/%s", 
-                   filename)
+                    filename)
     
     z = serialize(object, NULL)
     input <- RCurl:::uploadFunctionHandler(z, TRUE)

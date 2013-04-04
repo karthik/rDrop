@@ -26,5 +26,6 @@ export(exists.in.dropbox)
 export(sanitize_paths)
 exportClasses(DropboxCredentials)
 
-export(dropbox_serialize)
+export(dropbox_serialize, dropbox_unserialize)
 exportMethods("$", "[[", "[[<-")
+
