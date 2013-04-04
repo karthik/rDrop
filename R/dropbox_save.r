@@ -25,9 +25,11 @@
 #'   # or
 #' dropbox_save(cred, list(a = 1:4, b = letters[1:3]), 'duncan', verbose = TRUE, ext = '.rda')
 #'}
-dropbox_save <- function(cred, list = character(), file = stop("'file' must be specified"), 
-    envir = parent.frame(), precheck = TRUE, verbose = FALSE, curl = getCurlHandle(), 
-    ..., ext = ".rda") {
+dropbox_save <-
+function(cred, ..., list = character(), file = stop("'file' must be specified"), 
+         envir = parent.frame(), precheck = TRUE, verbose = FALSE, curl = getCurlHandle(), 
+         ext = ".rda", .opts = list())
+{
     if (!is(cred, "DropboxCredentials")) 
         stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", 
             call. = FALSE)
@@ -37,6 +39,8 @@ dropbox_save <- function(cred, list = character(), file = stop("'file' must be s
                 # We could use ... and then use the names from that.
                 # We can use a ..., list = character() approach as in rm()
                 # but is not needed or really sane. It is non-standard evaluation.
+                # Recently added:
+                # But it is consistent with save() so probably best to follow that. See the call to save() below.
                 #Karthik: OK.
     if (FALSE && missing(.objs)) {
         names <- as.character(substitute(list(...)))[-1L]
@@ -54,20 +58,26 @@ dropbox_save <- function(cred, list = character(), file = stop("'file' must be s
     if (is.character(file) && !nzchar(file)) 
         stop("'file' must be non-empty string")
                    # Allow the caller to force a particular name.
-    filename <- if (!is(file, "AsIs")) 
-        paste(str_trim(str_extract(file, "[^.]*")), ext, sep = "") else file
-    url <- sprintf("https://api-content.dropbox.com/1/files_put/dropbox/%s", 
-        filename)
+    filename <- if (!is(file, "AsIs") && !grepl(sprintf("%s$", ext), file))
+                    paste(str_trim(str_extract(file, "[^.]*")), ext, sep = "")
+                else
+                    file
+                    
+    url <- sprintf("https://api-content.dropbox.com/1/files_put/dropbox/%s", filename)
     
-#    con <- rawConnection(raw(), "w")
-#    on.exit(close(con))
-    z = serialize(list, NULL)
-#    z <- rawConnectionValue(con)
+    con <- rawConnection(raw(), "w")
+    on.exit(close(con))
+    if(length(list))
+      save(list = list, file = con, envir = envir)
+    else
+      save(..., file = con, envir = envir)
+    
+    z <- rawConnectionValue(con)
     input <- RCurl:::uploadFunctionHandler(z, TRUE)
     drop_save <- fromJSON(OAuthRequest(cred, url, , "PUT", upload = TRUE, 
                                        readfunction = input, infilesize = length(z), verbose = FALSE, 
                                        httpheader = c(`Content-Type` = "application/octet-stream"), 
-                                       ..., curl = curl))
+                                       curl = curl, .opts = .opts))
     if (verbose && is.list(drop_save)) {
         message("File succcessfully drop_saved to", drop_save$path, 
                 "on", drop_save$modified)

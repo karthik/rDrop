@@ -28,7 +28,7 @@
 dropbox_serialize <-
 function(cred, file, object, 
             precheck = TRUE, verbose = FALSE, curl = getCurlHandle(),
-           ext = ".rda")
+           ext = ".rda", ...)
 {
     if (!is(cred, "DropboxCredentials")) 
         stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", 
@@ -37,7 +37,7 @@ function(cred, file, object,
     if (is.character(file) && !nzchar(file)) 
         stop("'file' must be non-empty string")
                    # Allow the caller to force a particular name.
-    filename <- if(!is(file, "AsIs")) 
+    filename <- if(!is(file, "AsIs") && !grepl(sprintf("%s$", ext), file)) 
                    paste(str_trim(str_extract(file, "[^.]*")), ext, sep = "")
                 else
                    file

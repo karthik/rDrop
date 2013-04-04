@@ -7,7 +7,7 @@ Date: 2012-03-14
 Authors@R: c(person("Karthik", "Ram", role = c("aut",
     "cre"), email = "karthik.ram at gmail.com"),
     person("Duncan", "Temple Lang", role = "aut", email =
-    "duncan at wald.ucdavis.edu"))
+    "duncan at r-project.org"))
 Maintainer: Karthik Ram <karthik.ram@gmail.com>
 Description: Programmatic interface to the Dropbox file
     system.
@@ -19,8 +19,6 @@ Depends:
     ROAuth (>= 0.92.0),
     methods,
     plyr,
-    Rcpp,
-    colorspace,
     stringr
 Imports:
     RJSONIO,
@@ -28,28 +26,26 @@ Imports:
     ROAuth,
     methods,
     plyr,
-    Rcpp,
-    colorspace,
     stringr
 Collate:
-    'db.wrappers.r'
-    'dropbox_acc_info.r'
-    'dropbox_auth.r'
-    'dropbox_copy.r'
-    'dropbox_create_folder.r'
-    'dropbox_delete.r'
-    'dropbox_dir.r'
-    'dropbox_error_handlers.r'
-    'dropbox_get.r'
-    'dropbox_media.r'
-    'dropbox_move.r'
-    'dropbox_put.r'
-    'dropbox_save.r'
-    'dropbox_search.r'
-    'dropbox_share.r'
+    db.wrappers.r
+    dropbox_acc_info.r
+    dropbox_auth.r
+    dropbox_copy.r
+    dropbox_create_folder.r
+    dropbox_delete.r
+    dropbox_dir.r
+    dropbox_error_handlers.r
+    dropbox_get.r
+    dropbox_media.r
+    dropbox_move.r
+    dropbox_put.r
+    dropbox_save.r
+    dropbox_search.r
+    dropbox_share.r
     dropbox_load.r
     dropbox_serialize.r
-    'startup.r'
+    dropbox_unserialize.r
+    startup.r
     dropboxMethods.r
-
     
