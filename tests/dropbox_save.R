@@ -1,11 +1,9 @@
 library(rDrop)
 
+source("getCred.R")
 
-if( (ff <- Sys.getenv("DROPBOX_AUTH_RDA")) != ""
-    && file.exists(ff))
+if(!is.null(drop <- getCred()))
 {
-  what = load(ff, globalenv())
-  drop = get(what, globalenv())
 
   a = 1:10
   b = pi
