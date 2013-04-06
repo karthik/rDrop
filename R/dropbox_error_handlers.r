@@ -12,8 +12,9 @@
 #' exists.in.dropbox(cred,'test_folder')
 #' exists.in.dropbox(cred,'test_folder',is_dir='dir')
 #'}
-exists.in.dropbox <- function(cred, path = NULL, is_dir = NULL, 
-    ..., curl = getCurlHandle()) {
+exists.in.dropbox <-
+function(cred, path = NULL, is_dir = NULL, ..., curl = getCurlHandle())
+{
     if (!is(cred, "DropboxCredentials")) 
         stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.")
                                                                     # default response so function can proceed.
@@ -75,7 +76,8 @@ exists.in.dropbox <- function(cred, path = NULL, is_dir = NULL,
 #' @examples \dontrun{
 #' dropbox.file.inco(cred, '/folder/file.txt')
 #'}
-dropbox.file.info <- function(cred, path_to_file) {
+dropbox.file.info <-
+function(cred, path_to_file) {
                                                                     # Add leading slash in case it is missing
     if (!grepl("^/", path_to_file)) {
         path_to_file <- paste("/", path_to_file, sep = "")
@@ -94,7 +96,9 @@ dropbox.file.info <- function(cred, path_to_file) {
 #' @examples \dontrun{
 #' santize_paths(from_path, to_path)
 #'}
-sanitize_paths <- function(from_path, to_path = NULL) {
+sanitize_paths <-
+function(from_path, to_path = NULL, cred = NULL)
+{
     if (is.null(to_path)) 
         to_path <- "/"
     if (!grepl("^/", from_path)) 
@@ -111,5 +115,11 @@ sanitize_paths <- function(from_path, to_path = NULL) {
     if (nchar(to_path) > 1 && !grepl("\\.", to_path)) 
         to_path <- paste(to_path, "/", basename(from_path), sep = "")
                 # cat('from: ', from_path, '\n to: ', to_path)
-    return(list(from_path, to_path))
+
+    ans <- list(from_path, to_path)
+
+    if(length(cred)) 
+       lapply(ans, function(x) getPath(x, cred = cred))
+    else
+      ans
 } 

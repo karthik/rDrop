@@ -12,15 +12,19 @@
 #' @examples \dontrun{
 #' dropbox_delete(dropbox_credential, 'path/to/file')
 #'}
-dropbox_delete <- function(cred, file_to_delete = NULL,
-                           ask = interactive(), curl = getCurlHandle(), ...)
+dropbox_delete <-
+function(cred, file_to_delete = NULL, ask = interactive(),
+         curl = getCurlHandle(), ..., .checkIfExists = TRUE, .silent = FALSE)
 {
     verify <- ""
     if (!is(cred, "DropboxCredentials"))
         stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", call.= FALSE)
 
-    if(!exists.in.dropbox(cred, file_to_delete, ..., curl = getCurlHandle())) 
+    file_to_delete = getPath(file_to_delete, cred = cred)
+    
+    if(.checkIfExists && !exists.in.dropbox(cred, file_to_delete, ..., curl = getCurlHandle())) 
         stop("File or folder not found", call. = FALSE)
+
 
     if(ask) {
         verify <- readline(paste("Are you sure you want to delete",
@@ -34,9 +38,8 @@ dropbox_delete <- function(cred, file_to_delete = NULL,
         deleted <- fromJSON(OAuthRequest(cred, "https://api.dropbox.com/1/fileops/delete",
                                          list(root = "dropbox", path = file_to_delete)),
                                          ..., curl = curl)
-        if(is.list(deleted)) {
-            cat(deleted$path, "was successfully deleted on",
-                deleted$modified, "\n")
+        if(!.silent && is.list(deleted)) {
+            cat(deleted$path, "was successfully deleted on", deleted$modified, "\n")
         }
     }
     TRUE

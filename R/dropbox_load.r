@@ -7,9 +7,9 @@
 #' @return a character vector containing the names of the new variables created. This is the return value from a call to \code{\link{load}}.
 #' @export
 dropbox_load <-
-function(cred, file, envir = parent.frame())
+function(cred, file, envir = parent.frame(), ..., .checkIfExists = TRUE)
 {
-  data = dropbox_get(cred, file, binary = TRUE)
+  data = dropbox_get(cred, file, binary = TRUE, ..., .checkIfExists = .checkIfExists)
   con = rawConnection(data)
   load(con, envir)
 }

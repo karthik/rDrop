@@ -24,8 +24,16 @@ export(dropbox_search)
 export(dropbox_share)
 export(exists.in.dropbox)
 export(sanitize_paths)
-exportClasses(DropboxCredentials)
+export(dropbox_chunked)
+exportClasses(DropboxCredentials, DropboxFolder)
+
+export(DropboxFolder)
+exportMethods(DropboxFolder)
+
+export(dir)
+exportMethods(dir)
+
 
 export(dropbox_serialize, dropbox_unserialize)
 exportMethods("$", "[[", "[[<-")
-
+export(Dropbox)

@@ -12,12 +12,12 @@
 #' @examples \dontrun{
 #' dropbox_media(db_cred, '/data/file.csv')
 #'}
-dropbox_media <- function(cred, path = NULL, curl = getCurlHandle(), 
-    ...) {
+dropbox_media <-
+function(cred, path = NULL, curl = getCurlHandle(), ..., .checkIfExists = TRUE) {
     if (!is(cred, "DropboxCredentials")) 
         stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", 
             call. = FALSE)
-    if (!(exists.in.dropbox(cred, path = path, ..., curl = getCurlHandle()))) {
+    if (.checkIfExists && !(exists.in.dropbox(cred, path = path, ..., curl = getCurlHandle()))) {
         stop("Content does not exist in dropbox", call. = FALSE)
     }
     if (!is.null(path)) {

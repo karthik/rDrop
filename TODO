@@ -1,13 +1,55 @@
-why not have dropbox_get and _put use the same parameter
-name for the file.
+[Done] Constructor for DropboxCredentials object, separate from dropbox_oauth
+  Document this
 
-get content type correct for dropbox_save
+* Documentation for classes, etc.
 
-have dropbox_save handle ... as named objects
+* Handle case for dropbox_copy when a DropboxFolder is used for the cred and get the relative paths correct
+
+* Class for a path/folder that extends DropboxCredentials and then
+  uses this to fill the path in requests
+  Use getPath() to compute the actual path for the requests.
+  [Done] sanitize_path()
+  Implement/Check all functions that need to use this.
+
+    [Done] up to dropbox_create_folder
+
+* [Done] Switched to dir() function and generic
+  Fix default method for ls() to get correct environment
+  e.g. ls(2) getting the wrong environment
+
+* Fill in getPath() for corner cases (leading /, empty paths)
+  Fix // cases but not in URL's http://....
+
+* Large files not uploading correctly
+  Use chunked upload
+
+* Optionally avoid check.if.exists 
+  Add .checkIfExists = TRUE to functions.
+  Perhaps use a getOption() for the default value.
+
+* Allow caching of the folder
+   Sync API to be informed of update.
+
+   use the hash from the /metdata request header.
+
+* Conditions and classes for errors.
+  see raiseError() in errors.R
+  Used in some functions - grep for stop()
+
+* Suppress warning message about "No inputs passed to form" from dropbox_acc_info
+   In ROAuth.  
+
+* Option for list = true for the dropbox_dir() function
+
+* Why not have dropbox_get and _put use the same parameter name for the file.
+
+* get content type correct for dropbox_save
+
+* have dropbox_save handle ... as named objects
  and make it behave better than save which looks for global variables. 
  Allow both.
 
 [Done] Ensure dropbox_get obeys the binary
   o = dropbox_get(drop, "x.rda", binary = TRUE)
 
-Have dropbox_get detect binary.
+* Have dropbox_get detect binary.

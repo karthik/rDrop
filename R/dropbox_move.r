@@ -17,8 +17,10 @@
 #' dropbox_move(cred, 'move.txt','test_works')
 #' File succcessfully moved to /test_works/move.txt on Thu, 29 Mar 2012 20:41:45 +0000
 #'}
-dropbox_move <- function(cred, from_path = NULL, to_path = NULL, 
-    verbose = FALSE, curl = getCurlHandle(), ...) {
+dropbox_move <-
+function(cred, from_path = NULL, to_path = NULL, 
+         verbose = FALSE, curl = getCurlHandle(), ..., .checkIfExists = TRUE)
+{
     if (!is(cred, "DropboxCredentials")) 
         stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", 
             call. = FALSE)
@@ -26,16 +28,21 @@ dropbox_move <- function(cred, from_path = NULL, to_path = NULL,
     if (is.null(from_path)) {
         stop("Did not specify full path for source", call. = F)
     }
-    check_paths <- sanitize_paths(from_path, to_path)
+
+    if(is(to_path, "DropboxFolder"))  
+       to_path = sprintf("%s/%s", to_path@path, basename(getPath(from_path, cred = cred)))
+
+    check_paths <- sanitize_paths(from_path, to_path, cred)
     from_path <- check_paths[[1]]
     to_path <- check_paths[[2]]
-    if (!exists.in.dropbox(cred, from_path, ..., curl = getCurlHandle())) 
+    if (.checkIfExists && !exists.in.dropbox(cred, from_path, ..., curl = getCurlHandle())) 
         stop("Source file or folder does not exist", call. = FALSE)
-    if (!exists.in.dropbox(cred, dirname(to_path), is_dir = TRUE, 
+    if (.checkIfExists && !exists.in.dropbox(cred, dirname(to_path), is_dir = TRUE, 
         ..., curl = getCurlHandle())) 
         stop("Destination is not a valid folder", call. = FALSE)
+    
     if (grepl("\\.", to_path)) {
-        if (exists.in.dropbox(cred, to_path, ..., curl = getCurlHandle())) 
+        if (.checkIfExists && exists.in.dropbox(cred, to_path, ..., curl = getCurlHandle())) 
             stop("File already exists in destination", call. = FALSE)
     }
     move <- fromJSON(OAuthRequest(cred, "https://api.dropbox.com/1/fileops/move", 

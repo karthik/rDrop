@@ -15,16 +15,17 @@
 #'}
 dropbox_get <-
 function(cred, file_to_get, curl = getCurlHandle(), ..., binary = NA,
-         root = "dropbox")
+         root = "dropbox", .checkIfExists = TRUE)
 {
     if (!is(cred, "DropboxCredentials") || missing(cred))
-        stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", call.= FALSE)
+        missingCredentialsError()
 
-    file_to_get = paste(file_to_get, collapse = "/")
+    file_to_get = getPath(file_to_get, cred = cred)  # paste(file_to_get, collapse = "/")
 
-    if (!(exists.in.dropbox(cred, path = file_to_get, is_dir = FALSE,..., curl = curl))) {
+    if (.checkIfExists && !(exists.in.dropbox(cred, path = file_to_get, is_dir = FALSE,..., curl = curl))) {
         stop("File or folder does not exist", call. = FALSE)
     }
+    
     invisible(suppressWarnings(OAuthRequest(cred, "https://api-content.dropbox.com/1/files/",
                                             list(root = root, path = file_to_get), "GET",
                                             binary = binary, ..., curl = curl)))

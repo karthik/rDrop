@@ -48,4 +48,5 @@ Collate:
     dropbox_unserialize.r
     startup.r
     dropboxMethods.r
-    
+    errors.R
+    dropbox_chunked.r

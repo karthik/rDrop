@@ -3,6 +3,13 @@
 #' @rdname DropboxCredentials-class
 #' @exportClass DropboxCredentials
 setClass("DropboxCredentials", contains = "OAuthCredentials")
+
+
+#' @name DropboxFolder-class
+#' @exportClass DropboxFolder
+setClass("DropboxFolder", representation(path = "character"), contains = "DropboxCredentials")
+
+
 #' rDrop: programmatic access to Dropbox from R.
 #'
 #' Before using any of rDrop's functions, you must first create an application on the Dropobox developer site (\url{https://www2.dropbox.com/developers/apps}). This application is specific to you. Follow through with the steps to create your application and copy the  generated consumer key/secret combo. Ideally you should save those keys (on separate lines) in your options as:
@@ -39,7 +46,7 @@ setClass("DropboxCredentials", contains = "OAuthCredentials")
 dropbox_auth <-
 function(cKey = getOption("DropboxKey", stop("Missing Dropbox consumer key")),
          cSecret = getOption("DropboxSecret", stop("Missing Dropbox app secret")),
-         curl = getCurlHandle(...), ..., .opts = list(...))
+         curl = getCurlHandle(...), ..., .opts = list(...), .silent = FALSE)
 {
 
   reqURL <- "https://api.dropbox.com/1/oauth/request_token"
@@ -58,15 +65,8 @@ function(cKey = getOption("DropboxKey", stop("Missing Dropbox consumer key")),
                                     sep = "\n"),
                     curl = curl)
 
-  if (TRUE) 
+  if (!.silent) 
     cat("\n Dropbox authentication completed successfully.\n")
-
-  if (FALSE) {
-    info <- OAuthRequest(dropbox_oa, "https://api.dropbox.com/1/account/info")
-    OAuthRequest(dropbox_oa, "https://api-content.dropbox.com/1/files/dropbox/foo")
-    OAuthRequest(dropbox_oa, "https://api-content.dropbox.com/1/files/dropbox/foo",
-                 httpheader = c(Range = "bytes=30-70"), verbose = TRUE)
-  }
 
   return(cred)
 }

@@ -20,15 +20,16 @@
 #' [1] 'Sat, 28 Apr 2012 20:55:42 +0000'
 #'}
 dropbox_share <- function(cred, file = NULL, curl = getCurlHandle(), 
-    ...) {
+    ..., .checkIfExists = TRUE) {
     if (!is(cred, "DropboxCredentials")) 
         stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.")
     if (is.null(file)) 
         stop("No file of folder to share", call. = FALSE)
-    if (!(exists.in.dropbox(cred, file, ..., curl = getCurlHandle()))) 
+    if (.checkIfExists && !(exists.in.dropbox(cred, file, ..., curl = getCurlHandle()))) 
         stop("Folder doesn't exist", call. = FALSE)
     if (grepl("^/", file)) 
         file <- str_sub(file, 2)
+    
     path_to_share <- sprintf("https://api.dropbox.com/1/shares/dropbox/%s", 
         file, sep = "")
     result <- fromJSON(OAuthRequest(cred, path_to_share, , ..., curl = curl))

@@ -15,7 +15,7 @@
 #'
 dropbox_unserialize <-
 function(cred, file, precheck = TRUE, verbose = FALSE, curl = getCurlHandle(),
-           ext = ".rda", ...)
+           ext = ".rda", ..., .checkIfExists = TRUE)
 {
     if (!is(cred, "DropboxCredentials")) 
         stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", 
@@ -26,7 +26,7 @@ function(cred, file, precheck = TRUE, verbose = FALSE, curl = getCurlHandle(),
             else
                file
     
-    data = dropbox_get(cred, file, ..., curl = curl, binary = TRUE)
+    data = dropbox_get(cred, file, ..., curl = curl, binary = TRUE, .checkIfExists = .checkIfExists)
     unserialize(data)
 }
 

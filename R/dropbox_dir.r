@@ -18,29 +18,31 @@
 #' dropbox_dir(db_cred,path='/specific_folder', pattern='file', verbose = TRUE)
 #' returns a dataframe with fields .id, revision, rev, thumb_exists, bytes, modified path, is_dir, icon, root, size, client_mtime, mimetype.
 #'}
-dropbox_dir <- function(cred, path = NULL, verbose = FALSE, 
-    deleted = FALSE, pattern = NULL, curl = getCurlHandle(), ...) {
+dropbox_dir <-
+function(cred, path = character(), verbose = FALSE, 
+         deleted = FALSE, pattern = NULL, curl = getCurlHandle(), ..., .checkIfExists = TRUE)
+{
     if (!is(cred, "DropboxCredentials")) 
         stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", 
             call. = FALSE)
-    url <- "https://api.dropbox.com/1/metadata/dropbox/"
-    if (!is.null(path)) {
-        if (!exists.in.dropbox(cred, path, is_dir = TRUE, ..., curl = getCurlHandle())) {
+    
+    url <- "https://api.dropbox.com/1/metadata/dropbox"
+    if (length(path) && .checkIfExists && 
+         !exists.in.dropbox(cred, path, is_dir = TRUE, ..., curl = getCurlHandle())) 
             stop("There is no such folder in your Dropbox", call. = FALSE)
-        }
-    }
-    if (!is.null(path)) {
-        if (grepl("/$", path)) {
+
+    if (length(path) && grepl("/$", path)) {
             path <- str_sub(path, end = str_length(path) - 1)
-        }
     }
-    if (!is.null(path) & length(path) > 0) {
-        url <- paste(url, path, "/", sep = "")
-    }
+
+    url = getPath(path, url = url, cred = cred)
+    
     metadata <- fromJSON(OAuthRequest(cred, url, list(include_deleted = deleted), 
-        ..., curl = curl))
+                                      ..., curl = curl))
+    
     names(metadata$contents) <- basename(sapply(metadata$contents, 
-        `[[`, "path"))
+                                                `[[`, "path"))
+                                                
     file_sys <- ldply(metadata$contents, data.frame)
     if (!is.null(pattern)) {
         matches <- str_detect(file_sys$.id, pattern)
