@@ -28,6 +28,10 @@
    Use chunked upload
    See dropbox_chunked.r.  [Fixed] Problem with signature. Typo!
 
+   If get an error, raise an exception with the upload_id and current
+   offset.  See errors.R but need to connect the code to the error.
+   
+
 * Optionally avoid check.if.exists 
   Add .checkIfExists = TRUE to functions.
   Perhaps use a getOption() for the default value.
