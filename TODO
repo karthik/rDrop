@@ -1,9 +1,13 @@
-[Done] Constructor for DropboxCredentials object, separate from dropbox_oauth
-  Document this
+* [Done] Constructor for DropboxCredentials object, separate from dropbox_oauth
+  Document this.
 
 * Documentation for classes, etc.
 
 * Handle case for dropbox_copy when a DropboxFolder is used for the cred and get the relative paths correct
+   Somewhat ambigiuous whether both of the from and to paths should be
+   relative to the dropbox folder.  Allow for a absolute path name,
+   e.g. dropbox_copy(folder, "/a/b/c", "localNameInFolder")
+   Also allow to name to be omitted when folder implies the same name.
 
 * Class for a path/folder that extends DropboxCredentials and then
   uses this to fill the path in requests
@@ -15,13 +19,14 @@
 
 * [Done] Switched to dir() function and generic
   Fix default method for ls() to get correct environment
-  e.g. ls(2) getting the wrong environment
+  e.g. ls(2) getting the wrong environment when called from within a function.
 
 * Fill in getPath() for corner cases (leading /, empty paths)
   Fix // cases but not in URL's http://....
 
 * Large files not uploading correctly
   Use chunked upload
+  See dropbox_chunked.r.  Problem with signature.
 
 * Optionally avoid check.if.exists 
   Add .checkIfExists = TRUE to functions.
@@ -42,12 +47,14 @@
 * Option for list = true for the dropbox_dir() function
 
 * Why not have dropbox_get and _put use the same parameter name for the file.
+  _put has what and filename.  _get has file_to_get.
+  Probably use filename for both.
 
 * get content type correct for dropbox_save
 
 * have dropbox_save handle ... as named objects
- and make it behave better than save which looks for global variables. 
- Allow both.
+   and make it behave better than save which looks for global variables. 
+   Allow both.
 
 [Done] Ensure dropbox_get obeys the binary
   o = dropbox_get(drop, "x.rda", binary = TRUE)

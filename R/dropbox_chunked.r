@@ -5,10 +5,12 @@ function(cred, what, filename = basename(what), chunkSize = 4*10^6, ..., curl = 
     # source of data can be raw vectors, files and connections
   if(is.character(what)) {
     input = file(what, "rb")
+    on.exit(close(input))
     totalSize = file.info(what)[1, "size"]
   } else if(is.raw(what)) {
        # raw buffer or a connection
     input =  rawConnection(what, "r")
+    on.exit(close(input))    
     totalSize = length(input)
   } else if(is(what, "connection")) {
     input = what
@@ -29,7 +31,7 @@ function(cred, what, filename = basename(what), chunkSize = 4*10^6, ..., curl = 
                       ..., curl = curl)
 
   tmp = fromJSON(ans)
-  offset = length(block) + 1
+  offset = length(block) # + 1
   id = tmp[["upload_id"]]
 
   while(is.na(totalSize) || offset < totalSize)   {
@@ -45,16 +47,17 @@ function(cred, what, filename = basename(what), chunkSize = 4*10^6, ..., curl = 
        # We may need to sign it as if they are parameters, but
        # then put the parameters in the URL. ROAuth currently
        # doesn't have a mechanism to specify this.
-     tmp = OAuthRequest(cred, tmp.url
-                          #targetURL, list(upload_id = id, offset = offset),
+       # Added in my version via .sendURL.
+     tmp = OAuthRequest(cred,
+                        targetURL, c(upload_id = id, offset = offset),
                         "PUT", upload = TRUE,
                         readfunction = block, infilesize = nbytes,
-                        ..., curl = curl)
+                        ..., curl = getCurlHandle(verbose = TRUE), .sendURL = tmp.url)
      tmp = fromJSON(tmp)
-     if("error" %in% tmp)
-         stop("problem uploading chunk: ", tmp$error)
+     if("error" %in% names(tmp))
+         stop("problem uploading chunk: ", tmp[["error"]])
     
-     offset = offset + nbytes + 1
+     offset = offset + nbytes # + 1
   }
 
   cat("committing upload to the file\n")
