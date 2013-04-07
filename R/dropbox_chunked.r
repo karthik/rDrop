@@ -52,7 +52,8 @@ function(cred, what, filename = basename(what), chunkSize = 4*10^6, ..., curl = 
                         targetURL, c(upload_id = id, offset = offset),
                         "PUT", upload = TRUE,
                         readfunction = block, infilesize = nbytes,
-                        ..., curl = getCurlHandle(verbose = TRUE), .sendURL = tmp.url)
+                        ..., curl = getCurlHandle(verbose = TRUE), # use curl
+                        .sendURL = tmp.url)
      tmp = fromJSON(tmp)
      if("error" %in% names(tmp))
          stop("problem uploading chunk: ", tmp[["error"]])
