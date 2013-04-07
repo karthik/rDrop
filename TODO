@@ -3,6 +3,8 @@
 
 * Documentation for classes, etc.
 
+* GNUmakefile entry for generating documentation, etc.
+
 * Handle case for dropbox_copy when a DropboxFolder is used for the cred and get the relative paths correct
    Somewhat ambigiuous whether both of the from and to paths should be
    relative to the dropbox folder.  Allow for a absolute path name,
@@ -31,6 +33,7 @@
    If get an error, raise an exception with the upload_id and current
    offset.  See errors.R but need to connect the code to the error.
    
+* Make dropbox_save and _put use _chunked if the content is too large.
 
 * Optionally avoid check.if.exists 
   Add .checkIfExists = TRUE to functions.

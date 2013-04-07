@@ -7,6 +7,7 @@
 #'  the returned value in here (avoids unnecessary footprint)
 #' @param ... optional additional curl options (debugging tools mostly).
 #' @param verbose default is FALSE. Set to true to receive full outcome.
+#' @param contentType the string describing the content type.
 #' @return information about the uploaded file on dropbox.
 #' @examples \dontrun{
 #'   dropbox_put(auth, I("This is in-memory text"), "inMemory.txt")
@@ -15,13 +16,13 @@
 #'   print(dropbox_get(auth, "rDrop_DESCRIPTION"))
 #' }
 dropbox_put <-
-function(cred, what, filename = what, curl = getCurlHandle(), ..., verbose = FALSE)
+function(cred, what, filename = what, curl = getCurlHandle(), ..., verbose = FALSE,
+         contentType = "application/octet-stream")
 {
     filename = paste(filename, collapse = "/")
     url <- sprintf("https://api-content.dropbox.com/1/files_put/dropbox/%s", filename)
-    
-    input <- RCurl:::uploadFunctionHandler(what)
 
+     #XXX what about raw?
     size = if(is(what, "AsIs")) {
               if(is.character(what))
                   sum(nchar(what))
@@ -30,9 +31,14 @@ function(cred, what, filename = what, curl = getCurlHandle(), ..., verbose = FAL
            } else
               file.info(what)[1, "size"]
     
+    if(size > 1048576 * 150)
+        return(dropbox_chunked(cred, what, filename, curl = curl, .silent = !verbose))
+    
+    input <- RCurl:::uploadFunctionHandler(what)                               
+    
     drop_save <- fromJSON(OAuthRequest(cred, url, , "PUT", upload = TRUE,
                                        readfunction = input, infilesize = size,
-                                       httpheader = c(`Content-Type` = "application/octet-stream"),
+                                       httpheader = c(`Content-Type` = contentType),
                                        ..., curl = curl))
 
     if (verbose && is.list(drop_save))  {

@@ -1,7 +1,25 @@
-
+#' Upload large content in chunks
+#'
+#' Use this function to upload very large files or content which exceeds the 150Mb
+#' maximum size for dropbox_put. This allows us to upload the content in chunks
+#' each of which can be up to 150Mb but which combined are much larger.
+#' This also allows us to resume uploads.
+#' @param cred An object of class DropboxCredentials with Dropobox specific credentials.
+#' @param what the content to upload, which is either the name of a file, in-memory text or a raw vector.
+#' @param filename the name of the file to create in the Dropbox folder.
+#' @param chunkSize the number of bytes to send in each chunk. The default is 4Mb.
+#' @param range  allows the caller to specify a range of bytes rather than uploading the entire content.
+#' @param curl If using in a loop, call getCurlHandle() first and pass
+#'  the returned value in here (avoids unnecessary footprint)
+#' @param ... optional additional curl options (debugging tools mostly).
+#' @param .silent a logical value that controls whether progress information is displayed on the console.
+#' @param contentType the string describing the content type.
+#' @return
+#' @seealso  \code{\link{dropbox_put}}
 dropbox_chunked <-
 function(cred, what, filename = basename(what), chunkSize = 4*10^6,
-         range = c(1, NA), ..., curl = getCurlHandle(), .silent = FALSE)
+         range = c(1, NA), ..., curl = getCurlHandle(), .silent = FALSE,
+         contentType = "application/octet-stream")
 {
     # source of data can be raw vectors, files and connections
   if(is.character(what)) {
@@ -18,6 +36,13 @@ function(cred, what, filename = basename(what), chunkSize = 4*10^6,
     totalSize = NA
   }
 
+  if(!is.na(range[1]) && range[1] > 1) {
+    readBin(input, raw(), range[1])
+  }
+
+  if(!is.na(range[2]))
+     totalSize = range[2]
+  
   targetURL = "https://api-content.dropbox.com/1/chunked_upload"
 
     # Need to reset the Content-Length, etc.  in the final request
@@ -28,7 +53,7 @@ function(cred, what, filename = basename(what), chunkSize = 4*10^6,
   block = readBin(input, raw(), chunkSize)
   ans = OAuthRequest(cred, targetURL, , "PUT", upload = TRUE, 
                       readfunction = block, infilesize = length(block),
-                      httpheader = c('Content-Type' = "application/octet-stream"),
+                      httpheader = c('Content-Type' = contentType),
                       ..., curl = curl)
 
   tmp = fromJSON(ans)
@@ -55,7 +80,7 @@ function(cred, what, filename = basename(what), chunkSize = 4*10^6,
      tmp = OAuthRequest(cred,
                         targetURL, c(upload_id = id, offset = offset),
                         "PUT", upload = TRUE,
-                         httpheader = c('Content-Type' = "application/octet-stream"),
+                         httpheader = c('Content-Type' = contentType),
                         readfunction = block, infilesize = nbytes,
                         ..., curl = curl,
                         .sendURL = tmp.url)

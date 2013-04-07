@@ -30,6 +30,9 @@ function(cred, ..., list = character(), file = stop("'file' must be specified"),
          envir = parent.frame(), precheck = TRUE, verbose = FALSE, curl = getCurlHandle(), 
          ext = ".rda", .opts = list())
 {
+
+#XXX shouldn't this end up being a call to dropbox_put().
+  
     if (!is(cred, "DropboxCredentials")) 
         stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", 
             call. = FALSE)
@@ -62,7 +65,7 @@ function(cred, ..., list = character(), file = stop("'file' must be specified"),
                     paste(str_trim(str_extract(file, "[^.]*")), ext, sep = "")
                 else
                     file
-                    
+#XXX call getPath()
     url <- sprintf("https://api-content.dropbox.com/1/files_put/dropbox/%s", filename)
     
     con <- rawConnection(raw(), "w")
