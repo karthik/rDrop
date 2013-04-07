@@ -9,7 +9,7 @@
    e.g. dropbox_copy(folder, "/a/b/c", "localNameInFolder")
    Also allow to name to be omitted when folder implies the same name.
 
-* Class for a path/folder that extends DropboxCredentials and then
+* [Finish] Class for a path/folder that extends DropboxCredentials and then
   uses this to fill the path in requests
   Use getPath() to compute the actual path for the requests.
   [Done] sanitize_path()
@@ -24,20 +24,19 @@
 * Fill in getPath() for corner cases (leading /, empty paths)
   Fix // cases but not in URL's http://....
 
-* Large files not uploading correctly
-  Use chunked upload
-  See dropbox_chunked.r.  Problem with signature.
+* [Check] Large files not uploading correctly
+   Use chunked upload
+   See dropbox_chunked.r.  [Fixed] Problem with signature. Typo!
 
 * Optionally avoid check.if.exists 
   Add .checkIfExists = TRUE to functions.
   Perhaps use a getOption() for the default value.
 
-* Allow caching of the folder
+* [low] Allow caching of the folder
    Sync API to be informed of update.
-
    use the hash from the /metdata request header.
 
-* Conditions and classes for errors.
+* [Started] Conditions and classes for errors.
   see raiseError() in errors.R
   Used in some functions - grep for stop()
 

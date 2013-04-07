@@ -1,6 +1,7 @@
 
 dropbox_chunked <-
-function(cred, what, filename = basename(what), chunkSize = 4*10^6, ..., curl = getCurlHandle())
+function(cred, what, filename = basename(what), chunkSize = 4*10^6,
+         range = c(1, NA), ..., curl = getCurlHandle(), .silent = FALSE)
 {
     # source of data can be raw vectors, files and connections
   if(is.character(what)) {
@@ -25,22 +26,25 @@ function(cred, what, filename = basename(what), chunkSize = 4*10^6, ..., curl = 
 
     # Send the first block to obtain the upload_id token
   block = readBin(input, raw(), chunkSize)
-  ans = OAuthRequest(cred, targetURL, , "PUT", upload = TRUE, verbose = TRUE,
+  ans = OAuthRequest(cred, targetURL, , "PUT", upload = TRUE, 
                       readfunction = block, infilesize = length(block),
                       httpheader = c('Content-Type' = "application/octet-stream"),
                       ..., curl = curl)
 
   tmp = fromJSON(ans)
-  offset = length(block) # + 1
+  offset = length(block)  # + 1
   id = tmp[["upload_id"]]
+  ctr = 2
 
   while(is.na(totalSize) || offset < totalSize)   {
-    browser()
-     tmp.url = sprintf("%s?uploapd_id=%s&offset=%d", targetURL, id, offset)
+     tmp.url = sprintf("%s?upload_id=%s&offset=%d", targetURL, id, offset)
      block = readBin(input, raw(), chunkSize)    
      nbytes = length(block)
-     cat("sending", nbytes, "\n")
-       #XXXX
+     if(!.silent) {
+        cat(ctr, "sending", nbytes, "bytes\n")
+        ctr = ctr + 1
+     }
+     
        # There is a problem with the signature on this request.
        # Potential issue is the upload_id and offset arguments
        #  are in the URL but not in the request
@@ -51,14 +55,15 @@ function(cred, what, filename = basename(what), chunkSize = 4*10^6, ..., curl = 
      tmp = OAuthRequest(cred,
                         targetURL, c(upload_id = id, offset = offset),
                         "PUT", upload = TRUE,
+                         httpheader = c('Content-Type' = "application/octet-stream"),
                         readfunction = block, infilesize = nbytes,
-                        ..., curl = getCurlHandle(verbose = TRUE), # use curl
+                        ..., curl = curl,
                         .sendURL = tmp.url)
      tmp = fromJSON(tmp)
      if("error" %in% names(tmp))
          stop("problem uploading chunk: ", tmp[["error"]])
     
-     offset = offset + nbytes # + 1
+     offset = offset + nbytes 
   }
 
   cat("committing upload to the file\n")
