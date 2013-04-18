@@ -2,3 +2,4 @@ Ignore/
 testing.R
 new_test.R
 .Rhistory
+.DS_Store
