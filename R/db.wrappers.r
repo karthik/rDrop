@@ -12,5 +12,5 @@
 #'}
 db.read.csv <- function(dropbox_credentials, file_to_get, ...) {
     file <- dropbox_get(dropbox_credentials, file_to_get, ...)
-    return(unserialize(file))
+    return(scan(file, character(0), sep = "\n"))
 }
