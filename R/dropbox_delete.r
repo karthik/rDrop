@@ -38,9 +38,6 @@ function(cred, file_to_delete = NULL, ask = interactive(),
         deleted <- fromJSON(OAuthRequest(cred, "https://api.dropbox.com/1/fileops/delete",
                                          list(root="auto", path = file_to_delete)),
                                          ..., curl = curl)
-        #deleted <- fromJSON(OAuthRequest(cred, "https://api.dropbox.com/1/fileops/delete",
-         #                                list(root = "dropbox", path = file_to_delete)),
-          #                               ..., curl = curl)
         if(!.silent && is.list(deleted)) {
             cat(deleted$path, "was successfully deleted on", deleted$modified, "\n")
         }
