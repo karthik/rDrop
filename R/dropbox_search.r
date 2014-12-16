@@ -32,7 +32,7 @@ dropbox_search <- function(cred, query = NULL, deleted = FALSE,
                                                                     # Save the full path if supplied.
     full_path <- query
     query <- basename(query)
-    results <- fromJSON(OAuthRequest(cred, "https://api.dropbox.com/1/search/dropbox/", 
+    results <- fromJSON(OAuthRequest(cred, "https://api.dropbox.com/1/search/auto/", 
         list(query = query, include_deleted = deleted), ..., curl = curl))
     search_results <- formatted_results <- ldply(results, data.frame)
                                                                     # If user wanted to search for a file in a specific

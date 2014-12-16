@@ -26,7 +26,7 @@ function(cred, path = character(), verbose = FALSE,
         stop("Invalid or missing Dropbox credentials. ?dropbox_auth for more information.", 
             call. = FALSE)
     
-    url <- "https://api.dropbox.com/1/metadata/dropbox"
+    url <- "https://api.dropbox.com/1/metadata/auto"
     if (length(path) && .checkIfExists && 
          !exists.in.dropbox(cred, path, is_dir = TRUE, ..., curl = getCurlHandle())) 
             stop("There is no such folder in your Dropbox", call. = FALSE)
