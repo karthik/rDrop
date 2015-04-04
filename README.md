@@ -1,3 +1,5 @@
+# Do not use this package. I have deprecated this version and replaced it iwth rDrop2.  https://github.com/karthik/rDrop2 and file any issues there. 
+
 # rDrop: Dropbox interface via R
 
 This package provides a  programmatic interface to [Dropbox](https://www2.dropbox.com/home) from the [R environment](http://www.r-project.org/). The package is complete and fully working but waiting on a dependency to be updated on CRAN before it can be submitted.
