@@ -1,4 +1,4 @@
-# Do not use this package. I have deprecated this version and replaced it with rDrop2.  https://github.com/karthik/dropper
+# Do not use this package. I have deprecated this version and replaced it with rDrop2.  https://github.com/karthik/rdrop2
 
 # rDrop: Dropbox interface via R
 
