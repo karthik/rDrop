@@ -10,7 +10,7 @@
 #' @examples \dontrun{
 #' my_data <- db.read.csv(db_cred, 'data.csv', header = TRUE)
 #'}
-db.read.csv <- function(dropbox_credentials, file_to_get, ...) {
+db.write.csv <- function(dropbox_credentials, file_to_get, outFile, ...) {
     file <- dropbox_get(dropbox_credentials, file_to_get, ...)
-    return(unserialize(file))
+    writeLines(file, outFile)
 }
